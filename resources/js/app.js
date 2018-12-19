@@ -21,6 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('welcome', require('./components/Welcome.vue').default);
+Vue.component('examplecomponent', require('./components/ExampleComponent.vue').default);
 Vue.component('navbar',require('./components/Navbar.vue').default);
 
 /**
