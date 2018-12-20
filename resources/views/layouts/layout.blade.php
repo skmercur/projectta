@@ -35,7 +35,9 @@
        $.widget.bridge('uibutton', $.ui.button);
     </script>
     
-
+    <script>
+window.Laravel = {csrfToken:'{{csrf_token()}}'}
+        </script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -244,5 +246,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

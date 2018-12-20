@@ -24,7 +24,7 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
        <div id="app">
      
        </div>
-       </div>
+      
        <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>
