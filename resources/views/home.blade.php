@@ -2,7 +2,12 @@
 
 @section('content')
  
-
+@if(Auth::user()->confirmed == 0)
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                   <script> document.getElementById('logout-form').submit();</script>
+@endif
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
