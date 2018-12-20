@@ -23,3 +23,6 @@ Route::get('/home', function(){
 Route::get('/admin',function(){
     return view('admin');
 });
+Route::post('/test',function(){
+    return response()->json(["value"=>mt_rand(0,200)]);
+});

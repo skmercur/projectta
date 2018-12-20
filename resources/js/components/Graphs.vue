@@ -16,7 +16,7 @@
   </div>
     <div class="row">
 <div class="col">
-         <h4 class="centerTitle">Data</h4>
+         <h4 class="centerTitle">{{title}}</h4>
         <br>
 <la-cartesian :data="values"  :height="150" >
      
@@ -24,7 +24,7 @@
     <la-tooltip></la-tooltip>
     <la-y-axis></la-y-axis>
 </la-cartesian>
-    
+    <button @click="sendToServer"></button>
 </div>
 
   </div>
@@ -40,32 +40,50 @@ export default {
         LaTooltip:Tooltip
     },
     data(){
+        
         return{
-            values:[{
-                value : 10
-            },{
-                value : 30
-            },{
-                value : 50
-            },
-            {value : 200},
-            {
-                value : 10
-            },{
-                value : 30
-            },{
-                value : 50
-            },
-            {value : 200},
-            {
-                value : 10
-            },{
-                value : 30
-            },{
-                value : 50
-            },
-            {value : 200}]
+            title: "sofiane",
+            values:[],
+            i : 0
         }
+    }, methods:{
+    
+         sendToServer(){
+             
+              let k ;
+             var z = this.i;
+       
+       
+              this.intervalid1 = setInterval(function(){
+                  
+         axios.post('/test', {
+                    functionToDo:"getCharts",
+                 
+                })
+                .then(function (response) {
+               if(response.data != null){
+                   k = response.data;
+               }
+                 
+                  
+                })
+                .catch(function (error) {
+                   console.dir(error);
+                });
+         this.title = k.value;
+         this.i++;
+         if(k !== null){
+this.values.push(k);
+console.dir(this.values);
+         }
+         
+           
+         }.bind(this), 3000);
+         
+    }
+    },
+    mounted(){
+        this.sendToServer();
     }
 }
 </script>
