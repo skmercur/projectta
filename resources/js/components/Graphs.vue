@@ -4,13 +4,13 @@
 <div class="col">
         <h4 class="centerTitle">Data</h4>
         <br>
-<la-cartesian :data="values"  :height="150" >
+<la-cartesian :data="values"  :height="150"  >
      
     <la-area  animated prop="value"></la-area>
     <la-tooltip></la-tooltip>
     <la-y-axis></la-y-axis>
 </la-cartesian>
-    
+ 
 </div>
 
   </div>
@@ -42,9 +42,15 @@ export default {
     data(){
         
         return{
-            title: "sofiane",
+            titles:[{
+                title:'View',
+ 
+            },{
+                title :'Sells'
+            }],
             values:[],
             i : 0
+           
         }
     }, methods:{
     

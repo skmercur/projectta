@@ -9,7 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 Vue.component('graphs',  require("./components/Graphs.vue" ).default);
-Vue.component('navbar', require("./js/components/Navbar.vue"));
+Vue.component('navbar', require("./components/Navbar.vue").default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

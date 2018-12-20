@@ -65,8 +65,12 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
 </head>
 <body>
     <div id="app">
-   <navbar></navbar>
-
+      <div class="container">
+      <navbar></navbar>
+      </div>
+  
+    </div>
+   
   <aside class="main-sidebar" style="padding-bottom: 100%;">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -106,7 +110,7 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-    <script src="{{asset('js/app.js')}}"></script>
+    
+        <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
