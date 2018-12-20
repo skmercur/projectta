@@ -22,13 +22,7 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
     <body>
         
        <div id="app">
-       <navbar>
-               
-       </navbar>
-       <div class="container">
-       <welcome></welcome>
-
-       <examplecomponent></examplecomponent>
+     
        </div>
        </div>
        <script src="{{asset('js/app.js')}}"></script>

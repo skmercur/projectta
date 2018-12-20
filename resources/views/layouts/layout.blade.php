@@ -11,9 +11,7 @@
 
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
-    <script>
-       $.widget.bridge('uibutton', $.ui.button);
-    </script>
+   
     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script> 
     <script src="{{ asset('bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -33,7 +31,9 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> 
     <script src="{{ asset('dist/js/demo.js') }}"></script> 
     <script src="{{ asset('assets/js/raphael.min.js') }}"></script>
-    
+    <script>
+       $.widget.bridge('uibutton', $.ui.button);
+    </script>
     
 
     <!-- Fonts -->
