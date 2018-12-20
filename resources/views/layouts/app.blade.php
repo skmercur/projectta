@@ -33,8 +33,8 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> 
     <script src="{{ asset('dist/js/demo.js') }}"></script> 
     <script src="{{ asset('assets/js/raphael.min.js') }}"></script>
-    
-    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="658143389529-k7pgr3efa83sggg1qea1fsnnbcs035co.apps.googleusercontent.com">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
