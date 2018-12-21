@@ -1850,6 +1850,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
@@ -1858,13 +1870,14 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
     return {
       show: true,
       showAddCat: true,
+      inputText: "",
       e6: 0,
       e1: 'Florida',
       name: '',
       email: '',
       isEditing: false,
       model: null,
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      items: [],
       checkbox: null,
       dictionary: {
         attributes: {
@@ -1892,7 +1905,32 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
     },
     toggleAddCat: function toggleAddCat() {
       this.showAddCat = !this.showAddCat;
+    },
+    addCat: function addCat() {
+      axios.post('/addCat', {
+        name: this.inputText
+      }).then(function (response) {
+        console.dir(response);
+      }).catch(function (error) {
+        alert(error.response.data.message);
+      });
+    },
+    getCat: function getCat() {
+      var k = [];
+      axios.post('/getCat', {
+        name: this.inputText
+      }).then(function (response) {
+        response.data.categories.forEach(function (element) {
+          k.push(element.name_categorie);
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+      this.items = k;
     }
+  },
+  mounted: function mounted() {
+    this.getCat();
   }
 });
 
@@ -40635,21 +40673,37 @@ var render = function() {
                             }),
                             0
                           )
-                        : _c("v-text-field", {
-                            attrs: {
-                              counter: 25,
-                              label: "Name",
-                              "data-vv-name": "name",
-                              required: ""
-                            },
-                            model: {
-                              value: _vm.name,
-                              callback: function($$v) {
-                                _vm.name = $$v
-                              },
-                              expression: "name"
-                            }
-                          }),
+                        : _c(
+                            "div",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  counter: 25,
+                                  label: "type de name of the category",
+                                  "data-vv-name": "inputText",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.inputText,
+                                  callback: function($$v) {
+                                    _vm.inputText = $$v
+                                  },
+                                  expression: "inputText"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "Green" },
+                                  on: { click: _vm.addCat }
+                                },
+                                [_c("v-icon", [_vm._v("done")])],
+                                1
+                              )
+                            ],
+                            1
+                          ),
                       _vm._v(" "),
                       _c(
                         "v-btn",
@@ -40699,10 +40753,22 @@ var render = function() {
             "v-stepper-content",
             { attrs: { step: "2" } },
             [
-              _c("v-card", {
-                staticClass: "mb-5",
-                attrs: { color: "grey lighten-1", height: "200px" }
-              }),
+              _c(
+                "v-card",
+                { staticClass: "mb-5", attrs: { color: " lighten-1" } },
+                [
+                  _c(
+                    "v-flex",
+                    [
+                      _c("v-text-field", {
+                        attrs: { placeholder: "the price" }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-btn",

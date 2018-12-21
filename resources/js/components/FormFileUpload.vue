@@ -39,15 +39,19 @@
           {{item}}
         </option>
         </select>
+        <div v-else>
         <v-text-field
-    v-else
-      v-model="name"
+    
+      v-model="inputText"
       :counter="25"
-      label="Name"
-      data-vv-name="name"
+      label="type de name of the category"
+      data-vv-name="inputText"
       required
     ></v-text-field>
+     <v-btn color="Green" @click="addCat"><v-icon>done</v-icon></v-btn>
+     </div>
          <v-btn color="Green" @click="toggleAddCat"><v-icon>playlist_add</v-icon></v-btn>
+          
       </v-flex>
         
           <br>
@@ -59,7 +63,15 @@
     <v-stepper-step :complete="e6 > 2" step="2">Configure analytics for this app</v-stepper-step>
 
     <v-stepper-content step="2">
-      <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+      <v-card color=" lighten-1" class="mb-5">
+<v-flex>
+   <v-text-field
+            
+            placeholder="the price"
+         
+          ></v-text-field>
+</v-flex>
+      </v-card>
       <v-btn color="primary" @click="e6 = 3">Continue</v-btn>
       <v-btn flat  @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
@@ -92,13 +104,14 @@ Vue.use(Vuetify)
       return {
         show:true,
         showAddCat : true,
+        inputText : "",
         e6: 0,
           e1: 'Florida',
          name: '',
       email: '',
       isEditing: false,
         model: null,
-       items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+       items: [],
       checkbox: null,
       dictionary: {
         attributes: {
@@ -126,7 +139,42 @@ Vue.use(Vuetify)
        toggleAddCat : function() {
         this.showAddCat = !this.showAddCat;
         
+      },
+      addCat(){
+      
+  axios.post('/addCat', {
+                   name:this.inputText,
+                 
+                })
+                .then(function (response) {
+              console.dir(response)
+                 
+                  
+                })
+                .catch(function (error) {
+                  alert(error.response.data.message);
+                });
+      },getCat(){
+          var k = [];
+        axios.post('/getCat', {
+                   name:this.inputText,
+                 
+                })
+                .then(function (response) {
+                  response.data.categories.forEach(element => {
+                  k.push(element.name_categorie);
+                  });
+            
+              
+                 
+                })
+                .catch(function (error) {
+                 console.log(error);
+                });
+                 this.items = k;
       }
+    }, mounted(){
+      this.getCat();
     }
   }
   

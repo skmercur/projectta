@@ -29,3 +29,5 @@ Route::get('/admin',function(){
 Route::post('/test',function(){
     return response()->json(["value"=>mt_rand(0,200)]);
 });
+Route::post('/addCat',"CategoriesController@addCat");
+Route::post('/getCat',"CategoriesController@getCat");
