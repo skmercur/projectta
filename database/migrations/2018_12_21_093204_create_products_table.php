@@ -19,6 +19,11 @@ class CreateProductsTable extends Migration
             $table->integer('id_categorie');
             $table->integer('prix');
             $table->integer('remise');
+            $table->integer('sells');
+            $table->integer('promote');
+            $table->integer('disponible');
+            $table->integer('quantity');
+            $table->string('last_time_bought',25);
             $table->timestamps();
         });
     }
