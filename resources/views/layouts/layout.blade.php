@@ -57,6 +57,8 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
     <link href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bower_components/jvectormap/jquery-jvectormap.css') }}" rel="stylesheet">
     <link href="{{ asset('bower_components/morris.js/morris.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+  
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -65,11 +67,9 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
 </head>
 <body>
     <div id="app">
-      <div class="container">
+     
       <navbar></navbar>
-      </div>
-  
-    </div>
+      
    
   <aside class="main-sidebar" style="padding-bottom: 100%;">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -110,7 +110,8 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
         <main class="py-4">
             @yield('content')
         </main>
-    
+       
+  </div>
         <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

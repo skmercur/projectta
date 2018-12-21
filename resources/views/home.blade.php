@@ -25,6 +25,7 @@
 
     <!-- Main content -->
     <section class="content">
+    <formup></formup>
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">
@@ -102,16 +103,15 @@
             </ul>
             <div class="tab-content no-padding">
               <!-- Morris chart - Sales -->
-              <div id="app">
-              <div class="container">
-                <graphs></graphs>
-              </div>
               
-              </div>
+                <graphs></graphs>
+               
               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
             </div>
           </div>
           <!-- /.nav-tabs-custom -->
+         
+
 
           <!-- Chat box -->
           <div class="box box-success">
