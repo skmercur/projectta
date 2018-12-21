@@ -1843,6 +1843,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
@@ -1850,26 +1857,14 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
   data: function data() {
     return {
       show: true,
+      showAddCat: true,
       e6: 0,
       e1: 'Florida',
       name: '',
       email: '',
-      items: [{
-        text: 'State 1'
-      }, {
-        text: 'State 2'
-      }, {
-        text: 'State 3'
-      }, {
-        text: 'State 4'
-      }, {
-        text: 'State 5'
-      }, {
-        text: 'State 6'
-      }, {
-        text: 'State 7'
-      }],
-      states: ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'],
+      isEditing: false,
+      model: null,
+      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
       checkbox: null,
       dictionary: {
         attributes: {
@@ -1894,7 +1889,9 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
   methods: {
     toggleForm: function toggleForm() {
       this.show = !this.show;
-      console.log(this.show);
+    },
+    toggleAddCat: function toggleAddCat() {
+      this.showAddCat = !this.showAddCat;
     }
   }
 });
@@ -1983,7 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
           this.values.push(k);
           console.dir(this.values);
         }
-      }.bind(this), 3000);
+      }.bind(this), 100000);
     }
   },
   mounted: function mounted() {
@@ -40591,7 +40588,7 @@ var render = function() {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      counter: 10,
+                      counter: 25,
                       label: "Name",
                       "data-vv-name": "name",
                       required: ""
@@ -40624,25 +40621,45 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-flex",
-                    { attrs: { xs6: "" } },
+                    { attrs: { xs12: "", sm6: "", "d-flex": "" } },
                     [
-                      _c("v-select", {
-                        attrs: {
-                          items: _vm.states,
-                          "menu-props": "auto",
-                          label: "Select",
-                          "hide-details": "",
-                          "prepend-icon": "map",
-                          "single-line": ""
+                      _vm.showAddCat
+                        ? _c(
+                            "select",
+                            _vm._l(_vm.items, function(item) {
+                              return _c("option", { key: item }, [
+                                _vm._v(
+                                  "\n          " + _vm._s(item) + "\n        "
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _c("v-text-field", {
+                            attrs: {
+                              counter: 25,
+                              label: "Name",
+                              "data-vv-name": "name",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.name,
+                              callback: function($$v) {
+                                _vm.name = $$v
+                              },
+                              expression: "name"
+                            }
+                          }),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "Green" },
+                          on: { click: _vm.toggleAddCat }
                         },
-                        model: {
-                          value: _vm.e1,
-                          callback: function($$v) {
-                            _vm.e1 = $$v
-                          },
-                          expression: "e1"
-                        }
-                      })
+                        [_c("v-icon", [_vm._v("playlist_add")])],
+                        1
+                      )
                     ],
                     1
                   ),

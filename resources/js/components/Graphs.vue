@@ -84,7 +84,7 @@ console.dir(this.values);
          }
          
            
-         }.bind(this), 3000);
+         }.bind(this), 100000);
          
     }
     },

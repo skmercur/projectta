@@ -38,9 +38,7 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
     <script src="{{ asset('assets/js/raphael.min.js') }}"></script>
     
     
-    <script>
-window.Laravel = {csrfToken:'{{csrf_token()}}'}
-        </script>
+ 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
