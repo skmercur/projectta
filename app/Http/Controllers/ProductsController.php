@@ -14,4 +14,8 @@ class ProductsController extends Controller
 
         return ProductResource::collection($products);
     }
+    public function addProduct(Request $request){
+
+        return response()->json($request);
+    }
 }

@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('promote');
             $table->integer('disponible');
             $table->integer('quantity');
+            $table->longText('summery');
             $table->string('last_time_bought',25);
             $table->timestamps();
         });
