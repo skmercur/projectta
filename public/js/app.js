@@ -1904,6 +1904,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1926,6 +1937,8 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       showAddCat: true,
       viewFirstProduct: false,
       price: 0,
+      showLotOfInputs: 5,
+      image: '',
       quantity: 0,
       inputText: "",
       e6: 0,
@@ -1937,10 +1950,6 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       model: null,
       items: [],
       checkbox: null,
-      files: [{
-        id: 1,
-        url: "https://utmsi.utexas.edu/components/com_easyblog/themes/wireframe/images/placeholder-image.png"
-      }],
       dictionary: {
         attributes: {
           email: 'E-mail Address' // custom attributes
@@ -1990,40 +1999,25 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       });
       this.items = k;
     },
-    uploadImage: function uploadImage() {
-      this.$refs.uploadFileReference.click();
-    },
-    uploadFileReference: function uploadFileReference(e) {
+    onFileChange: function onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
-      this.length = files.length;
-      this.showImage(files);
+      if (!files.length) return;
+      this.createImage(files[0]);
     },
-    showImage: function showImage(files) {
-      var _this = this;
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
 
-      // if (files.length > 1) {
-      this.files = [];
-      /** Solution provided by Chem **/
+      reader.onload = function (e) {
+        vm.image = e.target.result;
+      };
 
-      var test = Array.from(files).forEach(function (file, idx) {
-        var fileReader = new FileReader();
-        var getResult = new Promise(function (resolve) {
-          fileReader.onload = function (e) {
-            _this.files.push({
-              id: idx,
-              url: e.target.result
-            });
-          };
-        });
-        fileReader.readAsDataURL(file);
-        return getResult.then(function (file) {
-          return file;
-        });
-      });
+      reader.readAsDataURL(file);
     },
     addProduct: function addProduct() {
       axios.post('/addProduct', {
-        files: this.files,
+        length: length,
+        image: this.image,
         reduction: this.reduction,
         name: this.name,
         cat: this.cat,
@@ -2032,7 +2026,7 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
         showFirst: this.viewFirstProduct,
         quantity: this.quantity
       }).then(function (response) {
-        console.dir(response);
+        console.log(response);
       }).catch(function (error) {
         alert(error.response.data.message);
       });
@@ -6122,7 +6116,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ninput[type=\"file\"][data-v-23ace92c] {\r\n  display: none;\n}\n.img-wrapper[data-v-23ace92c] {\r\n  display: flex;\r\n  flex: 1 0 100%;\r\n  flex-direction: row;\r\n  align-items: center;\n}\n.img-container[data-v-23ace92c] {\r\n  width: 10rem;\r\n  height: 15rem;\n}\nimg[data-v-23ace92c] {\r\n  max-width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\nimg[data-v-23ace92c]{\n       max-height: 36px;\n}\n", ""]);
 
 // exports
 
@@ -41068,45 +41062,64 @@ var render = function() {
                       attrs: { xs12: "" }
                     },
                     [
-                      _c(
-                        "div",
-                        { staticClass: "img-wrapper" },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "gray" },
-                              on: { click: _vm.uploadImage }
-                            },
-                            [_c("v-icon", [_vm._v("cloud_upload")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.files, function(file, index) {
-                            return _c(
-                              "div",
-                              { key: index, staticClass: "img-container" },
-                              [
-                                _c("img", {
-                                  attrs: { src: file.url },
-                                  on: { click: _vm.uploadImage }
-                                })
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      ),
+                      _c("img", {
+                        staticClass: "img-responsive",
+                        attrs: { src: _vm.image }
+                      }),
                       _vm._v(" "),
                       _c("input", {
-                        ref: "uploadFileReference",
-                        attrs: { type: "file", multiple: "", accpet: "" },
-                        on: { change: _vm.uploadFileReference }
-                      })
-                    ]
-                  )
+                        staticClass: "form-control",
+                        attrs: { type: "file", name: "image" },
+                        on: { change: _vm.onFileChange }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue" },
+                          on: { click: _vm.addProduct }
+                        },
+                        [_vm._v("Upload")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.showLotOfInputs, function(index) {
+                    return _c(
+                      "v-flex",
+                      {
+                        key: index,
+                        staticClass:
+                          "text-xs-center text-sm-center text-md-center text-lg-center",
+                        attrs: { xs12: "" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "img-responsive",
+                          attrs: { src: _vm.image }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "file", name: "image" },
+                          on: { change: _vm.onFileChange }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: { color: "blue" },
+                            on: { click: _vm.addProduct }
+                          },
+                          [_vm._v("Upload")]
+                        )
+                      ],
+                      1
+                    )
+                  })
                 ],
-                1
+                2
               ),
               _vm._v(" "),
               _c(
@@ -41124,8 +41137,15 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
-                [_vm._v("Cancel")]
+                {
+                  attrs: { flat: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.e6 = 3
+                    }
+                  }
+                },
+                [_vm._v("Back")]
               )
             ],
             1

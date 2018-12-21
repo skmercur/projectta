@@ -109,19 +109,30 @@ color="green"
     <v-stepper-content step="3">
       <v-card color=" lighten-1" class="mb-5" >
         <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
-				 <div class="img-wrapper">
-           <v-btn color="gray" @click="uploadImage"><v-icon>cloud_upload</v-icon></v-btn>
-            <div class="img-container" v-for="(file, index) in files" :key="index">
-             
-              <img :src="file.url" @click="uploadImage" />
-             
-            </div>
-          </div>
-            <input type="file" multiple accpet="" ref="uploadFileReference" @change="uploadFileReference" />
+				
+      
+                <img :src="image" class="img-responsive">
+           
+                <input type="file" name="image" v-on:change="onFileChange" class="form-control">
+           
+          
+                <v-btn color="blue" @click="addProduct">Upload</v-btn>
+           
+				</v-flex>
+         <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center" v-for="index in showLotOfInputs" :key="index">
+				
+      
+                <img :src="image" class="img-responsive">
+           
+                <input type="file" name="image" v-on:change="onFileChange" class="form-control">
+           
+          
+                <v-btn color="blue" @click="addProduct">Upload</v-btn>
+           
 				</v-flex>
       </v-card>
       <v-btn color="blue" @click="e6 = 4">Continue</v-btn>
-      <v-btn flat  @click="toggleForm">Cancel</v-btn>
+      <v-btn flat  @click="e6 = 3">Back</v-btn>
     </v-stepper-content>
 
     <v-stepper-step step="4">View setup instructions</v-stepper-step>
@@ -154,6 +165,8 @@ Vue.use(Vuetify,{
         showAddCat : true,
          viewFirstProduct: false,
         price:0,
+        showLotOfInputs : 5,
+        image:'',
         quantity :0,
         inputText : "",
         e6: 0,
@@ -165,13 +178,7 @@ Vue.use(Vuetify,{
         model: null,
        items: [],
       checkbox: null,
-      files: [
-        {
-          id: 1,
-          url:
-            "https://utmsi.utexas.edu/components/com_easyblog/themes/wireframe/images/placeholder-image.png"
-        }
-      ],
+     
       dictionary: {
         attributes: {
           email: 'E-mail Address'
@@ -231,41 +238,30 @@ Vue.use(Vuetify,{
                  console.log(error);
                 });
                  this.items = k;
-      }, uploadImage() {
-      this.$refs.uploadFileReference.click();
-    },
-    uploadFileReference(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      this.length = files.length;
-
-      this.showImage(files);
-    },
-    showImage(files) {
-      // if (files.length > 1) {
-      this.files = [];
-      /** Solution provided by Chem **/
-      const test = Array.from(files).forEach((file, idx) => {
-        const fileReader = new FileReader();
-        const getResult = new Promise(resolve => {
-          fileReader.onload = e => {
-            this.files.push({
-              id: idx,
-              url: e.target.result
-            });
-          };
-        });
-
-        fileReader.readAsDataURL(file);
-        return getResult.then(file => {
-        
-          return file;
-        });
-      });
-      
-    },
+      }, onFileChange(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
+            },
+            createImage(file) {
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
     addProduct(){
+       
+       
+
+          
+        
       axios.post('/addProduct', {
-                   files:this.files,
+
+                   length:length,
+                   image:this.image,
                    reduction:this.reduction,
                    name:this.name,
                    cat:this.cat,
@@ -278,7 +274,7 @@ Vue.use(Vuetify,{
                  
                 })
                 .then(function (response) {
-              console.dir(response)
+              console.log(response)
                  
                   
                 })
@@ -294,20 +290,7 @@ Vue.use(Vuetify,{
 </script>
 
 <style scoped>
-input[type="file"] {
-  display: none;
-}
-.img-wrapper {
-  display: flex;
-  flex: 1 0 100%;
-  flex-direction: row;
-  align-items: center;
-}
-.img-container {
-  width: 10rem;
-  height: 15rem;
-}
-img {
-  max-width: 100%;
-}
+ img{
+        max-height: 36px;
+    }
 </style>
