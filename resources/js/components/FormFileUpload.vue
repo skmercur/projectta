@@ -24,11 +24,18 @@
           value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
         ></v-textarea>
          </v-flex>
+          <v-flex xs6>
      <v-select
-          :items="items"
-          label="Standard"
+          :items="states"
+          v-model="e1"
+          menu-props="auto"
+          label="Select"
+          hide-details
+          prepend-icon="map"
+          single-line
         ></v-select>
-      
+          </v-flex>
+          <br>
       </v-card>
       <v-btn color="blue" @click="e6 = 2">Continue</v-btn>
       <v-btn flat>Cancel</v-btn>
@@ -68,15 +75,34 @@ Vue.use(Vuetify)
     data () {
       return {
         e6: 0,
+          e1: 'Florida',
          name: '',
       email: '',
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4'
-      ],
+     items: [
+          { text: 'State 1' },
+          { text: 'State 2' },
+          { text: 'State 3' },
+          { text: 'State 4' },
+          { text: 'State 5' },
+          { text: 'State 6' },
+          { text: 'State 7' }
+        ],
+        states: [
+          'Alabama', 'Alaska', 'American Samoa', 'Arizona',
+          'Arkansas', 'California', 'Colorado', 'Connecticut',
+          'Delaware', 'District of Columbia', 'Federated States of Micronesia',
+          'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
+          'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+          'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
+          'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+          'Missouri', 'Montana', 'Nebraska', 'Nevada',
+          'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+          'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
+          'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
+          'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
+          'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
+          'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+        ],
       checkbox: null,
       dictionary: {
         attributes: {

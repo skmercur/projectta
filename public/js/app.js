@@ -1827,6 +1827,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
@@ -1834,10 +1841,25 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
   data: function data() {
     return {
       e6: 0,
+      e1: 'Florida',
       name: '',
       email: '',
-      select: null,
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
+      items: [{
+        text: 'State 1'
+      }, {
+        text: 'State 2'
+      }, {
+        text: 'State 3'
+      }, {
+        text: 'State 4'
+      }, {
+        text: 'State 5'
+      }, {
+        text: 'State 6'
+      }, {
+        text: 'State 7'
+      }],
+      states: ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'],
       checkbox: null,
       dictionary: {
         attributes: {
@@ -40567,7 +40589,32 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("v-select", { attrs: { items: _vm.items, label: "Standard" } })
+              _c(
+                "v-flex",
+                { attrs: { xs6: "" } },
+                [
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.states,
+                      "menu-props": "auto",
+                      label: "Select",
+                      "hide-details": "",
+                      "prepend-icon": "map",
+                      "single-line": ""
+                    },
+                    model: {
+                      value: _vm.e1,
+                      callback: function($$v) {
+                        _vm.e1 = $$v
+                      },
+                      expression: "e1"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("br")
             ],
             1
           ),
