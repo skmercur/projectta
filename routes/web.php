@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', function(){
     return view('home');
 });
+Route::get('/products',function(){
+    return view('products');
+});
 Route::get('/admin',function(){
     return view('admin');
 });

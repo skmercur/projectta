@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Taher Boutique') }}</title>
 
     <!-- Scripts -->
        <script>
@@ -101,6 +101,11 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
         <li class="active treeview">
           <a href="/home">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="active treeview">
+          <a href="/products">
+            <i class="fa fa-product-hunt"></i> <span>Products</span>
           </a>
         </li>
        
