@@ -1834,12 +1834,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      show: true,
       e6: 0,
       e1: 'Florida',
       name: '',
@@ -1880,6 +1890,12 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
         }
       }
     };
+  },
+  methods: {
+    toggleForm: function toggleForm() {
+      this.show = !this.show;
+      console.log(this.show);
+    }
   }
 });
 
@@ -40530,208 +40546,241 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-stepper",
-    {
-      attrs: { vertical: "" },
-      model: {
-        value: _vm.e6,
-        callback: function($$v) {
-          _vm.e6 = $$v
+  return _vm.show
+    ? _c(
+        "v-btn",
+        {
+          attrs: {
+            dark: "",
+            fab: "",
+            fixed: "",
+            bottom: "",
+            right: "",
+            color: "green"
+          },
+          on: { click: _vm.toggleForm }
         },
-        expression: "e6"
-      }
-    },
-    [
-      _c("v-stepper-step", { attrs: { complete: _vm.e6 > 1, step: "1" } }, [
-        _vm._v("\n      Description of the product\n      "),
-        _c("small", [_vm._v("Name and desciption")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-stepper-content",
-        { attrs: { step: "1" } },
+        [_c("v-icon", [_vm._v("cloud_upload")])],
+        1
+      )
+    : _c(
+        "v-stepper",
+        {
+          attrs: { vertical: "" },
+          model: {
+            value: _vm.e6,
+            callback: function($$v) {
+              _vm.e6 = $$v
+            },
+            expression: "e6"
+          }
+        },
         [
+          _c("v-stepper-step", { attrs: { complete: _vm.e6 > 1, step: "1" } }, [
+            _vm._v("\n      Description of the product\n      "),
+            _c("small", [_vm._v("Name and desciption")])
+          ]),
+          _vm._v(" "),
           _c(
-            "v-card",
-            { staticClass: "mb-5", attrs: { color: "lighten-1" } },
+            "v-stepper-content",
+            { attrs: { step: "1" } },
             [
-              _c("v-text-field", {
-                attrs: {
-                  counter: 10,
-                  label: "Name",
-                  "data-vv-name": "name",
-                  required: ""
-                },
-                model: {
-                  value: _vm.name,
-                  callback: function($$v) {
-                    _vm.name = $$v
-                  },
-                  expression: "name"
-                }
-              }),
-              _vm._v(" "),
               _c(
-                "v-flex",
-                { attrs: { xs6: "" } },
+                "v-card",
+                { staticClass: "mb-5", attrs: { color: "lighten-1" } },
                 [
-                  _c("v-textarea", {
+                  _c("v-text-field", {
                     attrs: {
-                      solo: "",
-                      name: "input-7-4",
-                      label: "Solo textarea",
-                      value:
-                        "The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { xs6: "" } },
-                [
-                  _c("v-select", {
-                    attrs: {
-                      items: _vm.states,
-                      "menu-props": "auto",
-                      label: "Select",
-                      "hide-details": "",
-                      "prepend-icon": "map",
-                      "single-line": ""
+                      counter: 10,
+                      label: "Name",
+                      "data-vv-name": "name",
+                      required: ""
                     },
                     model: {
-                      value: _vm.e1,
+                      value: _vm.name,
                       callback: function($$v) {
-                        _vm.e1 = $$v
+                        _vm.name = $$v
                       },
-                      expression: "e1"
+                      expression: "name"
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs6: "" } },
+                    [
+                      _c("v-textarea", {
+                        attrs: {
+                          solo: "",
+                          name: "input-7-4",
+                          label: "Solo textarea",
+                          value:
+                            "The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs6: "" } },
+                    [
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.states,
+                          "menu-props": "auto",
+                          label: "Select",
+                          "hide-details": "",
+                          "prepend-icon": "map",
+                          "single-line": ""
+                        },
+                        model: {
+                          value: _vm.e1,
+                          callback: function($$v) {
+                            _vm.e1 = $$v
+                          },
+                          expression: "e1"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("br")
                 ],
                 1
               ),
               _vm._v(" "),
-              _c("br")
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "blue" },
+                  on: {
+                    click: function($event) {
+                      _vm.e6 = 2
+                    }
+                  }
+                },
+                [_vm._v("Continue")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
+                [_vm._v("Cancel")]
+              )
             ],
             1
           ),
           _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { color: "blue" },
-              on: {
-                click: function($event) {
-                  _vm.e6 = 2
-                }
-              }
-            },
-            [_vm._v("Continue")]
-          ),
-          _vm._v(" "),
-          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Cancel")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-stepper-step", { attrs: { complete: _vm.e6 > 2, step: "2" } }, [
-        _vm._v("Configure analytics for this app")
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-stepper-content",
-        { attrs: { step: "2" } },
-        [
-          _c("v-card", {
-            staticClass: "mb-5",
-            attrs: { color: "grey lighten-1", height: "200px" }
-          }),
+          _c("v-stepper-step", { attrs: { complete: _vm.e6 > 2, step: "2" } }, [
+            _vm._v("Configure analytics for this app")
+          ]),
           _vm._v(" "),
           _c(
-            "v-btn",
-            {
-              attrs: { color: "primary" },
-              on: {
-                click: function($event) {
-                  _vm.e6 = 3
-                }
-              }
-            },
-            [_vm._v("Continue")]
+            "v-stepper-content",
+            { attrs: { step: "2" } },
+            [
+              _c("v-card", {
+                staticClass: "mb-5",
+                attrs: { color: "grey lighten-1", height: "200px" }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.e6 = 3
+                    }
+                  }
+                },
+                [_vm._v("Continue")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
+                [_vm._v("Cancel")]
+              )
+            ],
+            1
           ),
           _vm._v(" "),
-          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Cancel")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-stepper-step", { attrs: { complete: _vm.e6 > 3, step: "3" } }, [
-        _vm._v("Select an ad format and name ad unit")
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-stepper-content",
-        { attrs: { step: "3" } },
-        [
-          _c("v-card", {
-            staticClass: "mb-5",
-            attrs: { color: "grey lighten-1", height: "200px" }
-          }),
+          _c("v-stepper-step", { attrs: { complete: _vm.e6 > 3, step: "3" } }, [
+            _vm._v("Select an ad format and name ad unit")
+          ]),
           _vm._v(" "),
           _c(
-            "v-btn",
-            {
-              attrs: { color: "primary" },
-              on: {
-                click: function($event) {
-                  _vm.e6 = 4
-                }
-              }
-            },
-            [_vm._v("Continue")]
+            "v-stepper-content",
+            { attrs: { step: "3" } },
+            [
+              _c("v-card", {
+                staticClass: "mb-5",
+                attrs: { color: "grey lighten-1", height: "200px" }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.e6 = 4
+                    }
+                  }
+                },
+                [_vm._v("Continue")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
+                [_vm._v("Cancel")]
+              )
+            ],
+            1
           ),
           _vm._v(" "),
-          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Cancel")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-stepper-step", { attrs: { step: "4" } }, [
-        _vm._v("View setup instructions")
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-stepper-content",
-        { attrs: { step: "4" } },
-        [
-          _c("v-card", {
-            staticClass: "mb-5",
-            attrs: { color: "grey lighten-1", height: "200px" }
-          }),
+          _c("v-stepper-step", { attrs: { step: "4" } }, [
+            _vm._v("View setup instructions")
+          ]),
           _vm._v(" "),
           _c(
-            "v-btn",
-            {
-              attrs: { color: "primary" },
-              on: {
-                click: function($event) {
-                  _vm.e6 = 1
-                }
-              }
-            },
-            [_vm._v("Continue")]
-          ),
-          _vm._v(" "),
-          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Cancel")])
+            "v-stepper-content",
+            { attrs: { step: "4" } },
+            [
+              _c("v-card", {
+                staticClass: "mb-5",
+                attrs: { color: "grey lighten-1", height: "200px" }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.e6 = 1
+                    }
+                  }
+                },
+                [_vm._v("Continue")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
+                [_vm._v("Cancel")]
+              )
+            ],
+            1
+          )
         ],
         1
       )
-    ],
-    1
-  )
 }
 var staticRenderFns = []
 render._withStripped = true

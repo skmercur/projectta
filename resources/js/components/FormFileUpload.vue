@@ -1,5 +1,13 @@
 <template>
-  <v-stepper v-model="e6" vertical>
+   
+ <v-btn  dark fab fixed bottom right color="green" v-if="show" @click="toggleForm">
+    
+    <v-icon>cloud_upload</v-icon>
+  
+  </v-btn>
+  
+  <v-stepper v-model="e6" vertical v-else>
+
     <v-stepper-step :complete="e6 > 1" step="1">
       Description of the product
       <small>Name and desciption</small>
@@ -38,7 +46,7 @@
           <br>
       </v-card>
       <v-btn color="blue" @click="e6 = 2">Continue</v-btn>
-      <v-btn flat>Cancel</v-btn>
+      <v-btn flat @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
 
     <v-stepper-step :complete="e6 > 2" step="2">Configure analytics for this app</v-stepper-step>
@@ -46,7 +54,7 @@
     <v-stepper-content step="2">
       <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
       <v-btn color="primary" @click="e6 = 3">Continue</v-btn>
-      <v-btn flat>Cancel</v-btn>
+      <v-btn flat  @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
 
     <v-stepper-step :complete="e6 > 3" step="3">Select an ad format and name ad unit</v-stepper-step>
@@ -54,15 +62,16 @@
     <v-stepper-content step="3">
       <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
       <v-btn color="primary" @click="e6 = 4">Continue</v-btn>
-      <v-btn flat>Cancel</v-btn>
+      <v-btn flat  @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
 
     <v-stepper-step step="4">View setup instructions</v-stepper-step>
     <v-stepper-content step="4">
       <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
       <v-btn color="primary" @click="e6 = 1">Continue</v-btn>
-      <v-btn flat>Cancel</v-btn>
+      <v-btn flat  @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
+  
   </v-stepper>
 </template>
 <script>
@@ -74,6 +83,7 @@ Vue.use(Vuetify)
      
     data () {
       return {
+        show:true,
         e6: 0,
           e1: 'Florida',
          name: '',
@@ -122,7 +132,13 @@ Vue.use(Vuetify)
       }
       
   }
+    },methods:{
+      toggleForm : function() {
+        this.show = !this.show;
+        console.log(this.show);
+      }
     }
   }
   
 </script>
+
