@@ -8,6 +8,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
 Vue.component('graphs',  require("./components/Graphs.vue" ).default);
 Vue.component('navbar', require("./components/Navbar.vue").default);
 Vue.component('formup', require("./components/FormFileUpload.vue").default);

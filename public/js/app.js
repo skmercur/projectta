@@ -2126,7 +2126,136 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      dailySalesChart: {
+        data: {
+          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+          series: [[12, 17, 7, 17, 23, 18, 38]]
+        },
+        options: {
+          lineSmooth: this.$chartist.Interpolation.cardinal({
+            tension: 0
+          }),
+          low: 0,
+          high: 50,
+          // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+          chartPadding: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          }
+        }
+      },
+      dataCompletedTasksChart: {
+        data: {
+          labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
+          series: [[230, 750, 450, 300, 280, 240, 200, 190]]
+        },
+        options: {
+          lineSmooth: this.$chartist.Interpolation.cardinal({
+            tension: 0
+          }),
+          low: 0,
+          high: 1000,
+          // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+          chartPadding: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          }
+        }
+      },
+      emailsSubscriptionChart: {
+        data: {
+          labels: ['Ja', 'Fe', 'Ma', 'Ap', 'Mai', 'Ju', 'Jul', 'Au', 'Se', 'Oc', 'No', 'De'],
+          series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
+        },
+        options: {
+          axisX: {
+            showGrid: false
+          },
+          low: 0,
+          high: 1000,
+          chartPadding: {
+            top: 0,
+            right: 5,
+            bottom: 0,
+            left: 0
+          }
+        },
+        responsiveOptions: [['screen and (max-width: 640px)', {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function labelInterpolationFnc(value) {
+              return value[0];
+            }
+          }
+        }]]
+      },
+      headers: [{
+        sortable: false,
+        text: 'ID',
+        value: 'id'
+      }, {
+        sortable: false,
+        text: 'Name',
+        value: 'name'
+      }, {
+        sortable: false,
+        text: 'Salary',
+        value: 'salary',
+        align: 'right'
+      }, {
+        sortable: false,
+        text: 'Country',
+        value: 'country',
+        align: 'right'
+      }, {
+        sortable: false,
+        text: 'City',
+        value: 'city',
+        align: 'right'
+      }],
+      items: [{
+        name: 'Dakota Rice',
+        country: 'Niger',
+        city: 'Oud-Tunrhout',
+        salary: '$35,738'
+      }, {
+        name: 'Minerva Hooper',
+        country: 'Curaçao',
+        city: 'Sinaai-Waas',
+        salary: '$23,738'
+      }, {
+        name: 'Sage Rodriguez',
+        country: 'Netherlands',
+        city: 'Overland Park',
+        salary: '$56,142'
+      }, {
+        name: 'Philip Chanley',
+        country: 'Korea, South',
+        city: 'Gloucester',
+        salary: '$38,735'
+      }, {
+        name: 'Doris Greene',
+        country: 'Malawi',
+        city: 'Feldkirchen in Kārnten',
+        salary: '$63,542'
+      }],
+      tabs: 0,
+      list: {
+        0: false,
+        1: false,
+        2: false
+      }
+    };
+  },
+  methods: {
+    complete: function complete(index) {
+      this.list[index] = !this.list[index];
+    }
   }
 });
 
@@ -78236,9 +78365,15 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -78247,12 +78382,15 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.component('graphs', __webpack_require__(/*! ./components/Graphs.vue */ "./resources/js/components/Graphs.vue").default);
-Vue.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue").default);
-Vue.component('formup', __webpack_require__(/*! ./components/FormFileUpload.vue */ "./resources/js/components/FormFileUpload.vue").default);
-Vue.component('todo', __webpack_require__(/*! ./components/Todo.vue */ "./resources/js/components/Todo.vue").default);
-Vue.component('tabproduct', __webpack_require__(/*! ./components/TableProducts.vue */ "./resources/js/components/TableProducts.vue").default);
-Vue.component('dashboard', __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue").default);
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('graphs', __webpack_require__(/*! ./components/Graphs.vue */ "./resources/js/components/Graphs.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('formup', __webpack_require__(/*! ./components/FormFileUpload.vue */ "./resources/js/components/FormFileUpload.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('todo', __webpack_require__(/*! ./components/Todo.vue */ "./resources/js/components/Todo.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('tabproduct', __webpack_require__(/*! ./components/TableProducts.vue */ "./resources/js/components/TableProducts.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('dashboard', __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue").default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -78269,7 +78407,7 @@ Vue.component('dashboard', __webpack_require__(/*! ./components/Dashboard.vue */
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
 });
 
@@ -78774,7 +78912,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\r\n@import '~vuetify/src/stylus/main';\r\n       ^\r\n      Can't find stylesheet to import.\n@import '~vuetify/src/stylus/main';\r\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  stdin 8:9  root stylesheet\r\n      in C:\\xampp\\htdocs\\taherboutique\\resources\\sass\\app.scss (line 8, column 9)\n    at runLoaders (C:\\xampp\\htdocs\\taherboutique\\node_modules\\webpack\\lib\\NormalModule.js:301:20)\n    at C:\\xampp\\htdocs\\taherboutique\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\xampp\\htdocs\\taherboutique\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (C:\\xampp\\htdocs\\taherboutique\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at render (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass-loader\\lib\\loader.js:52:13)\n    at Function.$2 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:25378:48)\n    at vB.$2 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:16223:16)\n    at tz.ve (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:9275:42)\n    at tz.vd (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:9277:32)\n    at ic.uo (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8583:46)\n    at t6.$0 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8728:7)\n    at Object.eu (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:1569:80)\n    at aj.bd (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8646:3)\n    at is.bd (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8576:25)\n    at is.cF (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8563:6)\n    at oy.cF (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8350:35)\n    at Object.o (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:1442:19)\n    at C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:5284:51\n    at w0.a (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:1453:71)\n    at w0.$2 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8365:23)\n    at uC.$2 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8360:25)\n    at tz.ve (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:9275:42)\n    at tz.vd (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:9277:32)\n    at ic.uo (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8583:46)\n    at t6.$0 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8728:7)\n    at Object.eu (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:1569:80)\n    at aj.bd (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8646:3)\n    at is.bd (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8576:25)\n    at is.cF (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8563:6)\n    at oy.cF (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8350:35)\n    at Object.o (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:1442:19)\n    at C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:5835:52\n    at w0.a (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:1453:71)\n    at w0.$2 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8365:23)\n    at uC.$2 (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:8360:25)\n    at tz.ve (C:\\xampp\\htdocs\\taherboutique\\node_modules\\sass\\sass.dart.js:9275:42)");
 
 /***/ }),
 
@@ -78785,8 +78923,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\projectta\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\projectta\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\taherboutique\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\taherboutique\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
