@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->longText('image');
             $table->longText('comment');
             $table->integer('rating');
-            $table->integer('id_product');
+            $table->string('code',6);
             $table->timestamps();
         });
     }

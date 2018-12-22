@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comments;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class CommentsController extends Controller
 {
     /**
@@ -16,7 +16,10 @@ class CommentsController extends Controller
     {
         //
     }
-
+public function getComments(Request $request){
+    $comments = DB::table('comments')->get();
+    return response()->json($comments);
+}
     /**
      * Show the form for creating a new resource.
      *
