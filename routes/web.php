@@ -38,3 +38,6 @@ Route::post('/addProduct','ProductsController@addProduct');
 Route::post('/ConfirmProduct','ProductsController@confirmeProduct');
 Route::post('/getComments','CommentsController@getComments');
 Route::post('/getProduct','ProductsController@getProduct');
+Route::get('/test',function(){
+    return view('test');
+});
