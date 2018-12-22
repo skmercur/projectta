@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id_product');
             $table->string('name_product',40);
             $table->string('name_categorie',40);
+            $table->string('code',191)->unique();
             $table->integer('prix');
             $table->integer('remise');
             $table->integer('sells');

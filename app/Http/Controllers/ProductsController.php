@@ -46,13 +46,14 @@ $pro = 1;
       $path = "uploads/".md5(mt_rand(0,99999).$name.$summery).".jpg";
         $this->base64ToImage($imageData,$path);
        $products =  DB::table('products')->where('name_product',$name)->first();
-      
+      $code = strtoupper(substr(md5(time().mt_rand(0,9999).$name),0,6));
        if(!empty($products->name_product)){
         DB::table('products')->where('name_product',$name)->update(["images"=>$products->images.$path.","]);
        }else{
       Product::create([
         'name_product'=>$name,
         'name_categorie'=>$cat,
+        'code'=>$code,
          'prix'=>$price,
          'remise'=>$reduction,
          'sells'=>0,
