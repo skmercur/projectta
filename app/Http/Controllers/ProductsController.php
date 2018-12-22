@@ -76,4 +76,8 @@ $pro = 1;
         DB::table('products')->where('name_product',$name)->update(["active"=>1]);
         return response()->json(["status"=>"success"]);
     }
+    public function getProduct(Request $request){
+        $products = DB::table('products')->get();
+        return response()->json($products);
+    }
 }

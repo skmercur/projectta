@@ -47,13 +47,14 @@
       }
     },
     mounted(){
-        axios.post('/products',{
+        axios.post('/getProduct',{
 
         })
         .then(response => this.products= response.data)
         .catch(function(error){
             console.log(error);
-        })
+        });
+        console.log(response.data);
     }
   }
 </script>
