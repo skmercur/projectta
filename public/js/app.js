@@ -2321,7 +2321,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       headers: [{
-        text: 'Product ',
+        text: 'Categorie ',
         align: 'left',
         sortable: false,
         value: 'name'
@@ -2329,7 +2329,7 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Id',
         value: 'id_product'
       }, {
-        text: 'Name',
+        text: 'Name of the product',
         value: 'name_product'
       }, {
         text: 'Prix',
@@ -42436,7 +42436,7 @@ var render = function() {
         key: "items",
         fn: function(props) {
           return [
-            _c("td", [_vm._v(_vm._s(props.item.name))]),
+            _c("td", [_vm._v(_vm._s(props.item.name_categorie))]),
             _vm._v(" "),
             _c("td", { staticClass: "text-xs-right" }, [
               _vm._v(_vm._s(props.item.id_product))

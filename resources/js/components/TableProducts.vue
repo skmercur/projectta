@@ -8,7 +8,7 @@
     sort-icon="mdi-menu-down"
   >
     <template slot="items" slot-scope="props">
-      <td>{{ props.item.name }}</td>
+      <td>{{ props.item.name_categorie }}</td>
       <td class="text-xs-right">{{ props.item.id_product }}</td>
       <td class="text-xs-right">{{ props.item.name_product }}</td>
       <td class="text-xs-right">{{ props.item.prix }}</td>
@@ -24,13 +24,13 @@
       return {
         headers: [
           {
-            text: 'Product ',
+            text: 'Categorie ',
             align: 'left',
             sortable: false,
             value: 'name'
           },
           { text: 'Id', value: 'id_product' },
-          { text: 'Name', value: 'name_product' },
+          { text: 'Name of the product', value: 'name_product' },
           { text: 'Prix', value: 'prix' },
           { text: 'Disponible', value: 'disponible' },
           { text: 'Quantity', value: 'quantity' }
