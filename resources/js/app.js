@@ -12,6 +12,7 @@ Vue.component('graphs',  require("./components/Graphs.vue" ).default);
 Vue.component('navbar', require("./components/Navbar.vue").default);
 Vue.component('formup', require("./components/FormFileUpload.vue").default);
 Vue.component('todo', require("./components/Todo.vue").default);
+Vue.component('tabproduct', require("./components/TableProducts.vue").default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

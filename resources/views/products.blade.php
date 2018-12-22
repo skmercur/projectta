@@ -5,7 +5,7 @@
 
 <div id="app">
 <div class="container">
-    <formup></formup>
+    <tabproduct></tabproduct>
 </div>
 </div>
 
