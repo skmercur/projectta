@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->longText('summery');
             $table->longText('images');
+            $table->integer('active');
             $table->string('last_time_bought',25);
             $table->timestamps();
         });

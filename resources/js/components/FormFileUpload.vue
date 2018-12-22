@@ -35,7 +35,8 @@
          
         <v-flex xs12 sm6 d-flex>
         <select v-if="showAddCat"
-        v-model="cat" >
+        v-model="cat"  >
+         <option value="">Select the categories</option>
         <option v-for="item in items" :key="item">
           {{item}}
         </option>
@@ -46,7 +47,7 @@
       v-model="inputText"
       :counter="25"
       label="type de name of the category"
-      data-vv-name="inputText"
+      
       required
     ></v-text-field>
      <v-btn color="Green" @click="addCat"><v-icon>done</v-icon></v-btn>
@@ -71,13 +72,14 @@
             v-model="price"
             placeholder="the price"
          append-icon="euro_symbol"
+         required
           ></v-text-field>
           <v-text-field
           v-model="reduction"
           class="ml-5"
             type="number"
             placeholder="reduction"
-         
+         required
           ></v-text-field>
          
 </v-flex>
@@ -88,6 +90,7 @@
             v-model="quantity"
             placeholder="Quantity"
          append-icon="store_mall_directory"
+         required
           ></v-text-field>
          
          
@@ -97,6 +100,7 @@
 color="green"
       :label="`View first `"
       v-model="viewFirstProduct"
+      required
     ></v-switch>
 </v-flex>
       </v-card>
@@ -111,34 +115,147 @@ color="green"
         <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
 				
       
-                <img :src="image" class="img-responsive">
+              
            
-                <input type="file" name="image" v-on:change="onFileChange" class="form-control">
+             <label>Preview of the last seleted image</label>
            
-          
-                <v-btn color="blue" @click="addProduct">Upload</v-btn>
+          <img :src="image" class="img-responsive">
+              
            
 				</v-flex>
          <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center" v-for="index in showLotOfInputs" :key="index">
 				
       
-                <img :src="image" class="img-responsive">
+                <img :src="images[index-1]" class="img-responsive">
            
                 <input type="file" name="image" v-on:change="onFileChange" class="form-control">
            
           
                 <v-btn color="blue" @click="addProduct">Upload</v-btn>
-           
+            <v-snackbar
+      v-model="snackbar"
+      :bottom="y === 'bottom'"
+      :left="x === 'left'"
+      :multi-line="mode === 'multi-line'"
+      :right="x === 'right'"
+      :timeout="timeout"
+      :top="y === 'top'"
+      :vertical="mode === 'vertical'"
+    >
+      {{ text }}
+      <v-btn
+        color="pink"
+        flat
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
 				</v-flex>
       </v-card>
       <v-btn color="blue" @click="e6 = 4">Continue</v-btn>
-      <v-btn flat  @click="e6 = 3">Back</v-btn>
+      <v-btn flat  @click="toggleForm">Back</v-btn>
     </v-stepper-content>
 
-    <v-stepper-step step="4">View setup instructions</v-stepper-step>
+    <v-stepper-step step="4">Preview before publishing</v-stepper-step>
     <v-stepper-content step="4">
-      <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
-      <v-btn color="green" @click="addProduct">Continue</v-btn>
+      <v-card color=" lighten-1" class="mb-5" >
+    
+      <v-layout>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card>
+        <v-container grid-list-sm fluid>
+          <v-layout row wrap>
+            <v-flex
+              v-for="n in lengthImageArray"
+              :key="n"
+              xs4
+              d-flex
+            >
+              <v-card flat tile class="d-flex">
+                <v-img
+                  :src="images[n]"
+                  :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
+                  aspect-ratio="1"
+                  class="grey lighten-2"
+                >
+                  <v-layout
+                    slot="placeholder"
+                    fill-height
+                    align-center
+                    justify-center
+                    ma-0
+                  >
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                  </v-layout>
+                </v-img>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </v-flex>
+  </v-layout>
+ <v-container fluid grid-list-md>
+    <v-data-iterator
+      :items="items"
+      
+      content-tag="v-layout"
+      row
+      wrap
+    >
+      <v-flex
+        slot="item"
+        slot-scope="props"
+        xs12
+        sm6
+        md4
+        lg3
+      >
+        <v-card>
+          <v-card-title><h4>preview</h4></v-card-title>
+          <v-divider></v-divider>
+          <v-list dense>
+            <v-list-tile>
+              <v-list-tile-content>Name:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{name}}</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Summery:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{summery}}</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Category:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{cat}}</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Price:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{price}} DZD</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Reduction:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{reduction}} %</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Quantity:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{quantity}}</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Promote:</v-list-tile-content>
+              <v-list-tile-content class="align-end" v-if="viewFirstProduct">Yes</v-list-tile-content>
+              <v-list-tile-content class="align-end" v-else>No</v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-card>
+      </v-flex>
+    </v-data-iterator>
+  </v-container>
+ 
+      </v-card>
+      <v-btn color="green" @click="confirmUpload">
+
+Confirme
+      </v-btn>
       <v-btn flat  @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
   
@@ -167,8 +284,15 @@ Vue.use(Vuetify,{
         price:0,
         showLotOfInputs : 5,
         image:'',
+        images:[],
         quantity :0,
         inputText : "",
+          snackbar: false,
+        y: 'top',
+        x: null,
+        mode: '',
+        timeout: 6000,
+        text: 'Uploading image',
         e6: 0,
         cat:'',
           e1: 'Florida',
@@ -177,8 +301,9 @@ Vue.use(Vuetify,{
       isEditing: false,
         model: null,
        items: [],
+       code : null,
       checkbox: null,
-     
+     lengthImageArray : 0,
       dictionary: {
         attributes: {
           email: 'E-mail Address'
@@ -249,15 +374,19 @@ Vue.use(Vuetify,{
                 let vm = this;
                 reader.onload = (e) => {
                     vm.image = e.target.result;
+                    this.images.push(this.image);
+
                 };
                 reader.readAsDataURL(file);
+                console.log(this.images);
+                this.lengthImageArray = this.images.length;
             },
     addProduct(){
        
        
-
-          
-        
+var k = false;
+            this.snackbar = true;
+        var j = null;
       axios.post('/addProduct', {
 
                    length:length,
@@ -274,12 +403,29 @@ Vue.use(Vuetify,{
                  
                 })
                 .then(function (response) {
-              console.log(response)
-                 
+              console.log(response);
+                 k = true;
+                  j = response.code;
+                })
+                .catch(function (error) {
+                  alert(error.response.data.message);
+                  k = false;
+                });
+              this.code = j;
+    }, confirmUpload(){
+       axios.post('/ConfirmProduct', {  
+
+         name:this.name,
+        
+       })
+                .then(function (response) {
+              console.log(response);
+                
                   
                 })
                 .catch(function (error) {
                   alert(error.response.data.message);
+                 
                 });
     }
     }, mounted(){

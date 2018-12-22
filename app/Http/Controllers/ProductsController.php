@@ -46,6 +46,7 @@ $pro = 1;
       $path = "uploads/".md5(mt_rand(0,99999).$name.$summery).".jpg";
         $this->base64ToImage($imageData,$path);
        $products =  DB::table('products')->where('name_product',$name)->first();
+      
        if(!empty($products->name_product)){
         DB::table('products')->where('name_product',$name)->update(["images"=>$products->images.$path.","]);
        }else{
@@ -60,12 +61,18 @@ $pro = 1;
          'quantity'=>$quantity,
          'summery'=>$summery,
          'images'=>$path.',',
+         'active'=>0,
          'last_time_bought' => ""
       ]);
        }
-        return response()->json(["status"=>"success"]);
+        return response()->json(["status"=>"success","code"=>$code]);
        
   
 
+    }
+    public function confirmeProduct(Request $request){
+        $name = $request->name;
+        DB::table('products')->where('name_product',$name)->update(["active"=>1]);
+        return response()->json(["status"=>"success"]);
     }
 }

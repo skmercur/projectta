@@ -1915,6 +1915,123 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1939,8 +2056,15 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       price: 0,
       showLotOfInputs: 5,
       image: '',
+      images: [],
       quantity: 0,
       inputText: "",
+      snackbar: false,
+      y: 'top',
+      x: null,
+      mode: '',
+      timeout: 6000,
+      text: 'Uploading image',
       e6: 0,
       cat: '',
       e1: 'Florida',
@@ -1949,7 +2073,9 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       isEditing: false,
       model: null,
       items: [],
+      code: null,
       checkbox: null,
+      lengthImageArray: 0,
       dictionary: {
         attributes: {
           email: 'E-mail Address' // custom attributes
@@ -2005,16 +2131,25 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       this.createImage(files[0]);
     },
     createImage: function createImage(file) {
+      var _this = this;
+
       var reader = new FileReader();
       var vm = this;
 
       reader.onload = function (e) {
         vm.image = e.target.result;
+
+        _this.images.push(_this.image);
       };
 
       reader.readAsDataURL(file);
+      console.log(this.images);
+      this.lengthImageArray = this.images.length;
     },
     addProduct: function addProduct() {
+      var k = false;
+      this.snackbar = true;
+      var j = null;
       axios.post('/addProduct', {
         length: length,
         image: this.image,
@@ -2025,6 +2160,19 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
         summery: this.summery,
         showFirst: this.viewFirstProduct,
         quantity: this.quantity
+      }).then(function (response) {
+        console.log(response);
+        k = true;
+        j = response.code;
+      }).catch(function (error) {
+        alert(error.response.data.message);
+        k = false;
+      });
+      this.code = j;
+    },
+    confirmUpload: function confirmUpload() {
+      axios.post('/ConfirmProduct', {
+        name: this.name
       }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
@@ -40849,14 +40997,20 @@ var render = function() {
                                 }
                               }
                             },
-                            _vm._l(_vm.items, function(item) {
-                              return _c("option", { key: item }, [
-                                _vm._v(
-                                  "\n          " + _vm._s(item) + "\n        "
-                                )
-                              ])
-                            }),
-                            0
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Select the categories")
+                              ]),
+                              _vm._v(" "),
+                              _vm._l(_vm.items, function(item) {
+                                return _c("option", { key: item }, [
+                                  _vm._v(
+                                    "\n          " + _vm._s(item) + "\n        "
+                                  )
+                                ])
+                              })
+                            ],
+                            2
                           )
                         : _c(
                             "div",
@@ -40865,7 +41019,6 @@ var render = function() {
                                 attrs: {
                                   counter: 25,
                                   label: "type de name of the category",
-                                  "data-vv-name": "inputText",
                                   required: ""
                                 },
                                 model: {
@@ -40950,7 +41103,8 @@ var render = function() {
                         attrs: {
                           type: "number",
                           placeholder: "the price",
-                          "append-icon": "euro_symbol"
+                          "append-icon": "euro_symbol",
+                          required: ""
                         },
                         model: {
                           value: _vm.price,
@@ -40963,7 +41117,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("v-text-field", {
                         staticClass: "ml-5",
-                        attrs: { type: "number", placeholder: "reduction" },
+                        attrs: {
+                          type: "number",
+                          placeholder: "reduction",
+                          required: ""
+                        },
                         model: {
                           value: _vm.reduction,
                           callback: function($$v) {
@@ -40986,7 +41144,8 @@ var render = function() {
                         attrs: {
                           type: "number",
                           placeholder: "Quantity",
-                          "append-icon": "store_mall_directory"
+                          "append-icon": "store_mall_directory",
+                          required: ""
                         },
                         model: {
                           value: _vm.quantity,
@@ -41004,7 +41163,11 @@ var render = function() {
                     "v-flex",
                     [
                       _c("v-switch", {
-                        attrs: { color: "green", label: "View first " },
+                        attrs: {
+                          color: "green",
+                          label: "View first ",
+                          required: ""
+                        },
                         model: {
                           value: _vm.viewFirstProduct,
                           callback: function($$v) {
@@ -41062,27 +41225,15 @@ var render = function() {
                       attrs: { xs12: "" }
                     },
                     [
+                      _c("label", [
+                        _vm._v("Preview of the last seleted image")
+                      ]),
+                      _vm._v(" "),
                       _c("img", {
                         staticClass: "img-responsive",
                         attrs: { src: _vm.image }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { type: "file", name: "image" },
-                        on: { change: _vm.onFileChange }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue" },
-                          on: { click: _vm.addProduct }
-                        },
-                        [_vm._v("Upload")]
-                      )
-                    ],
-                    1
+                      })
+                    ]
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.showLotOfInputs, function(index) {
@@ -41097,7 +41248,7 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "img-responsive",
-                          attrs: { src: _vm.image }
+                          attrs: { src: _vm.images[index - 1] }
                         }),
                         _vm._v(" "),
                         _c("input", {
@@ -41113,6 +41264,44 @@ var render = function() {
                             on: { click: _vm.addProduct }
                           },
                           [_vm._v("Upload")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-snackbar",
+                          {
+                            attrs: {
+                              bottom: _vm.y === "bottom",
+                              left: _vm.x === "left",
+                              "multi-line": _vm.mode === "multi-line",
+                              right: _vm.x === "right",
+                              timeout: _vm.timeout,
+                              top: _vm.y === "top",
+                              vertical: _vm.mode === "vertical"
+                            },
+                            model: {
+                              value: _vm.snackbar,
+                              callback: function($$v) {
+                                _vm.snackbar = $$v
+                              },
+                              expression: "snackbar"
+                            }
+                          },
+                          [
+                            _vm._v("\n      " + _vm._s(_vm.text) + "\n      "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "pink", flat: "" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.snackbar = false
+                                  }
+                                }
+                              },
+                              [_vm._v("\n        Close\n      ")]
+                            )
+                          ],
+                          1
                         )
                       ],
                       1
@@ -41137,14 +41326,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                {
-                  attrs: { flat: "" },
-                  on: {
-                    click: function($event) {
-                      _vm.e6 = 3
-                    }
-                  }
-                },
+                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
                 [_vm._v("Back")]
               )
             ],
@@ -41152,22 +41334,300 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("v-stepper-step", { attrs: { step: "4" } }, [
-            _vm._v("View setup instructions")
+            _vm._v("Preview before publishing")
           ]),
           _vm._v(" "),
           _c(
             "v-stepper-content",
             { attrs: { step: "4" } },
             [
-              _c("v-card", {
-                staticClass: "mb-5",
-                attrs: { color: "grey lighten-1", height: "200px" }
-              }),
+              _c(
+                "v-card",
+                { staticClass: "mb-5", attrs: { color: " lighten-1" } },
+                [
+                  _c(
+                    "v-layout",
+                    [
+                      _c(
+                        "v-flex",
+                        { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+                        [
+                          _c(
+                            "v-card",
+                            [
+                              _c(
+                                "v-container",
+                                { attrs: { "grid-list-sm": "", fluid: "" } },
+                                [
+                                  _c(
+                                    "v-layout",
+                                    { attrs: { row: "", wrap: "" } },
+                                    _vm._l(_vm.lengthImageArray, function(n) {
+                                      return _c(
+                                        "v-flex",
+                                        {
+                                          key: n,
+                                          attrs: { xs4: "", "d-flex": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "v-card",
+                                            {
+                                              staticClass: "d-flex",
+                                              attrs: { flat: "", tile: "" }
+                                            },
+                                            [
+                                              _c(
+                                                "v-img",
+                                                {
+                                                  staticClass: "grey lighten-2",
+                                                  attrs: {
+                                                    src: _vm.images[n],
+                                                    "lazy-src":
+                                                      "https://picsum.photos/10/6?image=" +
+                                                      (n * 5 + 10),
+                                                    "aspect-ratio": "1"
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-layout",
+                                                    {
+                                                      attrs: {
+                                                        slot: "placeholder",
+                                                        "fill-height": "",
+                                                        "align-center": "",
+                                                        "justify-center": "",
+                                                        "ma-0": ""
+                                                      },
+                                                      slot: "placeholder"
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-progress-circular",
+                                                        {
+                                                          attrs: {
+                                                            indeterminate: "",
+                                                            color:
+                                                              "grey lighten-5"
+                                                          }
+                                                        }
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    }),
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-container",
+                    { attrs: { fluid: "", "grid-list-md": "" } },
+                    [
+                      _c("v-data-iterator", {
+                        attrs: {
+                          items: _vm.items,
+                          "content-tag": "v-layout",
+                          row: "",
+                          wrap: ""
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "item",
+                            fn: function(props) {
+                              return _c(
+                                "v-flex",
+                                {
+                                  attrs: { xs12: "", sm6: "", md4: "", lg3: "" }
+                                },
+                                [
+                                  _c(
+                                    "v-card",
+                                    [
+                                      _c("v-card-title", [
+                                        _c("h4", [_vm._v("preview")])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("v-divider"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-list",
+                                        { attrs: { dense: "" } },
+                                        [
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Name:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                { staticClass: "align-end" },
+                                                [_vm._v(_vm._s(_vm.name))]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Summery:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                { staticClass: "align-end" },
+                                                [_vm._v(_vm._s(_vm.summery))]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Category:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                { staticClass: "align-end" },
+                                                [_vm._v(_vm._s(_vm.cat))]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Price:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                { staticClass: "align-end" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(_vm.price) + " DZD"
+                                                  )
+                                                ]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Reduction:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                { staticClass: "align-end" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(_vm.reduction) + " %"
+                                                  )
+                                                ]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Quantity:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                { staticClass: "align-end" },
+                                                [_vm._v(_vm._s(_vm.quantity))]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile",
+                                            [
+                                              _c("v-list-tile-content", [
+                                                _vm._v("Promote:")
+                                              ]),
+                                              _vm._v(" "),
+                                              _vm.viewFirstProduct
+                                                ? _c(
+                                                    "v-list-tile-content",
+                                                    {
+                                                      staticClass: "align-end"
+                                                    },
+                                                    [_vm._v("Yes")]
+                                                  )
+                                                : _c(
+                                                    "v-list-tile-content",
+                                                    {
+                                                      staticClass: "align-end"
+                                                    },
+                                                    [_vm._v("No")]
+                                                  )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { color: "green" }, on: { click: _vm.addProduct } },
-                [_vm._v("Continue")]
+                { attrs: { color: "green" }, on: { click: _vm.confirmUpload } },
+                [_vm._v("\n\nConfirme\n      ")]
               ),
               _vm._v(" "),
               _c(

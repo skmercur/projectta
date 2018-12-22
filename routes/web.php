@@ -32,3 +32,4 @@ Route::post('/test',function(){
 Route::post('/addCat',"CategoriesController@addCat");
 Route::post('/getCat',"CategoriesController@getCat");
 Route::post('/addProduct','ProductsController@addProduct');
+Route::post('/ConfirmProduct','ProductsController@confirmeProduct');
