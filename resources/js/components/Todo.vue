@@ -16,7 +16,7 @@
         </v-toolbar>
 
         <v-list three-line>
-          <template v-for="(item) in items" >
+          <template v-for="(item) in items" v-if="items.length >0" >
            
 
             <v-list-tile
@@ -39,6 +39,7 @@
             </v-list-tile>
             
           </template>
+          <h5 class="mt-2" v-else-if="items.length ==0">No comments</h5>
         </v-list>
       </v-card>
       

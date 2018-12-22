@@ -2347,6 +2347,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -42378,50 +42379,58 @@ var render = function() {
                 { attrs: { "three-line": "" } },
                 [
                   _vm._l(_vm.items, function(item) {
-                    return [
-                      _c(
-                        "v-list-tile",
-                        { key: item.name },
-                        [
-                          _c("v-list-tile-avatar", [
-                            _c("img", { attrs: { src: item.image } })
-                          ]),
-                          _vm._v(" "),
+                    return _vm.items.length > 0
+                      ? [
                           _c(
-                            "v-list-tile-content",
+                            "v-list-tile",
+                            { key: item.name },
                             [
-                              _c("v-list-tile-title", {
-                                domProps: { innerHTML: _vm._s(item.name) }
-                              }),
-                              _vm._v(" "),
-                              _c("v-list-tile-sub-title", {
-                                domProps: { innerHTML: _vm._s(item.comment) }
-                              }),
+                              _c("v-list-tile-avatar", [
+                                _c("img", { attrs: { src: item.image } })
+                              ]),
                               _vm._v(" "),
                               _c(
-                                "div",
-                                { staticClass: "text-xs-center" },
+                                "v-list-tile-content",
                                 [
-                                  _c("v-rating", {
-                                    attrs: { readonly: "" },
-                                    model: {
-                                      value: item.rating,
-                                      callback: function($$v) {
-                                        _vm.$set(item, "rating", $$v)
-                                      },
-                                      expression: "item.rating"
+                                  _c("v-list-tile-title", {
+                                    domProps: { innerHTML: _vm._s(item.name) }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-list-tile-sub-title", {
+                                    domProps: {
+                                      innerHTML: _vm._s(item.comment)
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "text-xs-center" },
+                                    [
+                                      _c("v-rating", {
+                                        attrs: { readonly: "" },
+                                        model: {
+                                          value: item.rating,
+                                          callback: function($$v) {
+                                            _vm.$set(item, "rating", $$v)
+                                          },
+                                          expression: "item.rating"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )
                             ],
                             1
                           )
-                        ],
-                        1
-                      )
-                    ]
+                        ]
+                      : _vm.items.length == 0
+                        ? _c("h5", { staticClass: "mt-2" }, [
+                            _vm._v("No comments")
+                          ])
+                        : _vm._e()
                   })
                 ],
                 2
