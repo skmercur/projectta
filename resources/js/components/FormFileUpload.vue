@@ -58,7 +58,7 @@
         
           <br>
       </v-card>
-      <v-btn color="blue" @click="e6 = 2">Continue</v-btn>
+      <v-btn color="blue" @click="nextStep">Continue</v-btn>
       <v-btn flat @click="toggleForm">Cancel</v-btn>
     </v-stepper-content>
 
@@ -104,8 +104,8 @@ color="green"
     ></v-switch>
 </v-flex>
       </v-card>
-      <v-btn color="blue" @click="e6 = 3">Continue</v-btn>
-      <v-btn flat  @click="toggleForm">Cancel</v-btn>
+      <v-btn color="blue" @click="nextStep">Continue</v-btn>
+      <v-btn flat  @click.native="goBackStep">Back</v-btn>
     </v-stepper-content>
 
     <v-stepper-step :complete="e6 > 3" step="3">Picturs of the product</v-stepper-step>
@@ -153,8 +153,8 @@ color="green"
     </v-snackbar>
 				</v-flex>
       </v-card>
-      <v-btn color="blue" @click="e6 = 4">Continue</v-btn>
-      <v-btn flat  @click="toggleForm">Back</v-btn>
+      <v-btn color="blue" @click="nextStep">Continue</v-btn>
+      <v-btn flat  @click="goBackStep">Back</v-btn>
     </v-stepper-content>
 
     <v-stepper-step step="4">Preview before publishing</v-stepper-step>
@@ -256,7 +256,7 @@ color="green"
 
 Confirme
       </v-btn>
-      <v-btn flat  @click="toggleForm">Cancel</v-btn>
+      <v-btn flat  @click="goBackStep">Back</v-btn>
     </v-stepper-content>
   
   </v-stepper>
@@ -277,6 +277,7 @@ Vue.use(Vuetify,{
     data () {
       return {
         show:true,
+        showBtnStep1 : false,
         reduction : 0,
         summery:'',
         showAddCat : true,
@@ -427,6 +428,15 @@ var k = false;
                   alert(error.response.data.message);
                  
                 });
+    },
+    nextStep(){
+      if((this.name.length > 0) &&(this.summery.length>0) ){
+this.e6++;
+      }
+      
+    },
+    goBackStep(){
+      this.e6--;
     }
     }, mounted(){
       this.getCat();

@@ -2049,6 +2049,7 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
   data: function data() {
     return {
       show: true,
+      showBtnStep1: false,
       reduction: 0,
       summery: '',
       showAddCat: true,
@@ -2178,6 +2179,14 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       }).catch(function (error) {
         alert(error.response.data.message);
       });
+    },
+    nextStep: function nextStep() {
+      if (this.name.length > 0 && this.summery.length > 0) {
+        this.e6++;
+      }
+    },
+    goBackStep: function goBackStep() {
+      this.e6--;
     }
   },
   mounted: function mounted() {
@@ -41063,14 +41072,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                {
-                  attrs: { color: "blue" },
-                  on: {
-                    click: function($event) {
-                      _vm.e6 = 2
-                    }
-                  }
-                },
+                { attrs: { color: "blue" }, on: { click: _vm.nextStep } },
                 [_vm._v("Continue")]
               ),
               _vm._v(" "),
@@ -41185,21 +41187,21 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                {
-                  attrs: { color: "blue" },
-                  on: {
-                    click: function($event) {
-                      _vm.e6 = 3
-                    }
-                  }
-                },
+                { attrs: { color: "blue" }, on: { click: _vm.nextStep } },
                 [_vm._v("Continue")]
               ),
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
-                [_vm._v("Cancel")]
+                {
+                  attrs: { flat: "" },
+                  nativeOn: {
+                    click: function($event) {
+                      return _vm.goBackStep($event)
+                    }
+                  }
+                },
+                [_vm._v("Back")]
               )
             ],
             1
@@ -41313,20 +41315,13 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                {
-                  attrs: { color: "blue" },
-                  on: {
-                    click: function($event) {
-                      _vm.e6 = 4
-                    }
-                  }
-                },
+                { attrs: { color: "blue" }, on: { click: _vm.nextStep } },
                 [_vm._v("Continue")]
               ),
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
+                { attrs: { flat: "" }, on: { click: _vm.goBackStep } },
                 [_vm._v("Back")]
               )
             ],
@@ -41632,8 +41627,8 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { flat: "" }, on: { click: _vm.toggleForm } },
-                [_vm._v("Cancel")]
+                { attrs: { flat: "" }, on: { click: _vm.goBackStep } },
+                [_vm._v("Back")]
               )
             ],
             1
