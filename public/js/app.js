@@ -1984,7 +1984,6 @@ var dt = new Date();
     }
   },
   mounted: function mounted() {
-    console.log(this.admin);
     this.intervalid1 = setInterval(function () {
       var _this = this;
 
@@ -2871,9 +2870,10 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       axios.post('/getCat', {
         name: this.inputText
       }).then(function (response) {
-        response.data.categories.forEach(function (element) {
+        response.data.forEach(function (element) {
           k.push(element.name_categorie);
         });
+        console.log(response);
       }).catch(function (error) {
         console.log(error);
       });
@@ -3017,7 +3017,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (k !== null) {
           this.values.push(k);
-          console.dir(this.values);
         }
       }.bind(this), 1000);
     }

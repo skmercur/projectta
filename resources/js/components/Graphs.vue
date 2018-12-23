@@ -68,7 +68,7 @@ export default {
          this.i++;
          if(k !== null){
 this.values.push(k);
-console.dir(this.values);
+
          }
          
            

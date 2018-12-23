@@ -349,9 +349,10 @@ Vue.use(Vuetify,{
                  
                 })
                 .then(function (response) {
-                  response.data.categories.forEach(element => {
+                  response.data.forEach(element => {
                   k.push(element.name_categorie);
                   });
+                  console.log(response);
                 })
                 .catch(function (error) {
                  console.log(error);

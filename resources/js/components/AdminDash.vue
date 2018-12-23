@@ -213,7 +213,7 @@ switch(i){
                 });
 }
     },mounted(){
-        console.log(this.admin);
+       
         this.intervalid1 = setInterval(function(){
          axios.post('/GetSells', {
                   
