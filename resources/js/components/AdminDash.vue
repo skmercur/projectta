@@ -75,6 +75,14 @@
                   </v-card>
               </v-flex>
         </v-layout>
+         <v-layout row wrap>
+         <v-flex d-flex >
+                  <v-card color="white"  class="ma-3" >
+                   
+           <todo></todo>
+                  </v-card>
+              </v-flex>
+        </v-layout>
       </v-container>
 
 
@@ -117,6 +125,7 @@
 import formup from './FormFileUpload';
 import graphs from './Graphs';
 import tabproduct from './TableProducts';
+import todo from './Todo';
   export default {
     data: () => ({
       drawer: null,

@@ -1766,6 +1766,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormFileUpload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormFileUpload */ "./resources/js/components/FormFileUpload.vue");
 /* harmony import */ var _Graphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Graphs */ "./resources/js/components/Graphs.vue");
 /* harmony import */ var _TableProducts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableProducts */ "./resources/js/components/TableProducts.vue");
+/* harmony import */ var _Todo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Todo */ "./resources/js/components/Todo.vue");
 //
 //
 //
@@ -1881,6 +1882,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -41966,6 +41976,27 @@ var render = function() {
                         1
                       )
                     }),
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        { attrs: { "d-flex": "" } },
+                        [
+                          _c(
+                            "v-card",
+                            { staticClass: "ma-3", attrs: { color: "white" } },
+                            [_c("todo")],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
                     1
                   )
                 ],
