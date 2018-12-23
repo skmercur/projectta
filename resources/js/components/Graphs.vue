@@ -4,7 +4,7 @@
 <div class="col">
         <h4 class="centerTitle">Data</h4>
         <br>
-<la-cartesian :data="values"  :height="150"  >
+<la-cartesian :data="values"  :height="50" :width="250"  >
      
     <la-area  animated prop="value"></la-area>
     <la-tooltip></la-tooltip>
@@ -14,20 +14,8 @@
 </div>
 
   </div>
-    <div class="row">
-<div class="col">
-         <h4 class="centerTitle">{{title}}</h4>
-        <br>
-<la-cartesian :data="values"  :height="150" >
-     
-    <la-area  animated prop="value"></la-area>
-    <la-tooltip></la-tooltip>
-    <la-y-axis></la-y-axis>
-</la-cartesian>
-    <button @click="sendToServer"></button>
-</div>
+   
 
-  </div>
 
 </div>
 </template>
@@ -84,7 +72,7 @@ console.dir(this.values);
          }
          
            
-         }.bind(this), 100000);
+         }.bind(this), 1000);
          
     }
     },

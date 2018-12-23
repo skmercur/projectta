@@ -20,12 +20,13 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
   <!-- CSS Files -->
   <link href="{{asset('assets/css/material-dashboard.css?v=2.1.1')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
+  <script src="{{asset('assets/demo/demo.js')}}"></script>
 </head>
 
 <body class="">
+
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{asset('assets/img/sidebar-1.jpg')}}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -278,6 +279,9 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
       </ul>
     </div>
   </div>
+
+</body>
+
   <!--   Core JS Files   -->
   <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
   <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
@@ -309,7 +313,7 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js{{asset('assets/demo/demo.css')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="{{asset('assets/js/plugins/arrive.min.js')}}"></script>
   <!--  Google Maps Plugin    -->
@@ -500,6 +504,4 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
 
     });
   </script>
-</body>
-
 </html>

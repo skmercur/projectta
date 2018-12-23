@@ -1,12 +1,7 @@
 <template>
-   
- <v-btn  dark fab fixed bottom right color="green" v-if="show" @click="toggleForm">
-    
-    <v-icon>cloud_upload</v-icon>
+
   
-  </v-btn>
-  
-  <v-stepper v-model="e6" vertical v-else>
+  <v-stepper v-model="e6" vertical class="pa-2">
 
     <v-stepper-step :complete="e6 > 1" step="1">
       Description of the product
@@ -14,7 +9,7 @@
     </v-stepper-step>
 
     <v-stepper-content step="1">
-      <v-card color="lighten-1" class="mb-5">
+      <v-card color="lighten-1" class="mb-5 pa-2">
 <v-text-field
     
       v-model="name"
@@ -34,13 +29,14 @@
          </v-flex>
          
         <v-flex xs12 sm6 d-flex>
-        <select v-if="showAddCat"
-        v-model="cat"  >
-         <option value="">Select the categories</option>
-        <option v-for="item in items" :key="item">
-          {{item}}
-        </option>
-        </select>
+           <v-select
+            v-if="showAddCat"
+          :items="items"
+          label="Choose a category"
+          solo
+          v-model="cat"
+        ></v-select>
+       
         <div v-else>
         <v-text-field
     
@@ -65,7 +61,7 @@
     <v-stepper-step :complete="e6 > 2" step="2">Details about the prices and the stock quantity</v-stepper-step>
 
     <v-stepper-content step="2">
-      <v-card color=" lighten-1" class="mb-5">
+      <v-card color=" lighten-1" class="mb-5 pa-2">
   <v-flex xs12 sm6 d-flex>
    <v-text-field
             type="number"
@@ -159,11 +155,11 @@ color="green"
 
     <v-stepper-step step="4">Preview before publishing</v-stepper-step>
     <v-stepper-content step="4">
-      <v-card color=" lighten-1" class="mb-5" >
+      <v-card color=" lighten-1" class="mb-5 pa-2" >
     
       <v-layout>
     <v-flex xs12 sm6 offset-sm3>
-      <v-card>
+      <v-card class="mb-5 pa-2">
         <v-container grid-list-sm fluid>
           <v-layout row wrap>
             <v-flex
@@ -212,7 +208,7 @@ color="green"
         md4
         lg3
       >
-        <v-card>
+        <v-card class="mb-5 pa-2">
           <v-card-title><h4>preview</h4></v-card-title>
           <v-divider></v-divider>
           <v-list dense>
@@ -276,7 +272,7 @@ Vue.use(Vuetify,{
      
     data () {
       return {
-        show:true,
+        show:false,
         showBtnStep1 : false,
         reduction : 0,
         summery:'',

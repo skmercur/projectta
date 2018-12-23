@@ -41,3 +41,4 @@ Route::post('/getProduct','ProductsController@getProduct');
 Route::get('/test',function(){
     return view('test');
 });
+Route::post('/LogoutA','\App\Http\Controllers\Auth\LoginController@logout');

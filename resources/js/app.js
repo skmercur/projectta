@@ -10,7 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-
+import 'vuetify/dist/vuetify.min.css'
 Vue.use(Vuetify)
 Vue.component('graphs',  require("./components/Graphs.vue" ).default);
 Vue.component('navbar', require("./components/Navbar.vue").default);
@@ -18,6 +18,7 @@ Vue.component('formup', require("./components/FormFileUpload.vue").default);
 Vue.component('todo', require("./components/Todo.vue").default);
 Vue.component('tabproduct', require("./components/TableProducts.vue").default);
 Vue.component('dashboard', require("./components/Dashboard.vue").default);
+Vue.component('admin', require("./components/AdminDash.vue").default);
 
 /**
  * The following block of code may be used to automatically register your
@@ -38,5 +39,6 @@ Vue.component('dashboard', require("./components/Dashboard.vue").default);
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
 });
