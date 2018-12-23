@@ -46,3 +46,5 @@ Route::get('/test',function(){
 Route::post('/LogoutA','\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/delCat','CategoriesController@delCat');
 Route::post('/upCat','CategoriesController@upCat');
+Route::post('/GetSells','ProductsController@GetSells');
+Route::post('/GetSellsDzd','ProductsController@GetSellsDzd');

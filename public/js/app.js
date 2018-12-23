@@ -1898,6 +1898,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1911,7 +1934,9 @@ var dt = new Date();
       showSectionOne: true,
       showSectionTwo: false,
       showSectionThree: false,
-      YearNow: dt.getFullYear()
+      YearNow: dt.getFullYear(),
+      sells: 0,
+      sellsDzd: 0
     };
   },
   props: {
@@ -1960,6 +1985,20 @@ var dt = new Date();
   },
   mounted: function mounted() {
     console.log(this.admin);
+    this.intervalid1 = setInterval(function () {
+      var _this = this;
+
+      axios.post('/GetSells', {}).then(function (response) {
+        return _this.sells = response.data;
+      }).catch(function (error) {
+        console.dir(error);
+      });
+      axios.post('/GetSellsDzd', {}).then(function (response) {
+        return _this.sellsDzd = response.data;
+      }).catch(function (error) {
+        console.dir(error);
+      });
+    }.bind(this), 1000);
   }
 });
 
@@ -42350,10 +42389,10 @@ var render = function() {
                   _c(
                     "v-layout",
                     { attrs: { row: "", wrap: "" } },
-                    _vm._l(3, function(n) {
-                      return _c(
+                    [
+                      _c(
                         "v-flex",
-                        { key: n, attrs: { "d-flex": "" } },
+                        { attrs: { "d-flex": "" } },
                         [
                           _c(
                             "v-card",
@@ -42393,8 +42432,96 @@ var render = function() {
                           )
                         ],
                         1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { "d-flex": "" } },
+                        [
+                          _c(
+                            "v-card",
+                            { staticClass: "ma-3", attrs: { color: "white" } },
+                            [
+                              _c("v-card-title", [
+                                _c("h4", { staticStyle: { color: "#000" } }, [
+                                  _vm._v("preview")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-layout",
+                                { attrs: { column: "" } },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "black", large: "" } },
+                                    [_vm._v("trending_up")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "h3",
+                                {
+                                  staticClass: "text-xs-center pa-3",
+                                  staticStyle: { color: "#000" }
+                                },
+                                [_vm._v(_vm._s(_vm.sells) + " sells")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { "d-flex": "" } },
+                        [
+                          _c(
+                            "v-card",
+                            { staticClass: "ma-3", attrs: { color: "white" } },
+                            [
+                              _c("v-card-title", [
+                                _c("h4", { staticStyle: { color: "#000" } }, [
+                                  _vm._v("preview")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-layout",
+                                { attrs: { column: "" } },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "black", large: "" } },
+                                    [_vm._v("attach_money")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "h3",
+                                {
+                                  staticClass: "text-xs-center pa-3",
+                                  staticStyle: { color: "#000" }
+                                },
+                                [_vm._v(_vm._s(_vm.sellsDzd) + " DZD")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       )
-                    }),
+                    ],
                     1
                   ),
                   _vm._v(" "),
@@ -42558,7 +42685,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("v-footer", { attrs: { app: "", fixed: "" } }, [
-        _c("span", [_vm._v("© " + _vm._s(_vm.YearNow))])
+        _c("span", [_vm._v("PowerDz © " + _vm._s(_vm.YearNow))])
       ])
     ],
     1

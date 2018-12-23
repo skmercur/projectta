@@ -64,7 +64,7 @@
           </v-flex>
         </v-layout>
         <v-layout row wrap>
-         <v-flex d-flex v-for="n in 3" :key="n">
+         <v-flex d-flex >
                   <v-card color="white"  class="ma-3" >
                          <v-card-title><h4 style="color:#000;">preview</h4></v-card-title>
           <v-divider></v-divider>
@@ -74,6 +74,29 @@
             <h3 style="color:#000;" class="text-xs-center pa-3" >0 Sales</h3>
                   </v-card>
               </v-flex>
+               <v-flex d-flex >
+                  <v-card color="white"  class="ma-3" >
+                         <v-card-title><h4 style="color:#000;">preview</h4></v-card-title>
+          <v-divider></v-divider>
+             <v-layout column>
+           <v-icon color="black" large>trending_up</v-icon>
+           </v-layout>
+
+            <h3 style="color:#000;" class="text-xs-center pa-3" >{{sells}} sells</h3>
+                  </v-card>
+              </v-flex>
+ <v-flex d-flex >
+                  <v-card color="white"  class="ma-3" >
+                         <v-card-title><h4 style="color:#000;">preview</h4></v-card-title>
+          <v-divider></v-divider>
+             <v-layout column>
+           <v-icon color="black" large>attach_money</v-icon>
+           </v-layout>
+
+            <h3 style="color:#000;" class="text-xs-center pa-3" >{{sellsDzd}} DZD</h3>
+                  </v-card>
+              </v-flex>
+
         </v-layout>
          <v-layout row wrap>
          <v-flex d-flex >
@@ -123,7 +146,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-      <span>&copy; {{YearNow}}</span>
+      <span>PowerDz &copy; {{YearNow}}</span>
     </v-footer>
   </v-app>
 </template>
@@ -142,6 +165,8 @@ import todo from './Todo';
       showSectionTwo:false,
       showSectionThree:false,
       YearNow: dt.getFullYear(),
+      sells:0,
+      sellsDzd:0
     }),
     props: {
         srcImage:String,
@@ -189,7 +214,24 @@ switch(i){
 }
     },mounted(){
         console.log(this.admin);
+        this.intervalid1 = setInterval(function(){
+         axios.post('/GetSells', {
+                  
+            
+                })
+                .then(response => this.sells= response.data)
+                .catch(function (error) {
+                   console.dir(error);
+                });
+                 axios.post('/GetSellsDzd', {
+                  
+            
+                })
+                .then(response => this.sellsDzd= response.data)
+                .catch(function (error) {
+                   console.dir(error);
+                });
+      }.bind(this), 1000);
     }
-    
   }
 </script>

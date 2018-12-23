@@ -63,6 +63,7 @@ $pro = 1;
          'summery'=>$summery,
          'images'=>$path.',',
          'active'=>0,
+         'views'=>0,
          'last_time_bought' => ""
       ]);
        }
@@ -92,5 +93,21 @@ $pro = 1;
         $cat = $request->cat;
         DB::table('products')->where('id_product',$request->id)->update(["name_product"=>$name,"prix"=>$price,"disponible"=>$disp,"quantity"=>$quan,"name_categorie"=>$cat]);
         return response()->json(["status"=>"success"]);
+    }
+    public function GetSells(Request $request){
+        $products = DB::table('products')->get();
+        $sells = 0;
+        foreach($products as $product){
+            $sells += $product->sells; 
+        }
+        return response()->json($sells);
+    }
+    public function GetSellsDzd(Request $request){
+        $products = DB::table('products')->get();
+        $sells = 0;
+        foreach($products as $product){
+            $sells += $product->sells * $product->prix; 
+        }
+        return response()->json($sells);
     }
 }
