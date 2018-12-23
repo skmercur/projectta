@@ -18,6 +18,7 @@ Vue.component('formup', require("./components/FormFileUpload.vue").default);
 Vue.component('todo', require("./components/Todo.vue").default);
 Vue.component('tabproduct', require("./components/TableProducts.vue").default);
 Vue.component('dashboard', require("./components/Dashboard.vue").default);
+Vue.component('tabcat', require("./components/TableCategories.vue").default);
 Vue.component('admin', require("./components/AdminDash.vue").default);
 
 /**

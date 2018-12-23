@@ -27,11 +27,25 @@ if(!empty($request->name)){
 }
    
 }
-public function getCat(){
+public function getCat(Request $request){
    $cat = DB::table('categories')->orderBy('name_categorie','asc')->get();
        
-        return response()->json(["categories"=>$cat]);
+        return response()->json($cat);
     }
+    public function upCat(Request $request){
+        $id = $request->id;
+        $name = $request->name;
+        $confirmed = $request->confirmed;
+      DB::table('categories')->where('id_categorie',$id)->update(['name_categorie'=>$name,'confirmed'=>$confirmed]);
+            
+             return response()->json(['state'=>'sucess']);
+         }
+         public function delCat(Request $request){
+         $id = $request->id;
+             DB::table('categories')->where('id_categorie',$id)->delete();
+                
+                 return response()->json(['state'=>'sucess']);
+             }
        
     
     /**

@@ -110,7 +110,14 @@
       <v-container fluid grid-list-sm v-else-if="showSectionThree">
 <v-layout row wrap >
           <v-flex d-flex xs12 order-xs5>
-<h2>categories </h2>
+<v-card color="white"  class="ma-3" >
+                         <v-card-title><h2 style="color:#000;">Categories</h2></v-card-title>
+                          <v-flex d-flex xs12 order-xs5>
+              <tabcat></tabcat>
+                          </v-flex>
+                             <v-divider></v-divider>
+                          
+                  </v-card>
           </v-flex>
 </v-layout>
       </v-container>
@@ -125,7 +132,9 @@
 import formup from './FormFileUpload';
 import graphs from './Graphs';
 import tabproduct from './TableProducts';
+import tabcat from './TableCategories';
 import todo from './Todo';
+
   export default {
     data: () => ({
       drawer: null,
