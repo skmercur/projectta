@@ -1,4 +1,5 @@
 <template>
+
   <v-data-table
     :headers="headers"
     :items="products"
@@ -14,14 +15,168 @@
       <td class="text-xs-right">{{ props.item.prix }}</td>
       <td class="text-xs-right">{{ props.item.disponible }}</td>
       <td class="text-xs-right">{{ props.item.quantity }}</td>
+      <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="dialog=true"><v-icon>delete</v-icon></v-btn></td>
+      
+  <v-layout row justify-center >
+   <v-dialog
+      v-model="dialog"
+      max-width="290"
+     
+    >
+     
+      <v-card>
+        <v-card-title class="headline">Irreversible action</v-card-title>
+
+        <v-card-text>
+        Are you sure you want to delete {{ props.item.name_product }}
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="green darken-1"
+            flat="flat"
+            @click="dialog = false"
+          >
+            Disagree
+          </v-btn>
+
+          <v-btn
+            color="red darken-1"
+            flat="flat"
+            @click="deleteProduct(props.item.id_product)"
+          >
+            Agree
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+</v-layout>
+
+<!-- Update dialog -->
+
+ <v-layout row justify-center >
+   <v-dialog
+      v-model="dialog2"
+      max-width="290"
+     
+    >
+     
+      <v-card>
+        <v-card-title class="headline">Update </v-card-title>
+
+        <v-card-text>
+        Are you sure you want to update {{ props.item.name_product }}
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="green darken-1"
+            flat="flat"
+            @click="dialog2 = false"
+          >
+            Disagree
+          </v-btn>
+
+          <v-btn
+            color="red darken-1"
+            flat="flat"
+            @click="updateProduct(props.item.id_product)"
+          >
+            Agree
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+</v-layout>
+<!-- the seconde part dialog edit -->
+
+<v-layout row justify-center>
+    <v-dialog v-model="dialog1" fullscreen hide-overlay transition="dialog-bottom-transition">
+      <v-card>
+        <v-toolbar dark color="primary">
+          <v-btn icon dark @click="dialog1 = false">
+            <v-icon>close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Settings</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn dark flat @click="(dialog2 = true) && (dialog1=false)">Save</v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+        <v-list three-line subheader>
+          <v-subheader>Edit </v-subheader>
+          <v-list-tile avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>name</v-list-tile-title>
+              <v-list-tile-sub-title><v-text-field v-model="name" :label="props.item.name_product"  /></v-list-tile-sub-title>
+              
+             
+           
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>price</v-list-tile-title>
+              <v-list-tile-sub-title><v-text-field v-model="price" :label="props.item.prix" /></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+            <v-list-tile avatar>
+            <v-list-tile-content>
+               <v-list-tile-title>Disponible</v-list-tile-title>
+              <v-list-tile-sub-title><v-text-field v-model="disp" :label="props.item.disponible" type="numeric" /></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+            <v-list-tile avatar>
+            <v-list-tile-content>
+                  <v-list-tile-title>Quantity</v-list-tile-title>
+              <v-list-tile-sub-title><v-text-field v-model="quan" :label="props.item.quantity" type="numeric" /></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+  <v-list-tile avatar>
+            <v-list-tile-content>
+                  <v-list-tile-title>Categories</v-list-tile-title>
+             <v-list-tile-sub-title><v-select
+          :items="cats"
+          label="Choose a category"
+          solo
+          v-model="cat"
+        ></v-select>
+        </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+        <v-divider></v-divider>
+       
+      </v-card>
+    </v-dialog>
+  </v-layout>
+
+
     </template>
+    
   </v-data-table>
+  
 </template>
 
 <script>
   export default {
     data () {
       return {
+        dialog:false,
+        dialog1:false,
+        dialog2:false,
+        id:0,
+        name:'',
+        price:'',
+        disp:0,
+        quan:0,
+        cat:'',
+        cats:[],
         headers: [
           {
             text: 'Categorie ',
@@ -33,7 +188,8 @@
           { text: 'Name of the product', value: 'name_product' },
           { text: 'Prix', value: 'prix' },
           { text: 'Disponible', value: 'disponible' },
-          { text: 'Quantity', value: 'quantity' }
+          { text: 'Quantity', value: 'quantity' },
+          { text: 'Options'}
         ],
         products: [] , 
         product : {
@@ -55,6 +211,60 @@
             console.log(error);
         });
         console.log(response.data);
+    },methods:{
+      editProduct(k){
+        this.dialog1 = true;
+        this.getCat();
+      },
+      deleteProduct(j){
+         axios.post('/delProduct',{
+id:j
+        })
+        .then(function(response){
+this.dialog = false;
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+        console.log(response.data);
+
+      },getCat(){
+          var k = [];
+        axios.post('/getCat', {
+                  
+                 
+                })
+                .then(function (response) {
+                  response.data.categories.forEach(element => {
+                  k.push(element.name_categorie);
+                  });
+            
+              
+                 
+                })
+                .catch(function (error) {
+                 console.log(error);
+                });
+                 this.cats = k;
+      },updateProduct(k){
+           axios.post('/upProduct',{
+        id:k,
+        name:this.name,
+        price:this.price,
+        disp:this.disp,
+        quan:this.quan,
+        cat:this.cat,
+
+        })
+        .then(function(response){
+
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+       
+        this.dialog2 = false;
+      }
     }
   }
 </script>

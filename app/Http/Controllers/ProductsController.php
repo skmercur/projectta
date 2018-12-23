@@ -80,4 +80,17 @@ $pro = 1;
         $products = DB::table('products')->get();
         return response()->json($products);
     }
+    public function delProduct(Request $request){
+        DB::table('products')->where('id_product',$request->id)->delete();
+        return response()->json(["status"=>"success"]);
+    }
+    public function upProduct(Request $request){
+        $name = $request->name;
+        $price = $request->price;
+        $disp = $request->disp;
+        $quan = $request->quan;
+        $cat = $request->cat;
+        DB::table('products')->where('id_product',$request->id)->update(["name_product"=>$name,"prix"=>$price,"disponible"=>$disp,"quantity"=>$quan,"name_categorie"=>$cat]);
+        return response()->json(["status"=>"success"]);
+    }
 }

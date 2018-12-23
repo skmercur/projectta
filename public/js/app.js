@@ -3008,9 +3008,164 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      dialog: false,
+      dialog1: false,
+      dialog2: false,
+      id: 0,
+      name: '',
+      price: '',
+      disp: 0,
+      quan: 0,
+      cat: '',
+      cats: [],
       headers: [{
         text: 'Categorie ',
         align: 'left',
@@ -3031,6 +3186,8 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Quantity',
         value: 'quantity'
+      }, {
+        text: 'Options'
       }],
       products: [],
       product: {
@@ -3051,6 +3208,46 @@ __webpack_require__.r(__webpack_exports__);
       console.log(error);
     });
     console.log(response.data);
+  },
+  methods: {
+    editProduct: function editProduct(k) {
+      this.dialog1 = true;
+      this.getCat();
+    },
+    deleteProduct: function deleteProduct(j) {
+      axios.post('/delProduct', {
+        id: j
+      }).then(function (response) {
+        this.dialog = false;
+      }).catch(function (error) {
+        console.log(error);
+      });
+      console.log(response.data);
+    },
+    getCat: function getCat() {
+      var k = [];
+      axios.post('/getCat', {}).then(function (response) {
+        response.data.categories.forEach(function (element) {
+          k.push(element.name_categorie);
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+      this.cats = k;
+    },
+    updateProduct: function updateProduct(k) {
+      axios.post('/upProduct', {
+        id: k,
+        name: this.name,
+        price: this.price,
+        disp: this.disp,
+        quan: this.quan,
+        cat: this.cat
+      }).then(function (response) {}).catch(function (error) {
+        console.log(error);
+      });
+      this.dialog2 = false;
+    }
   }
 });
 
@@ -44233,7 +44430,464 @@ var render = function() {
             _vm._v(" "),
             _c("td", { staticClass: "text-xs-right" }, [
               _vm._v(_vm._s(props.item.quantity))
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "td",
+              { staticClass: "text-xs-right" },
+              [
+                _c(
+                  "v-btn",
+                  {
+                    staticClass: "ma-1",
+                    on: {
+                      click: function($event) {
+                        _vm.editProduct(props.item.id_product)
+                      }
+                    }
+                  },
+                  [_c("v-icon", [_vm._v("edit")])],
+                  1
+                ),
+                _c(
+                  "v-btn",
+                  {
+                    staticClass: "ma-1",
+                    on: {
+                      click: function($event) {
+                        _vm.dialog = true
+                      }
+                    }
+                  },
+                  [_c("v-icon", [_vm._v("delete")])],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-layout",
+              { attrs: { row: "", "justify-center": "" } },
+              [
+                _c(
+                  "v-dialog",
+                  {
+                    attrs: { "max-width": "290" },
+                    model: {
+                      value: _vm.dialog,
+                      callback: function($$v) {
+                        _vm.dialog = $$v
+                      },
+                      expression: "dialog"
+                    }
+                  },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c("v-card-title", { staticClass: "headline" }, [
+                          _vm._v("Irreversible action")
+                        ]),
+                        _vm._v(" "),
+                        _c("v-card-text", [
+                          _vm._v(
+                            "\n        Are you sure you want to delete " +
+                              _vm._s(props.item.name_product) +
+                              "\n        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-actions",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  color: "green darken-1",
+                                  flat: "flat"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.dialog = false
+                                  }
+                                }
+                              },
+                              [_vm._v("\n            Disagree\n          ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "red darken-1", flat: "flat" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.deleteProduct(props.item.id_product)
+                                  }
+                                }
+                              },
+                              [_vm._v("\n            Agree\n          ")]
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-layout",
+              { attrs: { row: "", "justify-center": "" } },
+              [
+                _c(
+                  "v-dialog",
+                  {
+                    attrs: { "max-width": "290" },
+                    model: {
+                      value: _vm.dialog2,
+                      callback: function($$v) {
+                        _vm.dialog2 = $$v
+                      },
+                      expression: "dialog2"
+                    }
+                  },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c("v-card-title", { staticClass: "headline" }, [
+                          _vm._v("Update ")
+                        ]),
+                        _vm._v(" "),
+                        _c("v-card-text", [
+                          _vm._v(
+                            "\n        Are you sure you want to update " +
+                              _vm._s(props.item.name_product) +
+                              "\n        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-actions",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  color: "green darken-1",
+                                  flat: "flat"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.dialog2 = false
+                                  }
+                                }
+                              },
+                              [_vm._v("\n            Disagree\n          ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "red darken-1", flat: "flat" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.updateProduct(props.item.id_product)
+                                  }
+                                }
+                              },
+                              [_vm._v("\n            Agree\n          ")]
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-layout",
+              { attrs: { row: "", "justify-center": "" } },
+              [
+                _c(
+                  "v-dialog",
+                  {
+                    attrs: {
+                      fullscreen: "",
+                      "hide-overlay": "",
+                      transition: "dialog-bottom-transition"
+                    },
+                    model: {
+                      value: _vm.dialog1,
+                      callback: function($$v) {
+                        _vm.dialog1 = $$v
+                      },
+                      expression: "dialog1"
+                    }
+                  },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c(
+                          "v-toolbar",
+                          { attrs: { dark: "", color: "primary" } },
+                          [
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { icon: "", dark: "" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.dialog1 = false
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("close")])],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-toolbar-title", [_vm._v("Settings")]),
+                            _vm._v(" "),
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-toolbar-items",
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { dark: "", flat: "" },
+                                    on: {
+                                      click: function($event) {
+                                        ;(_vm.dialog2 = true) &&
+                                          (_vm.dialog1 = false)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Save")]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-list",
+                          { attrs: { "three-line": "", subheader: "" } },
+                          [
+                            _c("v-subheader", [_vm._v("Edit ")]),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [_vm._v("name")]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            label: props.item.name_product
+                                          },
+                                          model: {
+                                            value: _vm.name,
+                                            callback: function($$v) {
+                                              _vm.name = $$v
+                                            },
+                                            expression: "name"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [_vm._v("price")]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: { label: props.item.prix },
+                                          model: {
+                                            value: _vm.price,
+                                            callback: function($$v) {
+                                              _vm.price = $$v
+                                            },
+                                            expression: "price"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [
+                                      _vm._v("Disponible")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            label: props.item.disponible,
+                                            type: "numeric"
+                                          },
+                                          model: {
+                                            value: _vm.disp,
+                                            callback: function($$v) {
+                                              _vm.disp = $$v
+                                            },
+                                            expression: "disp"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [
+                                      _vm._v("Quantity")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            label: props.item.quantity,
+                                            type: "numeric"
+                                          },
+                                          model: {
+                                            value: _vm.quan,
+                                            callback: function($$v) {
+                                              _vm.quan = $$v
+                                            },
+                                            expression: "quan"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [
+                                      _vm._v("Categories")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-select", {
+                                          attrs: {
+                                            items: _vm.cats,
+                                            label: "Choose a category",
+                                            solo: ""
+                                          },
+                                          model: {
+                                            value: _vm.cat,
+                                            callback: function($$v) {
+                                              _vm.cat = $$v
+                                            },
+                                            expression: "cat"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-divider")
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
           ]
         }
       }
