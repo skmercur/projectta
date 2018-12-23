@@ -1903,13 +1903,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var dt = new Date();
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       drawer: null,
       showSectionOne: true,
       showSectionTwo: false,
-      showSectionThree: false
+      showSectionThree: false,
+      YearNow: dt.getFullYear()
     };
   },
   props: {
@@ -42556,7 +42558,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("v-footer", { attrs: { app: "", fixed: "" } }, [
-        _c("span", [_vm._v("© 2017")])
+        _c("span", [_vm._v("© " + _vm._s(_vm.YearNow))])
       ])
     ],
     1

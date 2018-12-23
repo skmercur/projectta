@@ -123,7 +123,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-      <span>&copy; 2017</span>
+      <span>&copy; {{YearNow}}</span>
     </v-footer>
   </v-app>
 </template>
@@ -134,13 +134,14 @@ import graphs from './Graphs';
 import tabproduct from './TableProducts';
 import tabcat from './TableCategories';
 import todo from './Todo';
-
+ var dt = new Date();
   export default {
     data: () => ({
       drawer: null,
       showSectionOne:true,
       showSectionTwo:false,
       showSectionThree:false,
+      YearNow: dt.getFullYear(),
     }),
     props: {
         srcImage:String,
