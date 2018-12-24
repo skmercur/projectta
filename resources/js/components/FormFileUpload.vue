@@ -204,9 +204,6 @@ color="green"
         slot="item"
         slot-scope="props"
         xs12
-        sm6
-        md4
-        lg3
       >
         <v-card class="mb-5 pa-2">
           <v-card-title><h4>preview</h4></v-card-title>

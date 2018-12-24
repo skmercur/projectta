@@ -164,6 +164,7 @@
       }
     },
     mounted(){
+       this.intervalid1 = setInterval(function(){
         axios.post('/getCat',{
 
         })
@@ -172,6 +173,7 @@
             console.log(error);
         });
         console.log(response.data);
+          }.bind(this), 2000);
     },methods:{
       editCat(k){
         this.dialog1 = true;

@@ -2781,9 +2781,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -3212,14 +3209,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.intervalid1 = setInterval(function () {
+      var _this = this;
 
-    axios.post('/getCat', {}).then(function (response) {
-      return _this.Categories = response.data;
-    }).catch(function (error) {
-      console.log(error);
-    });
-    console.log(response.data);
+      axios.post('/getCat', {}).then(function (response) {
+        return _this.Categories = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+      console.log(response.data);
+    }.bind(this), 2000);
   },
   methods: {
     editCat: function editCat(k) {
@@ -3483,14 +3482,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.intervalid1 = setInterval(function () {
+      var _this = this;
 
-    axios.post('/getProduct', {}).then(function (response) {
-      return _this.products = response.data;
-    }).catch(function (error) {
-      console.log(error);
-    });
-    console.log(response.data);
+      axios.post('/getProduct', {}).then(function (response) {
+        return _this.products = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+      console.log(response.data);
+    }.bind(this), 2000);
   },
   methods: {
     beginDelete: function beginDelete(k) {
@@ -44043,7 +44044,7 @@ var render = function() {
                         fn: function(props) {
                           return _c(
                             "v-flex",
-                            { attrs: { xs12: "", sm6: "", md4: "", lg3: "" } },
+                            { attrs: { xs12: "" } },
                             [
                               _c(
                                 "v-card",

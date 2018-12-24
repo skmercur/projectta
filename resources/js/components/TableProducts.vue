@@ -212,6 +212,7 @@
       }
     },
     mounted(){
+        this.intervalid1 = setInterval(function(){
         axios.post('/getProduct',{
 
         })
@@ -220,6 +221,7 @@
             console.log(error);
         });
         console.log(response.data);
+        }.bind(this), 2000);
     },methods:{
       beginDelete(k){
 this.idToDelete = k;
