@@ -11,6 +11,14 @@ window.Vue = require('vue');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+
+// app.js
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+
+
+Vue.use(Vuetify)
+
+
 Vue.use(Vuetify)
 Vue.component('graphs',  require("./components/Graphs.vue" ).default);
 Vue.component('navbar', require("./components/Navbar.vue").default);
@@ -20,6 +28,10 @@ Vue.component('tabproduct', require("./components/TableProducts.vue").default);
 Vue.component('dashboard', require("./components/Dashboard.vue").default);
 Vue.component('tabcat', require("./components/TableCategories.vue").default);
 Vue.component('admin', require("./components/AdminDash.vue").default);
+Vue.component('navbar-client', require("./components/Navbarclient.vue").default);
+Vue.component('slide', require("./components/Slide.vue").default);
+Vue.component('footer-c', require("./components/Footerclient.vue").default);
+Vue.component('produit-c', require("./components/Produitclient.vue").default);
 
 /**
  * The following block of code may be used to automatically register your

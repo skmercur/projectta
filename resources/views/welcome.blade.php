@@ -2,6 +2,19 @@
 
 @section('content')
 
+<div id="app">
+  <slide></slide>
+  <br>
+  <hr>
+  <produit-c></produit-c>
+
+</div>
+
+
+
+
+
+
 
 <img id="profileImage"/>
 <script>
