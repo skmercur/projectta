@@ -1945,13 +1945,14 @@ var dt = new Date();
       showSectionThree: false,
       YearNow: dt.getFullYear(),
       sells: 0,
-      sellsDzd: 0
+      sellsDzd: 0,
+      adminData: {}
     };
   },
   props: {
     srcImage: String,
     source: String,
-    admin: Object
+    admin: String
   },
   methods: {
     pageSwitcher: function pageSwitcher(i) {
@@ -1993,6 +1994,7 @@ var dt = new Date();
     }
   },
   mounted: function mounted() {
+    this.adminData = JSON.parse(this.admin);
     this.intervalid1 = setInterval(function () {
       var _this = this;
 
@@ -42412,7 +42414,9 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Admins")])
+          _c("v-toolbar-title", [
+            _vm._v("Welcome " + _vm._s(_vm.adminData.name))
+          ])
         ],
         1
       ),

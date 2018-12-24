@@ -21,7 +21,7 @@ Route::get('/test', function () {
 Auth::routes();
 
 Route::get('/home', function(){
-    return view('home');
+    return view('admin');
 });
 Route::get('/products',function(){
     return view('products');

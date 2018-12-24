@@ -45,7 +45,7 @@
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Admins</v-toolbar-title>
+      <v-toolbar-title>Welcome {{adminData.name}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid grid-list-sm v-if="showSectionOne">
@@ -175,12 +175,13 @@ import todo from './Todo';
       showSectionThree:false,
       YearNow: dt.getFullYear(),
       sells:0,
-      sellsDzd:0
+      sellsDzd:0,
+      adminData:{}
     }),
     props: {
         srcImage:String,
       source: String,
-      admin:Object
+      admin:String
       
     },
     methods:{
@@ -222,7 +223,7 @@ switch(i){
                 });
 }
     },mounted(){
-       
+       this.adminData = JSON.parse(this.admin);
         this.intervalid1 = setInterval(function(){
          axios.post('/GetSells', {
                   
