@@ -1997,7 +1997,7 @@ var dt = new Date();
       }).catch(function (error) {
         console.dir(error);
       });
-    }.bind(this), 1000);
+    }.bind(this), 5000);
   }
 });
 
@@ -2826,10 +2826,12 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       isEditing: false,
       model: null,
       items: [],
+      previewDataArray: [{
+        '1': 0
+      }],
       code: null,
       checkbox: null,
       lengthImageArray: 0,
-      ims: [],
       dictionary: {
         attributes: {
           email: 'E-mail Address' // custom attributes
@@ -2924,9 +2926,6 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
         k = false;
       });
       this.code = j;
-      this.getImages(this.name);
-      console.log("Images ");
-      console.log(this.ims);
     },
     confirmUpload: function confirmUpload() {
       axios.post('/ConfirmProduct', {
@@ -2941,22 +2940,13 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       if (this.name.length > 0 && this.summery.length > 0) {
         this.e6++;
       }
+
+      if (this.e6 == 4) {
+        console.log(this.images);
+      }
     },
     goBackStep: function goBackStep() {
       this.e6--;
-    },
-    getImages: function getImages(e) {
-      var _this2 = this;
-
-      var k = [];
-      axios.post('/getImages', {
-        name: e
-      }).then(function (response) {
-        return _this2.ims = response.data.images;
-      }).catch(function (error) {
-        console.log(error);
-      });
-      console.log(this.ims);
     }
   },
   mounted: function mounted() {
@@ -3035,7 +3025,7 @@ __webpack_require__.r(__webpack_exports__);
         if (k !== null) {
           this.values.push(k);
         }
-      }.bind(this), 1000);
+      }.bind(this), 10000);
     }
   },
   mounted: function mounted() {
@@ -3196,6 +3186,8 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       dialog1: false,
       dialog2: false,
+      idToUpdate: 0,
+      idToDelete: 0,
       id: 0,
       name: '',
       confirmed: 0,
@@ -3232,6 +3224,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     editCat: function editCat(k) {
       this.dialog1 = true;
+      this.idToUpdate = k;
+    },
+    beginToDelete: function beginToDelete(k) {
+      this.idToDelete = k;
+      dialog = true;
     },
     deleteCat: function deleteCat(j) {
       axios.post('/delCat', {
@@ -3443,6 +3440,8 @@ __webpack_require__.r(__webpack_exports__);
       quan: 0,
       cat: '',
       cats: [],
+      idToUpdate: 0,
+      idToDelete: 0,
       headers: [{
         text: 'Categorie ',
         align: 'left',
@@ -3473,6 +3472,13 @@ __webpack_require__.r(__webpack_exports__);
         prix: '',
         disponible: '',
         quantity: ''
+      },
+      EditedProduct: {
+        id_product: '',
+        name_product: '',
+        prix: '',
+        disponible: '',
+        quantity: ''
       }
     };
   },
@@ -3487,9 +3493,16 @@ __webpack_require__.r(__webpack_exports__);
     console.log(response.data);
   },
   methods: {
+    beginDelete: function beginDelete(k) {
+      this.idToDelete = k;
+      this.dialog = true;
+    },
     editProduct: function editProduct(k) {
       this.dialog1 = true;
       this.getCat();
+      this.idToUpdate = k;
+      console.log(this.idToUpdate);
+      console.log("edit");
     },
     deleteProduct: function deleteProduct(j) {
       axios.post('/delProduct', {
@@ -3504,7 +3517,7 @@ __webpack_require__.r(__webpack_exports__);
     getCat: function getCat() {
       var k = [];
       axios.post('/getCat', {}).then(function (response) {
-        response.data.categories.forEach(function (element) {
+        response.data.forEach(function (element) {
           k.push(element.name_categorie);
         });
       }).catch(function (error) {
@@ -3512,18 +3525,26 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.cats = k;
     },
-    updateProduct: function updateProduct(k) {
+    updateProduct: function updateProduct(va) {
+      console.log(va);
+      console.log("Update");
       axios.post('/upProduct', {
-        id: k,
+        id: this.idToUpdate,
         name: this.name,
         price: this.price,
         disp: this.disp,
         quan: this.quan,
         cat: this.cat
-      }).then(function (response) {}).catch(function (error) {
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
         console.log(error);
       });
+      console.log("name" + this.name);
+      console.log("name" + this.price);
+      console.log(this.EditedProduct);
       this.dialog2 = false;
+      console.log(this.idToUpdate);
     }
   }
 });
@@ -43930,11 +43951,11 @@ var render = function() {
                               _c(
                                 "v-layout",
                                 { attrs: { row: "", wrap: "" } },
-                                _vm._l(_vm.ims, function(n) {
+                                _vm._l(_vm.images, function(index) {
                                   return _c(
                                     "v-flex",
                                     {
-                                      key: n,
+                                      key: index,
                                       attrs: { xs4: "", "d-flex": "" }
                                     },
                                     [
@@ -43950,12 +43971,10 @@ var render = function() {
                                             {
                                               staticClass: "grey lighten-2",
                                               attrs: {
-                                                src:
-                                                  "http://192.168.1.21/" +
-                                                  _vm.ims[n],
+                                                src: _vm.images[index],
                                                 "lazy-src":
                                                   "https://picsum.photos/10/6?image=" +
-                                                  (n * 5 + 10),
+                                                  (index * 5 + 10),
                                                 "aspect-ratio": "1"
                                               }
                                             },
@@ -44013,7 +44032,7 @@ var render = function() {
                 [
                   _c("v-data-iterator", {
                     attrs: {
-                      items: [],
+                      items: _vm.previewDataArray,
                       "content-tag": "v-layout",
                       row: "",
                       wrap: ""
@@ -44844,7 +44863,7 @@ var render = function() {
                     staticClass: "ma-1",
                     on: {
                       click: function($event) {
-                        _vm.dialog = true
+                        _vm.beginToDelete(props.item.id_categorie)
                       }
                     }
                   },
@@ -44914,7 +44933,7 @@ var render = function() {
                                 attrs: { color: "red darken-1", flat: "flat" },
                                 on: {
                                   click: function($event) {
-                                    _vm.deleteCat(props.item.id_categorie)
+                                    _vm.deleteCat(_vm.idToDelete)
                                   }
                                 }
                               },
@@ -44992,7 +45011,7 @@ var render = function() {
                                 attrs: { color: "red darken-1", flat: "flat" },
                                 on: {
                                   click: function($event) {
-                                    _vm.updateCat(props.item.id_categorie)
+                                    _vm.updateCat(_vm.idToUpdate)
                                   }
                                 }
                               },
@@ -45099,9 +45118,6 @@ var render = function() {
                                       "v-list-tile-sub-title",
                                       [
                                         _c("v-text-field", {
-                                          attrs: {
-                                            label: props.item.name_categorie
-                                          },
                                           model: {
                                             value: _vm.name,
                                             callback: function($$v) {
@@ -45251,7 +45267,7 @@ var render = function() {
                     staticClass: "ma-1",
                     on: {
                       click: function($event) {
-                        _vm.dialog = true
+                        _vm.beginDelete(props.item.id_product)
                       }
                     }
                   },
@@ -45321,7 +45337,7 @@ var render = function() {
                                 attrs: { color: "red darken-1", flat: "flat" },
                                 on: {
                                   click: function($event) {
-                                    _vm.deleteProduct(props.item.id_product)
+                                    _vm.deleteProduct(_vm.idToDelete)
                                   }
                                 }
                               },
@@ -45399,7 +45415,7 @@ var render = function() {
                                 attrs: { color: "red darken-1", flat: "flat" },
                                 on: {
                                   click: function($event) {
-                                    _vm.updateProduct(props.item.id_product)
+                                    _vm.updateProduct(_vm.idToUpdate)
                                   }
                                 }
                               },
@@ -45540,7 +45556,7 @@ var render = function() {
                                       "v-list-tile-sub-title",
                                       [
                                         _c("v-text-field", {
-                                          attrs: { label: props.item.prix },
+                                          attrs: { type: "numeric" },
                                           model: {
                                             value: _vm.price,
                                             callback: function($$v) {
@@ -45574,10 +45590,7 @@ var render = function() {
                                       "v-list-tile-sub-title",
                                       [
                                         _c("v-text-field", {
-                                          attrs: {
-                                            label: props.item.disponible,
-                                            type: "numeric"
-                                          },
+                                          attrs: { type: "numeric" },
                                           model: {
                                             value: _vm.disp,
                                             callback: function($$v) {
@@ -45611,10 +45624,7 @@ var render = function() {
                                       "v-list-tile-sub-title",
                                       [
                                         _c("v-text-field", {
-                                          attrs: {
-                                            label: props.item.quantity,
-                                            type: "numeric"
-                                          },
+                                          attrs: { type: "numeric" },
                                           model: {
                                             value: _vm.quan,
                                             callback: function($$v) {

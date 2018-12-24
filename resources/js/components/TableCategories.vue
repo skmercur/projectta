@@ -12,7 +12,7 @@
       <td>{{ props.item.id_categorie }}</td>
        <td class="text-xs">{{ props.item.name_categorie }}</td>
       <td class="text-xs">{{ props.item.confirmed }}</td>
-      <td class="text-xs"><v-btn class="ma-1" @click="editCat(props.item.id_categorie)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="dialog=true"><v-icon>delete</v-icon></v-btn></td>
+      <td class="text-xs"><v-btn class="ma-1" @click="editCat(props.item.id_categorie)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginToDelete(props.item.id_categorie)"><v-icon>delete</v-icon></v-btn></td>
       
   <v-layout row justify-center >
    <v-dialog
@@ -42,7 +42,7 @@
           <v-btn
             color="red darken-1"
             flat="flat"
-            @click="deleteCat(props.item.id_categorie)"
+            @click="deleteCat(idToDelete)"
           >
             Agree
           </v-btn>
@@ -81,7 +81,7 @@
           <v-btn
             color="red darken-1"
             flat="flat"
-            @click="updateCat(props.item.id_categorie)"
+            @click="updateCat(idToUpdate)"
           >
             Agree
           </v-btn>
@@ -109,7 +109,7 @@
           <v-list-tile avatar>
             <v-list-tile-content>
               <v-list-tile-title>name</v-list-tile-title>
-              <v-list-tile-sub-title><v-text-field v-model="name" :label="props.item.name_categorie"  /></v-list-tile-sub-title>
+              <v-list-tile-sub-title><v-text-field v-model="name"  /></v-list-tile-sub-title>
               
              
            
@@ -141,6 +141,8 @@
         dialog:false,
         dialog1:false,
         dialog2:false,
+        idToUpdate : 0,
+        idToDelete:0,
         id:0,
         name:'',
        confirmed:0,
@@ -173,7 +175,11 @@
     },methods:{
       editCat(k){
         this.dialog1 = true;
-       
+       this.idToUpdate = k;
+      },
+      beginToDelete(k){
+this.idToDelete = k;
+dialog = true;
       },
       deleteCat(j){
          axios.post('/delCat',{

@@ -113,7 +113,7 @@ $pro = 1;
     public function getImages(Request $request){
         $name = $request->name;
         $data = DB::table('products')->where('name_product',$name)->first();
-     $images = explode(",",$data->images);
-     return response()->json(['images'=>$images]); 
+     
+     return response()->json($data->images); 
     }
 }

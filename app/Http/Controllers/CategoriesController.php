@@ -36,8 +36,11 @@ public function getCat(Request $request){
         $id = $request->id;
         $name = $request->name;
         $confirmed = $request->confirmed;
+        if(!empty($name) && !empty($confirmed) ){
       DB::table('categories')->where('id_categorie',$id)->update(['name_categorie'=>$name,'confirmed'=>$confirmed]);
-            
+        }else{
+            DB::table('categories')->where('id_categorie',$id)->update(['confirmed'=>$confirmed]);
+        }
              return response()->json(['state'=>'sucess']);
          }
          public function delCat(Request $request){

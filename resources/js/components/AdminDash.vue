@@ -231,7 +231,7 @@ switch(i){
                 .catch(function (error) {
                    console.dir(error);
                 });
-      }.bind(this), 1000);
+      }.bind(this), 5000);
     }
   }
 </script>

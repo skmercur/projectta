@@ -10,12 +10,12 @@
   >
     <template slot="items" slot-scope="props">
       <td>{{ props.item.name_categorie }}</td>
-      <td class="text-xs-right">{{ props.item.id_product }}</td>
+      <td class="text-xs-right"   >{{ props.item.id_product }}</td>
       <td class="text-xs-right">{{ props.item.name_product }}</td>
       <td class="text-xs-right">{{ props.item.prix }}</td>
       <td class="text-xs-right">{{ props.item.disponible }}</td>
       <td class="text-xs-right">{{ props.item.quantity }}</td>
-      <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="dialog=true"><v-icon>delete</v-icon></v-btn></td>
+      <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginDelete(props.item.id_product)"><v-icon>delete</v-icon></v-btn></td>
       
   <v-layout row justify-center >
    <v-dialog
@@ -45,7 +45,7 @@
           <v-btn
             color="red darken-1"
             flat="flat"
-            @click="deleteProduct(props.item.id_product)"
+            @click="deleteProduct(idToDelete)"
           >
             Agree
           </v-btn>
@@ -84,7 +84,7 @@
           <v-btn
             color="red darken-1"
             flat="flat"
-            @click="updateProduct(props.item.id_product)"
+            @click="updateProduct(idToUpdate)"
           >
             Agree
           </v-btn>
@@ -121,19 +121,19 @@
           <v-list-tile avatar>
             <v-list-tile-content>
               <v-list-tile-title>price</v-list-tile-title>
-              <v-list-tile-sub-title><v-text-field v-model="price" :label="props.item.prix" /></v-list-tile-sub-title>
+              <v-list-tile-sub-title><v-text-field v-model="price"  type="numeric" /></v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
             <v-list-tile avatar>
             <v-list-tile-content>
                <v-list-tile-title>Disponible</v-list-tile-title>
-              <v-list-tile-sub-title><v-text-field v-model="disp" :label="props.item.disponible" type="numeric" /></v-list-tile-sub-title>
+              <v-list-tile-sub-title><v-text-field v-model="disp"   type="numeric" /></v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
             <v-list-tile avatar>
             <v-list-tile-content>
                   <v-list-tile-title>Quantity</v-list-tile-title>
-              <v-list-tile-sub-title><v-text-field v-model="quan" :label="props.item.quantity" type="numeric" /></v-list-tile-sub-title>
+              <v-list-tile-sub-title><v-text-field v-model="quan"  type="numeric" /></v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -177,6 +177,8 @@
         quan:0,
         cat:'',
         cats:[],
+        idToUpdate : 0,
+        idToDelete :0,
         headers: [
           {
             text: 'Categorie ',
@@ -198,6 +200,13 @@
             prix : '' ,
             disponible : '' , 
             quantity : ''
+        },
+         EditedProduct : {
+            id_product :'' , 
+            name_product : '' ,
+            prix : '' ,
+            disponible : '' , 
+            quantity : ''
         }
         
       }
@@ -212,11 +221,20 @@
         });
         console.log(response.data);
     },methods:{
+      beginDelete(k){
+this.idToDelete = k;
+this.dialog = true;
+      },
       editProduct(k){
+      
         this.dialog1 = true;
         this.getCat();
+        this.idToUpdate = k;
+          console.log(this.idToUpdate);
+          console.log("edit");
       },
       deleteProduct(j){
+
          axios.post('/delProduct',{
 id:j
         })
@@ -235,7 +253,7 @@ this.dialog = false;
                  
                 })
                 .then(function (response) {
-                  response.data.categories.forEach(element => {
+                  response.data.forEach(element => {
                   k.push(element.name_categorie);
                   });
             
@@ -246,9 +264,12 @@ this.dialog = false;
                  console.log(error);
                 });
                  this.cats = k;
-      },updateProduct(k){
+                 
+      },updateProduct(va){
+       console.log(va);
+        console.log("Update");
            axios.post('/upProduct',{
-        id:k,
+        id:this.idToUpdate,
         name:this.name,
         price:this.price,
         disp:this.disp,
@@ -257,13 +278,16 @@ this.dialog = false;
 
         })
         .then(function(response){
-
+console.log(response);
         })
         .catch(function(error){
             console.log(error);
         });
-       
+          console.log("name" +this.name);
+           console.log("name" +this.price);
+        console.log(this.EditedProduct);
         this.dialog2 = false;
+        console.log(this.idToUpdate);
       }
     }
   }

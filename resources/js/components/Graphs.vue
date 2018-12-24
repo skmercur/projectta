@@ -72,7 +72,7 @@ this.values.push(k);
          }
          
            
-         }.bind(this), 1000);
+         }.bind(this), 10000);
          
     }
     },
