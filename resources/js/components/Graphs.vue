@@ -1,23 +1,22 @@
 <template>
-<div class="container">
-  <div class="row">
-<div class="col">
-        <h4 class="centerTitle">Data</h4>
-        <br>
-<la-cartesian :data="values"  :height="50" :width="250"  >
+<v-container>
+    <v-layout  align-center  wrap>
+
+    
+     
+       
+   
+<v-flex d-flex shrink xs6 md5>
+<la-cartesian :data="values"  :height="50" autoresize  >
      
     <la-area  animated prop="value"></la-area>
     <la-tooltip></la-tooltip>
     <la-y-axis></la-y-axis>
 </la-cartesian>
- 
-</div>
+</v-flex>
 
-  </div>
-   
-
-
-</div>
+    </v-layout>
+</v-container>
 </template>
 <script>
 import {Cartesian,Area,Tooltip} from 'laue';
@@ -72,7 +71,7 @@ this.values.push(k);
          }
          
            
-         }.bind(this), 10000);
+         }.bind(this), 1000);
          
     }
     },

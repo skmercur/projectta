@@ -2983,7 +2983,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3022,7 +3021,7 @@ __webpack_require__.r(__webpack_exports__);
         if (k !== null) {
           this.values.push(k);
         }
-      }.bind(this), 10000);
+      }.bind(this), 1000);
     }
   },
   mounted: function mounted() {
@@ -42416,11 +42415,11 @@ var render = function() {
                 [
                   _c(
                     "v-layout",
-                    { attrs: { row: "", wrap: "" } },
+                    { attrs: { row: "", wrap: "", "justify-left": "" } },
                     [
                       _c(
                         "v-flex",
-                        { attrs: { "d-flex": "", xs12: "", "order-xs5": "" } },
+                        { attrs: { "d-flex": "" } },
                         _vm._l(3, function(n) {
                           return _c(
                             "v-flex",
@@ -44272,33 +44271,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
+  return _c(
+    "v-container",
+    [
       _c(
-        "div",
-        { staticClass: "col" },
+        "v-layout",
+        { attrs: { "align-center": "", wrap: "" } },
         [
-          _c("h4", { staticClass: "centerTitle" }, [_vm._v("Data")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
           _c(
-            "la-cartesian",
-            { attrs: { data: _vm.values, height: 50, width: 250 } },
+            "v-flex",
+            { attrs: { "d-flex": "", shrink: "", xs6: "", md5: "" } },
             [
-              _c("la-area", { attrs: { animated: "", prop: "value" } }),
-              _vm._v(" "),
-              _c("la-tooltip"),
-              _vm._v(" "),
-              _c("la-y-axis")
+              _c(
+                "la-cartesian",
+                { attrs: { data: _vm.values, height: 50, autoresize: "" } },
+                [
+                  _c("la-area", { attrs: { animated: "", prop: "value" } }),
+                  _vm._v(" "),
+                  _c("la-tooltip"),
+                  _vm._v(" "),
+                  _c("la-y-axis")
+                ],
+                1
+              )
             ],
             1
           )
         ],
         1
       )
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

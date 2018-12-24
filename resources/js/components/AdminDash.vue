@@ -49,10 +49,10 @@
     </v-toolbar>
     <v-content>
       <v-container fluid grid-list-sm v-if="showSectionOne">
-        <v-layout row wrap >
-          <v-flex d-flex xs12 order-xs5>
+        <v-layout row wrap  justify-left>
+          <v-flex d-flex >
               
-              <v-flex d-flex v-for="n in 3" :key="n">
+              <v-flex d-flex  v-for="n in 3" :key="n">
                   <v-card color="white"  class="ma-3" >
                          <v-card-title><h4 style="color:#000;">preview</h4></v-card-title>
           <v-divider></v-divider>
