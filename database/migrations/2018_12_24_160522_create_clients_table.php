@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',50);
-            $table->string('email',50);
-            $table->longText('image');
-            $table->longText('comment');
-            $table->integer('rating');
-            $table->string('code',8);
+            $table->string('phone',100)->unique();
+            $table->string('email',100)->unique();
+            $table->string('id_facebook',100)->unique();
+            $table->longText('photo');
+            $table->string('location',100);
+            $table->integer('distance');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('clients');
     }
 }
