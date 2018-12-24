@@ -26,6 +26,10 @@ export default {
         LaArea:Area,
         LaTooltip:Tooltip
     },
+     props: {
+         Url:String,
+         
+     },
     data(){
         
         return{
@@ -35,7 +39,7 @@ export default {
             },{
                 title :'Sells'
             }],
-            values:[],
+            values:[0,],
             i : 0
            
         }
@@ -49,7 +53,7 @@ export default {
        
               this.intervalid1 = setInterval(function(){
                   
-         axios.post('/test', {
+         axios.post(this.Url, {
                     functionToDo:"getCharts",
                  
                 })

@@ -49,3 +49,5 @@ Route::post('/upCat','CategoriesController@upCat');
 Route::post('/GetSells','ProductsController@GetSells');
 Route::post('/GetSellsDzd','ProductsController@GetSellsDzd');
 Route::post('/getImages','ProductsController@getImages');
+Route::post('/getNumberOfViews','ProductsController@getNumberOfViews');
+Route::post('/GetNbrClients','ClientsController@GetNbrClients');

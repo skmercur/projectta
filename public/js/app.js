@@ -1921,6 +1921,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2990,6 +2999,9 @@ __webpack_require__.r(__webpack_exports__);
     LaArea: laue__WEBPACK_IMPORTED_MODULE_0__["Area"],
     LaTooltip: laue__WEBPACK_IMPORTED_MODULE_0__["Tooltip"]
   },
+  props: {
+    Url: String
+  },
   data: function data() {
     return {
       titles: [{
@@ -2997,7 +3009,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         title: 'Sells'
       }],
-      values: [],
+      values: [0],
       i: 0
     };
   },
@@ -3006,7 +3018,7 @@ __webpack_require__.r(__webpack_exports__);
       var k;
       var z = this.i;
       this.intervalid1 = setInterval(function () {
-        axios.post('/test', {
+        axios.post(this.Url, {
           functionToDo: "getCharts"
         }).then(function (response) {
           if (response.data != null) {
@@ -42420,10 +42432,10 @@ var render = function() {
                       _c(
                         "v-flex",
                         { attrs: { "d-flex": "" } },
-                        _vm._l(3, function(n) {
-                          return _c(
+                        [
+                          _c(
                             "v-flex",
-                            { key: n, attrs: { "d-flex": "" } },
+                            { attrs: { "d-flex": "" } },
                             [
                               _c(
                                 "v-card",
@@ -42436,20 +42448,53 @@ var render = function() {
                                     _c(
                                       "h4",
                                       { staticStyle: { color: "#000" } },
-                                      [_vm._v("preview")]
+                                      [_vm._v("Number of product views ")]
                                     )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-divider"),
                                   _vm._v(" "),
-                                  _c("graphs")
+                                  _c("graphs", {
+                                    attrs: { Url: "/getNumberOfViews" }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { "d-flex": "" } },
+                            [
+                              _c(
+                                "v-card",
+                                {
+                                  staticClass: "ma-3",
+                                  attrs: { color: "white" }
+                                },
+                                [
+                                  _c("v-card-title", [
+                                    _c(
+                                      "h4",
+                                      { staticStyle: { color: "#000" } },
+                                      [_vm._v("Number of the Clients ")]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-divider"),
+                                  _vm._v(" "),
+                                  _c("graphs", {
+                                    attrs: { Url: "/GetNbrClients" }
+                                  })
                                 ],
                                 1
                               )
                             ],
                             1
                           )
-                        }),
+                        ],
                         1
                       )
                     ],

@@ -120,4 +120,16 @@ $pro = 1;
      
      return response()->json($data->images); 
     }
+
+    public function getNumberOfViews(Request $request){
+        
+        $data = DB::table('products')->where('views','>',0)->get();
+        $views = 0;
+        foreach($data as $view){
+$views += $view->views;
+        }
+     
+     return response()->json(["value"=>$views]); 
+    }
+   
 }

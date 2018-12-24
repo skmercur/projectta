@@ -51,15 +51,24 @@
       <v-container fluid grid-list-sm v-if="showSectionOne">
         <v-layout row wrap  justify-left>
           <v-flex d-flex >
-              
-              <v-flex d-flex  v-for="n in 3" :key="n">
+              <v-flex d-flex  >
                   <v-card color="white"  class="ma-3" >
-                         <v-card-title><h4 style="color:#000;">preview</h4></v-card-title>
+                         <v-card-title><h4 style="color:#000;">Number of product views </h4></v-card-title>
           <v-divider></v-divider>
-            <graphs></graphs>
+            <graphs Url="/getNumberOfViews"></graphs>
+                  </v-card>
+              </v-flex>
+               <v-flex d-flex  >
+                  <v-card color="white"  class="ma-3" >
+                         <v-card-title><h4 style="color:#000;">Number of the Clients </h4></v-card-title>
+          <v-divider></v-divider>
+            <graphs Url="/GetNbrClients"></graphs>
                   </v-card>
               </v-flex>
               
+              
+              
+               
               
           </v-flex>
         </v-layout>
@@ -231,6 +240,10 @@ switch(i){
                 .catch(function (error) {
                    console.dir(error);
                 });
+
+
+
+
       }.bind(this), 5000);
     }
   }

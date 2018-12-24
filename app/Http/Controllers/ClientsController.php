@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Clients;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ClientsController extends Controller
 {
     /**
@@ -12,6 +12,10 @@ class ClientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function GetNbrClients(Request $request){
+$nbr = DB::table('clients')->get()->count();
+return response()->json(["value"=>$nbr]);
+    }
     public function index()
     {
         //

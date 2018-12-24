@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ItemsBought;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ItemsBoughtController extends Controller
 {
     /**
@@ -16,7 +16,10 @@ class ItemsBoughtController extends Controller
     {
         //
     }
-
+public function numberOfBuyers(Request $request){
+$num = DB::table('items_boughts')->get()->count();
+return response()->json($num);
+}
     /**
      * Show the form for creating a new resource.
      *
