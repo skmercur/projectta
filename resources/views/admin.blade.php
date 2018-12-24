@@ -16,18 +16,18 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
 <body>
 @if(empty(Auth::user()->name))
 <script>window.location = "/login";</script>
-@endif
 
-@if(Auth::user()->confirmed == 0)
+@elseif(Auth::user()->confirmed == 0)
+
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                    <script  type="application/javascript"> document.getElementById('logout-form').submit();</script>
-@endif
+@else
 <div id="app">
  <admin admin="{{Auth::user()}}" srcImg="{{asset('img/up.png')}}"></admin>
  </div>
 <script src="{{asset('js/app.js')}}"></script>
-
+@endif
 </body>
 </html>
