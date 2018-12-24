@@ -3426,6 +3426,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3434,9 +3452,12 @@ __webpack_require__.r(__webpack_exports__);
       dialog2: false,
       id: 0,
       name: '',
-      price: '',
+      price: 0,
       disp: 0,
       quan: 0,
+      remise: 0,
+      summery: '',
+      active: 0,
       cat: '',
       cats: [],
       idToUpdate: 0,
@@ -3456,28 +3477,38 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Prix',
         value: 'prix'
       }, {
-        text: 'Disponible',
-        value: 'disponible'
-      }, {
         text: 'Quantity',
         value: 'quantity'
+      }, {
+        text: 'Remise',
+        value: 'remise'
+      }, {
+        text: 'Summery',
+        value: 'summery'
+      }, {
+        text: 'Active',
+        value: 'active'
       }, {
         text: 'Options'
       }],
       products: [],
       product: {
-        id_product: '',
+        id_product: 0,
         name_product: '',
-        prix: '',
-        disponible: '',
-        quantity: ''
+        prix: 0,
+        quantity: 0,
+        remise: 0,
+        summery: '',
+        active: 0
       },
       EditedProduct: {
-        id_product: '',
+        id_product: 0,
         name_product: '',
-        prix: '',
-        disponible: '',
-        quantity: ''
+        prix: 0,
+        quantity: 0,
+        remise: 0,
+        summery: '',
+        active: 0
       }
     };
   },
@@ -3533,9 +3564,11 @@ __webpack_require__.r(__webpack_exports__);
         id: this.idToUpdate,
         name: this.name,
         price: this.price,
-        disp: this.disp,
         quan: this.quan,
-        cat: this.cat
+        cat: this.cat,
+        remise: this.remise,
+        summery: this.summery,
+        active: this.active
       }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
@@ -45234,15 +45267,23 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.prix))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.disponible))
+              _vm._v(_vm._s(props.item.prix) + " DZD")
             ]),
             _vm._v(" "),
             _c("td", { staticClass: "text-xs-right" }, [
               _vm._v(_vm._s(props.item.quantity))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.remise) + " %")
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.summery))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.active))
             ]),
             _vm._v(" "),
             _c(
@@ -45584,40 +45625,6 @@ var render = function() {
                                   "v-list-tile-content",
                                   [
                                     _c("v-list-tile-title", [
-                                      _vm._v("Disponible")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-tile-sub-title",
-                                      [
-                                        _c("v-text-field", {
-                                          attrs: { type: "numeric" },
-                                          model: {
-                                            value: _vm.disp,
-                                            callback: function($$v) {
-                                              _vm.disp = $$v
-                                            },
-                                            expression: "disp"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-list-tile",
-                              { attrs: { avatar: "" } },
-                              [
-                                _c(
-                                  "v-list-tile-content",
-                                  [
-                                    _c("v-list-tile-title", [
                                       _vm._v("Quantity")
                                     ]),
                                     _vm._v(" "),
@@ -45643,6 +45650,109 @@ var render = function() {
                               ],
                               1
                             ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [_vm._v("Remise")]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: { type: "numeric" },
+                                          model: {
+                                            value: _vm.remise,
+                                            callback: function($$v) {
+                                              _vm.remise = $$v
+                                            },
+                                            expression: "remise"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [_vm._v("Active")]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: { type: "numeric" },
+                                          model: {
+                                            value: _vm.active,
+                                            callback: function($$v) {
+                                              _vm.active = $$v
+                                            },
+                                            expression: "active"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-divider"),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile",
+                              { attrs: { avatar: "" } },
+                              [
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c(
+                                      "v-list-tile-sub-title",
+                                      [
+                                        _c("v-textarea", {
+                                          attrs: {
+                                            name: "input-7-4",
+                                            label:
+                                              "Click here to type your product details",
+                                            solo: ""
+                                          },
+                                          model: {
+                                            value: _vm.summery,
+                                            callback: function($$v) {
+                                              _vm.summery = $$v
+                                            },
+                                            expression: "summery"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-divider"),
                             _vm._v(" "),
                             _c(
                               "v-list-tile",
@@ -45683,9 +45793,7 @@ var render = function() {
                             )
                           ],
                           1
-                        ),
-                        _vm._v(" "),
-                        _c("v-divider")
+                        )
                       ],
                       1
                     )

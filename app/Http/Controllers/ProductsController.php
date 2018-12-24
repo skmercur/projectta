@@ -88,10 +88,14 @@ $pro = 1;
     public function upProduct(Request $request){
         $name = $request->name;
         $price = $request->price;
-        $disp = $request->disp;
+      
         $quan = $request->quan;
         $cat = $request->cat;
-        DB::table('products')->where('id_product',$request->id)->update(["name_product"=>$name,"prix"=>$price,"disponible"=>$disp,"quantity"=>$quan,"name_categorie"=>$cat]);
+        $summery = $request->summery;
+        $active = $request->active;
+        $remise = $request->remise;
+
+        DB::table('products')->where('id_product',$request->id)->update(["name_product"=>$name,"prix"=>$price,"quantity"=>$quan,"name_categorie"=>$cat,'summery'=>$summery,'active'=>$active,'remise'=>$remise]);
         return response()->json(["status"=>"success"]);
     }
     public function GetSells(Request $request){

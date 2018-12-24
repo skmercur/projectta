@@ -12,9 +12,11 @@
       <td>{{ props.item.name_categorie }}</td>
       <td class="text-xs-right"   >{{ props.item.id_product }}</td>
       <td class="text-xs-right">{{ props.item.name_product }}</td>
-      <td class="text-xs-right">{{ props.item.prix }}</td>
-      <td class="text-xs-right">{{ props.item.disponible }}</td>
+      <td class="text-xs-right">{{ props.item.prix }} DZD</td>
       <td class="text-xs-right">{{ props.item.quantity }}</td>
+       <td class="text-xs-right">{{ props.item.remise }} %</td>
+        <td class="text-xs-right">{{ props.item.summery}}</td>
+         <td class="text-xs-right">{{ props.item.active }}</td>
       <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginDelete(props.item.id_product)"><v-icon>delete</v-icon></v-btn></td>
       
   <v-layout row justify-center >
@@ -124,19 +126,35 @@
               <v-list-tile-sub-title><v-text-field v-model="price"  type="numeric" /></v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-            <v-list-tile avatar>
-            <v-list-tile-content>
-               <v-list-tile-title>Disponible</v-list-tile-title>
-              <v-list-tile-sub-title><v-text-field v-model="disp"   type="numeric" /></v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
+            
             <v-list-tile avatar>
             <v-list-tile-content>
                   <v-list-tile-title>Quantity</v-list-tile-title>
               <v-list-tile-sub-title><v-text-field v-model="quan"  type="numeric" /></v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
+<v-list-tile avatar>
+            <v-list-tile-content>
+               <v-list-tile-title>Remise</v-list-tile-title>
+              <v-list-tile-sub-title><v-text-field v-model="remise"   type="numeric" /></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+           <v-list-tile avatar>
+            <v-list-tile-content>
+               <v-list-tile-title>Active</v-list-tile-title>
+              <v-list-tile-sub-title><v-text-field v-model="active"   type="numeric" /></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+           <v-divider></v-divider>
+          <v-list-tile avatar>
+            <v-list-tile-content>
+              
+              <v-list-tile-sub-title><v-textarea v-model="summery"   name="input-7-4"
+          label="Click here to type your product details"   solo  ></v-textarea></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+         
+    <v-divider></v-divider>
   <v-list-tile avatar>
             <v-list-tile-content>
                   <v-list-tile-title>Categories</v-list-tile-title>
@@ -150,7 +168,7 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <v-divider></v-divider>
+    
        
       </v-card>
     </v-dialog>
@@ -172,9 +190,12 @@
         dialog2:false,
         id:0,
         name:'',
-        price:'',
+        price:0,
         disp:0,
         quan:0,
+        remise:0,
+        summery:'',
+        active:0,
         cat:'',
         cats:[],
         idToUpdate : 0,
@@ -189,24 +210,30 @@
           { text: 'Id', value: 'id_product' },
           { text: 'Name of the product', value: 'name_product' },
           { text: 'Prix', value: 'prix' },
-          { text: 'Disponible', value: 'disponible' },
           { text: 'Quantity', value: 'quantity' },
+          { text: 'Remise', value: 'remise' },
+           { text: 'Summery', value: 'summery' },
+            { text: 'Active', value: 'active' },
           { text: 'Options'}
         ],
         products: [] , 
         product : {
-            id_product :'' , 
+            id_product :0, 
             name_product : '' ,
-            prix : '' ,
-            disponible : '' , 
-            quantity : ''
+            prix : 0 ,
+            quantity : 0,
+            remise:0,
+            summery:'',
+            active:0,
         },
          EditedProduct : {
-            id_product :'' , 
+           id_product :0, 
             name_product : '' ,
-            prix : '' ,
-            disponible : '' , 
-            quantity : ''
+            prix : 0 ,
+            quantity : 0,
+            remise:0,
+            summery:'',
+            active:0,
         }
         
       }
@@ -274,9 +301,11 @@ this.dialog = false;
         id:this.idToUpdate,
         name:this.name,
         price:this.price,
-        disp:this.disp,
         quan:this.quan,
         cat:this.cat,
+        remise:this.remise,
+        summery:this.summery,
+        active:this.active,
 
         })
         .then(function(response){
