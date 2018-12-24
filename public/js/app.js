@@ -2829,6 +2829,7 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       code: null,
       checkbox: null,
       lengthImageArray: 0,
+      ims: [],
       dictionary: {
         attributes: {
           email: 'E-mail Address' // custom attributes
@@ -2923,6 +2924,9 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
         k = false;
       });
       this.code = j;
+      this.getImages(this.name);
+      console.log("Images ");
+      console.log(this.ims);
     },
     confirmUpload: function confirmUpload() {
       axios.post('/ConfirmProduct', {
@@ -2940,6 +2944,19 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
     },
     goBackStep: function goBackStep() {
       this.e6--;
+    },
+    getImages: function getImages(e) {
+      var _this2 = this;
+
+      var k = [];
+      axios.post('/getImages', {
+        name: e
+      }).then(function (response) {
+        return _this2.ims = response.data.images;
+      }).catch(function (error) {
+        console.log(error);
+      });
+      console.log(this.ims);
     }
   },
   mounted: function mounted() {
@@ -43913,7 +43930,7 @@ var render = function() {
                               _c(
                                 "v-layout",
                                 { attrs: { row: "", wrap: "" } },
-                                _vm._l(_vm.lengthImageArray, function(n) {
+                                _vm._l(_vm.ims, function(n) {
                                   return _c(
                                     "v-flex",
                                     {
@@ -43933,7 +43950,9 @@ var render = function() {
                                             {
                                               staticClass: "grey lighten-2",
                                               attrs: {
-                                                src: _vm.images[n],
+                                                src:
+                                                  "http://192.168.1.21/" +
+                                                  _vm.ims[n],
                                                 "lazy-src":
                                                   "https://picsum.photos/10/6?image=" +
                                                   (n * 5 + 10),
@@ -43994,7 +44013,7 @@ var render = function() {
                 [
                   _c("v-data-iterator", {
                     attrs: {
-                      items: _vm.items,
+                      items: [],
                       "content-tag": "v-layout",
                       row: "",
                       wrap: ""

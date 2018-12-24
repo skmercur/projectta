@@ -163,14 +163,14 @@ color="green"
         <v-container grid-list-sm fluid>
           <v-layout row wrap>
             <v-flex
-              v-for="n in lengthImageArray"
+              v-for="n in ims"
               :key="n"
               xs4
               d-flex
             >
               <v-card flat tile class="d-flex">
                 <v-img
-                  :src="images[n]"
+                  :src="'http://192.168.1.21/'+ims[n]"
                   :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
                   aspect-ratio="1"
                   class="grey lighten-2"
@@ -194,7 +194,7 @@ color="green"
   </v-layout>
  <v-container fluid grid-list-md>
     <v-data-iterator
-      :items="items"
+      :items="[]"
       
       content-tag="v-layout"
       row
@@ -301,6 +301,7 @@ Vue.use(Vuetify,{
        code : null,
       checkbox: null,
      lengthImageArray : 0,
+     ims:[],
       dictionary: {
         attributes: {
           email: 'E-mail Address'
@@ -407,6 +408,9 @@ var k = false;
                   k = false;
                 });
               this.code = j;
+              this.getImages(this.name);
+               console.log("Images ");
+              console.log(this.ims);
     }, confirmUpload(){
        axios.post('/ConfirmProduct', {  
 
@@ -431,8 +435,20 @@ this.e6++;
     },
     goBackStep(){
       this.e6--;
+    },
+    getImages(e){
+var k = [];
+axios.post('/getImages',{
+name:e
+}).then(response => this.ims = response.data.images).catch(function(error){
+console.log(error);
+});
+console.log(this.ims);
+
     }
-    }, mounted(){
+
+    },
+     mounted(){
       this.getCat();
     }
   }
