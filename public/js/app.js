@@ -2261,11 +2261,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2322,6 +2317,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     onSignInError: function onSignInError(error) {
       console.log('OH NOES', error);
+    },
+    checkBeforeSubmit: function checkBeforeSubmit() {
+      if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
+        axios.post('/nc', {
+          data: this.fbUserData
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          alert(error.response.data.message);
+        });
+        this.e1++;
+      } else {}
     }
   }
 });
@@ -8240,7 +8247,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43698,20 +43705,9 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "primary" },
-                  on: {
-                    click: function($event) {
-                      _vm.e1 = 2
-                    }
-                  }
-                },
-                [_vm._v("\n          Continue\n        ")]
-              ),
-              _vm._v(" "),
-              _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Cancel")])
+              _c("v-btn", { attrs: { color: "red", flat: "" } }, [
+                _vm._v("Cancel")
+              ])
             ],
             1
           ),
@@ -43875,11 +43871,7 @@ var render = function() {
                 "v-btn",
                 {
                   attrs: { color: "primary" },
-                  on: {
-                    click: function($event) {
-                      _vm.e1 = 3
-                    }
-                  }
+                  on: { click: _vm.checkBeforeSubmit }
                 },
                 [_vm._v("\n          Continue\n        ")]
               ),

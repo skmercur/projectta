@@ -51,4 +51,27 @@ Route::post('/GetSellsDzd','ProductsController@GetSellsDzd');
 Route::post('/getImages','ProductsController@getImages');
 Route::post('/getNumberOfViews','ProductsController@getNumberOfViews');
 Route::post('/GetNbrClients','ClientsController@GetNbrClients');
+Route::post('/nc','ClientsController@newClient');
+Route::get('/corr',function(){
+    $url = "https://geocoder.api.here.com/6.2/geocode.json?app_id=BsNhpmthkn0bMKGMMMV7&app_code=AMDCR2_HijeOSo4pjRvjiw&searchtext=22+rue+Ah+240+lot+bc+Bordj+Bou+Arreridj";
+    $cURL = curl_init();
+    curl_setopt($cURL, CURLOPT_URL, $url);
+    curl_setopt($cURL, CURLOPT_HTTPGET, true);
+    curl_setopt($cURL,CURLOPT_RETURNTRANSFER,true);
+    $result = curl_exec($cURL);
+
+curl_close($cURL);
+$res = json_decode($result);
+print_r($res->Response->View[0]->Result[0]->Location->NavigationPosition[0]->Longitude);
+$url2 = "https://route.api.here.com/routing/7.2/calculateroute.json?app_id=BsNhpmthkn0bMKGMMMV7&app_code=AMDCR2_HijeOSo4pjRvjiw&waypoint0=geo!36.0652953,4.73981&waypoint1=geo!".$res->Response->View[0]->Result[0]->Location->NavigationPosition[0]->Latitude.",".$res->Response->View[0]->Result[0]->Location->NavigationPosition[0]->Longitude."&mode=fastest;car;traffic:enabled";
+$cURL1 = curl_init();
+curl_setopt($cURL1, CURLOPT_URL, $url2);
+curl_setopt($cURL1, CURLOPT_HTTPGET, true);
+curl_setopt($cURL1,CURLOPT_RETURNTRANSFER,true);
+$result1 = curl_exec($cURL1);
+
+curl_close($cURL1);
+$res1 = json_decode($result1);
+ print_r($res1->response->route[0]->summary->distance);
+});
 

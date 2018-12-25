@@ -51,14 +51,9 @@
 </v-container>
 </v-card>
 
-        <v-btn
-          color="primary"
-          @click="e1 = 2"
-        >
-          Continue
-        </v-btn>
+        
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn color="red" flat>Cancel</v-btn>
       </v-stepper-content>
 
       <v-stepper-content step="2">
@@ -115,7 +110,7 @@
 
         <v-btn
           color="primary"
-          @click="e1 = 3"
+          @click="checkBeforeSubmit"
         >
           Continue
         </v-btn>
@@ -160,6 +155,7 @@
           adresse:'',
           location:'',
           phone:'',
+
       }, 
       valid: false,
       name: '',
@@ -198,6 +194,27 @@
     },
     onSignInError (error) {
       console.log('OH NOES', error)
+    },checkBeforeSubmit(){
+        if((this.fbUserData.name !== '') &&(this.fbUserData.email !== '') &&(this.fbUserData.adresse!== '') && (this.fbUserData.phone !== '')) {
+ axios.post('/nc', {  
+
+         data:this.fbUserData,
+        
+       })
+                .then(function (response) {
+              console.log(response);
+                
+                  
+                })
+                .catch(function (error) {
+                  alert(error.response.data.message);
+                 
+                });
+              this.e1++;
+        }else{
+
+        }
+    
     }
   }
         
