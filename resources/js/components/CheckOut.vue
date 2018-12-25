@@ -94,6 +94,7 @@
       <v-text-field
       v-model="fbUserData.phone"
     type="numeric"
+    :rules="phoneRule"
       label="Numero de telephone"
       required
     ></v-text-field>
@@ -170,6 +171,10 @@
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
+      ],
+      phoneRule:[
+          v => !!v || 'Numero de telephone est requie',
+           v => ((parseInt(v,10) <= 799999999) && (parseInt(v,10) >= 21000000)) || 'Numero de telephone invalide'
       ]
       }
     },
