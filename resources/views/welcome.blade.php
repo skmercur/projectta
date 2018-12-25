@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <div id="app">
   
 <checkout></checkout>
