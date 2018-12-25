@@ -48,15 +48,18 @@
       <v-toolbar-title>Welcome {{adminData.name}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid grid-list-sm v-if="showSectionOne">
+      <v-container fluid grid-list-sm v-if="showSectionOne" >
+        
         <v-layout row wrap  justify-left>
           <v-flex d-flex >
               <v-flex d-flex  >
+             
                   <v-card color="white"  class="ma-3" >
                          <v-card-title><h4 style="color:#000;">Number of product views </h4></v-card-title>
           <v-divider></v-divider>
             <graphs Url="/getNumberOfViews"></graphs>
                   </v-card>
+              
               </v-flex>
                <v-flex d-flex  >
                   <v-card color="white"  class="ma-3" >

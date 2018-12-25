@@ -16,10 +16,12 @@ import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 
-Vue.use(Vuetify)
+import FBSignInButton from 'vue-facebook-signin-button'
 
 
+
 Vue.use(Vuetify)
+Vue.use(FBSignInButton)
 Vue.component('graphs',  require("./components/Graphs.vue" ).default);
 Vue.component('navbar', require("./components/Navbar.vue").default);
 Vue.component('formup', require("./components/FormFileUpload.vue").default);
@@ -32,6 +34,7 @@ Vue.component('navbar-client', require("./components/Navbarclient.vue").default)
 Vue.component('slide', require("./components/Slide.vue").default);
 Vue.component('footer-c', require("./components/Footerclient.vue").default);
 Vue.component('produit-c', require("./components/Produitclient.vue").default);
+Vue.component('checkout', require("./components/CheckOut.vue").default);
 
 /**
  * The following block of code may be used to automatically register your
@@ -53,5 +56,25 @@ Vue.component('produit-c', require("./components/Produitclient.vue").default);
 
 const app = new Vue({
     el: '#app',
+    created:function(){
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '2020996934662748',
+            xfbml      : true,
+            version    : 'v3.2'
+            });
+            FB.AppEvents.logPageView();
+            };
+            
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2020996934662748&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+    }
+   
 
+    
 });
