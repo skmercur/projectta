@@ -46,7 +46,7 @@ $dist = 0;
 $client = DB::table('clients')->where('id_facebook',$request->data['id'])->first();
 if(!empty($client->name)){
 if(!empty($request->data['adresse']) && !empty($request->data['location']) && !empty($request->data['phone']) ){
-    DB::table('clients')->where('id_facebook',$request->data['id'])->update(["phone"=>$request->data['phone'],"distance"=>$dist,"adresse"=>$request->data['adresse'],"location"=>$request->data['location']]);
+    DB::table('clients')->where('id_facebook',$request->data['id'])->update(["phone"=>$request->data['phone'],"location"=>$request->data['adresse'].' ,'.$request->data['location']]);
 }
 }else{
         Clients::create([

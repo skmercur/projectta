@@ -1,4 +1,7 @@
 <template>
+
+
+
      <v-stepper v-model="e1" dark>
     <v-stepper-header>
       <v-stepper-step :complete="e1 > 1" step="1">Se connecter avec facebook</v-stepper-step>
@@ -123,7 +126,52 @@
           class="mb-5"
           color="grey lighten-1"
           height="200px"
-        ></v-card>
+        >
+
+<!-- Dialog Reservation -->
+<div class="text-xs-center">
+    <v-dialog
+      v-model="dialog1"
+      width="500"
+    >
+     
+
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+         Reglement de la reservation des produits
+        </v-card-title>
+
+        <v-card-text>
+            Tout les produit que vous reserver vous seron resérvé pour une durée de 24H si vous n'effectuez pas de payment dans cette durée la réservation sera automatiquement annulé
+          </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog1 = false"
+          >
+            J'accepte
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
+
+<!-- end dialog-->
+
+        <v-layout wrap row>
+<v-flex xs12>
+<v-btn class="ma-2">Je suis pret a payer </v-btn> <v-btn class="ma-2" @click="dialog1 = true">je reserve le produit</v-btn>
+</v-flex>
+        </v-layout>
+        </v-card>
 
         <v-btn
           color="primary"
@@ -140,15 +188,16 @@
 <script>
 
   export default {
-      data: () => ({
-      dialog: false
-    }),
+     
     data () {
       return {
+           dialog: false,
+            dialog1: false,
         e1: 0,
          fbSignInParams: {
         scope: 'email,public_profile',
-        return_scopes: true
+        return_scopes: true,
+        
       },
       fbUserData:{
           id:0,

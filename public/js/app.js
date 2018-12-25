@@ -2122,10 +2122,6 @@ var dt = new Date();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _data$data$mounted$me;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2265,79 +2261,127 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = (_data$data$mounted$me = {
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      dialog: false
-    };
-  }
-}, _defineProperty(_data$data$mounted$me, "data", function data() {
-  return {
-    e1: 0,
-    fbSignInParams: {
-      scope: 'email,public_profile',
-      return_scopes: true
-    },
-    fbUserData: {
-      id: 0,
+      dialog: false,
+      dialog1: false,
+      e1: 0,
+      fbSignInParams: {
+        scope: 'email,public_profile',
+        return_scopes: true
+      },
+      fbUserData: {
+        id: 0,
+        name: '',
+        email: '',
+        adresse: '',
+        location: '',
+        phone: ''
+      },
+      valid: false,
       name: '',
+      nameRules: [function (v) {
+        return !!v || 'Name is required';
+      }, function (v) {
+        return v.length <= 30 || 'Name must be less than 30 characters';
+      }],
       email: '',
-      adresse: '',
-      location: '',
-      phone: ''
-    },
-    valid: false,
-    name: '',
-    nameRules: [function (v) {
-      return !!v || 'Name is required';
-    }, function (v) {
-      return v.length <= 30 || 'Name must be less than 30 characters';
-    }],
-    email: '',
-    emailRules: [function (v) {
-      return !!v || 'E-mail is required';
-    }, function (v) {
-      return /.+@.+/.test(v) || 'E-mail must be valid';
-    }],
-    phoneRule: [function (v) {
-      return !!v || 'Numero de telephone est requie';
-    }, function (v) {
-      return parseInt(v, 10) <= 799999999 && parseInt(v, 10) >= 21000000 || 'Numero de telephone invalide';
-    }]
-  };
-}), _defineProperty(_data$data$mounted$me, "mounted", function mounted() {}), _defineProperty(_data$data$mounted$me, "methods", {
-  onSignInSuccess: function onSignInSuccess(response) {
-    var _this = this;
-
-    FB.api('/me?fields=id,name,email,hometown,location', function (dude) {
-      _this.fbUserData.id = dude.id;
-      _this.fbUserData.name = dude.name;
-      _this.fbUserData.email = dude.email;
-      _this.fbUserData.location = dude.location.name;
-
-      if (_this.fbUserData.id != 0) {
-        _this.e1++;
-      } else {
-        console.log("Empty");
-      }
-    });
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      }, function (v) {
+        return /.+@.+/.test(v) || 'E-mail must be valid';
+      }],
+      phoneRule: [function (v) {
+        return !!v || 'Numero de telephone est requie';
+      }, function (v) {
+        return parseInt(v, 10) <= 799999999 && parseInt(v, 10) >= 21000000 || 'Numero de telephone invalide';
+      }]
+    };
   },
-  onSignInError: function onSignInError(error) {
-    console.log('OH NOES', error);
-  },
-  checkBeforeSubmit: function checkBeforeSubmit() {
-    if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
-      axios.post('/nc', {
-        data: this.fbUserData
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        alert(error.response.data.message);
+  mounted: function mounted() {},
+  methods: {
+    onSignInSuccess: function onSignInSuccess(response) {
+      var _this = this;
+
+      FB.api('/me?fields=id,name,email,hometown,location', function (dude) {
+        _this.fbUserData.id = dude.id;
+        _this.fbUserData.name = dude.name;
+        _this.fbUserData.email = dude.email;
+        _this.fbUserData.location = dude.location.name;
+
+        if (_this.fbUserData.id != 0) {
+          _this.e1++;
+        } else {
+          console.log("Empty");
+        }
       });
-      this.e1++;
-    } else {}
+    },
+    onSignInError: function onSignInError(error) {
+      console.log('OH NOES', error);
+    },
+    checkBeforeSubmit: function checkBeforeSubmit() {
+      if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
+        axios.post('/nc', {
+          data: this.fbUserData
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          alert(error.response.data.message);
+        });
+        this.e1++;
+      } else {}
+    }
   }
-}), _data$data$mounted$me);
+});
 
 /***/ }),
 
@@ -8261,7 +8305,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43899,10 +43943,121 @@ var render = function() {
             "v-stepper-content",
             { attrs: { step: "3" } },
             [
-              _c("v-card", {
-                staticClass: "mb-5",
-                attrs: { color: "grey lighten-1", height: "200px" }
-              }),
+              _c(
+                "v-card",
+                {
+                  staticClass: "mb-5",
+                  attrs: { color: "grey lighten-1", height: "200px" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c(
+                        "v-dialog",
+                        {
+                          attrs: { width: "500" },
+                          model: {
+                            value: _vm.dialog1,
+                            callback: function($$v) {
+                              _vm.dialog1 = $$v
+                            },
+                            expression: "dialog1"
+                          }
+                        },
+                        [
+                          _c(
+                            "v-card",
+                            [
+                              _c(
+                                "v-card-title",
+                                {
+                                  staticClass: "headline grey lighten-2",
+                                  attrs: { "primary-title": "" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n         Reglement de la reservation des produits\n        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-card-text", [
+                                _vm._v(
+                                  "\n            Tout les produit que vous reserver vous seron resérvé pour une durée de 24H si vous n'effectuez pas de payment dans cette durée la réservation sera automatiquement annulé\n          "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-card-actions",
+                                [
+                                  _c("v-spacer"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { color: "primary", flat: "" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.dialog1 = false
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n            J'accepte\n          "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-layout",
+                    { attrs: { wrap: "", row: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        { attrs: { xs12: "" } },
+                        [
+                          _c("v-btn", { staticClass: "ma-2" }, [
+                            _vm._v("Je suis pret a payer ")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "ma-2",
+                              on: {
+                                click: function($event) {
+                                  _vm.dialog1 = true
+                                }
+                              }
+                            },
+                            [_vm._v("je reserve le produit")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-btn",
