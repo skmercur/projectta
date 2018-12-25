@@ -2,11 +2,9 @@
 
 @section('content')
 
-
-
 <div id="app">
   
-<checkout></checkout>
+<!-- <checkout></checkout> -->
   <slide></slide>
   <br>
   <hr>

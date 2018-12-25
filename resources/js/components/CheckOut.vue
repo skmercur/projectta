@@ -140,7 +140,9 @@
 <script>
 
   export default {
-      
+      data: () => ({
+      dialog: false
+    }),
     data () {
       return {
         e1: 0,
