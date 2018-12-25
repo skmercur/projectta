@@ -106,7 +106,7 @@
     <v-layout row wrap>
 
 
-<v-flex v-for="i in 3" :key="`4${i}`" xs4 >
+<v-flex v-for="i in 5" :key="`4${i}`" xs4 >
         <v-card dark color="primary" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
@@ -123,7 +123,7 @@
         <v-expand-transition>
           <div
             v-if="hover"
-            class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+            class="d-flex transition-fast-in-fast-out green darken-2 v-card--reveal display-3 white--text"
             style="height: 100%;"
           >
             $14.99

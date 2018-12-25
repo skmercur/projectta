@@ -46703,7 +46703,7 @@ var render = function() {
                   _c(
                     "v-layout",
                     { attrs: { row: "", wrap: "" } },
-                    _vm._l(3, function(i) {
+                    _vm._l(5, function(i) {
                       return _c(
                         "v-flex",
                         { key: "4" + i, attrs: { xs4: "" } },
@@ -46748,7 +46748,7 @@ var render = function() {
                                                           "div",
                                                           {
                                                             staticClass:
-                                                              "d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text",
+                                                              "d-flex transition-fast-in-fast-out green darken-2 v-card--reveal display-3 white--text",
                                                             staticStyle: {
                                                               height: "100%"
                                                             }
