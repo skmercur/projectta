@@ -2122,6 +2122,10 @@ var dt = new Date();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var _data$data$mounted$me;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2261,77 +2265,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_data$data$mounted$me = {
   data: function data() {
     return {
-      e1: 0,
-      fbSignInParams: {
-        scope: 'email,public_profile',
-        return_scopes: true
-      },
-      fbUserData: {
-        id: 0,
-        name: '',
-        email: '',
-        adresse: '',
-        location: '',
-        phone: ''
-      },
-      valid: false,
-      name: '',
-      nameRules: [function (v) {
-        return !!v || 'Name is required';
-      }, function (v) {
-        return v.length <= 30 || 'Name must be less than 30 characters';
-      }],
-      email: '',
-      emailRules: [function (v) {
-        return !!v || 'E-mail is required';
-      }, function (v) {
-        return /.+@.+/.test(v) || 'E-mail must be valid';
-      }],
-      phoneRule: [function (v) {
-        return !!v || 'Numero de telephone est requie';
-      }, function (v) {
-        return parseInt(v, 10) <= 799999999 && parseInt(v, 10) >= 21000000 || 'Numero de telephone invalide';
-      }]
+      dialog: false
     };
-  },
-  mounted: function mounted() {},
-  methods: {
-    onSignInSuccess: function onSignInSuccess(response) {
-      var _this = this;
-
-      FB.api('/me?fields=id,name,email,hometown,location', function (dude) {
-        _this.fbUserData.id = dude.id;
-        _this.fbUserData.name = dude.name;
-        _this.fbUserData.email = dude.email;
-        _this.fbUserData.location = dude.location.name;
-
-        if (_this.fbUserData.id != 0) {
-          _this.e1++;
-        } else {
-          console.log("Empty");
-        }
-      });
-    },
-    onSignInError: function onSignInError(error) {
-      console.log('OH NOES', error);
-    },
-    checkBeforeSubmit: function checkBeforeSubmit() {
-      if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
-        axios.post('/nc', {
-          data: this.fbUserData
-        }).then(function (response) {
-          console.log(response);
-        }).catch(function (error) {
-          alert(error.response.data.message);
-        });
-        this.e1++;
-      } else {}
-    }
   }
-});
+}, _defineProperty(_data$data$mounted$me, "data", function data() {
+  return {
+    e1: 0,
+    fbSignInParams: {
+      scope: 'email,public_profile',
+      return_scopes: true
+    },
+    fbUserData: {
+      id: 0,
+      name: '',
+      email: '',
+      adresse: '',
+      location: '',
+      phone: ''
+    },
+    valid: false,
+    name: '',
+    nameRules: [function (v) {
+      return !!v || 'Name is required';
+    }, function (v) {
+      return v.length <= 30 || 'Name must be less than 30 characters';
+    }],
+    email: '',
+    emailRules: [function (v) {
+      return !!v || 'E-mail is required';
+    }, function (v) {
+      return /.+@.+/.test(v) || 'E-mail must be valid';
+    }],
+    phoneRule: [function (v) {
+      return !!v || 'Numero de telephone est requie';
+    }, function (v) {
+      return parseInt(v, 10) <= 799999999 && parseInt(v, 10) >= 21000000 || 'Numero de telephone invalide';
+    }]
+  };
+}), _defineProperty(_data$data$mounted$me, "mounted", function mounted() {}), _defineProperty(_data$data$mounted$me, "methods", {
+  onSignInSuccess: function onSignInSuccess(response) {
+    var _this = this;
+
+    FB.api('/me?fields=id,name,email,hometown,location', function (dude) {
+      _this.fbUserData.id = dude.id;
+      _this.fbUserData.name = dude.name;
+      _this.fbUserData.email = dude.email;
+      _this.fbUserData.location = dude.location.name;
+
+      if (_this.fbUserData.id != 0) {
+        _this.e1++;
+      } else {
+        console.log("Empty");
+      }
+    });
+  },
+  onSignInError: function onSignInError(error) {
+    console.log('OH NOES', error);
+  },
+  checkBeforeSubmit: function checkBeforeSubmit() {
+    if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
+      axios.post('/nc', {
+        data: this.fbUserData
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        alert(error.response.data.message);
+      });
+      this.e1++;
+    } else {}
+  }
+}), _data$data$mounted$me);
 
 /***/ }),
 
@@ -3562,11 +3568,184 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      notifications: false,
+      sound: true,
+      widgets: false,
+      e1: 0,
+      fbSignInParams: {
+        scope: 'email,public_profile',
+        return_scopes: true
+      },
+      fbUserData: {
+        id: 0,
+        name: '',
+        email: '',
+        adresse: '',
+        location: '',
+        phone: ''
+      },
+      valid: false,
+      name: '',
+      nameRules: [function (v) {
+        return !!v || 'Name is required';
+      }, function (v) {
+        return v.length <= 30 || 'Name must be less than 30 characters';
+      }],
+      email: '',
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      }, function (v) {
+        return /.+@.+/.test(v) || 'E-mail must be valid';
+      }],
+      phoneRule: [function (v) {
+        return !!v || 'Numero de telephone est requie';
+      }, function (v) {
+        return parseInt(v, 10) <= 799999999 && parseInt(v, 10) >= 21000000 || 'Numero de telephone invalide';
+      }]
     };
+  },
+  mounted: function mounted() {},
+  methods: {
+    onSignInSuccess: function onSignInSuccess(response) {
+      var _this = this;
+
+      FB.api('/me?fields=id,name,email,hometown,location', function (dude) {
+        _this.fbUserData.id = dude.id;
+        _this.fbUserData.name = dude.name;
+        _this.fbUserData.email = dude.email;
+        _this.fbUserData.location = dude.location.name;
+
+        if (_this.fbUserData.id != 0) {
+          _this.e1++;
+        } else {
+          console.log("Empty");
+        }
+      });
+    },
+    onSignInError: function onSignInError(error) {
+      console.log('OH NOES', error);
+    },
+    checkBeforeSubmit: function checkBeforeSubmit() {
+      if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
+        axios.post('/nc', {
+          data: this.fbUserData
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          alert(error.response.data.message);
+        });
+        this.e1++;
+      } else {}
+    }
   }
 });
 
@@ -8247,7 +8426,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46211,8 +46390,10 @@ var render = function() {
                                         "v-dialog",
                                         {
                                           attrs: {
-                                            persistent: "",
-                                            "max-width": "600px"
+                                            fullscreen: "",
+                                            "hide-overlay": "",
+                                            transition:
+                                              "dialog-bottom-transition"
                                           },
                                           model: {
                                             value: _vm.dialog,
@@ -46247,206 +46428,785 @@ var render = function() {
                                           _c(
                                             "v-card",
                                             [
-                                              _c("v-card-title", [
-                                                _c(
-                                                  "span",
-                                                  { staticClass: "headline" },
-                                                  [_vm._v("User Profile")]
-                                                )
-                                              ]),
-                                              _vm._v(" "),
                                               _c(
-                                                "v-card-text",
+                                                "v-toolbar",
+                                                {
+                                                  attrs: {
+                                                    dark: "",
+                                                    color: "primary"
+                                                  }
+                                                },
                                                 [
                                                   _c(
-                                                    "v-container",
+                                                    "v-btn",
                                                     {
                                                       attrs: {
-                                                        "grid-list-md": ""
+                                                        icon: "",
+                                                        dark: ""
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialog = false
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-icon", [
+                                                        _vm._v("close")
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-toolbar-title", [
+                                                    _vm._v("Settings")
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("v-spacer"),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-toolbar-items",
+                                                    [
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            dark: "",
+                                                            flat: ""
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.dialog = false
+                                                            }
+                                                          }
+                                                        },
+                                                        [_vm._v("Save")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-flex",
+                                                { attrs: { xs12: "" } },
+                                                [
+                                                  _c(
+                                                    "v-stepper",
+                                                    {
+                                                      attrs: { dark: "" },
+                                                      model: {
+                                                        value: _vm.e1,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.e1 = $$v
+                                                        },
+                                                        expression: "e1"
                                                       }
                                                     },
                                                     [
                                                       _c(
-                                                        "v-layout",
-                                                        { attrs: { wrap: "" } },
+                                                        "v-stepper-header",
                                                         [
                                                           _c(
-                                                            "v-flex",
+                                                            "v-stepper-step",
                                                             {
                                                               attrs: {
-                                                                xs12: "",
-                                                                sm6: "",
-                                                                md4: ""
+                                                                complete:
+                                                                  _vm.e1 > 1,
+                                                                step: "1"
                                                               }
                                                             },
                                                             [
-                                                              _c(
-                                                                "v-text-field",
-                                                                {
-                                                                  attrs: {
-                                                                    label:
-                                                                      "Legal first name*",
-                                                                    required: ""
-                                                                  }
-                                                                }
+                                                              _vm._v(
+                                                                "Se connecter avec facebook"
                                                               )
-                                                            ],
-                                                            1
+                                                            ]
                                                           ),
                                                           _vm._v(" "),
+                                                          _c("v-divider"),
+                                                          _vm._v(" "),
                                                           _c(
-                                                            "v-flex",
+                                                            "v-stepper-step",
                                                             {
                                                               attrs: {
-                                                                xs12: "",
-                                                                sm6: "",
-                                                                md4: ""
+                                                                complete:
+                                                                  _vm.e1 > 2,
+                                                                step: "2"
                                                               }
                                                             },
                                                             [
-                                                              _c(
-                                                                "v-text-field",
-                                                                {
-                                                                  attrs: {
-                                                                    label:
-                                                                      "Legal middle name",
-                                                                    hint:
-                                                                      "example of helper text only on focus"
-                                                                  }
-                                                                }
+                                                              _vm._v(
+                                                                "Verification de vos données personelles"
                                                               )
-                                                            ],
-                                                            1
+                                                            ]
                                                           ),
                                                           _vm._v(" "),
+                                                          _c("v-divider"),
+                                                          _vm._v(" "),
                                                           _c(
-                                                            "v-flex",
+                                                            "v-stepper-step",
                                                             {
                                                               attrs: {
-                                                                xs12: "",
-                                                                sm6: "",
-                                                                md4: ""
+                                                                step: "3"
                                                               }
                                                             },
                                                             [
-                                                              _c(
-                                                                "v-text-field",
-                                                                {
-                                                                  attrs: {
-                                                                    label:
-                                                                      "Legal last name*",
-                                                                    hint:
-                                                                      "example of persistent helper text",
-                                                                    "persistent-hint":
-                                                                      "",
-                                                                    required: ""
-                                                                  }
-                                                                }
+                                                              _vm._v(
+                                                                "Reservation ou le Paiement"
                                                               )
-                                                            ],
-                                                            1
-                                                          ),
-                                                          _vm._v(" "),
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-stepper-items",
+                                                        [
                                                           _c(
-                                                            "v-flex",
+                                                            "v-stepper-content",
                                                             {
                                                               attrs: {
-                                                                xs12: ""
+                                                                step: "1"
                                                               }
                                                             },
                                                             [
                                                               _c(
-                                                                "v-text-field",
+                                                                "v-card",
                                                                 {
+                                                                  staticClass:
+                                                                    "mb-5",
                                                                   attrs: {
-                                                                    label:
-                                                                      "Email*",
-                                                                    required: ""
+                                                                    color:
+                                                                      "white darken-1"
                                                                   }
-                                                                }
-                                                              )
-                                                            ],
-                                                            1
-                                                          ),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "v-flex",
-                                                            {
-                                                              attrs: {
-                                                                xs12: ""
-                                                              }
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "v-text-field",
-                                                                {
-                                                                  attrs: {
-                                                                    label:
-                                                                      "Password*",
-                                                                    type:
-                                                                      "password",
-                                                                    required: ""
-                                                                  }
-                                                                }
-                                                              )
-                                                            ],
-                                                            1
-                                                          ),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "v-flex",
-                                                            {
-                                                              attrs: {
-                                                                xs12: "",
-                                                                sm6: ""
-                                                              }
-                                                            },
-                                                            [
-                                                              _c("v-select", {
-                                                                attrs: {
-                                                                  items: [
-                                                                    "0-17",
-                                                                    "18-29",
-                                                                    "30-54",
-                                                                    "54+"
-                                                                  ],
-                                                                  label: "Age*",
-                                                                  required: ""
-                                                                }
-                                                              })
-                                                            ],
-                                                            1
-                                                          ),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "v-flex",
-                                                            {
-                                                              attrs: {
-                                                                xs12: "",
-                                                                sm6: ""
-                                                              }
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "v-autocomplete",
-                                                                {
-                                                                  attrs: {
-                                                                    items: [
-                                                                      "Skiing",
-                                                                      "Ice hockey",
-                                                                      "Soccer",
-                                                                      "Basketball",
-                                                                      "Hockey",
-                                                                      "Reading",
-                                                                      "Writing",
-                                                                      "Coding",
-                                                                      "Basejump"
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-container",
+                                                                    {
+                                                                      attrs: {
+                                                                        "align-center":
+                                                                          "",
+                                                                        "justify-center":
+                                                                          ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-layout",
+                                                                        {
+                                                                          staticClass:
+                                                                            "ma-2",
+                                                                          attrs: {
+                                                                            row:
+                                                                              "",
+                                                                            "align-center":
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-flex",
+                                                                            {
+                                                                              staticClass:
+                                                                                "ma-1",
+                                                                              attrs: {
+                                                                                "d-flex":
+                                                                                  ""
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "h3",
+                                                                                {
+                                                                                  staticStyle: {
+                                                                                    color:
+                                                                                      "#000"
+                                                                                  }
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "Veuillez vous connecter avec facebook"
+                                                                                  )
+                                                                                ]
+                                                                              )
+                                                                            ]
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-layout",
+                                                                        {
+                                                                          staticClass:
+                                                                            "ma-3",
+                                                                          attrs: {
+                                                                            wrap:
+                                                                              "",
+                                                                            row:
+                                                                              "",
+                                                                            "justify-center":
+                                                                              "",
+                                                                            "align-center":
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-flex",
+                                                                            {
+                                                                              staticClass:
+                                                                                "ma-1",
+                                                                              attrs: {
+                                                                                "d-flex":
+                                                                                  ""
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "fb-signin-button",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    params:
+                                                                                      _vm.fbSignInParams
+                                                                                  },
+                                                                                  on: {
+                                                                                    success:
+                                                                                      _vm.onSignInSuccess,
+                                                                                    error:
+                                                                                      _vm.onSignInError
+                                                                                  }
+                                                                                },
+                                                                                [
+                                                                                  _c(
+                                                                                    "v-btn",
+                                                                                    {
+                                                                                      staticClass:
+                                                                                        "ma-1 pa-2",
+                                                                                      attrs: {
+                                                                                        round:
+                                                                                          "",
+                                                                                        color:
+                                                                                          "#4267b2"
+                                                                                      }
+                                                                                    },
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-icon",
+                                                                                        {
+                                                                                          staticClass:
+                                                                                            "mr-1 ml-2"
+                                                                                        },
+                                                                                        [
+                                                                                          _vm._v(
+                                                                                            "fab fa-facebook-square"
+                                                                                          )
+                                                                                        ]
+                                                                                      ),
+                                                                                      _vm._v(
+                                                                                        " Login with facebook\n    "
+                                                                                      )
+                                                                                    ],
+                                                                                    1
+                                                                                  )
+                                                                                ],
+                                                                                1
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-layout",
+                                                                        {
+                                                                          staticClass:
+                                                                            "ma-2",
+                                                                          attrs: {
+                                                                            row:
+                                                                              "",
+                                                                            "align-center":
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-flex",
+                                                                            {
+                                                                              staticClass:
+                                                                                "ma-1",
+                                                                              attrs: {
+                                                                                "d-flex":
+                                                                                  ""
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "h6",
+                                                                                {
+                                                                                  staticStyle: {
+                                                                                    color:
+                                                                                      "#808080"
+                                                                                  }
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "On utilise facebook pour confirmé votre identité et pour vous contacté"
+                                                                                  )
+                                                                                ]
+                                                                              )
+                                                                            ]
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      )
                                                                     ],
-                                                                    label:
-                                                                      "Interests",
-                                                                    multiple: ""
+                                                                    1
+                                                                  )
+                                                                ],
+                                                                1
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    color:
+                                                                      "red",
+                                                                    flat: ""
                                                                   }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Cancel"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-stepper-content",
+                                                            {
+                                                              attrs: {
+                                                                step: "2"
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "v-card",
+                                                                {
+                                                                  staticClass:
+                                                                    "mb-5",
+                                                                  attrs: {
+                                                                    color:
+                                                                      "grey lighten-1"
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-container",
+                                                                    {
+                                                                      attrs: {
+                                                                        "align-content-center":
+                                                                          "",
+                                                                        "align-center":
+                                                                          "",
+                                                                        "justify-center":
+                                                                          ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-layout",
+                                                                        {
+                                                                          attrs: {
+                                                                            wrap:
+                                                                              "",
+                                                                            row:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-flex",
+                                                                            {
+                                                                              staticClass:
+                                                                                "ma-3 pa-2",
+                                                                              attrs: {
+                                                                                "d-row":
+                                                                                  ""
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "v-img",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    transition:
+                                                                                      "",
+                                                                                    "max-height":
+                                                                                      "100",
+                                                                                    "max-width":
+                                                                                      "100",
+                                                                                    "lazy-src":
+                                                                                      "https://picsum.photos/10/6?image=" +
+                                                                                      (_vm.n *
+                                                                                        5 +
+                                                                                        10),
+                                                                                    src:
+                                                                                      "http://graph.facebook.com/" +
+                                                                                      _vm
+                                                                                        .fbUserData
+                                                                                        .id +
+                                                                                      "/picture?type=normal"
+                                                                                  }
+                                                                                }
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "h5",
+                                                                                {
+                                                                                  staticStyle: {
+                                                                                    color:
+                                                                                      "#000"
+                                                                                  }
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "Bienvenu " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .fbUserData
+                                                                                          .name
+                                                                                      )
+                                                                                  )
+                                                                                ]
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-divider"
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-layout",
+                                                                        {
+                                                                          attrs: {
+                                                                            wrap:
+                                                                              "",
+                                                                            row:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-form",
+                                                                            {
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm.valid,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.valid = $$v
+                                                                                },
+                                                                                expression:
+                                                                                  "valid"
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "v-text-field",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    rules:
+                                                                                      _vm.nameRules,
+                                                                                    counter: 30,
+                                                                                    label:
+                                                                                      "Nom et prenom",
+                                                                                    required:
+                                                                                      ""
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .fbUserData
+                                                                                        .name,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.fbUserData,
+                                                                                        "name",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "fbUserData.name"
+                                                                                  }
+                                                                                }
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-text-field",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    rules:
+                                                                                      _vm.emailRules,
+                                                                                    label:
+                                                                                      "E-mail",
+                                                                                    required:
+                                                                                      ""
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .fbUserData
+                                                                                        .email,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.fbUserData,
+                                                                                        "email",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "fbUserData.email"
+                                                                                  }
+                                                                                }
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-text-field",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    type:
+                                                                                      "numeric",
+                                                                                    rules:
+                                                                                      _vm.phoneRule,
+                                                                                    label:
+                                                                                      "Numero de telephone",
+                                                                                    required:
+                                                                                      ""
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .fbUserData
+                                                                                        .phone,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.fbUserData,
+                                                                                        "phone",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "fbUserData.phone"
+                                                                                  }
+                                                                                }
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-text-field",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    label:
+                                                                                      "Adresse",
+                                                                                    required:
+                                                                                      ""
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .fbUserData
+                                                                                        .adresse,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.fbUserData,
+                                                                                        "adresse",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "fbUserData.adresse"
+                                                                                  }
+                                                                                }
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-text-field",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    label:
+                                                                                      "Ville",
+                                                                                    required:
+                                                                                      ""
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .fbUserData
+                                                                                        .location,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.fbUserData,
+                                                                                        "location",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "fbUserData.location"
+                                                                                  }
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  )
+                                                                ],
+                                                                1
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    color:
+                                                                      "primary"
+                                                                  },
+                                                                  on: {
+                                                                    click:
+                                                                      _vm.checkBeforeSubmit
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "\n          Continue\n        "
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    flat: ""
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Cancel"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-stepper-content",
+                                                            {
+                                                              attrs: {
+                                                                step: "3"
+                                                              }
+                                                            },
+                                                            [
+                                                              _c("v-card", {
+                                                                staticClass:
+                                                                  "mb-5",
+                                                                attrs: {
+                                                                  color:
+                                                                    "grey lighten-1",
+                                                                  height:
+                                                                    "200px"
                                                                 }
+                                                              }),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    color:
+                                                                      "primary"
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      _vm.e1 = 1
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "\n          Continue\n        "
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    flat: ""
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Cancel"
+                                                                  )
+                                                                ]
                                                               )
                                                             ],
                                                             1
@@ -46456,56 +47216,6 @@ var render = function() {
                                                       )
                                                     ],
                                                     1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c("small", [
-                                                    _vm._v(
-                                                      "*indicates required field"
-                                                    )
-                                                  ])
-                                                ],
-                                                1
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "v-card-actions",
-                                                [
-                                                  _c("v-spacer"),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "blue darken-1",
-                                                        flat: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialog = false
-                                                        }
-                                                      }
-                                                    },
-                                                    [_vm._v("Close")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "blue darken-1",
-                                                        flat: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialog = false
-                                                        }
-                                                      }
-                                                    },
-                                                    [_vm._v("Save")]
                                                   )
                                                 ],
                                                 1
