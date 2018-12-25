@@ -3585,6 +3585,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -46544,6 +46644,339 @@ var render = function() {
                         ])
                       })
                     ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card",
+        { staticClass: "pa-3 mt-2" },
+        _vm._l(5, function(n) {
+          return _c(
+            "v-container",
+            { key: n },
+            [
+              _c(
+                "v-toolbar",
+                { attrs: { "elevation-5": "" } },
+                [
+                  _c("v-toolbar-side-icon"),
+                  _vm._v(" "),
+                  _c("v-toolbar-title", [_vm._v("Title")]),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-toolbar-items",
+                    { staticClass: "hidden-sm-and-down" },
+                    [
+                      _c("v-btn", { attrs: { flat: "" } }, [
+                        _vm._v("Link One")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-btn", { attrs: { flat: "" } }, [
+                        _vm._v("Link Two")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-btn", { attrs: { flat: "" } }, [
+                        _vm._v("Link Three")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-container",
+                { attrs: { "grid-list-md": "", "text-xs-center": "" } },
+                [
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    _vm._l(3, function(i) {
+                      return _c(
+                        "v-flex",
+                        { key: "4" + i, attrs: { xs4: "" } },
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { dark: "", color: "primary" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                { staticClass: "px-0 elevation-9" },
+                                [
+                                  _c("v-hover", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var hover = ref.hover
+                                          return _c(
+                                            "v-card",
+                                            {
+                                              staticClass: "mx-auto",
+                                              attrs: {
+                                                color: "grey lighten-4",
+                                                "max-width": "600"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-img",
+                                                {
+                                                  attrs: {
+                                                    "aspect-ratio": 16 / 9,
+                                                    src:
+                                                      "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/48063013_2218436498482930_5721445747409289216_n.jpg?_nc_cat=102&_nc_ht=scontent-cdt1-1.xx&oh=df60a4dfb8c5d6322b85aa56df416bfc&oe=5C90C4D3"
+                                                  }
+                                                },
+                                                [
+                                                  _c("v-expand-transition", [
+                                                    hover
+                                                      ? _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text",
+                                                            staticStyle: {
+                                                              height: "100%"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n            $14.99\n          "
+                                                            )
+                                                          ]
+                                                        )
+                                                      : _vm._e()
+                                                  ])
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-card-text",
+                                                {
+                                                  staticClass: "pt-4",
+                                                  staticStyle: {
+                                                    position: "relative"
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-dialog",
+                                                    {
+                                                      attrs: {
+                                                        fullscreen: "",
+                                                        "hide-overlay": "",
+                                                        transition:
+                                                          "dialog-bottom-transition"
+                                                      },
+                                                      model: {
+                                                        value: _vm.dialog,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.dialog = $$v
+                                                        },
+                                                        expression: "dialog"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          staticClass:
+                                                            "white--text",
+                                                          attrs: {
+                                                            slot: "activator",
+                                                            absolute: "",
+                                                            color: "orange",
+                                                            fab: "",
+                                                            large: "",
+                                                            right: "",
+                                                            top: ""
+                                                          },
+                                                          slot: "activator"
+                                                        },
+                                                        [
+                                                          _c("v-icon", [
+                                                            _vm._v("mdi-cart")
+                                                          ])
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-card",
+                                                        [
+                                                          _c(
+                                                            "v-toolbar",
+                                                            {
+                                                              attrs: {
+                                                                dark: "",
+                                                                color: "primary"
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    icon: "",
+                                                                    dark: ""
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      _vm.dialog = false
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c("v-icon", [
+                                                                    _vm._v(
+                                                                      "close"
+                                                                    )
+                                                                  ])
+                                                                ],
+                                                                1
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-toolbar-title",
+                                                                [
+                                                                  _vm._v(
+                                                                    "Settings"
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c("v-spacer"),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-toolbar-items",
+                                                                [
+                                                                  _c(
+                                                                    "v-btn",
+                                                                    {
+                                                                      attrs: {
+                                                                        dark:
+                                                                          "",
+                                                                        flat: ""
+                                                                      },
+                                                                      on: {
+                                                                        click: function(
+                                                                          $event
+                                                                        ) {
+                                                                          _vm.dialog = false
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "Save"
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: {
+                                                                xs12: ""
+                                                              }
+                                                            },
+                                                            [_c("checkout")],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "font-weight-light grey--text title mb-2"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "For the perfect meal"
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "h3",
+                                                    {
+                                                      staticClass:
+                                                        "display-1 font-weight-light orange--text mb-2"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "QW cooking utensils"
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "font-weight-light title mb-2"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n          Our Vintage kitchen utensils delight any chef."
+                                                      ),
+                                                      _c("br"),
+                                                      _vm._v(
+                                                        "\n          Made of bamboo by hand\n        "
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        }
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    }),
                     1
                   )
                 ],
