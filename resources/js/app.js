@@ -30,7 +30,7 @@ Vue.component('tabproduct', require("./components/TableProducts.vue").default);
 Vue.component('dashboard', require("./components/Dashboard.vue").default);
 Vue.component('tabcat', require("./components/TableCategories.vue").default);
 Vue.component('admin', require("./components/AdminDash.vue").default);
-Vue.component('navbar-client', require("./components/Navbarclient.vue").default);
+Vue.component('navbarc', require("./components/Navbarclient.vue").default);
 Vue.component('slide', require("./components/Slide.vue").default);
 Vue.component('footer-c', require("./components/Footerclient.vue").default);
 Vue.component('produit-c', require("./components/Produitclient.vue").default);
@@ -56,6 +56,13 @@ Vue.component('checkout', require("./components/CheckOut.vue").default);
 
 const app = new Vue({
     el: '#app',
+  
+    data(){
+        return{
+            testFromRoot : 'wassup',
+            
+        }
+    },
     created:function(){
         window.fbAsyncInit = function() {
             FB.init({

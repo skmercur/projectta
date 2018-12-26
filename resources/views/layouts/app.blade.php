@@ -23,12 +23,13 @@
 <body>
     
     <div id="app">
-        <navbar-client></navbar-client>
-
+    
+    <navbarc  ></navbarc>
         <main class="py-4">
+       
             @yield('content')
         </main>
-        <footer-c></footer-c>
+        
     </div>
 </body>
 </html>

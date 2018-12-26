@@ -1,5 +1,41 @@
+
+
 <template>
+<v-container>
+  
   <v-container grid-list-md text-xs-center>
+    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+   <v-btn
+     slot="activator"
+              color="green"
+              dark
+              fixed
+              bottom
+              right
+              fab
+            >
+
+          <v-icon v-if="nbrItems == 0">shopping_cart</v-icon> 
+          <b v-else>{{nbrItems}}</b>
+            </v-btn>
+
+        <v-card>
+          <v-toolbar dark color="primary">
+          <v-btn icon dark @click="dialog = false">
+            <v-icon>close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Settings</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn dark flat @click="dialog = false">Save</v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+          <v-flex xs12>
+         <checkout></checkout>
+          </v-flex>
+      </v-card>
+    </v-dialog>
+            
     <v-layout row wrap>
 
 
@@ -32,16 +68,10 @@
         style="position: relative;"
       >
 
-
-
-
-
-
-
-<v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-
         <v-btn
-        slot="activator"
+      
+       
+          @click="addToCart(produit)"
           absolute
           color="orange"
           class="white--text"
@@ -56,23 +86,6 @@
 
 
 
-
-        <v-card>
-          <v-toolbar dark color="primary">
-          <v-btn icon dark @click="dialog = false">
-            <v-icon>close</v-icon>
-          </v-btn>
-          <v-toolbar-title>Settings</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn dark flat @click="dialog = false">Save</v-btn>
-          </v-toolbar-items>
-        </v-toolbar>
-          <v-flex xs12>
-         <checkout></checkout>
-          </v-flex>
-      </v-card>
-    </v-dialog>
         <div class="font-weight-light grey--text title mb-2">For the perfect meal</div>
         <h3 class="display-1 font-weight-light orange--text mb-2">QW cooking utensils</h3>
         <div class="font-weight-light title mb-2">
@@ -145,10 +158,11 @@
 
 
 
-<v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+
 
         <v-btn
-        slot="activator"
+       @click="addToCart(produit)"
+      
           absolute
           color="orange"
           class="white--text"
@@ -164,22 +178,6 @@
 
 
 
-        <v-card>
-          <v-toolbar dark color="primary">
-          <v-btn icon dark @click="dialog = false">
-            <v-icon>close</v-icon>
-          </v-btn>
-          <v-toolbar-title>Settings</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn dark flat @click="dialog = false">Save</v-btn>
-          </v-toolbar-items>
-        </v-toolbar>
-          <v-flex xs12>
-         <checkout></checkout>
-          </v-flex>
-      </v-card>
-    </v-dialog>
         <div class="font-weight-light grey--text title " v-if="produit.product.remise > 0"><v-chip color="green" text-color="white">
       - {{produit.product.remise}} %
      
@@ -206,11 +204,14 @@
   </v-container>
    </v-card>
   </v-container>
+</v-container>
 
 </template>
 
 <script>
 import checkout from './CheckOut';
+import navbarc from './Navbarclient';
+
   export default {
     props:{
 datasite:String,
@@ -222,12 +223,14 @@ datasite:String,
         sound: true,
         widgets: false,
         dataSiteObj:JSON.parse(this.datasite),
-        imageProduct:[]
+        imageProduct:[],
+        nbrItems:0,
+        itemsInCart:[],
       }
     },
     mounted(){
     
-      console.dir(this.dataSiteObj);
+      
     }
     , methods: {
     onSignInSuccess (response) {
@@ -273,6 +276,11 @@ datasite:String,
       console.log(halflink);
       this.imageProduct.push("http://localhost/"+halflink);
 
+    },addToCart(v){
+      this.itemsInCart.push(v);
+      this.nbrItems++;
+       
+      console.log('emited');
     }
   }
         
