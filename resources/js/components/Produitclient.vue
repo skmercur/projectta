@@ -20,6 +20,7 @@
             </v-btn>
 
         <v-card>
+          
           <v-toolbar dark color="primary">
           <v-btn icon dark @click="dialog = false">
             <v-icon>close</v-icon>

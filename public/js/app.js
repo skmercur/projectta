@@ -3502,6 +3502,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -3523,6 +3532,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CheckOut__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckOut */ "./resources/js/components/CheckOut.vue");
 /* harmony import */ var _Navbarclient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbarclient */ "./resources/js/components/Navbarclient.vue");
+//
 //
 //
 //
@@ -46455,27 +46465,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-toolbar",
+    "v-layout",
+    { attrs: { row: "", wrap: "" } },
     [
-      _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
-      _vm._v(" "),
-      _c("v-spacer"),
-      _vm._v(" "),
       _c(
-        "v-toolbar-items",
-        { staticClass: "hidden-sm-and-down" },
+        "v-flex",
+        { attrs: { xs12: "", sm12: "", xl12: "" } },
         [
-          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Accueil")]),
-          _vm._v(" "),
-          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Produits")]),
-          _vm._v(" "),
           _c(
-            "v-btn",
-            { attrs: { flat: "" } },
+            "v-toolbar",
             [
-              _c("v-icon", { attrs: { large: "", color: "dark" } }, [
-                _vm._v("shopping_cart")
-              ])
+              _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
+              _vm._v(" "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-toolbar-items",
+                { staticClass: "hidden-sm-and-down" },
+                [
+                  _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Accueil")]),
+                  _vm._v(" "),
+                  _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Produits")]),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { flat: "" } },
+                    [
+                      _c("v-icon", { attrs: { large: "", color: "dark" } }, [
+                        _vm._v("shopping_cart")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           )

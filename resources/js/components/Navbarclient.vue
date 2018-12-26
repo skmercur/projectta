@@ -1,4 +1,11 @@
 <template>
+ <v-layout row wrap>
+    <v-flex
+     
+      xs12
+      sm12
+    xl12
+    >
   <v-toolbar>
     
     <v-toolbar-title>Taher Boutique</v-toolbar-title>
@@ -16,7 +23,9 @@
           
        </v-btn>
     </v-toolbar-items>
-  </v-toolbar>    
+  </v-toolbar>   
+    </v-flex>
+ </v-layout> 
 </template>
 
 <script >
