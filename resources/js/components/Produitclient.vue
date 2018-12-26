@@ -88,12 +88,15 @@
 
        </v-layout>
        <v-card class="pa-3 mt-2">
-         <v-container v-for="n in 5" :key="n">
+         <v-container v-for="n in dataSiteObj" :key="n">
            
-  <v-toolbar elevation-5>
-    <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>Title</v-toolbar-title>
+  <v-toolbar dark elevation-10 v-if="n.produit">
+  
+    <v-toolbar-title>{{n.produit.length}} {{n.name}} </v-toolbar-title>
+    
+
     <v-spacer></v-spacer>
+
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat>Link One</v-btn>
       <v-btn flat>Link Two</v-btn>
@@ -106,7 +109,7 @@
     <v-layout row wrap>
 
 
-<v-flex v-for="i in 5" :key="`4${i}`" xs4 >
+<v-flex v-for="produit in n.produit" :key="produit" xs4 >
         <v-card dark color="primary" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
@@ -118,7 +121,8 @@
     >
       <v-img
         :aspect-ratio="16/9"
-        src="https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/48063013_2218436498482930_5721445747409289216_n.jpg?_nc_cat=102&_nc_ht=scontent-cdt1-1.xx&oh=df60a4dfb8c5d6322b85aa56df416bfc&oe=5C90C4D3"
+        
+        :src="'http://localhost/' +produit.product.images.substring(0,produit.product.images.indexOf(','))"
       >
         <v-expand-transition>
           <div
@@ -126,7 +130,7 @@
             class="d-flex transition-fast-in-fast-out green darken-2 v-card--reveal display-3 white--text"
             style="height: 100%;"
           >
-            $14.99
+            {{produit.product.prix}}
           </div>
         </v-expand-transition>
       </v-img>
@@ -176,11 +180,15 @@
           </v-flex>
       </v-card>
     </v-dialog>
-        <div class="font-weight-light grey--text title mb-2">For the perfect meal</div>
-        <h3 class="display-1 font-weight-light orange--text mb-2">QW cooking utensils</h3>
-        <div class="font-weight-light title mb-2">
-          Our Vintage kitchen utensils delight any chef.<br>
-          Made of bamboo by hand
+        <div class="font-weight-light grey--text title " v-if="produit.product.remise > 0"><v-chip color="green" text-color="white">
+      - {{produit.product.remise}} %
+     
+    </v-chip></div>
+        <v-divider v-elseif="produit.product.remise == 0"></v-divider>
+    
+        <h3 class="display-1 font-weight-light orange--text mb-2">{{produit.product.name_product}}</h3>
+        <div class="font-weight-light title mb-2" style="color:#000">
+         {{produit.product.summery}}
         </div>
       </v-card-text>
     </v-card>
@@ -204,17 +212,22 @@
 <script>
 import checkout from './CheckOut';
   export default {
-    
+    props:{
+datasite:String,
+    },
     data () {
       return {
          dialog: false,
         notifications: false,
         sound: true,
         widgets: false,
+        dataSiteObj:JSON.parse(this.datasite),
+        imageProduct:[]
       }
     },
     mounted(){
-      
+    
+      console.dir(this.dataSiteObj);
     }
     , methods: {
     onSignInSuccess (response) {
@@ -254,6 +267,12 @@ import checkout from './CheckOut';
 
         }
     
+    },getImageLink(v){
+      var key = v.indexOf(",");
+      var halflink = v.substring(0,key);
+      console.log(halflink);
+      this.imageProduct.push("http://localhost/"+halflink);
+
     }
   }
         

@@ -3685,17 +3685,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    datasite: String
+  },
   data: function data() {
     return {
       dialog: false,
       notifications: false,
       sound: true,
-      widgets: false
+      widgets: false,
+      dataSiteObj: JSON.parse(this.datasite),
+      imageProduct: []
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.dir(this.dataSiteObj);
+  },
   methods: {
     onSignInSuccess: function onSignInSuccess(response) {
       var _this = this;
@@ -3727,6 +3742,12 @@ __webpack_require__.r(__webpack_exports__);
         });
         this.e1++;
       } else {}
+    },
+    getImageLink: function getImageLink(v) {
+      var key = v.indexOf(",");
+      var halflink = v.substring(0, key);
+      console.log(halflink);
+      this.imageProduct.push("http://localhost/" + halflink);
     }
   }
 });
@@ -46659,42 +46680,46 @@ var render = function() {
       _c(
         "v-card",
         { staticClass: "pa-3 mt-2" },
-        _vm._l(5, function(n) {
+        _vm._l(_vm.dataSiteObj, function(n) {
           return _c(
             "v-container",
             { key: n },
             [
-              _c(
-                "v-toolbar",
-                { attrs: { "elevation-5": "" } },
-                [
-                  _c("v-toolbar-side-icon"),
-                  _vm._v(" "),
-                  _c("v-toolbar-title", [_vm._v("Title")]),
-                  _vm._v(" "),
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-toolbar-items",
-                    { staticClass: "hidden-sm-and-down" },
+              n.produit
+                ? _c(
+                    "v-toolbar",
+                    { attrs: { dark: "", "elevation-10": "" } },
                     [
-                      _c("v-btn", { attrs: { flat: "" } }, [
-                        _vm._v("Link One")
+                      _c("v-toolbar-title", [
+                        _vm._v(
+                          _vm._s(n.produit.length) + " " + _vm._s(n.name) + " "
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("v-btn", { attrs: { flat: "" } }, [
-                        _vm._v("Link Two")
-                      ]),
+                      _c("v-spacer"),
                       _vm._v(" "),
-                      _c("v-btn", { attrs: { flat: "" } }, [
-                        _vm._v("Link Three")
-                      ])
+                      _c(
+                        "v-toolbar-items",
+                        { staticClass: "hidden-sm-and-down" },
+                        [
+                          _c("v-btn", { attrs: { flat: "" } }, [
+                            _vm._v("Link One")
+                          ]),
+                          _vm._v(" "),
+                          _c("v-btn", { attrs: { flat: "" } }, [
+                            _vm._v("Link Two")
+                          ]),
+                          _vm._v(" "),
+                          _c("v-btn", { attrs: { flat: "" } }, [
+                            _vm._v("Link Three")
+                          ])
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              ),
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "v-container",
@@ -46703,10 +46728,10 @@ var render = function() {
                   _c(
                     "v-layout",
                     { attrs: { row: "", wrap: "" } },
-                    _vm._l(5, function(i) {
+                    _vm._l(n.produit, function(produit) {
                       return _c(
                         "v-flex",
-                        { key: "4" + i, attrs: { xs4: "" } },
+                        { key: produit, attrs: { xs4: "" } },
                         [
                           _c(
                             "v-card",
@@ -46738,7 +46763,13 @@ var render = function() {
                                                   attrs: {
                                                     "aspect-ratio": 16 / 9,
                                                     src:
-                                                      "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/48063013_2218436498482930_5721445747409289216_n.jpg?_nc_cat=102&_nc_ht=scontent-cdt1-1.xx&oh=df60a4dfb8c5d6322b85aa56df416bfc&oe=5C90C4D3"
+                                                      "http://localhost/" +
+                                                      produit.product.images.substring(
+                                                        0,
+                                                        produit.product.images.indexOf(
+                                                          ","
+                                                        )
+                                                      )
                                                   }
                                                 },
                                                 [
@@ -46755,7 +46786,13 @@ var render = function() {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n            $14.99\n          "
+                                                              "\n            " +
+                                                                _vm._s(
+                                                                  produit
+                                                                    .product
+                                                                    .prix
+                                                                ) +
+                                                                "\n          "
                                                             )
                                                           ]
                                                         )
@@ -46915,18 +46952,53 @@ var render = function() {
                                                     1
                                                   ),
                                                   _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "font-weight-light grey--text title mb-2"
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "For the perfect meal"
+                                                  produit.product.remise > 0
+                                                    ? _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "font-weight-light grey--text title "
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-chip",
+                                                            {
+                                                              attrs: {
+                                                                color: "green",
+                                                                "text-color":
+                                                                  "white"
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n      - " +
+                                                                  _vm._s(
+                                                                    produit
+                                                                      .product
+                                                                      .remise
+                                                                  ) +
+                                                                  " %\n     \n    "
+                                                              )
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
                                                       )
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  _c("v-divider", {
+                                                    directives: [
+                                                      {
+                                                        name: "elseif",
+                                                        rawName: "v-elseif",
+                                                        value:
+                                                          produit.product
+                                                            .remise == 0,
+                                                        expression:
+                                                          "produit.product.remise == 0"
+                                                      }
                                                     ]
-                                                  ),
+                                                  }),
                                                   _vm._v(" "),
                                                   _c(
                                                     "h3",
@@ -46936,7 +47008,10 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "QW cooking utensils"
+                                                        _vm._s(
+                                                          produit.product
+                                                            .name_product
+                                                        )
                                                       )
                                                     ]
                                                   ),
@@ -46945,15 +47020,19 @@ var render = function() {
                                                     "div",
                                                     {
                                                       staticClass:
-                                                        "font-weight-light title mb-2"
+                                                        "font-weight-light title mb-2",
+                                                      staticStyle: {
+                                                        color: "#000"
+                                                      }
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n          Our Vintage kitchen utensils delight any chef."
-                                                      ),
-                                                      _c("br"),
-                                                      _vm._v(
-                                                        "\n          Made of bamboo by hand\n        "
+                                                        "\n         " +
+                                                          _vm._s(
+                                                            produit.product
+                                                              .summery
+                                                          ) +
+                                                          "\n        "
                                                       )
                                                     ]
                                                   )
@@ -82833,15 +82912,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./resources/js/components/CheckOut.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CheckOut_vue_vue_type_template_id_56d230de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckOut.vue?vue&type=template&id=56d230de& */ "./resources/js/components/CheckOut.vue?vue&type=template&id=56d230de&");
 /* harmony import */ var _CheckOut_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckOut.vue?vue&type=script&lang=js& */ "./resources/js/components/CheckOut.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CheckOut_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CheckOut_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _CheckOut_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CheckOut.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/CheckOut.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CheckOut_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CheckOut.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/CheckOut.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -82873,7 +82951,7 @@ component.options.__file = "resources/js/components/CheckOut.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/CheckOut.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,46 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $k=0;
+    $cat = DB::table('categories')->where('confirmed',1)->orderBy('name_categorie','asc')->get();
+    
+    $arr = array();
+    $arrPro = array();
+    $nbr = DB::table('products')->get()->count();
+    
+    foreach ($cat as $ncat) {
+      
+        $prod = DB::table('products')->where('name_categorie',$ncat->name_categorie)->orderBy('sells','asc')->get();
+        if($k < $nbr){
+           $Categorie = new stdClass;
+           $Categorie->name = $ncat->name_categorie;
+          foreach($prod as $pro){
+           $Produit = new stdClass;
+        if($prod->count()>0){
+           $Produit->product = $pro;
+           $arrPro[] = $Produit;
+           
+           
+            
+           $Categorie->produit = $arrPro;
+      
+        }
+       
+       }
+   
+        unset($arrPro);    
+       
+       $arr[] = $Categorie;
+   
+        $k++;
+       
+        }else{
+            continue;
+        }
+        
+   
+    } 
+    return view('welcome')->with('data',$arr);
 });
 Route::get('/test', function () {
     return view('test');
@@ -65,7 +104,7 @@ Route::post('/getNumberOfViews','ProductsController@getNumberOfViews');
 Route::post('/GetNbrClients','ClientsController@GetNbrClients');
 Route::post('/nc','ClientsController@newClient');
 Route::get('/corr',function(){
-    $url = "https://geocoder.api.here.com/6.2/geocode.json?app_id=BsNhpmthkn0bMKGMMMV7&app_code=AMDCR2_HijeOSo4pjRvjiw&searchtext=22+rue+Ah+240+lot+bc+Bordj+Bou+Arreridj";
+  /*  $url = "https://geocoder.api.here.com/6.2/geocode.json?app_id=BsNhpmthkn0bMKGMMMV7&app_code=AMDCR2_HijeOSo4pjRvjiw&searchtext=22+rue+Ah+240+lot+bc+Bordj+Bou+Arreridj";
     $cURL = curl_init();
     curl_setopt($cURL, CURLOPT_URL, $url);
     curl_setopt($cURL, CURLOPT_HTTPGET, true);
@@ -84,6 +123,48 @@ $result1 = curl_exec($cURL1);
 
 curl_close($cURL1);
 $res1 = json_decode($result1);
- print_r($res1->response->route[0]->summary->distance);
+ print_r($res1->response->route[0]->summary->distance);*/
+ $k=0;
+ $cat = DB::table('categories')->where('confirmed',1)->orderBy('name_categorie','asc')->get();
+ 
+ $arr = array();
+ $arrPro = array();
+ $nbr = DB::table('products')->get()->count();
+ 
+ foreach ($cat as $ncat) {
+   
+     $prod = DB::table('products')->where('name_categorie',$ncat->name_categorie)->orderBy('sells','asc')->get();
+     if($k < $nbr){
+        $Categorie = new stdClass;
+        $Categorie->name = $ncat->name_categorie;
+       foreach($prod as $pro){
+        $Produit = new stdClass;
+     if($prod->count()>0){
+        $Produit->product = $pro;
+        $arrPro[] = $Produit;
+        
+        
+         
+        $Categorie->produit = $arrPro;
+   
+     }
+    
+    }
+
+     unset($arrPro);    
+    
+    $arr[] = $Categorie;
+
+     $k++;
+    
+     }else{
+         continue;
+     }
+     
+
+ }  
+print_r($arr);
+
 });
+
 
