@@ -3733,6 +3733,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3748,7 +3783,8 @@ __webpack_require__.r(__webpack_exports__);
       dataSiteObj: JSON.parse(this.datasite),
       imageProduct: [],
       nbrItems: 0,
-      itemsInCart: []
+      itemsInCart: [],
+      step: 1
     };
   },
   mounted: function mounted() {},
@@ -46539,7 +46575,7 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-toolbar-title", [_vm._v("Settings")]),
+                      _c("v-toolbar-title", [_vm._v("Votre pannier")]),
                       _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
@@ -46552,11 +46588,11 @@ var render = function() {
                               attrs: { dark: "", flat: "" },
                               on: {
                                 click: function($event) {
-                                  _vm.dialog = false
+                                  _vm.step = 2
                                 }
                               }
                             },
-                            [_vm._v("Save")]
+                            [_vm._v("Continuer")]
                           )
                         ],
                         1
@@ -46565,7 +46601,141 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("v-flex", { attrs: { xs12: "" } }, [_c("checkout")], 1)
+                  _c(
+                    "v-flex",
+                    { attrs: { xs12: "" } },
+                    [
+                      _c(
+                        "v-container",
+                        { attrs: { fluid: "", "grid-list-md": "" } },
+                        [
+                          _vm.step == 1
+                            ? _c("v-data-iterator", {
+                                attrs: {
+                                  items: _vm.itemsInCart,
+                                  "rows-per-page-items": _vm.rowsPerPageItems,
+                                  pagination: _vm.pagination,
+                                  "content-tag": "v-layout",
+                                  row: "",
+                                  wrap: ""
+                                },
+                                on: {
+                                  "update:pagination": function($event) {
+                                    _vm.pagination = $event
+                                  }
+                                },
+                                scopedSlots: _vm._u([
+                                  {
+                                    key: "item",
+                                    fn: function(props) {
+                                      return _c(
+                                        "v-flex",
+                                        {
+                                          attrs: {
+                                            xs12: "",
+                                            sm6: "",
+                                            md4: "",
+                                            lg3: ""
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-card",
+                                            [
+                                              _c("v-card-title", [
+                                                _c("h4", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      props.item.name_product
+                                                    )
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("v-divider"),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list",
+                                                { attrs: { dense: "" } },
+                                                [
+                                                  _c(
+                                                    "v-list-tile",
+                                                    [
+                                                      _c(
+                                                        "v-list-tile-content",
+                                                        [_vm._v("Prix:")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-list-tile-content",
+                                                        {
+                                                          staticClass:
+                                                            "align-end"
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              props.item.prix -
+                                                                (props.item
+                                                                  .prix *
+                                                                  props.item
+                                                                    .remise) /
+                                                                  100
+                                                            ) + " DA"
+                                                          )
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-tile",
+                                                    [
+                                                      _c(
+                                                        "v-list-tile-content",
+                                                        [_vm._v("Details:")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-list-tile-content",
+                                                        {
+                                                          staticClass:
+                                                            "align-end"
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              props.item.summery
+                                                            )
+                                                          )
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    }
+                                  }
+                                ])
+                              })
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm.step == 2 ? _c("checkout") : _vm._e()
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -46885,7 +47055,7 @@ var render = function() {
                                                               $event
                                                             ) {
                                                               _vm.addToCart(
-                                                                produit
+                                                                produit.product
                                                               )
                                                             }
                                                           }

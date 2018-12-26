@@ -24,14 +24,49 @@
           <v-btn icon dark @click="dialog = false">
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>Settings</v-toolbar-title>
+          <v-toolbar-title>Votre pannier</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark flat @click="dialog = false">Save</v-btn>
+            <v-btn dark flat @click="step = 2">Continuer</v-btn>
           </v-toolbar-items>
         </v-toolbar>
           <v-flex xs12>
-         <checkout></checkout>
+            <v-container fluid grid-list-md>
+    <v-data-iterator
+      :items="itemsInCart"
+      :rows-per-page-items="rowsPerPageItems"
+      :pagination.sync="pagination"
+      content-tag="v-layout"
+      row
+      wrap
+      v-if="step == 1"
+    >
+      <v-flex
+        slot="item"
+        slot-scope="props"
+        xs12
+        sm6
+        md4
+        lg3
+      >
+        <v-card>
+          <v-card-title><h4>{{ props.item.name_product}}</h4></v-card-title>
+          <v-divider></v-divider>
+          <v-list dense>
+            <v-list-tile>
+              <v-list-tile-content>Prix:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{ props.item.prix - (props.item.prix * props.item.remise)/100 }} DA</v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>Details:</v-list-tile-content>
+              <v-list-tile-content class="align-end">{{ props.item.summery }}</v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-card>
+      </v-flex>
+    </v-data-iterator>
+  </v-container>
+         <checkout v-if="step == 2"></checkout>
           </v-flex>
       </v-card>
     </v-dialog>
@@ -161,7 +196,7 @@
 
 
         <v-btn
-       @click="addToCart(produit)"
+       @click="addToCart(produit.product)"
       
           absolute
           color="orange"
@@ -226,6 +261,7 @@ datasite:String,
         imageProduct:[],
         nbrItems:0,
         itemsInCart:[],
+        step:1,
       }
     },
     mounted(){
