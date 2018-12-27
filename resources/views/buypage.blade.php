@@ -41,7 +41,7 @@ file_changed(){
 <input type="hidden" name="id" value="{{$client}}" />
 <div class="form-group">
     <label for="exampleFormControlFile1">Ajouter la photo du recu CCP</label>
-    <input type="file" class="form-control-file" onchange="file_changed(this)" id="exampleFormControlFile1">
+    <input type="file" name="image" class="form-control-file" onchange="file_changed(this)" id="exampleFormControlFile1">
   </div>
 </form>
 @endsection

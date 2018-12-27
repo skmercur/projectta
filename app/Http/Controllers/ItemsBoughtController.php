@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ItemsBought;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 class ItemsBoughtController extends Controller
 {
     /**
@@ -79,7 +80,30 @@ return response()->json($num);
     }
 
 public function BuyFunction(Request $request){
-    
+    if(!empty($request->id)){
+        $fb = $request->id;
+        $file = $request->file('image');
+        $fileArray = array('image' => $file);
+        $rules = array(
+          'image' => 'mimes:jpeg,jpg,png,gif|required|max:5000' // max 10000kb
+        );
+     $validator = Validator::make($fileArray, $rules);
+     if($validator->fails()){
+        echo "sorry your file is not supported";
+        return back();
+     
+    }else{
+
+        
+   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+   $destinationPath = "usersdata/".md5('uploads'.$fb)."/";
+   $file->move($destinationPath,$hash);
+
+
+
+   
+    }
+}
 }
     /**
      * Remove the specified resource from storage.
