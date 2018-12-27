@@ -80,7 +80,7 @@ return response()->json($num);
     }
 
 public function BuyFunction(Request $request){
-    if(!empty($request->id)){
+    if(!empty($request->id) && !empty($request->code)){
         $fb = $request->id;
         $file = $request->file('image');
         $fileArray = array('image' => $file);
@@ -94,14 +94,27 @@ public function BuyFunction(Request $request){
      
     }else{
 
-        
+        $client = DB::table('clients')->where('id_facebook',$fb)->first();
    $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$fb)."/";
    $file->move($destinationPath,$hash);
-
-
-
+   $arrCode = explode(",",$request->code);
    
+   foreach($arrCode as $code){
+    $codeCommentaire =strtoupper(substr(md5(time().mt_rand(0,2000)),0,8));
+   ItemsBought::create([
+    'id_buyer'=>$client->id,
+    'code_product'=>$code,'image_ccp'=>$destinationPath.$hash,'code_commentaire' =>$codeCommentaire ,
+    'status'=>0,
+   ]);
+   }
+
+  $requests =  DB::table('requests_to_buys')->where('id_facebook',$fb)->get();
+  foreach($requests as $req){
+    DB::table('requests_to_buys')->where('id_facebook',$fb)->delete();
+  }
+return response()->json(['status'=>'success']);
+
     }
 }
 }

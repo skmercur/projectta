@@ -90,11 +90,18 @@ public function login(Request $request){
             $produitsClass->prix = ($data->prix) - ($data->prix * $data->remise)/100;
             $produitsClass->status = $request->status;
             $produitsClass->fb = $fb;
+            $produitsClass->code= $request->productCode;
+
             $arr[] = $produitsClass;
         }
         return view('buypage')->with(['requests'=>$arr,'client'=>$fb]);
     }else{
-        echo "You dont have any requests";
+        $items = DB::table('items_boughts')->where('id_buyer',$client->id)->where('status','<',4)->get();
+        if($items->count() > 0){
+            return view('myitems')->with('items',$items);
+        }else{
+            echo "You haven't bought or requested  a thing yet";
+        }
     }
     }else{
         echo "it seems that you dont have an account";

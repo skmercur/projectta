@@ -31,17 +31,21 @@
 <?php $k++ ?>
 @endforeach
 @endif
-<script>
-file_changed(){
-    document.forms["imageccp"].submit();
-}
-</script>
+
 <form method="post" action="/buy" name="imageccp" enctype="multipart/form-data">
 @csrf
+
 <input type="hidden" name="id" value="{{$client}}" />
+<?php $k=""; ?>
+@foreach($requests as $req)
+<?php $k .= $req->code."," ?>
+
+@endforeach
+<input type="hidden" name="code" value="{{$k}}" />
 <div class="form-group">
     <label for="exampleFormControlFile1">Ajouter la photo du recu CCP</label>
-    <input type="file" name="image" class="form-control-file" onchange="file_changed(this)" id="exampleFormControlFile1">
+    <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+    <input type="submit">
   </div>
 </form>
 @endsection
