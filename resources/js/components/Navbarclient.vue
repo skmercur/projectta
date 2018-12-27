@@ -14,13 +14,10 @@
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat>Accueil</v-btn>
       
-      <v-btn flat> 
-     
-          <v-icon
-            large
-            color="dark"
-          >shopping_cart</v-icon> 
-          
+      <v-btn flat @click="login()"> 
+        
+     se connecter
+        
        </v-btn>
     </v-toolbar-items>
   </v-toolbar>   
@@ -44,6 +41,10 @@ export default {
    
     
    
+  },methods:{
+    login(){
+      window.location = "/login";
+    }
   }
 }
 </script>

@@ -3578,15 +3578,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
     return {};
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {},
+  methods: {
+    login: function login() {
+      window.location = "/login";
+    }
+  }
 });
 
 /***/ }),
@@ -46775,13 +46777,15 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-btn",
-                    { attrs: { flat: "" } },
-                    [
-                      _c("v-icon", { attrs: { large: "", color: "dark" } }, [
-                        _vm._v("shopping_cart")
-                      ])
-                    ],
-                    1
+                    {
+                      attrs: { flat: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.login()
+                        }
+                      }
+                    },
+                    [_vm._v(" \n       \n    se connecter\n       \n      ")]
                   )
                 ],
                 1
