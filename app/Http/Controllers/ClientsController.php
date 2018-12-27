@@ -81,7 +81,7 @@ public function login(Request $request){
     if(!empty($client->name)){
         echo "welcome".$client->name;
         $req = DB::table('requests_to_buys')->where('id_facebook',$fb)->get();
-    
+    if($req->count() > 0){
         $arr = array();
         foreach($req as $request){
             $produitsClass = new \stdClass();
@@ -92,6 +92,11 @@ public function login(Request $request){
             $arr[] = $produitsClass;
         }
         return view('buypage')->with('requests',$arr);
+    }else{
+        echo "You dont have any requests";
+    }
+    }else{
+        echo "it seems that you dont have an account";
     }
    
 }
