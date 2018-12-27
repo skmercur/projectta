@@ -75,7 +75,26 @@ if(!empty($request->data['adresse']) && !empty($request->data['location']) && !e
     {
         //
     }
-
+public function login(Request $request){
+    $fb = $request->fb;
+   $client = DB::table('clients')->where('id_facebook',$fb)->first();
+    if(!empty($client->name)){
+        echo "welcome".$client->name;
+        $req = DB::table('requests_to_buys')->where('id_facebook',$fb)->get();
+    
+        $arr = array();
+        foreach($req as $request){
+            $produitsClass = new \stdClass();
+            $data = DB::table('products')->where('code',$request->productCode)->first();
+            $produitsClass->name = $data->name_product;
+            $produitsClass->prix = ($data->prix) - ($data->prix * $data->remise)/100;
+            $produitsClass->status = $request->status;
+            $arr[] = $produitsClass;
+        }
+        return view('buypage')->with('requests',$arr);
+    }
+   
+}
     /**
      * Store a newly created resource in storage.
      *

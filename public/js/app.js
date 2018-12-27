@@ -44540,10 +44540,6 @@ var render = function() {
                         "v-flex",
                         { attrs: { xs12: "" } },
                         [
-                          _c("v-btn", { staticClass: "ma-2" }, [
-                            _vm._v("Je suis pret a payer ")
-                          ]),
-                          _vm._v(" "),
                           _c(
                             "v-btn",
                             {

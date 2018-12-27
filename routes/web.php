@@ -139,4 +139,19 @@ Route::post('/book','RequestsToBuyController@book');
 Route::get('/login',function(){
     return view('login');
 });
+Route::get('/client',function(){
+    $req = DB::table('requests_to_buys')->get();
+    
+    $arr = array();
+    foreach($req as $request){
+        $produitsClass = new stdClass;
+        $data = DB::table('products')->where('code',$request->productCode)->first();
+        $produitsClass->name = $data->name_product;
+        $produitsClass->prix = ($data->prix) - ($data->prix * $data->remise)/100;
+        $produitsClass->status = $request->status;
+        $arr[] = $produitsClass;
+    }
+    return view('buypage')->with('requests',$arr);
+});
+Route::post('/login','ClientsController@login');
 
