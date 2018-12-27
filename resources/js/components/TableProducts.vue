@@ -327,7 +327,7 @@ console.log(response);
         console.log(this.EditedProduct);
         this.dialog2 = false;
         console.log(this.idToUpdate);
-      }
+      },
     }
   }
 </script>

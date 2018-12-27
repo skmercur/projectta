@@ -163,15 +163,15 @@ color="green"
         <v-container grid-list-sm fluid>
           <v-layout row wrap>
             <v-flex
-              v-for="index in images"
+              v-for="index in imagesFromDb.length "
               :key="index"
               xs4
               d-flex
             >
               <v-card flat tile class="d-flex">
                 <v-img
-                  :src="images[index]"
-                  :lazy-src="`https://picsum.photos/10/6?image=${index * 5 + 10}`"
+                  :src="'http://localhost/'+imagesFromDb[index]"
+                  
                   aspect-ratio="1"
                   class="grey lighten-2"
                 >
@@ -295,6 +295,7 @@ Vue.use(Vuetify,{
       isEditing: false,
         model: null,
        items: [],
+       imagesFromDb : [],
        previewDataArray:[{'1':0}],
        code : null,
       checkbox: null,
@@ -405,6 +406,7 @@ var k = false;
                   k = false;
                 });
               this.code = j;
+              this.getImages(this.name);
     }, confirmUpload(){
        axios.post('/ConfirmProduct', {  
 
@@ -431,7 +433,24 @@ this.e6++;
     },
     goBackStep(){
       this.e6--;
-    }
+    },
+    getImages(v){
+      var imgs = [];
+          axios.post('/getImages', {
+                  
+                 name:v
+                })
+                .then(function (response) {
+                
+                 imgs = response.data.split(",");
+                 console.log(imgs);
+                })
+                .catch(function (error) {
+                 console.log(error);
+                });
+                this.imagesFromDb.push(imgs);
+                console.log(this.imagesFromDb);
+      }
     }, mounted(){
       this.getCat();
     }

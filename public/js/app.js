@@ -3261,6 +3261,7 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
       isEditing: false,
       model: null,
       items: [],
+      imagesFromDb: [],
       previewDataArray: [{
         '1': 0
       }],
@@ -3361,6 +3362,7 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
         k = false;
       });
       this.code = j;
+      this.getImages(this.name);
     },
     confirmUpload: function confirmUpload() {
       axios.post('/ConfirmProduct', {
@@ -3382,6 +3384,19 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a, {
     },
     goBackStep: function goBackStep() {
       this.e6--;
+    },
+    getImages: function getImages(v) {
+      var imgs = [];
+      axios.post('/getImages', {
+        name: v
+      }).then(function (response) {
+        imgs = response.data.split(",");
+        console.log(imgs);
+      }).catch(function (error) {
+        console.log(error);
+      });
+      this.imagesFromDb.push(imgs);
+      console.log(this.imagesFromDb);
     }
   },
   mounted: function mounted() {
@@ -45596,7 +45611,9 @@ var render = function() {
                               _c(
                                 "v-layout",
                                 { attrs: { row: "", wrap: "" } },
-                                _vm._l(_vm.images, function(index) {
+                                _vm._l(_vm.imagesFromDb.length, function(
+                                  index
+                                ) {
                                   return _c(
                                     "v-flex",
                                     {
@@ -45616,10 +45633,9 @@ var render = function() {
                                             {
                                               staticClass: "grey lighten-2",
                                               attrs: {
-                                                src: _vm.images[index],
-                                                "lazy-src":
-                                                  "https://picsum.photos/10/6?image=" +
-                                                  (index * 5 + 10),
+                                                src:
+                                                  "http://localhost/" +
+                                                  _vm.imagesFromDb[index],
                                                 "aspect-ratio": "1"
                                               }
                                             },
