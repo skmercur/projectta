@@ -17,7 +17,7 @@
        <td class="text-xs-right">{{ props.item.remise }} %</td>
         <td class="text-xs-right">{{ props.item.summery}}</td>
          <td class="text-xs-right">{{ props.item.active }}</td>
-      <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginDelete(props.item.id_product)"><v-icon>delete</v-icon></v-btn></td>
+      <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product,props.item)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginDelete(props.item.id_product)"><v-icon>delete</v-icon></v-btn></td>
       
   <v-layout row justify-center >
    <v-dialog
@@ -254,13 +254,21 @@
 this.idToDelete = k;
 this.dialog = true;
       },
-      editProduct(k){
+      editProduct(k,v){
       
         this.dialog1 = true;
         this.getCat();
         this.idToUpdate = k;
           console.log(this.idToUpdate);
-          console.log("edit");
+         this.name = v.name_product;
+         this.price = v.prix;
+         this.disp = v.disponible;
+         this.active = v.active;
+         this.summery  = v.summery;
+         this.quan  = v.quantity;
+         this.remise = v.remise;
+        
+        
       },
       deleteProduct(j){
 

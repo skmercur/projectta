@@ -3774,10 +3774,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4380,12 +4376,18 @@ __webpack_require__.r(__webpack_exports__);
       this.idToDelete = k;
       this.dialog = true;
     },
-    editProduct: function editProduct(k) {
+    editProduct: function editProduct(k, v) {
       this.dialog1 = true;
       this.getCat();
       this.idToUpdate = k;
       console.log(this.idToUpdate);
-      console.log("edit");
+      this.name = v.name_product;
+      this.price = v.prix;
+      this.disp = v.disponible;
+      this.active = v.active;
+      this.summery = v.summery;
+      this.quan = v.quantity;
+      this.remise = v.remise;
     },
     deleteProduct: function deleteProduct(j) {
       axios.post('/delProduct', {
@@ -46485,8 +46487,6 @@ var render = function() {
                 [
                   _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Accueil")]),
                   _vm._v(" "),
-                  _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Produits")]),
-                  _vm._v(" "),
                   _c(
                     "v-btn",
                     { attrs: { flat: "" } },
@@ -46942,26 +46942,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _c("v-spacer"),
-                          _vm._v(" "),
-                          _c(
-                            "v-toolbar-items",
-                            { staticClass: "hidden-sm-and-down" },
-                            [
-                              _c("v-btn", { attrs: { flat: "" } }, [
-                                _vm._v("Link One")
-                              ]),
-                              _vm._v(" "),
-                              _c("v-btn", { attrs: { flat: "" } }, [
-                                _vm._v("Link Two")
-                              ]),
-                              _vm._v(" "),
-                              _c("v-btn", { attrs: { flat: "" } }, [
-                                _vm._v("Link Three")
-                              ])
-                            ],
-                            1
-                          )
+                          _c("v-spacer")
                         ],
                         1
                       )
@@ -47714,7 +47695,7 @@ var render = function() {
                     staticClass: "ma-1",
                     on: {
                       click: function($event) {
-                        _vm.editProduct(props.item.id_product)
+                        _vm.editProduct(props.item.id_product, props.item)
                       }
                     }
                   },
