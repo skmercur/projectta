@@ -100,8 +100,8 @@
          <v-carousel>
     <v-carousel-item
       v-for="(item,i) in images.split(',')"
-      :key="i-1"
-      :src="'http://localhost/'+item"
+      :key="i"
+      :src="'http://localhost/'+item" v-if="item !== ''"
     ></v-carousel-item>
   </v-carousel>
   <v-layout xs12>

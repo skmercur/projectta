@@ -47204,10 +47204,12 @@ var render = function() {
                   _c(
                     "v-carousel",
                     _vm._l(_vm.images.split(","), function(item, i) {
-                      return _c("v-carousel-item", {
-                        key: i - 1,
-                        attrs: { src: "http://localhost/" + item }
-                      })
+                      return item !== ""
+                        ? _c("v-carousel-item", {
+                            key: i,
+                            attrs: { src: "http://localhost/" + item }
+                          })
+                        : _vm._e()
                     }),
                     1
                   ),
