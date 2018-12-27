@@ -98,6 +98,7 @@ public function login(Request $request){
     }else{
         $items = DB::table('items_boughts')->where('id_buyer',$client->id)->where('status','<',4)->get();
         if($items->count() > 0){
+            echo "<script>window.open('http://localhost/fact?items=".base64_encode(json_encode($items))."', '_blank')</script>";
             return view('myitems')->with('items',$items);
         }else{
             echo "You haven't bought or requested  a thing yet";

@@ -35,6 +35,8 @@ Vue.component('slide', require("./components/Slide.vue").default);
 Vue.component('footer-c', require("./components/Footerclient.vue").default);
 Vue.component('produit-c', require("./components/Produitclient.vue").default);
 Vue.component('checkout', require("./components/CheckOut.vue").default);
+Vue.component('tabrequest', require("./components/TableRequests.vue").default);
+Vue.component('tabboughts', require("./components/TableItemsBought.vue").default);
 
 /**
  * The following block of code may be used to automatically register your
