@@ -89,9 +89,10 @@ public function login(Request $request){
             $produitsClass->name = $data->name_product;
             $produitsClass->prix = ($data->prix) - ($data->prix * $data->remise)/100;
             $produitsClass->status = $request->status;
+            $produitsClass->fb = $fb;
             $arr[] = $produitsClass;
         }
-        return view('buypage')->with('requests',$arr);
+        return view('buypage')->with(['requests'=>$arr,'client'=>$fb]);
     }else{
         echo "You dont have any requests";
     }

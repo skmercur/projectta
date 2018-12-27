@@ -78,6 +78,9 @@ return response()->json($num);
         //
     }
 
+public function BuyFunction(Request $request){
+    
+}
     /**
      * Remove the specified resource from storage.
      *

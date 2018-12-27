@@ -154,4 +154,5 @@ Route::get('/client',function(){
     return view('buypage')->with('requests',$arr);
 });
 Route::post('/login','ClientsController@login');
+Route::post('/buy','ItemsBoughtController@BuyFunction');
 

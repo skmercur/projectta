@@ -13,6 +13,7 @@
       <th scope="col">Produit</th>
       <th scope="col">Prix</th>
       <th scope="col">Status</th>
+      <th scope="col">Options</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td>{{$req->name}}</td>
       <td>{{$req->prix}}</td>
       <td>{{$req->status}}</td>
+      <td></td>
     </tr>
    
   </tbody>
@@ -29,5 +31,17 @@
 <?php $k++ ?>
 @endforeach
 @endif
-
+<script>
+file_changed(){
+    document.forms["imageccp"].submit();
+}
+</script>
+<form method="post" action="/buy" name="imageccp" enctype="multipart/form-data">
+@csrf
+<input type="hidden" name="id" value="{{$client}}" />
+<div class="form-group">
+    <label for="exampleFormControlFile1">Ajouter la photo du recu CCP</label>
+    <input type="file" class="form-control-file" onchange="file_changed(this)" id="exampleFormControlFile1">
+  </div>
+</form>
 @endsection

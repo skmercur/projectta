@@ -18,14 +18,15 @@
     <v-stepper-items>
       <v-stepper-content step="1">
         <v-card
-          class="mb-5"
-          color="white darken-1"
+           class="mb-5"
+          color="grey lighten-1"
+          height="200px"
          
         >
 <v-container align-center justify-center>
         <v-layout  row  align-center class="ma-2">
             <v-flex d-flex class="ma-1">
-                <h3 style="color:#000">Veuillez vous connecter avec facebook</h3>
+                <h3 >Veuillez vous connecter avec facebook</h3>
                
             </v-flex>
             </v-layout>
@@ -61,20 +62,20 @@
 
       <v-stepper-content step="2">
         <v-card
-        
-         class="mb-5"
+       class="mb-5"
           color="grey lighten-1"
+        
         >
         <v-container align-content-center align-center justify-center>
-            <v-layout wrap  row>
+            <v-layout xs12>
 
-<v-flex d-row class="ma-3 pa-2">
+<v-flex class="ma-3 pa-2">
 <v-img transition max-height="100" max-width="100" :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`" :src="`http://graph.facebook.com/${fbUserData.id}/picture?type=normal`" > </v-img>
-        <h5 style="color:#000">Bienvenu {{fbUserData.name}}</h5>
+        <v-text-field :value="'Bienvenu ' +fbUserData.name" readonly></v-text-field>
 </v-flex>
 <v-divider></v-divider>
             </v-layout>
-            <v-layout wrap  row>
+            <v-layout xs12>
   <v-form v-model="valid">
     <v-text-field
       v-model="fbUserData.name"

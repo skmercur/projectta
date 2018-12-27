@@ -2348,6 +2348,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     achat: Array
@@ -8798,7 +8799,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44150,7 +44151,10 @@ var render = function() {
             [
               _c(
                 "v-card",
-                { staticClass: "mb-5", attrs: { color: "white darken-1" } },
+                {
+                  staticClass: "mb-5",
+                  attrs: { color: "grey lighten-1", height: "200px" }
+                },
                 [
                   _c(
                     "v-container",
@@ -44167,7 +44171,7 @@ var render = function() {
                             "v-flex",
                             { staticClass: "ma-1", attrs: { "d-flex": "" } },
                             [
-                              _c("h3", { staticStyle: { color: "#000" } }, [
+                              _c("h3", [
                                 _vm._v("Veuillez vous connecter avec facebook")
                               ])
                             ]
@@ -44283,14 +44287,11 @@ var render = function() {
                     [
                       _c(
                         "v-layout",
-                        { attrs: { wrap: "", row: "" } },
+                        { attrs: { xs12: "" } },
                         [
                           _c(
                             "v-flex",
-                            {
-                              staticClass: "ma-3 pa-2",
-                              attrs: { "d-row": "" }
-                            },
+                            { staticClass: "ma-3 pa-2" },
                             [
                               _c("v-img", {
                                 attrs: {
@@ -44307,11 +44308,12 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("h5", { staticStyle: { color: "#000" } }, [
-                                _vm._v(
-                                  "Bienvenu " + _vm._s(_vm.fbUserData.name)
-                                )
-                              ])
+                              _c("v-text-field", {
+                                attrs: {
+                                  value: "Bienvenu " + _vm.fbUserData.name,
+                                  readonly: ""
+                                }
+                              })
                             ],
                             1
                           ),
@@ -44323,7 +44325,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-layout",
-                        { attrs: { wrap: "", row: "" } },
+                        { attrs: { xs12: "" } },
                         [
                           _c(
                             "v-form",
