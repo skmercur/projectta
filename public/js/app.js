@@ -2309,6 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3789,6 +3790,140 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3805,7 +3940,9 @@ __webpack_require__.r(__webpack_exports__);
       imageProduct: [],
       nbrItems: 0,
       itemsInCart: [],
-      step: 1
+      step: 1,
+      quantityUser: [],
+      prixTotal: 0
     };
   },
   mounted: function mounted() {},
@@ -3850,7 +3987,16 @@ __webpack_require__.r(__webpack_exports__);
     addToCart: function addToCart(v) {
       this.itemsInCart.push(v);
       this.nbrItems++;
-      console.log('emited');
+      console.log(this.itemsInCart);
+      this.TotalPrix();
+    },
+    TotalPrix: function TotalPrix() {
+      var temp = 0;
+      this.itemsInCart.forEach(function (element) {
+        temp += element.prix;
+      });
+      console.log(temp);
+      this.prixTotal = temp;
     }
   }
 });
@@ -8538,7 +8684,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44262,6 +44408,8 @@ var render = function() {
                     "v-layout",
                     { attrs: { wrap: "", row: "" } },
                     [
+                      _c("h1", [_vm._v("CCP number ")]),
+                      _vm._v(" "),
                       _c(
                         "v-flex",
                         { attrs: { xs12: "" } },
@@ -46775,7 +46923,25 @@ var render = function() {
                       _vm.step == 2 ? _c("checkout") : _vm._e()
                     ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm.step == 1
+                    ? _c(
+                        "v-footer",
+                        [
+                          _c("v-card-text", [
+                            _c("h4", { staticClass: "text-xs-right" }, [
+                              _vm._v(
+                                "Total a payé : " +
+                                  _vm._s(_vm.prixTotal) +
+                                  " DA"
+                              )
+                            ])
+                          ])
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ],
                 1
               )
@@ -46786,10 +46952,10 @@ var render = function() {
           _c(
             "v-layout",
             { attrs: { row: "", wrap: "" } },
-            _vm._l(3, function(i) {
-              return _c(
+            [
+              _c(
                 "v-flex",
-                { key: "4" + i, attrs: { xs4: "" } },
+                { attrs: { xs4: "" } },
                 [
                   _c(
                     "v-card",
@@ -46821,7 +46987,13 @@ var render = function() {
                                           attrs: {
                                             "aspect-ratio": 16 / 9,
                                             src:
-                                              "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/48063013_2218436498482930_5721445747409289216_n.jpg?_nc_cat=102&_nc_ht=scontent-cdt1-1.xx&oh=df60a4dfb8c5d6322b85aa56df416bfc&oe=5C90C4D3"
+                                              "http://localhost/" +
+                                              _vm.dataSiteObj[0].most_selled.images.substring(
+                                                0,
+                                                _vm.dataSiteObj[0].most_selled.images.indexOf(
+                                                  ","
+                                                )
+                                              )
                                           }
                                         },
                                         [
@@ -46838,7 +47010,12 @@ var render = function() {
                                                   },
                                                   [
                                                     _vm._v(
-                                                      "\r\n            $14.99\r\n          "
+                                                      "\r\n            " +
+                                                        _vm._s(
+                                                          _vm.dataSiteObj[0]
+                                                            .most_selled.prix
+                                                        ) +
+                                                        "\r\n          "
                                                     )
                                                   ]
                                                 )
@@ -46869,7 +47046,10 @@ var render = function() {
                                               },
                                               on: {
                                                 click: function($event) {
-                                                  _vm.addToCart(_vm.produit)
+                                                  _vm.addToCart(
+                                                    _vm.dataSiteObj[0]
+                                                      .most_selled
+                                                  )
                                                 }
                                               }
                                             },
@@ -46885,7 +47065,29 @@ var render = function() {
                                               staticClass:
                                                 "font-weight-light grey--text title mb-2"
                                             },
-                                            [_vm._v("For the perfect meal")]
+                                            [
+                                              _c(
+                                                "v-chip",
+                                                {
+                                                  attrs: {
+                                                    color: "orange",
+                                                    "text-color": "white"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\r\n      Le produit le plus vendu\r\n      "
+                                                  ),
+                                                  _c(
+                                                    "v-icon",
+                                                    { attrs: { right: "" } },
+                                                    [_vm._v("star")]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -46894,7 +47096,14 @@ var render = function() {
                                               staticClass:
                                                 "display-1 font-weight-light orange--text mb-2"
                                             },
-                                            [_vm._v("QW cooking utensils")]
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.dataSiteObj[0].most_selled
+                                                    .name_product
+                                                )
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -46905,11 +47114,392 @@ var render = function() {
                                             },
                                             [
                                               _vm._v(
-                                                "\r\n          Our Vintage kitchen utensils delight any chef."
-                                              ),
-                                              _c("br"),
+                                                "\r\n          " +
+                                                  _vm._s(
+                                                    _vm.dataSiteObj[0]
+                                                      .most_selled.summery
+                                                  ) +
+                                                  "\r\n        "
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                }
+                              }
+                            ])
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs4: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { dark: "", color: "primary" } },
+                    [
+                      _c(
+                        "v-card-text",
+                        { staticClass: "px-0 elevation-9" },
+                        [
+                          _c("v-hover", {
+                            scopedSlots: _vm._u([
+                              {
+                                key: "default",
+                                fn: function(ref) {
+                                  var hover = ref.hover
+                                  return _c(
+                                    "v-card",
+                                    {
+                                      staticClass: "mx-auto",
+                                      attrs: {
+                                        color: "grey lighten-4",
+                                        "max-width": "600"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-img",
+                                        {
+                                          attrs: {
+                                            "aspect-ratio": 16 / 9,
+                                            src:
+                                              "http://localhost/" +
+                                              _vm.dataSiteObj[0].most_viewed.images.substring(
+                                                0,
+                                                _vm.dataSiteObj[0].most_viewed.images.indexOf(
+                                                  ","
+                                                )
+                                              )
+                                          }
+                                        },
+                                        [
+                                          _c("v-expand-transition", [
+                                            hover
+                                              ? _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text",
+                                                    staticStyle: {
+                                                      height: "100%"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\r\n            " +
+                                                        _vm._s(
+                                                          _vm.dataSiteObj[0]
+                                                            .most_viewed.prix
+                                                        ) +
+                                                        "\r\n          "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ])
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        {
+                                          staticClass: "pt-4",
+                                          staticStyle: { position: "relative" }
+                                        },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              staticClass: "white--text",
+                                              attrs: {
+                                                absolute: "",
+                                                color: "orange",
+                                                fab: "",
+                                                large: "",
+                                                right: "",
+                                                top: ""
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.addToCart(
+                                                    _vm.dataSiteObj[0]
+                                                      .most_viewed
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-cart")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "font-weight-light grey--text title mb-2"
+                                            },
+                                            [
+                                              _c(
+                                                "v-chip",
+                                                {
+                                                  attrs: {
+                                                    color: "green",
+                                                    "text-color": "white"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\r\n      Le produit le plus vu\r\n      "
+                                                  ),
+                                                  _c(
+                                                    "v-icon",
+                                                    { attrs: { right: "" } },
+                                                    [_vm._v("remove_red_eye")]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "h3",
+                                            {
+                                              staticClass:
+                                                "display-1 font-weight-light orange--text mb-2"
+                                            },
+                                            [
                                               _vm._v(
-                                                "\r\n          Made of bamboo by hand\r\n        "
+                                                _vm._s(
+                                                  _vm.dataSiteObj[0].most_viewed
+                                                    .name_product
+                                                )
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "font-weight-light title mb-2"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\r\n          " +
+                                                  _vm._s(
+                                                    _vm.dataSiteObj[0]
+                                                      .most_viewed.summery
+                                                  ) +
+                                                  "\r\n        "
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                }
+                              }
+                            ])
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs4: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { dark: "", color: "primary" } },
+                    [
+                      _c(
+                        "v-card-text",
+                        { staticClass: "px-0 elevation-9" },
+                        [
+                          _c("v-hover", {
+                            scopedSlots: _vm._u([
+                              {
+                                key: "default",
+                                fn: function(ref) {
+                                  var hover = ref.hover
+                                  return _c(
+                                    "v-card",
+                                    {
+                                      staticClass: "mx-auto",
+                                      attrs: {
+                                        color: "grey lighten-4",
+                                        "max-width": "600"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-img",
+                                        {
+                                          attrs: {
+                                            "aspect-ratio": 16 / 9,
+                                            src:
+                                              "http://localhost/" +
+                                              _vm.dataSiteObj[0].most_recent.images.substring(
+                                                0,
+                                                _vm.dataSiteObj[0].most_recent.images.indexOf(
+                                                  ","
+                                                )
+                                              )
+                                          }
+                                        },
+                                        [
+                                          _c("v-expand-transition", [
+                                            hover
+                                              ? _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text",
+                                                    staticStyle: {
+                                                      height: "100%"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\r\n            " +
+                                                        _vm._s(
+                                                          _vm.dataSiteObj[0]
+                                                            .most_recent.prix
+                                                        ) +
+                                                        "\r\n          "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ])
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        {
+                                          staticClass: "pt-4",
+                                          staticStyle: { position: "relative" }
+                                        },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              staticClass: "white--text",
+                                              attrs: {
+                                                absolute: "",
+                                                color: "orange",
+                                                fab: "",
+                                                large: "",
+                                                right: "",
+                                                top: ""
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.addToCart(
+                                                    _vm.dataSiteObj[0]
+                                                      .most_recent
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-cart")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "font-weight-light grey--text title mb-2"
+                                            },
+                                            [
+                                              _c(
+                                                "v-chip",
+                                                {
+                                                  attrs: {
+                                                    color: "red",
+                                                    "text-color": "white"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\r\n      Le produit le plus recent\r\n      "
+                                                  ),
+                                                  _c(
+                                                    "v-icon",
+                                                    { attrs: { right: "" } },
+                                                    [_vm._v("access_time")]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "h3",
+                                            {
+                                              staticClass:
+                                                "display-1 font-weight-light orange--text mb-2"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.dataSiteObj[0].most_recent
+                                                    .name_product
+                                                )
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "font-weight-light title mb-2"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\r\n          " +
+                                                  _vm._s(
+                                                    _vm.dataSiteObj[0]
+                                                      .most_recent.summery
+                                                  ) +
+                                                  "\r\n        "
                                               )
                                             ]
                                           )
@@ -46932,7 +47522,7 @@ var render = function() {
                 ],
                 1
               )
-            }),
+            ],
             1
           ),
           _vm._v(" "),

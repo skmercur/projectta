@@ -62,20 +62,29 @@
               <v-list-tile-content>Details:</v-list-tile-content>
               <v-list-tile-content class="align-end">{{ props.item.summery }}</v-list-tile-content>
             </v-list-tile>
+            
           </v-list>
         </v-card>
       </v-flex>
     </v-data-iterator>
   </v-container>
-         <checkout v-if="step == 2"></checkout>
+         <checkout v-if="step == 2" ></checkout>
           </v-flex>
+          
+           <v-footer v-if="step == 1">
+             <v-card-text>
+        <h4 class="text-xs-right">Total a payé : {{prixTotal}} DA</h4>
+             </v-card-text>
+      </v-footer>
       </v-card>
+
+     
     </v-dialog>
             
     <v-layout row wrap>
 
 
-<v-flex v-for="i in 3" :key="`4${i}`" xs4 >
+<v-flex  xs4 >
         <v-card dark color="primary" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
@@ -87,15 +96,15 @@
     >
       <v-img
         :aspect-ratio="16/9"
-        src="https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/48063013_2218436498482930_5721445747409289216_n.jpg?_nc_cat=102&_nc_ht=scontent-cdt1-1.xx&oh=df60a4dfb8c5d6322b85aa56df416bfc&oe=5C90C4D3"
-      >
+        :src="'http://localhost/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(','))"
+        >
         <v-expand-transition>
           <div
             v-if="hover"
             class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
             style="height: 100%;"
           >
-            $14.99
+            {{dataSiteObj[0].most_selled.prix}}
           </div>
         </v-expand-transition>
       </v-img>
@@ -107,7 +116,7 @@
         <v-btn
       
        
-          @click="addToCart(produit)"
+          @click="addToCart(dataSiteObj[0].most_selled)"
           absolute
           color="orange"
           class="white--text"
@@ -122,11 +131,13 @@
 
 
 
-        <div class="font-weight-light grey--text title mb-2">For the perfect meal</div>
-        <h3 class="display-1 font-weight-light orange--text mb-2">QW cooking utensils</h3>
+        <div class="font-weight-light grey--text title mb-2"><v-chip color="orange" text-color="white">
+      Le produit le plus vendu
+      <v-icon right>star</v-icon>
+    </v-chip></div>
+        <h3 class="display-1 font-weight-light orange--text mb-2">{{dataSiteObj[0].most_selled.name_product}}</h3>
         <div class="font-weight-light title mb-2">
-          Our Vintage kitchen utensils delight any chef.<br>
-          Made of bamboo by hand
+          {{dataSiteObj[0].most_selled.summery}}
         </div>
       </v-card-text>
     </v-card>
@@ -135,6 +146,129 @@
         </v-card>
       </v-flex>
 
+
+<v-flex  xs4 >
+        <v-card dark color="primary" >
+          <v-card-text class="px-0 elevation-9" >
+              <v-hover>
+    <v-card
+      slot-scope="{ hover }"
+      class="mx-auto"
+      color="grey lighten-4"
+      max-width="600"
+    >
+      <v-img
+        :aspect-ratio="16/9"
+        :src="'http://localhost/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(','))"
+        >
+        <v-expand-transition>
+          <div
+            v-if="hover"
+            class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+            style="height: 100%;"
+          >
+            {{dataSiteObj[0].most_viewed.prix}}
+          </div>
+        </v-expand-transition>
+      </v-img>
+      <v-card-text
+        class="pt-4"
+        style="position: relative;"
+      >
+
+        <v-btn
+      
+       
+          @click="addToCart(dataSiteObj[0].most_viewed)"
+          absolute
+          color="orange"
+          class="white--text"
+          fab
+          large
+          right
+          top
+        >
+          <v-icon>mdi-cart</v-icon>
+        </v-btn>
+
+
+
+
+        <div class="font-weight-light grey--text title mb-2"><v-chip color="green" text-color="white">
+      Le produit le plus vu
+      <v-icon right>remove_red_eye</v-icon>
+    </v-chip></div>
+        <h3 class="display-1 font-weight-light orange--text mb-2">{{dataSiteObj[0].most_viewed.name_product}}</h3>
+        <div class="font-weight-light title mb-2">
+          {{dataSiteObj[0].most_viewed.summery}}
+        </div>
+      </v-card-text>
+    </v-card>
+  </v-hover>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+<v-flex  xs4 >
+        <v-card dark color="primary" >
+          <v-card-text class="px-0 elevation-9" >
+              <v-hover>
+    <v-card
+      slot-scope="{ hover }"
+      class="mx-auto"
+      color="grey lighten-4"
+      max-width="600"
+    >
+      <v-img
+        :aspect-ratio="16/9"
+        :src="'http://localhost/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(','))"
+        >
+        <v-expand-transition>
+          <div
+            v-if="hover"
+            class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+            style="height: 100%;"
+          >
+            {{dataSiteObj[0].most_recent.prix}}
+          </div>
+        </v-expand-transition>
+      </v-img>
+      <v-card-text
+        class="pt-4"
+        style="position: relative;"
+      >
+
+        <v-btn
+      
+       
+          @click="addToCart(dataSiteObj[0].most_recent)"
+          absolute
+          color="orange"
+          class="white--text"
+          fab
+          large
+          right
+          top
+        >
+          <v-icon>mdi-cart</v-icon>
+        </v-btn>
+
+
+
+
+        <div class="font-weight-light grey--text title mb-2"><v-chip color="red" text-color="white">
+      Le produit le plus recent
+      <v-icon right>access_time</v-icon>
+    </v-chip></div>
+        <h3 class="display-1 font-weight-light orange--text mb-2">{{dataSiteObj[0].most_recent.name_product}}</h3>
+        <div class="font-weight-light title mb-2">
+          {{dataSiteObj[0].most_recent.summery}}
+        </div>
+      </v-card-text>
+    </v-card>
+  </v-hover>
+          </v-card-text>
+        </v-card>
+      </v-flex>
        </v-layout>
        <v-card class="pa-3 mt-2">
          <v-container v-for="n in dataSiteObj" :key="n">
@@ -259,6 +393,9 @@ datasite:String,
         nbrItems:0,
         itemsInCart:[],
         step:1,
+        quantityUser:[],
+        prixTotal:0,
+        
       }
     },
     mounted(){
@@ -313,7 +450,20 @@ datasite:String,
       this.itemsInCart.push(v);
       this.nbrItems++;
        
-      console.log('emited');
+      console.log(this.itemsInCart);
+     this.TotalPrix();
+    },
+    TotalPrix(){
+      var temp = 0;
+this.itemsInCart.forEach(function(element){
+  
+temp += element.prix;
+  
+
+});
+console.log(temp);
+this.prixTotal = temp;
+
     }
   }
         

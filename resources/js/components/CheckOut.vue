@@ -167,6 +167,7 @@
 <!-- end dialog-->
 
         <v-layout wrap row>
+          <h1>CCP number </h1>
 <v-flex xs12>
 <v-btn class="ma-2">Je suis pret a payer </v-btn> <v-btn class="ma-2" @click="dialog1 = true">je reserve le produit</v-btn>
 </v-flex>

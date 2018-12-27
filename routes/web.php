@@ -12,19 +12,27 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
+    
     $k=0;
     $cat = DB::table('categories')->where('confirmed',1)->orderBy('name_categorie','asc')->get();
     
     $arr = array();
     $arrPro = array();
     $nbr = DB::table('products')->get()->count();
+    $mostSelled = DB::table('products')->where('quantity','>',0)->where('active',1)->orderBy('sells','desc')->first();
+    $mostViewed= DB::table('products')->where('quantity','>',0)->where('active',1)->orderBy('views','desc')->first();
+    $mostRecent= DB::table('products')->where('quantity','>',0)->where('active',1)->orderBy('created_at','desc')->first();
     
     foreach ($cat as $ncat) {
       
-        $prod = DB::table('products')->where('name_categorie',$ncat->name_categorie)->orderBy('sells','asc')->get();
+        $prod = DB::table('products')->where('name_categorie',$ncat->name_categorie)->where('quantity','>',0)->where('active',1)->orderBy('promote','desc')->get();
         if($k < $nbr){
            $Categorie = new stdClass;
+            
            $Categorie->name = $ncat->name_categorie;
+           $Categorie->most_selled = $mostSelled;
+           $Categorie->most_viewed = $mostViewed;
+           $Categorie->most_recent = $mostRecent;
           foreach($prod as $pro){
            $Produit = new stdClass;
         if($prod->count()>0){
@@ -50,6 +58,7 @@ Route::get('/', function () {
         }
         
    
+    
     } 
     return view('welcome')->with('data',$arr);
 });
@@ -130,13 +139,20 @@ $res1 = json_decode($result1);
  $arr = array();
  $arrPro = array();
  $nbr = DB::table('products')->get()->count();
+ $mostSelled = DB::table('products')->where('quantity','>',0)->where('active',1)->orderBy('sells','desc')->first();
+ $mostViewed= DB::table('products')->where('quantity','>',0)->where('active',1)->orderBy('views','desc')->first();
+ $mostRecent= DB::table('products')->where('quantity','>',0)->where('active',1)->orderBy('created_at','desc')->first();
  
  foreach ($cat as $ncat) {
    
-     $prod = DB::table('products')->where('name_categorie',$ncat->name_categorie)->orderBy('sells','asc')->get();
+     $prod = DB::table('products')->where('name_categorie',$ncat->name_categorie)->where('quantity','>',0)->where('active',1)->orderBy('promote','desc')->get();
      if($k < $nbr){
         $Categorie = new stdClass;
+         
         $Categorie->name = $ncat->name_categorie;
+        $Categorie->most_selled = $mostSelled;
+        $Categorie->most_viewed = $mostViewed;
+        $Categorie->most_recent = $mostRecent;
        foreach($prod as $pro){
         $Produit = new stdClass;
      if($prod->count()>0){
@@ -162,7 +178,7 @@ $res1 = json_decode($result1);
      }
      
 
- }  
+ } 
 print_r($arr);
 
 });

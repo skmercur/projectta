@@ -13,7 +13,9 @@
   <slide></slide>
   <br>
   <hr>
+
   <produit-c datasite="{{json_encode($data)}}" ></produit-c>
+ 
   <footer-c></footer-c>
 
 
