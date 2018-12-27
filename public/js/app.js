@@ -2310,11 +2310,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    achat: Array
+  },
   data: function data() {
     return {
       dialog: false,
       dialog1: false,
+      dialog2: false,
       e1: 0,
       fbSignInParams: {
         scope: 'email,public_profile',
@@ -2383,6 +2425,18 @@ __webpack_require__.r(__webpack_exports__);
         //TODO dont forget to remove this one
         this.e1++;
       }
+    },
+    bookProducts: function bookProducts() {
+      axios.post('/book', {
+        data: this.achat,
+        id: this.fbUserData.id
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        alert(error.response.data.message);
+      });
+      this.dialog2 = false;
+      window.location = "/login";
     }
   }
 });
@@ -8684,7 +8738,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44364,7 +44418,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-card-text", [
                                 _vm._v(
-                                  "\n            Tout les produit que vous reserver vous seron resérvé pour une durée de 24H si vous n'effectuez pas de payment dans cette durée la réservation sera automatiquement annulé\n          "
+                                  "\n            Tout les produit que vous reserver vous seron resérvé pour une durée de 72H si vous n'effectuez pas de payment dans cette durée la réservation sera automatiquement annulé\n          "
                                 )
                               ]),
                               _vm._v(" "),
@@ -44382,6 +44436,7 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           _vm.dialog1 = false
+                                          _vm.dialog2 = true
                                         }
                                       }
                                     },
@@ -44390,6 +44445,77 @@ var render = function() {
                                         "\n            J'accepte\n          "
                                       )
                                     ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c(
+                        "v-dialog",
+                        {
+                          attrs: { width: "500" },
+                          model: {
+                            value: _vm.dialog2,
+                            callback: function($$v) {
+                              _vm.dialog2 = $$v
+                            },
+                            expression: "dialog2"
+                          }
+                        },
+                        [
+                          _c(
+                            "v-card",
+                            [
+                              _c(
+                                "v-card-title",
+                                {
+                                  staticClass: "headline grey lighten-2",
+                                  attrs: { "primary-title": "" }
+                                },
+                                [_vm._v("\n        Information \n        ")]
+                              ),
+                              _vm._v(" "),
+                              _c("v-card-text", [
+                                _vm._v(
+                                  "\n           Vous pouvez a tout moment continuer votre achat en cliquent sur "
+                                ),
+                                _c("b", [_vm._v("se connecté")]),
+                                _vm._v(
+                                  " dans la page d'acceuille \n               "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-card-actions",
+                                [
+                                  _c("v-spacer"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { color: "primary", flat: "" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.bookProducts()
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("\n            Ok\n          ")]
                                   )
                                 ],
                                 1
@@ -46920,7 +47046,9 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _vm.step == 2 ? _c("checkout") : _vm._e()
+                      _vm.step == 2
+                        ? _c("checkout", { attrs: { achat: _vm.itemsInCart } })
+                        : _vm._e()
                     ],
                     1
                   ),

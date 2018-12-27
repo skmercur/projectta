@@ -68,7 +68,7 @@
       </v-flex>
     </v-data-iterator>
   </v-container>
-         <checkout v-if="step == 2" ></checkout>
+         <checkout v-if="step == 2" :achat="itemsInCart"></checkout>
           </v-flex>
           
            <v-footer v-if="step == 1">

@@ -24,14 +24,13 @@
 </head>
 <body>
     
-    <div id="app">
     
-    <navbarc></navbarc>
-        <main class="py-4">
+    
+    
        
             @yield('content')
         </main>
         
-    </div>
+ 
 </body>
 </html>

@@ -18,7 +18,7 @@ window.Laravel = {csrfToken:'{{csrf_token()}}'}
 
 <body>
 @if(empty(Auth::user()->name))
-<script>window.location = "/login";</script>
+<script>window.location = "/admin/login";</script>
 
 @elseif(Auth::user()->confirmed == 0)
 

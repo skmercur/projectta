@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ItemsBought;
+use App\RequestsToBuy;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-class ItemsBoughtController extends Controller
+
+class RequestsToBuyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,17 @@ class ItemsBoughtController extends Controller
     {
         //
     }
-
-
-
-public function numberOfBuyers(Request $request){
-$num = DB::table('items_boughts')->get()->count();
-return response()->json($num);
-}
+    public function book(Request $request){
+        $fb = $request->id;
+        $code = strtoupper(substr(md5(time().mt_rand(0,99999)),0,8));
+        foreach($request->data as $data) {
+           
+       RequestsToBuy::create([
+        'id_facebook'=>$fb,'codeRequest'=>$code,'productCode'=>$data['code'],'status'=>0
+       ]);
+        }
+        return response()->json(['Status'=>'success']);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -47,10 +51,10 @@ return response()->json($num);
     /**
      * Display the specified resource.
      *
-     * @param  \App\ItemsBought  $itemsBought
+     * @param  \App\RequestsToBuy  $requestsToBuy
      * @return \Illuminate\Http\Response
      */
-    public function show(ItemsBought $itemsBought)
+    public function show(RequestsToBuy $requestsToBuy)
     {
         //
     }
@@ -58,10 +62,10 @@ return response()->json($num);
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ItemsBought  $itemsBought
+     * @param  \App\RequestsToBuy  $requestsToBuy
      * @return \Illuminate\Http\Response
      */
-    public function edit(ItemsBought $itemsBought)
+    public function edit(RequestsToBuy $requestsToBuy)
     {
         //
     }
@@ -70,10 +74,10 @@ return response()->json($num);
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ItemsBought  $itemsBought
+     * @param  \App\RequestsToBuy  $requestsToBuy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemsBought $itemsBought)
+    public function update(Request $request, RequestsToBuy $requestsToBuy)
     {
         //
     }
@@ -81,10 +85,10 @@ return response()->json($num);
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ItemsBought  $itemsBought
+     * @param  \App\RequestsToBuy  $requestsToBuy
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ItemsBought $itemsBought)
+    public function destroy(RequestsToBuy $requestsToBuy)
     {
         //
     }

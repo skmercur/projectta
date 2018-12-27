@@ -145,7 +145,7 @@
         </v-card-title>
 
         <v-card-text>
-            Tout les produit que vous reserver vous seron resérvé pour une durée de 24H si vous n'effectuez pas de payment dans cette durée la réservation sera automatiquement annulé
+            Tout les produit que vous reserver vous seron resérvé pour une durée de 72H si vous n'effectuez pas de payment dans cette durée la réservation sera automatiquement annulé
           </v-card-text>
 
         <v-divider></v-divider>
@@ -155,7 +155,7 @@
           <v-btn
             color="primary"
             flat
-            @click="dialog1 = false"
+            @click="dialog1 = false; dialog2 = true"
           >
             J'accepte
           </v-btn>
@@ -165,6 +165,44 @@
   </div>
 
 <!-- end dialog-->
+
+<!-- Dialog information -->
+<div class="text-xs-center">
+    <v-dialog
+      v-model="dialog2"
+      width="500"
+    >
+     
+
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+        Information 
+        </v-card-title>
+
+        <v-card-text>
+           Vous pouvez a tout moment continuer votre achat en cliquent sur <b>se connecté</b> dans la page d'acceuille 
+               </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="bookProducts()"
+          >
+            Ok
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
+
+<!-- -->
 
         <v-layout wrap row>
           <h1>CCP number </h1>
@@ -189,11 +227,14 @@
 <script>
 
   export default {
-     
+     props:{
+achat:Array
+     },
     data () {
       return {
            dialog: false,
             dialog1: false,
+            dialog2:false,
         e1: 0,
          fbSignInParams: {
         scope: 'email,public_profile',
@@ -227,7 +268,7 @@
       }
     },
     mounted(){
-      
+     
     }
     , methods: {
     onSignInSuccess (response) {
@@ -268,6 +309,24 @@
 this.e1++;
         }
     
+    },
+    bookProducts(){
+      axios.post('/book', {  
+
+         data:this.achat,
+         id:this.fbUserData.id
+        
+       })
+                .then(function (response) {
+              console.log(response);
+              
+                })
+                .catch(function (error) {
+                  alert(error.response.data.message);
+                 
+                });
+                this.dialog2 = false;
+             window.location = "/login";
     }
   }
         
