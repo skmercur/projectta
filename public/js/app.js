@@ -3980,6 +3980,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3998,7 +4042,13 @@ __webpack_require__.r(__webpack_exports__);
       itemsInCart: [],
       step: 1,
       quantityUser: [],
-      prixTotal: 0
+      prixTotal: 0,
+      dialog3: false,
+      name: '',
+      summery: '',
+      prix: 0,
+      remise: 0,
+      images: ''
     };
   },
   mounted: function mounted() {},
@@ -4053,6 +4103,14 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(temp);
       this.prixTotal = temp;
+    },
+    showMeThisOne: function showMeThisOne(v) {
+      this.images = v.product.images;
+      this.name = v.product.name_product;
+      this.prix = v.product.prix;
+      this.summery = v.product.summery;
+      this.remise = v.product.remise;
+      this.dialog3 = true;
     }
   }
 });
@@ -47078,6 +47136,118 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
+            "v-dialog",
+            {
+              attrs: {
+                fullscreen: "",
+                "hide-overlay": "",
+                transition: "dialog-bottom-transition"
+              },
+              model: {
+                value: _vm.dialog3,
+                callback: function($$v) {
+                  _vm.dialog3 = $$v
+                },
+                expression: "dialog3"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-toolbar",
+                    { attrs: { dark: "", color: "primary" } },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { icon: "", dark: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialog3 = false
+                            }
+                          }
+                        },
+                        [_c("v-icon", [_vm._v("close")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-toolbar-title", [_vm._v(_vm._s(_vm.name))]),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-toolbar-items",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { dark: "", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.dialog3 = false
+                                }
+                              }
+                            },
+                            [_vm._v("Save")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-carousel",
+                    _vm._l(_vm.images.split(","), function(item, i) {
+                      return _c("v-carousel-item", {
+                        key: i - 1,
+                        attrs: { src: "http://localhost/" + item }
+                      })
+                    }),
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-layout",
+                    { attrs: { xs12: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        [
+                          _c("h3", [_vm._v(_vm._s(_vm.name))]),
+                          _vm._v(" "),
+                          _c("v-divider"),
+                          _vm._v(" "),
+                          _c("h4", [_vm._v(_vm._s(_vm.summery))]),
+                          _vm._v(" "),
+                          _c("v-divider"),
+                          _vm._v(" "),
+                          _c("h4", [
+                            _vm._v(
+                              "Prix " +
+                                _vm._s(
+                                  _vm.prix - (_vm.prix * _vm.remise) / 100
+                                ) +
+                                " DA"
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
             "v-layout",
             { attrs: { row: "", wrap: "" } },
             [
@@ -47696,7 +47866,14 @@ var render = function() {
                             [
                               _c(
                                 "v-card",
-                                { attrs: { dark: "", color: "primary" } },
+                                {
+                                  attrs: { dark: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.showMeThisOne(produit)
+                                    }
+                                  }
+                                },
                                 [
                                   _c(
                                     "v-card-text",

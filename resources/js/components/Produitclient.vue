@@ -81,6 +81,44 @@
      
     </v-dialog>
             
+
+
+ <v-dialog v-model="dialog3" fullscreen hide-overlay transition="dialog-bottom-transition">
+      
+      <v-card>
+        <v-toolbar dark color="primary">
+          <v-btn icon dark @click="dialog3 = false">
+            <v-icon>close</v-icon>
+          </v-btn>
+          <v-toolbar-title>{{name}}</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn dark flat @click="dialog3 = false">Save</v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+      
+         <v-carousel>
+    <v-carousel-item
+      v-for="(item,i) in images.split(',')"
+      :key="i-1"
+      :src="'http://localhost/'+item"
+    ></v-carousel-item>
+  </v-carousel>
+  <v-layout xs12>
+<v-flex >
+<h3>{{name}}</h3>
+<v-divider></v-divider>
+<h4>{{summery}}</h4>
+<v-divider></v-divider>
+<h4>Prix {{prix - ((prix*remise)/100)}} DA</h4>
+</v-flex>
+  </v-layout>
+      </v-card>
+    </v-dialog>
+
+<!-- end dialog -->
+
+
     <v-layout row wrap>
 
 
@@ -289,7 +327,13 @@
 
 
 <v-flex v-for="produit in n.produit" :key="produit" xs4 >
-        <v-card dark color="primary" >
+
+
+
+<!-- Dialog detailles -->
+
+
+        <v-card dark color="primary" @click="showMeThisOne(produit)" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
     <v-card
@@ -395,6 +439,12 @@ datasite:String,
         step:1,
         quantityUser:[],
         prixTotal:0,
+        dialog3:false,
+        name:'',
+        summery:'',
+        prix:0,
+        remise:0,
+        images:'',
         
       }
     },
@@ -464,6 +514,13 @@ temp += element.prix;
 console.log(temp);
 this.prixTotal = temp;
 
+    },showMeThisOne(v){
+      this.images = v.product.images;
+      this.name =  v.product.name_product;
+      this.prix =  v.product.prix;
+      this.summery =  v.product.summery;
+      this.remise =  v.product.remise;
+      this.dialog3 = true; 
     }
   }
         
