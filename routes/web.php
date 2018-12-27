@@ -155,4 +155,7 @@ Route::get('/client',function(){
 });
 Route::post('/login','ClientsController@login');
 Route::post('/buy','ItemsBoughtController@BuyFunction');
+Route::get('/fact',function(){
+return view('facture');
+});
 
