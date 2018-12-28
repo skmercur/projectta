@@ -181,7 +181,7 @@
       },
       beginToDelete(k){
 this.idToDelete = k;
-dialog = true;
+this.dialog = true;
       },
       deleteCat(j){
          axios.post('/delCat',{

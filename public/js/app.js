@@ -4428,7 +4428,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     beginToDelete: function beginToDelete(k) {
       this.idToDelete = k;
-      dialog = true;
+      this.dialog = true;
     },
     deleteCat: function deleteCat(j) {
       axios.post('/delCat', {
@@ -4993,7 +4993,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     beginToDelete: function beginToDelete(k) {
       this.idToDelete = k;
-      dialog = true;
+      this.dialog = true;
     },
     deleteCat: function deleteCat(j) {
       axios.post('/delReq', {

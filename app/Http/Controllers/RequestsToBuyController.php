@@ -42,7 +42,7 @@ class RequestsToBuyController extends Controller
             
              return response()->json($cat);
          }
-         public function upRequest(Request $request){
+         public function upRequests(Request $request){
             $id = $request->id;
            
             $status = $request->status;
@@ -51,7 +51,7 @@ class RequestsToBuyController extends Controller
             
                  return response()->json(['state'=>'sucess']);
              }
-             public function delReq(Request $request){
+             public function delRequests(Request $request){
              $id = $request->id;
                  DB::table('requests_to_buys')->where('id',$id)->delete();
                     
