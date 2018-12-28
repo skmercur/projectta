@@ -4344,7 +4344,7 @@ __webpack_require__.r(__webpack_exports__);
       images: ['https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/ce2ece60-9b32-11e6-95ab-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg']
     };
   },
-  beforeMount: function beforeMount() {
+  created: function created() {
     var _this = this;
 
     axios.post('/getPubs', {}).then(function (response) {
@@ -47907,6 +47907,8 @@ var render = function() {
     { attrs: { fixed: "", clipped: "", color: "#263238", dark: "" } },
     [
       _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
+      _vm._v(" "),
+      _c("v-spacer"),
       _vm._v(" "),
       _c(
         "v-toolbar-items",

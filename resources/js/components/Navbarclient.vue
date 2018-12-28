@@ -4,7 +4,7 @@
     
     <v-toolbar-title>Taher Boutique</v-toolbar-title>
 
-   
+   <v-spacer></v-spacer>
     <v-toolbar-items >
       <v-btn flat>Accueil</v-btn>
       
