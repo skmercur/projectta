@@ -79,7 +79,7 @@ public function login(Request $request){
     $fb = $request->fb;
    $client = DB::table('clients')->where('id_facebook',$fb)->first();
     if(!empty($client->name)){
-        echo "welcome".$client->name;
+        echo "Bienvenu ".$client->name;
         $req = DB::table('requests_to_buys')->where('id_facebook',$fb)->get();
     if($req->count() > 0){
         $arr = array();
@@ -97,9 +97,11 @@ public function login(Request $request){
         return view('buypage')->with(['requests'=>$arr,'client'=>$fb]);
     }else{
         $items = DB::table('items_boughts')->where('id_buyer',$client->id)->where('status','<',4)->get();
+    
         if($items->count() > 0){
+            $url = "http://localhost/fact?items=".base64_encode(json_encode($items));
             echo "<script>window.open('http://localhost/fact?items=".base64_encode(json_encode($items))."', '_blank')</script>";
-            return view('myitems')->with('items',$items);
+            return view('myitems')->with(['items'=>$items,'link'=>$url]);
         }else{
             echo "You haven't bought or requested  a thing yet";
         }

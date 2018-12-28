@@ -114,7 +114,7 @@ public function BuyFunction(Request $request){
   foreach($requests as $req){
     DB::table('requests_to_buys')->where('id_facebook',$fb)->delete();
   }
-return response()->json(['status'=>'success']);
+return view('login');
 
     }
 }

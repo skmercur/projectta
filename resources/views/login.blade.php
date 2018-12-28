@@ -5,7 +5,7 @@
 
 <div class="text-center" style="margin-top:5vh">
 <h5>Welcome</h5>
-<img class="mb-4" src="https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/26239766_1980207352305847_259052501415261259_n.jpg?_nc_cat=106&_nc_ht=scontent-mrs1-1.xx&oh=eb2734b4548c0eb01e33520ec105930c&oe=5CD6AB33" alt="" width="100" height="100">
+<img class="mb-4 img-rounded" src="https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/26239766_1980207352305847_259052501415261259_n.jpg?_nc_cat=106&_nc_ht=scontent-mrs1-1.xx&oh=eb2734b4548c0eb01e33520ec105930c&oe=5CD6AB33" alt="" width="100" height="100">
 <div class="fb-login-button col align-self-center" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState()"></div>
 
 <form method="post" name="loginform" action="/login" >

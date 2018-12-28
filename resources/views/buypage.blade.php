@@ -38,7 +38,7 @@
 <form method="post" action="/buy" name="imageccp" enctype="multipart/form-data">
 @csrf
 
-<input type="hidden" name="id" value="" />
+<input type="hidden" name="id" value="{{$client}}" />
 <?php $k=""; ?>
 @foreach($requests as $req)
 <?php $k .= $req->code."," ?>
@@ -54,8 +54,8 @@
 
 <div class="form-group">
     <label for="exampleFormControlFile1">Veuille Selectioné la photo du recu du paiement CCP</label>
-    <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
-    <input type="submit">
+    <input type="file" name="image" class="form-control-file" accept="image/*" id="exampleFormControlFile1">
+    <input class="btn btn-success mt-3" value="envoyer l'image " type="submit">
   </div>
   </section>
 </form>
