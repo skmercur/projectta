@@ -131,5 +131,14 @@ $views += $view->views;
      
      return response()->json(["value"=>$views]); 
     }
+
+    public function addViews(Request $request){
+        $name = $request->name;
+        if(!empty($name)){
+            $data = DB::table('products')->where('name_product',$name)->first();
+            DB::table('products')->where('name_product',$name)->update(['views'=>$data->views +1]);
+
+        }
+    }
    
 }

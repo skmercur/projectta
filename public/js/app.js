@@ -3131,12 +3131,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      icons: ['fab fa-facebook', 'fab fa-twitter', 'fab fa-google-plus', 'fab fa-linkedin', 'fab fa-instagram']
+      icons: ['fab fa-facebook', 'fab fa-instagram']
     };
   }
 });
@@ -4266,6 +4264,13 @@ __webpack_require__.r(__webpack_exports__);
       this.summery = v.product.summery;
       this.remise = v.product.remise;
       this.dialog3 = true;
+      axios.post('/addViews', {
+        name: this.name
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        alert(error.response.data.message);
+      });
     }
   }
 });
@@ -46328,7 +46333,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-footer",
-    { attrs: { dark: "", height: "auto" } },
+    { attrs: { dark: "" } },
     [
       _c(
         "v-card",
@@ -46367,7 +46372,7 @@ var render = function() {
           _c(
             "v-card-actions",
             { staticClass: "grey darken-3 justify-center" },
-            [_vm._v("\n      ©2018 — "), _c("strong", [_vm._v("Vuetify")])]
+            [_vm._v("\n      ©2018 — "), _c("strong", [_vm._v("Pawerdz")])]
           )
         ],
         1

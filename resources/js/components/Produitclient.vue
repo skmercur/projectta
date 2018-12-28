@@ -523,6 +523,24 @@ this.prixTotal = temp;
       this.summery =  v.product.summery;
       this.remise =  v.product.remise;
       this.dialog3 = true; 
+
+ axios.post('/addViews', {  
+
+         name:this.name,
+        
+       })
+                .then(function (response) {
+              console.log(response);
+                
+                  
+                })
+                .catch(function (error) {
+                  alert(error.response.data.message);
+                 
+                });
+
+
+
     }
   }
         
