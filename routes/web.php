@@ -174,4 +174,5 @@ Route::get('/alogin',function(){
 Route::get('/blogin',function(){
     return view('myitems');
 });
-
+Route::post('/addPub','PubsController@addPub');
+Route::post('/getPubs','PubsController@getPubs');

@@ -49,6 +49,14 @@
             <v-list-tile-title>Sells</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+         <v-list-tile  @click="pageSwitcher(6)">
+          <v-list-tile-action>
+            <v-icon>add_to_home_screen</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Pubs</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
          <v-list-tile  @click="Logout">
           <v-list-tile-action>
             <v-icon>exit_to_app</v-icon>
@@ -206,6 +214,20 @@
           </v-flex>
 </v-layout>
       </v-container>
+           <v-container fluid grid-list-sm v-else-if="showSectionSix">
+<v-layout row wrap >
+          <v-flex d-flex xs12 order-xs5>
+<v-card color="white"  class="ma-3" >
+                         <v-card-title><h2 style="color:#000;">Pubs</h2></v-card-title>
+                          <v-flex d-flex xs12 order-xs5>
+             <tabpubs></tabpubs>
+                          </v-flex>
+                             <v-divider></v-divider>
+                          
+                  </v-card>
+          </v-flex>
+</v-layout>
+      </v-container>
 
 
     </v-content>
@@ -221,6 +243,7 @@ import graphs from './Graphs';
 import tabproduct from './TableProducts';
 import tabcat from './TableCategories';
 import todo from './Todo';
+import tabpubs from './TablePubs';
  var dt = new Date();
   export default {
     data: () => ({
@@ -230,6 +253,7 @@ import todo from './Todo';
       showSectionThree:false,
       showSectionFour:false,
       showSectionFive:false,
+      showSectionSix:false,
       YearNow: dt.getFullYear(),
       sells:0,
       sellsDzd:0,
@@ -251,6 +275,7 @@ switch(i){
       this.showSectionThree=false;
         this.showSectionFour=false;
       this.showSectionFive=false;
+       this.showSectionSix=false;
       console.log('One clicked');
       break;
     }
@@ -260,6 +285,7 @@ switch(i){
       this.showSectionThree=false;
         this.showSectionFour=false;
       this.showSectionFive=false;
+       this.showSectionSix=false;
       console.log('Two clicked');
       break;
     }
@@ -269,6 +295,7 @@ switch(i){
       this.showSectionThree=true;
       this.showSectionFour=false;
       this.showSectionFive=false;
+       this.showSectionSix=false;
       console.log('three clicked');
       break;
     }case 4:{
@@ -277,6 +304,7 @@ this.showSectionOne=false;
       this.showSectionThree=false;
       this.showSectionFour=true;
       this.showSectionFive=false;
+       this.showSectionSix=false;
       break;
     }case 5:{
       this.showSectionOne=false;
@@ -284,6 +312,15 @@ this.showSectionOne=false;
       this.showSectionThree=false;
       this.showSectionFour=false;
       this.showSectionFive=true;
+       this.showSectionSix=false;
+    }
+    case 6:{
+       this.showSectionOne=false;
+      this.showSectionTwo=false;
+      this.showSectionThree=false;
+      this.showSectionFour=false;
+      this.showSectionFive=false;
+       this.showSectionSix=true;
     }
 }
 },Logout(){
