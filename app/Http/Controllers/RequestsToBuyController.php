@@ -19,12 +19,13 @@ class RequestsToBuyController extends Controller
     }
     public function book(Request $request){
         $fb = $request->id;
+        $delivery = $request->delivery;
         $code = strtoupper(substr(md5(time().mt_rand(0,99999)),0,8));
         foreach($request->data as $data) {
            
        RequestsToBuy::create([
         'id_facebook'=>$fb,'codeRequest'=>$code,'productCode'=>$data['code'],'status'=>0
-       ]);
+       ,'methode'=>$delivery]);
         }
         return response()->json(['Status'=>'success']);
     }

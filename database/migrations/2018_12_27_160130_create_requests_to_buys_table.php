@@ -19,6 +19,7 @@ class CreateRequestsToBuysTable extends Migration
             $table->string('codeRequest',8);
             $table->string('productCode',191);
             $table->integer('status');
+            $table->string('methode',10);
             $table->timestamps();
         });
     }

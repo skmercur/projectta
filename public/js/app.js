@@ -2434,6 +2434,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     achat: Array
@@ -2443,7 +2465,9 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       dialog1: false,
       dialog2: false,
+      delivryMehods: ['EMS', 'taxi'],
       e1: 0,
+      methodeChoosen: 'EMS',
       fbSignInParams: {
         scope: 'email,public_profile',
         return_scopes: true
@@ -2515,7 +2539,8 @@ __webpack_require__.r(__webpack_exports__);
     bookProducts: function bookProducts() {
       axios.post('/book', {
         data: this.achat,
-        id: this.fbUserData.id
+        id: this.fbUserData.id,
+        delivery: this.methodeChoosen
       }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
@@ -2523,6 +2548,13 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.dialog2 = false;
       window.location = "/login";
+    },
+    toggleMethod: function toggleMethod() {
+      if (this.methodeChoosen == 'EMS') {
+        this.methodeChoosen = 'taxi';
+      } else {
+        this.methodeChoosen = 'EMS';
+      }
     }
   }
 });
@@ -3664,15 +3696,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
-    return {};
+    return {
+      password: 'Password',
+      show: false,
+      message: '',
+      marker: true,
+      iconIndex: 0
+    };
   },
   mounted: function mounted() {},
   methods: {
     login: function login() {
       window.location = "/login";
+    },
+    sendMessage: function sendMessage() {
+      this.resetIcon();
+      this.clearMessage();
+    },
+    clearMessage: function clearMessage() {
+      this.message = '';
+    },
+    resetIcon: function resetIcon() {
+      this.iconIndex = 0;
+    },
+    changeIcon: function changeIcon() {
+      this.iconIndex === this.icons.length - 1 ? this.iconIndex = 0 : this.iconIndex++;
     }
   }
 });
@@ -9391,7 +9460,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -45090,85 +45159,120 @@ var render = function() {
                         { attrs: { xs12: "" } },
                         [
                           _c(
-                            "v-form",
-                            {
-                              model: {
-                                value: _vm.valid,
-                                callback: function($$v) {
-                                  _vm.valid = $$v
-                                },
-                                expression: "valid"
-                              }
-                            },
+                            "v-flex",
+                            { attrs: { "d-flex": "" } },
                             [
-                              _c("v-text-field", {
-                                attrs: {
-                                  rules: _vm.nameRules,
-                                  counter: 30,
-                                  label: "Nom et prenom",
-                                  required: ""
+                              _c(
+                                "v-form",
+                                {
+                                  model: {
+                                    value: _vm.valid,
+                                    callback: function($$v) {
+                                      _vm.valid = $$v
+                                    },
+                                    expression: "valid"
+                                  }
                                 },
-                                model: {
-                                  value: _vm.fbUserData.name,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.fbUserData, "name", $$v)
-                                  },
-                                  expression: "fbUserData.name"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  rules: _vm.emailRules,
-                                  label: "E-mail",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.fbUserData.email,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.fbUserData, "email", $$v)
-                                  },
-                                  expression: "fbUserData.email"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  type: "numeric",
-                                  rules: _vm.phoneRule,
-                                  label: "Numero de telephone",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.fbUserData.phone,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.fbUserData, "phone", $$v)
-                                  },
-                                  expression: "fbUserData.phone"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: { label: "Adresse", required: "" },
-                                model: {
-                                  value: _vm.fbUserData.adresse,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.fbUserData, "adresse", $$v)
-                                  },
-                                  expression: "fbUserData.adresse"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: { label: "Ville", required: "" },
-                                model: {
-                                  value: _vm.fbUserData.location,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.fbUserData, "location", $$v)
-                                  },
-                                  expression: "fbUserData.location"
-                                }
-                              })
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: _vm.nameRules,
+                                      counter: 30,
+                                      label: "Nom et prenom",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.fbUserData.name,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.fbUserData, "name", $$v)
+                                      },
+                                      expression: "fbUserData.name"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: _vm.emailRules,
+                                      label: "E-mail",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.fbUserData.email,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.fbUserData, "email", $$v)
+                                      },
+                                      expression: "fbUserData.email"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      type: "numeric",
+                                      rules: _vm.phoneRule,
+                                      label: "Numero de telephone",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.fbUserData.phone,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.fbUserData, "phone", $$v)
+                                      },
+                                      expression: "fbUserData.phone"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: { label: "Adresse", required: "" },
+                                    model: {
+                                      value: _vm.fbUserData.adresse,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.fbUserData, "adresse", $$v)
+                                      },
+                                      expression: "fbUserData.adresse"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: { label: "Ville", required: "" },
+                                    model: {
+                                      value: _vm.fbUserData.location,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.fbUserData,
+                                          "location",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "fbUserData.location"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Methode de livraison",
+                                      readonly: "",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.methodeChoosen,
+                                      callback: function($$v) {
+                                        _vm.methodeChoosen = $$v
+                                      },
+                                      expression: "methodeChoosen"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-switch", {
+                                    attrs: { color: "green" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.toggleMethod()
+                                      }
+                                    }
+                                  })
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -47589,7 +47693,53 @@ var render = function() {
             [
               _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
               _vm._v(" "),
-              _c("v-spacer"),
+              _c(
+                "v-spacer",
+                [
+                  _c(
+                    "v-flex",
+                    {
+                      attrs: {
+                        xs12: "",
+                        sm5: "",
+                        md5: "",
+                        "offset-xs0": "",
+                        "offset-lg2": ""
+                      }
+                    },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-outer-icon": _vm.message
+                            ? "search"
+                            : "mdi-microphone",
+                          "prepend-icon": _vm.icon,
+                          box: "",
+                          "clear-icon": "mdi-close-circle",
+                          clearable: "",
+                          label: "Search",
+                          type: "text"
+                        },
+                        on: {
+                          "click:append": _vm.toggleMarker,
+                          "click:append-outer": _vm.sendMessage,
+                          "click:prepend": _vm.changeIcon,
+                          "click:clear": _vm.clearMessage
+                        },
+                        model: {
+                          value: _vm.message,
+                          callback: function($$v) {
+                            _vm.message = $$v
+                          },
+                          expression: "message"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-toolbar-items",

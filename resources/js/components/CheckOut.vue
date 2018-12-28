@@ -76,6 +76,7 @@
 <v-divider></v-divider>
             </v-layout>
             <v-layout xs12>
+              <v-flex d-flex>
   <v-form v-model="valid">
     <v-text-field
       v-model="fbUserData.name"
@@ -90,6 +91,7 @@
       label="E-mail"
       required
     ></v-text-field>
+   
       <v-text-field
       v-model="fbUserData.phone"
     type="numeric"
@@ -107,8 +109,28 @@
       label="Ville"
       required
     ></v-text-field>
+  
+         
+      <v-text-field
+       label="Methode de livraison"
+      v-model="methodeChoosen"
+  readonly
+      required
+    ></v-text-field>
+     <v-switch
+     color="green"
+          @click="toggleMethod()"
+      
+    ></v-switch>
+
+
   </v-form>
+              </v-flex>
+           
+              
+            
             </v-layout>
+
         </v-container>
         </v-card>
 
@@ -236,10 +258,14 @@ achat:Array
            dialog: false,
             dialog1: false,
             dialog2:false,
+             delivryMehods: ['EMS', 'taxi'],
         e1: 0,
+        methodeChoosen:'EMS',
+      
          fbSignInParams: {
         scope: 'email,public_profile',
         return_scopes: true,
+        
         
       },
       fbUserData:{
@@ -249,6 +275,7 @@ achat:Array
           adresse:'',
           location:'',
           phone:'',
+          
 
       }, 
       valid: false,
@@ -293,6 +320,7 @@ achat:Array
  axios.post('/nc', {  
 
          data:this.fbUserData,
+
         
        })
                 .then(function (response) {
@@ -315,8 +343,8 @@ this.e1++;
       axios.post('/book', {  
 
          data:this.achat,
-         id:this.fbUserData.id
-        
+         id:this.fbUserData.id,
+         delivery:this.methodeChoosen       
        })
                 .then(function (response) {
               console.log(response);
@@ -328,6 +356,12 @@ this.e1++;
                 });
                 this.dialog2 = false;
              window.location = "/login";
+    },toggleMethod(){
+      if(this.methodeChoosen == 'EMS'){
+        this.methodeChoosen = 'taxi';
+      }else{
+         this.methodeChoosen = 'EMS';
+      }
     }
   }
         
