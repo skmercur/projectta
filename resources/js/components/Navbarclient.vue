@@ -10,7 +10,25 @@
     
     <v-toolbar-title>Taher Boutique</v-toolbar-title>
 
-    <v-spacer></v-spacer>
+    <v-spacer>
+      <v-flex xs12 sm5 md5 offset-xs0 offset-lg2>
+        <v-text-field
+            v-model="message"
+            
+            :append-outer-icon="message ? 'search' : 'mdi-microphone'"
+            :prepend-icon="icon"
+            box
+            clear-icon="mdi-close-circle"
+            clearable
+            label="Search"
+            type="text"
+            @click:append="toggleMarker"
+            @click:append-outer="sendMessage"
+            @click:prepend="changeIcon"
+            @click:clear="clearMessage"
+          ></v-text-field>
+      </v-flex>
+    </v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat>Accueil</v-btn>
       
@@ -33,7 +51,11 @@ export default {
   },
   data(){
     return{
-
+  password: 'Password',
+      show: false,
+      message: '',
+      marker: true,
+      iconIndex: 0,
     }
   },
    
@@ -44,7 +66,24 @@ export default {
   },methods:{
     login(){
       window.location = "/login";
-    }
+    },
+   
+      sendMessage () {
+        this.resetIcon()
+        this.clearMessage()
+      },
+      clearMessage () {
+        this.message = ''
+      },
+      resetIcon () {
+        this.iconIndex = 0
+      },
+      changeIcon () {
+        this.iconIndex === this.icons.length - 1
+          ? this.iconIndex = 0
+          : this.iconIndex++
+      }
+ 
   }
 }
 </script>
