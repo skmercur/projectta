@@ -57,6 +57,10 @@ class RequestsToBuyController extends Controller
                     
                      return response()->json(['state'=>'sucess']);
                  }
+                 public function GetRequestsAdmin(Request $request){
+                    $requests = DB::table('requests_to_buys')->get()->count();
+                    return response()->json($requests);
+                 }
     /**
      * Store a newly created resource in storage.
      *

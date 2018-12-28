@@ -2078,6 +2078,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2096,6 +2099,7 @@ var dt = new Date();
       YearNow: dt.getFullYear(),
       sells: 0,
       sellsDzd: 0,
+      RequestsNP: 0,
       adminData: {}
     };
   },
@@ -2180,6 +2184,11 @@ var dt = new Date();
       });
       axios.post('/GetSellsDzd', {}).then(function (response) {
         return _this.sellsDzd = response.data;
+      }).catch(function (error) {
+        console.dir(error);
+      });
+      axios.post('/GetRequestsAdmin', {}).then(function (response) {
+        return _this.RequestsNP = response.data;
       }).catch(function (error) {
         console.dir(error);
       });
@@ -44427,7 +44436,7 @@ var render = function() {
                             [
                               _c("v-card-title", [
                                 _c("h4", { staticStyle: { color: "#000" } }, [
-                                  _vm._v("preview")
+                                  _vm._v("Requests")
                                 ])
                               ]),
                               _vm._v(" "),
@@ -44452,7 +44461,7 @@ var render = function() {
                                   staticClass: "text-xs-center pa-3",
                                   staticStyle: { color: "#000" }
                                 },
-                                [_vm._v("0 Sales")]
+                                [_vm._v(_vm._s(_vm.RequestsNP))]
                               )
                             ],
                             1

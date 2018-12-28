@@ -94,12 +94,12 @@
         <v-layout row wrap>
          <v-flex d-flex >
                   <v-card color="white"  class="ma-3" >
-                         <v-card-title><h4 style="color:#000;">preview</h4></v-card-title>
+                         <v-card-title><h4 style="color:#000;">Requests</h4></v-card-title>
           <v-divider></v-divider>
              <v-layout column>
            <v-icon color="black" large>trending_up</v-icon>
            </v-layout>
-            <h3 style="color:#000;" class="text-xs-center pa-3" >0 Sales</h3>
+            <h3 style="color:#000;" class="text-xs-center pa-3" >{{RequestsNP}}</h3>
                   </v-card>
               </v-flex>
                <v-flex d-flex >
@@ -126,6 +126,9 @@
               </v-flex>
 
         </v-layout>
+
+
+
          <v-layout row wrap>
          <v-flex d-flex >
                   <v-card color="white"  class="ma-3" >
@@ -230,6 +233,7 @@ import todo from './Todo';
       YearNow: dt.getFullYear(),
       sells:0,
       sellsDzd:0,
+      RequestsNP:0,
       adminData:{}
     }),
     props: {
@@ -311,6 +315,15 @@ this.showSectionOne=false;
             
                 })
                 .then(response => this.sellsDzd= response.data)
+                .catch(function (error) {
+                   console.dir(error);
+                });
+
+                 axios.post('/GetRequestsAdmin', {
+                  
+            
+                })
+                .then(response => this.RequestsNP= response.data)
                 .catch(function (error) {
                    console.dir(error);
                 });
