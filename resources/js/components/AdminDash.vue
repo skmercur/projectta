@@ -33,6 +33,22 @@
             <v-list-tile-title>Categories</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile  @click="pageSwitcher(4)">
+          <v-list-tile-action>
+            <v-icon>move_to_inbox</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Requests</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+         <v-list-tile  @click="pageSwitcher(5)">
+          <v-list-tile-action>
+            <v-icon>euro_symbol</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Sells</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
          <v-list-tile  @click="Logout">
           <v-list-tile-action>
             <v-icon>exit_to_app</v-icon>
@@ -156,6 +172,39 @@
           </v-flex>
 </v-layout>
       </v-container>
+
+  <v-container fluid grid-list-sm v-else-if="showSectionFour">
+<v-layout row wrap >
+          <v-flex d-flex xs12 order-xs5>
+<v-card color="white"  class="ma-3" >
+                         <v-card-title><h2 style="color:#000;">Requests</h2></v-card-title>
+                          <v-flex d-flex xs12 order-xs5>
+              <tabrequest></tabrequest>
+                          </v-flex>
+                             <v-divider></v-divider>
+                          
+                  </v-card>
+          </v-flex>
+</v-layout>
+      </v-container>
+
+
+       <v-container fluid grid-list-sm v-else-if="showSectionFive">
+<v-layout row wrap >
+          <v-flex d-flex xs12 order-xs5>
+<v-card color="white"  class="ma-3" >
+                         <v-card-title><h2 style="color:#000;">Sells</h2></v-card-title>
+                          <v-flex d-flex xs12 order-xs5>
+              
+                          </v-flex>
+                             <v-divider></v-divider>
+                          
+                  </v-card>
+          </v-flex>
+</v-layout>
+      </v-container>
+
+
     </v-content>
     <v-footer app fixed>
       <span>PowerDz &copy; {{YearNow}}</span>
@@ -176,6 +225,8 @@ import todo from './Todo';
       showSectionOne:true,
       showSectionTwo:false,
       showSectionThree:false,
+      showSectionFour:false,
+      showSectionFive:false,
       YearNow: dt.getFullYear(),
       sells:0,
       sellsDzd:0,
@@ -194,6 +245,8 @@ switch(i){
  this.showSectionOne=true;
       this.showSectionTwo=false;
       this.showSectionThree=false;
+        this.showSectionFour=false;
+      this.showSectionFive=false;
       console.log('One clicked');
       break;
     }
@@ -201,6 +254,8 @@ switch(i){
  this.showSectionOne=false;
       this.showSectionTwo=true;
       this.showSectionThree=false;
+        this.showSectionFour=false;
+      this.showSectionFive=false;
       console.log('Two clicked');
       break;
     }
@@ -208,8 +263,23 @@ switch(i){
  this.showSectionOne=false;
       this.showSectionTwo=false;
       this.showSectionThree=true;
+      this.showSectionFour=false;
+      this.showSectionFive=false;
       console.log('three clicked');
       break;
+    }case 4:{
+this.showSectionOne=false;
+      this.showSectionTwo=false;
+      this.showSectionThree=false;
+      this.showSectionFour=true;
+      this.showSectionFive=false;
+      break;
+    }case 5:{
+      this.showSectionOne=false;
+      this.showSectionTwo=false;
+      this.showSectionThree=false;
+      this.showSectionFour=false;
+      this.showSectionFive=true;
     }
 }
 },Logout(){

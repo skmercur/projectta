@@ -333,7 +333,7 @@
 <!-- Dialog detailles -->
 
 
-        <v-card dark color="primary" @click="showMeThisOne(produit)" >
+        <v-card dark color="primary"  >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
     <v-card
@@ -341,6 +341,7 @@
       class="mx-auto"
       color="grey lighten-4"
       max-width="600"
+      
     >
       <v-img
         :aspect-ratio="16/9"
@@ -394,8 +395,9 @@
     </v-chip></div>
         <v-divider v-elseif="produit.product.remise == 0"></v-divider>
     
-        <h3 class="display-1 font-weight-light orange--text mb-2">{{produit.product.name_product}}</h3>
-        <div class="font-weight-light title mb-2" style="color:#000">
+        <h3 class="display-1 font-weight-light orange--text mb-2" @click="showMeThisOne(produit)">{{produit.product.name_product}}</h3>
+        <div class="font-weight-light title mb-2" style="color:#000"  @click="showMeThisOne(produit)">
+
          {{produit.product.summery}}
         </div>
       </v-card-text>

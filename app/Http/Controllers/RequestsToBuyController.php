@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RequestsToBuy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RequestsToBuyController extends Controller
 {
@@ -36,7 +37,26 @@ class RequestsToBuyController extends Controller
     {
         //
     }
-
+    public function getRequests(Request $request){
+        $cat = DB::table('requests_to_buys')->orderBy('created_at','desc')->get();
+            
+             return response()->json($cat);
+         }
+         public function upRequest(Request $request){
+            $id = $request->id;
+           
+            $status = $request->status;
+          
+                DB::table('requests_to_buys')->where('id',$id)->update(['status'=>$status]);
+            
+                 return response()->json(['state'=>'sucess']);
+             }
+             public function delReq(Request $request){
+             $id = $request->id;
+                 DB::table('requests_to_buys')->where('id',$id)->delete();
+                    
+                     return response()->json(['state'=>'sucess']);
+                 }
     /**
      * Store a newly created resource in storage.
      *

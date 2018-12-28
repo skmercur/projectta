@@ -158,4 +158,7 @@ Route::post('/buy','ItemsBoughtController@BuyFunction');
 Route::get('/fact',function(){
 return view('facture');
 });
+Route::post('/getReq','RequestsToBuyController@getRequests');
+Route::post('/upReq','RequestsToBuyController@upRequests');
+Route::post('/delReq','RequestsToBuyController@delRequests');
 
