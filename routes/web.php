@@ -165,4 +165,5 @@ Route::post('/getItems','ItemsBoughtController@getItems');
 Route::post('/upItems','ItemsBoughtController@upItems');
 Route::post('/delItems','ItemsBoughtController@delItems');
 Route::post('/GetRequestsAdmin','RequestsToBuyController@GetRequestsAdmin');
+Route::post('/getDistance','ClientsController@getDistance');
 

@@ -232,6 +232,8 @@
 <v-flex xs12>
  <v-btn class="ma-2" @click="dialog1 = true">je reserve le produit</v-btn>
 </v-flex>
+
+<h5>Total a payer avec livraison  {{userPayTotal}} </h5>
         </v-layout>
         </v-card>
 
@@ -251,13 +253,17 @@
 
   export default {
      props:{
-achat:Array
+achat:Array,
+prix:Number,
      },
     data () {
       return {
            dialog: false,
             dialog1: false,
             dialog2:false,
+            userDistance:0,
+            userPayTotal:0,
+
              delivryMehods: ['EMS', 'taxi'],
         e1: 0,
         methodeChoosen:'EMS',
@@ -296,7 +302,7 @@ achat:Array
       }
     },
     mounted(){
-     
+     console.log(this.prix);
     }
     , methods: {
     onSignInSuccess (response) {
@@ -323,19 +329,37 @@ achat:Array
 
         
        })
-                .then(function (response) {
-              console.log(response);
-                
-                  
-                })
+                .then(response => this.userDistance = response.data)
                 .catch(function (error) {
                   alert(error.response.data.message);
                  
                 });
               this.e1++;
+if(this.e1 == 3){
+  axios.post('/getDistance', {  
+
+         id:this.fbUserData.id,
+
+        
+       })
+               .then(response => this.userDistance = response.data)
+                .catch(function (error) {
+                  alert(error.response.data.message);
+                 
+                });
+
+if(this.userDistance < 30000){
+this.userPayTotal = this.prix + 800;
+  }
+
+
+}
+
+
         }else{
 //TODO dont forget to remove this one
-this.e1++;
+
+
         }
     
     },

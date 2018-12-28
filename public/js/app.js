@@ -2456,15 +2456,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    achat: Array
+    achat: Array,
+    prix: Number
   },
   data: function data() {
     return {
       dialog: false,
       dialog1: false,
       dialog2: false,
+      userDistance: 0,
+      userPayTotal: 0,
       delivryMehods: ['EMS', 'taxi'],
       e1: 0,
       methodeChoosen: 'EMS',
@@ -2500,7 +2505,9 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log(this.prix);
+  },
   methods: {
     onSignInSuccess: function onSignInSuccess(response) {
       var _this = this;
@@ -2522,18 +2529,32 @@ __webpack_require__.r(__webpack_exports__);
       console.log('OH NOES', error);
     },
     checkBeforeSubmit: function checkBeforeSubmit() {
+      var _this2 = this;
+
       if (this.fbUserData.name !== '' && this.fbUserData.email !== '' && this.fbUserData.adresse !== '' && this.fbUserData.phone !== '') {
         axios.post('/nc', {
           data: this.fbUserData
         }).then(function (response) {
-          console.log(response);
+          return _this2.userDistance = response.data;
         }).catch(function (error) {
           alert(error.response.data.message);
         });
         this.e1++;
-      } else {
-        //TODO dont forget to remove this one
-        this.e1++;
+
+        if (this.e1 == 3) {
+          axios.post('/getDistance', {
+            id: this.fbUserData.id
+          }).then(function (response) {
+            return _this2.userDistance = response.data;
+          }).catch(function (error) {
+            alert(error.response.data.message);
+          });
+
+          if (this.userDistance < 30000) {
+            this.userPayTotal = this.prix + 800;
+          }
+        }
+      } else {//TODO dont forget to remove this one
       }
     },
     bookProducts: function bookProducts() {
@@ -9460,7 +9481,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -45482,7 +45503,15 @@ var render = function() {
                           )
                         ],
                         1
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("h5", [
+                        _vm._v(
+                          "Total a payer avec livraison  " +
+                            _vm._s(_vm.userPayTotal) +
+                            " "
+                        )
+                      ])
                     ],
                     1
                   )
@@ -48019,7 +48048,12 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _vm.step == 2
-                        ? _c("checkout", { attrs: { achat: _vm.itemsInCart } })
+                        ? _c("checkout", {
+                            attrs: {
+                              achat: _vm.itemsInCart,
+                              prix: _vm.prixTotal
+                            }
+                          })
                         : _vm._e()
                     ],
                     1

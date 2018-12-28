@@ -109,6 +109,13 @@ public function login(Request $request){
     }
    
 }
+
+public function getDistance(Request $request){
+    $id = $request->id;
+    $user =DB::table('clients')->where('id_facebook',$id)->first();
+    $dist = $user->distance;
+    return response()->json($dist);
+}
     /**
      * Store a newly created resource in storage.
      *
