@@ -3709,33 +3709,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -3751,6 +3724,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     login: function login() {
       window.location = "/login";
+    },
+    toggleMarker: function toggleMarker() {
+      this.marker = !this.marker;
     },
     sendMessage: function sendMessage() {
       this.resetIcon();
@@ -47711,89 +47687,27 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-layout",
-    { attrs: { row: "", wrap: "" } },
+    "v-toolbar",
+    { attrs: { fixed: "", clipped: "", color: "#263238", dark: "" } },
     [
+      _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
+      _vm._v(" "),
       _c(
-        "v-flex",
-        { attrs: { xs12: "", sm12: "", xl12: "" } },
+        "v-toolbar-items",
         [
+          _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Accueil")]),
+          _vm._v(" "),
           _c(
-            "v-toolbar",
-            [
-              _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
-              _vm._v(" "),
-              _c(
-                "v-spacer",
-                [
-                  _c(
-                    "v-flex",
-                    {
-                      attrs: {
-                        xs12: "",
-                        sm5: "",
-                        md5: "",
-                        "offset-xs0": "",
-                        "offset-lg2": ""
-                      }
-                    },
-                    [
-                      _c("v-text-field", {
-                        attrs: {
-                          "append-outer-icon": _vm.message
-                            ? "search"
-                            : "mdi-microphone",
-                          "prepend-icon": _vm.icon,
-                          box: "",
-                          "clear-icon": "mdi-close-circle",
-                          clearable: "",
-                          label: "Search",
-                          type: "text"
-                        },
-                        on: {
-                          "click:append": _vm.toggleMarker,
-                          "click:append-outer": _vm.sendMessage,
-                          "click:prepend": _vm.changeIcon,
-                          "click:clear": _vm.clearMessage
-                        },
-                        model: {
-                          value: _vm.message,
-                          callback: function($$v) {
-                            _vm.message = $$v
-                          },
-                          expression: "message"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-toolbar-items",
-                { staticClass: "hidden-sm-and-down" },
-                [
-                  _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Accueil")]),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { flat: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.login()
-                        }
-                      }
-                    },
-                    [_vm._v(" \n       \n    se connecter\n       \n      ")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
+            "v-btn",
+            {
+              attrs: { flat: "" },
+              on: {
+                click: function($event) {
+                  _vm.login()
+                }
+              }
+            },
+            [_vm._v(" \n      Continuer Votre Achat       \n     ")]
           )
         ],
         1
@@ -48289,7 +48203,6 @@ var render = function() {
                                                 absolute: "",
                                                 color: "orange",
                                                 fab: "",
-                                                large: "",
                                                 right: "",
                                                 top: ""
                                               },
@@ -48312,7 +48225,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                " font-weight-light grey--text caption mb-2"
+                                                " font-weight-light grey--text caption mb-2  text-truncate"
                                             },
                                             [
                                               _c(
@@ -48343,7 +48256,7 @@ var render = function() {
                                             "h3",
                                             {
                                               staticClass:
-                                                "title font-weight-light orange--text mb-2"
+                                                "title font-weight-light orange--text mb-2  text-truncate"
                                             },
                                             [
                                               _vm._v(
@@ -48359,7 +48272,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "mb-2 text-truncate black--text font-weight-thin subheading"
+                                                "mb-2 text-truncate black--text font-weight-thin subheading  text-truncate"
                                             },
                                             [
                                               _vm._v(
@@ -48479,7 +48392,6 @@ var render = function() {
                                                 absolute: "",
                                                 color: "orange",
                                                 fab: "",
-                                                large: "",
                                                 right: "",
                                                 top: ""
                                               },
@@ -48502,7 +48414,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light grey--text caption mb-2"
+                                                "font-weight-light grey--text caption mb-2 text-truncate"
                                             },
                                             [
                                               _c(
@@ -48533,7 +48445,7 @@ var render = function() {
                                             "h3",
                                             {
                                               staticClass:
-                                                "title font-weight-light orange--text mb-2"
+                                                "title font-weight-light orange--text mb-2 text-truncate"
                                             },
                                             [
                                               _vm._v(
@@ -48669,7 +48581,6 @@ var render = function() {
                                                 absolute: "",
                                                 color: "orange",
                                                 fab: "",
-                                                large: "",
                                                 right: "",
                                                 top: ""
                                               },
@@ -48692,7 +48603,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light grey--text caption mb-2"
+                                                "font-weight-light grey--text caption mb-2  text-truncate"
                                             },
                                             [
                                               _c(
@@ -48723,7 +48634,7 @@ var render = function() {
                                             "h3",
                                             {
                                               staticClass:
-                                                "display-1 font-weight-light orange--text mb-2"
+                                                "title font-weight-light orange--text mb-2 text-truncate"
                                             },
                                             [
                                               _vm._v(
@@ -48739,7 +48650,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "mb-2 text-truncate black--text font-weight-thin subheading"
+                                                "mb-2 text-truncate black--text font-weight-thin subheading  text-truncate"
                                             },
                                             [
                                               _vm._v(
@@ -48932,7 +48843,7 @@ var render = function() {
                                                             "div",
                                                             {
                                                               staticClass:
-                                                                "font-weight-light grey--text caption mb-2"
+                                                                "font-weight-light grey--text caption mb-2 "
                                                             },
                                                             [
                                                               _c(
@@ -48980,7 +48891,7 @@ var render = function() {
                                                         "h3",
                                                         {
                                                           staticClass:
-                                                            "title font-weight-light orange--text mb-2",
+                                                            "title font-weight-light orange--text mb-2 text-truncate",
                                                           on: {
                                                             click: function(
                                                               $event
