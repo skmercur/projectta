@@ -118,6 +118,29 @@ return response()->json(['status'=>'success']);
     }
 }
 }
+
+public function getItems(Request $request){
+    $cat = DB::table('items_boughts')->orderBy('created_at','desc')->get();
+            
+    return response()->json($cat);
+}
+public function upItems(Request $request){
+    $id = $request->id;
+   
+    $status = $request->status;
+  
+        DB::table('items_boughts')->where('id',$id)->update(['status'=>$status]);
+    
+         return response()->json(['state'=>'sucess']);
+     }
+     public function delItems(Request $request){
+     $id = $request->id;
+         DB::table('items_boughts')->where('id',$id)->delete();
+            
+             return response()->json(['state'=>'sucess']);
+         }
+
+
     /**
      * Remove the specified resource from storage.
      *

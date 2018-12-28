@@ -195,7 +195,7 @@
 <v-card color="white"  class="ma-3" >
                          <v-card-title><h2 style="color:#000;">Sells</h2></v-card-title>
                           <v-flex d-flex xs12 order-xs5>
-              
+              <tabboughts></tabboughts>
                           </v-flex>
                              <v-divider></v-divider>
                           

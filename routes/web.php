@@ -161,4 +161,7 @@ return view('facture');
 Route::post('/getReq','RequestsToBuyController@getRequests');
 Route::post('/upReq','RequestsToBuyController@upRequests');
 Route::post('/delReq','RequestsToBuyController@delRequests');
+Route::post('/getItems','ItemsBoughtController@getItems');
+Route::post('/upItems','ItemsBoughtController@upItems');
+Route::post('/delItems','ItemsBoughtController@delItems');
 
