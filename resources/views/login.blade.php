@@ -2,8 +2,11 @@
 
 @section('content')
 
+
 <h5>Welcome</h5>
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState()"></div>
+
+
+<div class="fb-login-button col align-self-center" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState()"></div>
 
 <form method="post" name="loginform" action="/login" >
 @csrf
