@@ -6,7 +6,7 @@
       sm12
     xl12
     >
-  <v-toolbar>
+  <v-toolbar color="#263238" dark>
     
     <v-toolbar-title>Taher Boutique</v-toolbar-title>
 
@@ -33,9 +33,7 @@
       <v-btn flat>Accueil</v-btn>
       
       <v-btn flat @click="login()"> 
-        
-     se connecter
-        
+        Continuer Votre Achat       
        </v-btn>
     </v-toolbar-items>
   </v-toolbar>   
@@ -68,6 +66,9 @@ export default {
       window.location = "/login";
     },
    
+       toggleMarker () {
+        this.marker = !this.marker
+      },
       sendMessage () {
         this.resetIcon()
         this.clearMessage()
