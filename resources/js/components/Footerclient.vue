@@ -1,8 +1,6 @@
 <template>
   <v-footer
     dark
-    
-    height="auto"
   >
     <v-card
       class="flex"
@@ -26,7 +24,7 @@
       </v-card-title>
 
       <v-card-actions class="grey darken-3 justify-center">
-        &copy;2018 — <strong>Vuetify</strong>
+        &copy;2018 — <strong>Pawerdz</strong>
       </v-card-actions>
     </v-card>
   </v-footer>
@@ -37,9 +35,6 @@
     data: () => ({
       icons: [
         'fab fa-facebook',
-        'fab fa-twitter',
-        'fab fa-google-plus',
-        'fab fa-linkedin',
         'fab fa-instagram'
       ]
     })
