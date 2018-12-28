@@ -167,3 +167,11 @@ Route::post('/delItems','ItemsBoughtController@delItems');
 Route::post('/GetRequestsAdmin','RequestsToBuyController@GetRequestsAdmin');
 Route::post('/getDistance','ClientsController@getDistance');
 
+//Dont forget to remove them
+Route::get('/alogin',function(){
+    return view('buypage');
+});
+Route::get('/blogin',function(){
+    return view('myitems');
+});
+
