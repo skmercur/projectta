@@ -93,8 +93,9 @@ public function BuyFunction(Request $request){
         return back();
      
     }else{
-
         $client = DB::table('clients')->where('id_facebook',$fb)->first();
+        $reqTobuy = DB::table('requests_to_buys')->where('id_facebook',$fb)->first();
+        $prix = $reqTobuy->prix;
    $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$fb)."/";
    $file->move($destinationPath,$hash);
@@ -105,7 +106,7 @@ public function BuyFunction(Request $request){
    ItemsBought::create([
     'id_buyer'=>$client->id,
     'code_product'=>$code,'image_ccp'=>$destinationPath.$hash,'code_commentaire' =>$codeCommentaire ,
-    'status'=>0,
+    'status'=>0,'prix'=>$prix
    ]);
    }
 

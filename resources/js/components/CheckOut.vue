@@ -368,7 +368,8 @@ this.userPayTotal = this.prix + 800;
 
          data:this.achat,
          id:this.fbUserData.id,
-         delivery:this.methodeChoosen       
+         delivery:this.methodeChoosen,
+         prix:this.userPayTotal,       
        })
                 .then(function (response) {
               console.log(response);

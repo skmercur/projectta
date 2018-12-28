@@ -2561,7 +2561,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/book', {
         data: this.achat,
         id: this.fbUserData.id,
-        delivery: this.methodeChoosen
+        delivery: this.methodeChoosen,
+        prix: this.userPayTotal
       }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
@@ -9481,7 +9482,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48016,7 +48017,7 @@ var render = function() {
                                                         "v-list-tile-content",
                                                         {
                                                           staticClass:
-                                                            "align-end"
+                                                            "align-end  text-truncate black--text font-weight-thin caption"
                                                         },
                                                         [
                                                           _vm._v(
@@ -48311,7 +48312,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light grey--text title mb-2"
+                                                " font-weight-light grey--text caption mb-2"
                                             },
                                             [
                                               _c(
@@ -48324,7 +48325,7 @@ var render = function() {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\r\n      Le produit le plus vendu\r\n      "
+                                                    "\r\n      Le produit le plus vendu \r\n      "
                                                   ),
                                                   _c(
                                                     "v-icon",
@@ -48342,7 +48343,7 @@ var render = function() {
                                             "h3",
                                             {
                                               staticClass:
-                                                "display-1 font-weight-light orange--text mb-2"
+                                                "title font-weight-light orange--text mb-2"
                                             },
                                             [
                                               _vm._v(
@@ -48358,7 +48359,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light title mb-2"
+                                                "mb-2 text-truncate black--text font-weight-thin subheading"
                                             },
                                             [
                                               _vm._v(
@@ -48367,7 +48368,7 @@ var render = function() {
                                                     _vm.dataSiteObj[0]
                                                       .most_selled.summery
                                                   ) +
-                                                  "\r\n        "
+                                                  " \r\n        "
                                               )
                                             ]
                                           )
@@ -48501,7 +48502,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light grey--text title mb-2"
+                                                "font-weight-light grey--text caption mb-2"
                                             },
                                             [
                                               _c(
@@ -48532,7 +48533,7 @@ var render = function() {
                                             "h3",
                                             {
                                               staticClass:
-                                                "display-1 font-weight-light orange--text mb-2"
+                                                "title font-weight-light orange--text mb-2"
                                             },
                                             [
                                               _vm._v(
@@ -48548,7 +48549,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light title mb-2"
+                                                "mb-2 text-truncate black--text font-weight-thin subheading"
                                             },
                                             [
                                               _vm._v(
@@ -48691,7 +48692,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light grey--text title mb-2"
+                                                "font-weight-light grey--text caption mb-2"
                                             },
                                             [
                                               _c(
@@ -48738,7 +48739,7 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "font-weight-light title mb-2"
+                                                "mb-2 text-truncate black--text font-weight-thin subheading"
                                             },
                                             [
                                               _vm._v(
@@ -48905,7 +48906,6 @@ var render = function() {
                                                             absolute: "",
                                                             color: "orange",
                                                             fab: "",
-                                                            large: "",
                                                             right: "",
                                                             top: ""
                                                           },
@@ -48932,7 +48932,7 @@ var render = function() {
                                                             "div",
                                                             {
                                                               staticClass:
-                                                                "font-weight-light grey--text title "
+                                                                "font-weight-light grey--text caption mb-2"
                                                             },
                                                             [
                                                               _c(
@@ -48980,7 +48980,7 @@ var render = function() {
                                                         "h3",
                                                         {
                                                           staticClass:
-                                                            "display-1 font-weight-light orange--text mb-2",
+                                                            "title font-weight-light orange--text mb-2",
                                                           on: {
                                                             click: function(
                                                               $event
@@ -49005,10 +49005,7 @@ var render = function() {
                                                         "div",
                                                         {
                                                           staticClass:
-                                                            "font-weight-light title mb-2",
-                                                          staticStyle: {
-                                                            color: "#000"
-                                                          },
+                                                            "mb-2 text-truncate black--text font-weight-thin subheading",
                                                           on: {
                                                             click: function(
                                                               $event

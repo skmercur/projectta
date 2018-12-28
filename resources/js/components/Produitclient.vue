@@ -60,7 +60,7 @@
             </v-list-tile>
             <v-list-tile>
               <v-list-tile-content>Details:</v-list-tile-content>
-              <v-list-tile-content class="align-end">{{ props.item.summery }}</v-list-tile-content>
+              <v-list-tile-content class="align-end  text-truncate black--text font-weight-thin caption">{{ props.item.summery }}</v-list-tile-content>
             </v-list-tile>
             
           </v-list>
@@ -169,13 +169,13 @@
 
 
 
-        <div class="font-weight-light grey--text title mb-2"><v-chip color="orange" text-color="white">
-      Le produit le plus vendu
+        <div class=" font-weight-light grey--text caption mb-2"><v-chip color="orange" text-color="white">
+      Le produit le plus vendu 
       <v-icon right>star</v-icon>
     </v-chip></div>
-        <h3 class="display-1 font-weight-light orange--text mb-2">{{dataSiteObj[0].most_selled.name_product}}</h3>
-        <div class="font-weight-light title mb-2">
-          {{dataSiteObj[0].most_selled.summery}}
+        <h3 class="title font-weight-light orange--text mb-2">{{dataSiteObj[0].most_selled.name_product}}</h3>
+        <div class="mb-2 text-truncate black--text font-weight-thin subheading">
+          {{dataSiteObj[0].most_selled.summery}} 
         </div>
       </v-card-text>
     </v-card>
@@ -232,12 +232,12 @@
 
 
 
-        <div class="font-weight-light grey--text title mb-2"><v-chip color="green" text-color="white">
+        <div class="font-weight-light grey--text caption mb-2"><v-chip color="green" text-color="white">
       Le produit le plus vu
       <v-icon right>remove_red_eye</v-icon>
     </v-chip></div>
-        <h3 class="display-1 font-weight-light orange--text mb-2">{{dataSiteObj[0].most_viewed.name_product}}</h3>
-        <div class="font-weight-light title mb-2">
+        <h3 class="title font-weight-light orange--text mb-2">{{dataSiteObj[0].most_viewed.name_product}}</h3>
+        <div class="mb-2 text-truncate black--text font-weight-thin subheading">
           {{dataSiteObj[0].most_viewed.summery}}
         </div>
       </v-card-text>
@@ -293,12 +293,12 @@
 
 
 
-        <div class="font-weight-light grey--text title mb-2"><v-chip color="red" text-color="white">
+        <div class="font-weight-light grey--text caption mb-2"><v-chip color="red" text-color="white">
       Le produit le plus recent
       <v-icon right>access_time</v-icon>
     </v-chip></div>
         <h3 class="display-1 font-weight-light orange--text mb-2">{{dataSiteObj[0].most_recent.name_product}}</h3>
-        <div class="font-weight-light title mb-2">
+        <div class="mb-2 text-truncate black--text font-weight-thin subheading">
           {{dataSiteObj[0].most_recent.summery}}
         </div>
       </v-card-text>
@@ -378,7 +378,7 @@
           color="orange"
           class="white--text"
           fab
-          large
+          
           right
           top
         >
@@ -389,14 +389,14 @@
 
 
 
-        <div class="font-weight-light grey--text title " v-if="produit.product.remise > 0"><v-chip color="green" text-color="white">
+        <div class="font-weight-light grey--text caption mb-2" v-if="produit.product.remise > 0"><v-chip color="green" text-color="white">
       - {{produit.product.remise}} %
      
     </v-chip></div>
         <v-divider v-elseif="produit.product.remise == 0"></v-divider>
     
-        <h3 class="display-1 font-weight-light orange--text mb-2" @click="showMeThisOne(produit)">{{produit.product.name_product}}</h3>
-        <div class="font-weight-light title mb-2" style="color:#000"  @click="showMeThisOne(produit)">
+        <h3 class="title font-weight-light orange--text mb-2" @click="showMeThisOne(produit)">{{produit.product.name_product}}</h3>
+        <div class="mb-2 text-truncate black--text font-weight-thin subheading"   @click="showMeThisOne(produit)">
 
          {{produit.product.summery}}
         </div>

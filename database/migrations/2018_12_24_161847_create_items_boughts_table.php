@@ -20,6 +20,7 @@ class CreateItemsBoughtsTable extends Migration
             $table->longText('image_ccp');
             $table->string('code_commentaire',8)->unique();
             $table->integer('status');
+            $table->integer('prix');
             $table->timestamps();
         });
     }
