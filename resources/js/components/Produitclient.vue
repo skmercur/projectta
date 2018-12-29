@@ -184,8 +184,7 @@
         </v-card>
 
         -->
-
- <div class="card">
+<v-card elevation-20>
      <v-img
       :aspect-ratio="16/9"
         :src="'http://localhost/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(','))" ></v-img>
@@ -205,14 +204,14 @@ add_shopping_cart
           </div>
         </div>
       </div>
-    </div>
+    </v-card>
 
       </v-flex>
 
 
 <v-flex  xs11  lg4 >
 
- <div class="card">
+<v-card elevation-20>
      <v-img
       :aspect-ratio="16/9"
         :src="'http://localhost/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(','))" ></v-img>
@@ -232,7 +231,7 @@ add_shopping_cart
           </div>
         </div>
       </div>
-    </div>
+    </v-card>
 
 
 
@@ -300,7 +299,7 @@ add_shopping_cart
 
 
 
-    <div class="card">
+    <v-card elevation-20>
      <v-img
       :aspect-ratio="16/9"
         :src="'http://localhost/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(','))" ></v-img>
@@ -320,7 +319,7 @@ add_shopping_cart
           </div>
         </div>
       </div>
-    </div>
+    </v-card>
 
 
 
@@ -414,7 +413,7 @@ add_shopping_cart
 
 
 
-    <div class="card">
+    <v-card elevation-20>
      <v-img
         :aspect-ratio="16/9"  :src="'http://localhost/' +produit.product.images.substring(0,produit.product.images.indexOf(','))" ></v-img>
       <div class="card-body">
@@ -433,7 +432,7 @@ add_shopping_cart
           </div>
         </div>
       </div>
-    </div>
+    </v-card>
 
 
 

@@ -4322,7 +4322,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48440,306 +48439,338 @@ var render = function() {
             "v-layout",
             { attrs: { row: "", wrap: "" } },
             [
-              _c("v-flex", { attrs: { xs11: "", lg4: "" } }, [
-                _c(
-                  "div",
-                  { staticClass: "card" },
-                  [
-                    _c("v-img", {
-                      attrs: {
-                        "aspect-ratio": 16 / 9,
-                        src:
-                          "http://localhost/" +
-                          _vm.dataSiteObj[0].most_selled.images.substring(
-                            0,
-                            _vm.dataSiteObj[0].most_selled.images.indexOf(",")
-                          )
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c(
-                        "h4",
-                        {
-                          staticClass: "card-title text-truncate",
-                          on: {
-                            click: function($event) {
-                              _vm.showMeThisOne(_vm.dataSiteObj[0].most_selled)
+              _c(
+                "v-flex",
+                { attrs: { xs11: "", lg4: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { "elevation-20": "" } },
+                    [
+                      _c("v-img", {
+                        attrs: {
+                          "aspect-ratio": 16 / 9,
+                          src:
+                            "http://localhost/" +
+                            _vm.dataSiteObj[0].most_selled.images.substring(
+                              0,
+                              _vm.dataSiteObj[0].most_selled.images.indexOf(",")
+                            )
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          {
+                            staticClass: "card-title text-truncate",
+                            on: {
+                              click: function($event) {
+                                _vm.showMeThisOne(
+                                  _vm.dataSiteObj[0].most_selled
+                                )
+                              }
                             }
-                          }
-                        },
-                        [
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.dataSiteObj[0].most_selled.name_product
+                              )
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-text" }, [
                           _vm._v(
-                            _vm._s(_vm.dataSiteObj[0].most_selled.name_product)
+                            "  " +
+                              _vm._s(_vm.dataSiteObj[0].most_selled.prix) +
+                              " DA"
                           )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "  " +
-                            _vm._s(_vm.dataSiteObj[0].most_selled.prix) +
-                            " DA"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            " font-weight-light grey--text caption mb-2  text-truncate"
-                        },
-                        [
-                          _c(
-                            "v-chip",
-                            {
-                              attrs: { color: "orange", "text-color": "white" }
-                            },
-                            [
-                              _vm._v(
-                                "\r\n      Le produit le plus vendu \r\n      "
-                              ),
-                              _c("v-icon", { attrs: { right: "" } }, [
-                                _vm._v("star")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row justify-content-end" }, [
+                        ]),
+                        _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "col-md-4 col-lg-4 col-xs-4" },
+                          {
+                            staticClass:
+                              " font-weight-light grey--text caption mb-2  text-truncate"
+                          },
                           [
                             _c(
-                              "button",
+                              "v-chip",
                               {
-                                staticClass: "btn btn-primary btn-block",
-                                on: {
-                                  click: function($event) {
-                                    _vm.addToCart(
-                                      _vm.dataSiteObj[0].most_selled
-                                    )
-                                  }
+                                attrs: {
+                                  color: "orange",
+                                  "text-color": "white"
                                 }
                               },
                               [
-                                _c("i", { staticClass: "material-icons" }, [
-                                  _vm._v("\r\nadd_shopping_cart\r\n")
+                                _vm._v(
+                                  "\r\n      Le produit le plus vendu \r\n      "
+                                ),
+                                _c("v-icon", { attrs: { right: "" } }, [
+                                  _vm._v("star")
                                 ])
-                              ]
+                              ],
+                              1
                             )
-                          ]
-                        )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row justify-content-end" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-md-4 col-lg-4 col-xs-4" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary btn-block",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addToCart(
+                                        _vm.dataSiteObj[0].most_selled
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", { staticClass: "material-icons" }, [
+                                    _vm._v("\r\nadd_shopping_cart\r\n")
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ],
-                  1
-                )
-              ]),
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("v-flex", { attrs: { xs11: "", lg4: "" } }, [
-                _c(
-                  "div",
-                  { staticClass: "card" },
-                  [
-                    _c("v-img", {
-                      attrs: {
-                        "aspect-ratio": 16 / 9,
-                        src:
-                          "http://localhost/" +
-                          _vm.dataSiteObj[0].most_viewed.images.substring(
-                            0,
-                            _vm.dataSiteObj[0].most_viewed.images.indexOf(",")
-                          )
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c(
-                        "h4",
-                        {
-                          staticClass: "card-title text-truncate",
-                          on: {
-                            click: function($event) {
-                              _vm.showMeThisOne(_vm.dataSiteObj[0].most_viewed)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm.dataSiteObj[0].most_viewed.name_product)
-                          )
-                        ]
-                      ),
+              _c(
+                "v-flex",
+                { attrs: { xs11: "", lg4: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { "elevation-20": "" } },
+                    [
+                      _c("v-img", {
+                        attrs: {
+                          "aspect-ratio": 16 / 9,
+                          src:
+                            "http://localhost/" +
+                            _vm.dataSiteObj[0].most_viewed.images.substring(
+                              0,
+                              _vm.dataSiteObj[0].most_viewed.images.indexOf(",")
+                            )
+                        }
+                      }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "  " +
-                            _vm._s(_vm.dataSiteObj[0].most_viewed.prix) +
-                            " DA"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "font-weight-light grey--text caption mb-2 text-truncate"
-                        },
-                        [
-                          _c(
-                            "v-chip",
-                            {
-                              attrs: { color: "green", "text-color": "white" }
-                            },
-                            [
-                              _vm._v(
-                                "\r\n      Le produit le plus vu\r\n      "
-                              ),
-                              _c("v-icon", { attrs: { right: "" } }, [
-                                _vm._v("remove_red_eye")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row justify-content-end" }, [
+                      _c("div", { staticClass: "card-body" }, [
                         _c(
-                          "div",
-                          { staticClass: "col-md-4 col-lg-4 col-xs-4" },
+                          "h4",
+                          {
+                            staticClass: "card-title text-truncate",
+                            on: {
+                              click: function($event) {
+                                _vm.showMeThisOne(
+                                  _vm.dataSiteObj[0].most_viewed
+                                )
+                              }
+                            }
+                          },
                           [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary btn-block",
-                                on: {
-                                  click: function($event) {
-                                    _vm.addToCart(
-                                      _vm.dataSiteObj[0].most_viewed
-                                    )
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", { staticClass: "material-icons" }, [
-                                  _vm._v("\r\nadd_shopping_cart\r\n")
-                                ])
-                              ]
+                            _vm._v(
+                              _vm._s(
+                                _vm.dataSiteObj[0].most_viewed.name_product
+                              )
                             )
                           ]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-text" }, [
+                          _vm._v(
+                            "  " +
+                              _vm._s(_vm.dataSiteObj[0].most_viewed.prix) +
+                              " DA"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "font-weight-light grey--text caption mb-2 text-truncate"
+                          },
+                          [
+                            _c(
+                              "v-chip",
+                              {
+                                attrs: { color: "green", "text-color": "white" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n      Le produit le plus vu\r\n      "
+                                ),
+                                _c("v-icon", { attrs: { right: "" } }, [
+                                  _vm._v("remove_red_eye")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row justify-content-end" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-md-4 col-lg-4 col-xs-4" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary btn-block",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addToCart(
+                                        _vm.dataSiteObj[0].most_viewed
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", { staticClass: "material-icons" }, [
+                                    _vm._v("\r\nadd_shopping_cart\r\n")
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ],
-                  1
-                )
-              ]),
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("v-flex", { attrs: { xs11: "", lg4: "" } }, [
-                _c(
-                  "div",
-                  { staticClass: "card" },
-                  [
-                    _c("v-img", {
-                      attrs: {
-                        "aspect-ratio": 16 / 9,
-                        src:
-                          "http://localhost/" +
-                          _vm.dataSiteObj[0].most_recent.images.substring(
-                            0,
-                            _vm.dataSiteObj[0].most_recent.images.indexOf(",")
-                          )
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c(
-                        "h4",
-                        {
-                          staticClass: "card-title text-truncate",
-                          on: {
-                            click: function($event) {
-                              _vm.showMeThisOne(_vm.dataSiteObj[0].most_recent)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm.dataSiteObj[0].most_recent.name_product)
-                          )
-                        ]
-                      ),
+              _c(
+                "v-flex",
+                { attrs: { xs11: "", lg4: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { "elevation-20": "" } },
+                    [
+                      _c("v-img", {
+                        attrs: {
+                          "aspect-ratio": 16 / 9,
+                          src:
+                            "http://localhost/" +
+                            _vm.dataSiteObj[0].most_recent.images.substring(
+                              0,
+                              _vm.dataSiteObj[0].most_recent.images.indexOf(",")
+                            )
+                        }
+                      }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "  " +
-                            _vm._s(_vm.dataSiteObj[0].most_recent.prix) +
-                            " DA"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "font-weight-light grey--text caption mb-2  text-truncate"
-                        },
-                        [
-                          _c(
-                            "v-chip",
-                            { attrs: { color: "red", "text-color": "white" } },
-                            [
-                              _vm._v(
-                                "\r\n      Le produit le plus recent\r\n      "
-                              ),
-                              _c("v-icon", { attrs: { right: "" } }, [
-                                _vm._v("access_time")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row justify-content-end" }, [
+                      _c("div", { staticClass: "card-body" }, [
                         _c(
-                          "div",
-                          { staticClass: "col-md-4 col-lg-4 col-xs-4" },
+                          "h4",
+                          {
+                            staticClass: "card-title text-truncate",
+                            on: {
+                              click: function($event) {
+                                _vm.showMeThisOne(
+                                  _vm.dataSiteObj[0].most_recent
+                                )
+                              }
+                            }
+                          },
                           [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary btn-block",
-                                on: {
-                                  click: function($event) {
-                                    _vm.addToCart(
-                                      _vm.dataSiteObj[0].most_recent
-                                    )
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", { staticClass: "material-icons" }, [
-                                  _vm._v("\r\nadd_shopping_cart\r\n")
-                                ])
-                              ]
+                            _vm._v(
+                              _vm._s(
+                                _vm.dataSiteObj[0].most_recent.name_product
+                              )
                             )
                           ]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-text" }, [
+                          _vm._v(
+                            "  " +
+                              _vm._s(_vm.dataSiteObj[0].most_recent.prix) +
+                              " DA"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "font-weight-light grey--text caption mb-2  text-truncate"
+                          },
+                          [
+                            _c(
+                              "v-chip",
+                              {
+                                attrs: { color: "red", "text-color": "white" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n      Le produit le plus recent\r\n      "
+                                ),
+                                _c("v-icon", { attrs: { right: "" } }, [
+                                  _vm._v("access_time")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row justify-content-end" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-md-4 col-lg-4 col-xs-4" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary btn-block",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addToCart(
+                                        _vm.dataSiteObj[0].most_recent
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", { staticClass: "material-icons" }, [
+                                    _vm._v("\r\nadd_shopping_cart\r\n")
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ],
-                  1
-                )
-              ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           ),
@@ -48785,8 +48816,8 @@ var render = function() {
                             { key: produit, attrs: { xs11: "", lg4: "" } },
                             [
                               _c(
-                                "div",
-                                { staticClass: "card" },
+                                "v-card",
+                                { attrs: { "elevation-20": "" } },
                                 [
                                   _c("v-img", {
                                     attrs: {
@@ -48916,7 +48947,8 @@ var render = function() {
                                 ],
                                 1
                               )
-                            ]
+                            ],
+                            1
                           )
                         }),
                         1
