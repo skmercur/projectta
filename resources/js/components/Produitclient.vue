@@ -122,8 +122,8 @@
     <v-layout row wrap>
 
 
-<v-flex  xs4 >
-        <v-card dark color="primary" >
+<v-flex xs11  lg4 >
+       <!-- <v-card dark color="primary" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
     <v-card
@@ -182,11 +182,61 @@
   </v-hover>
           </v-card-text>
         </v-card>
+
+        -->
+
+ <div class="card">
+     <v-img
+      :aspect-ratio="16/9"
+        :src="'http://localhost/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(','))" ></v-img>
+      <div class="card-body">
+        <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_selled)">{{dataSiteObj[0].most_selled.name_product}}</h4>
+        <div class="card-text">  {{dataSiteObj[0].most_selled.prix}} DA</div>
+       <div class=" font-weight-light grey--text caption mb-2  text-truncate"><v-chip color="orange" text-color="white">
+      Le produit le plus vendu 
+      <v-icon right>star</v-icon>
+    </v-chip></div>
+    
+        <div class="row justify-content-end">
+          <div class="col-md-4 col-lg-4 col-xs-4">
+          <button class="btn btn-primary btn-block"  @click="addToCart(dataSiteObj[0].most_selled)"><i class="material-icons">
+add_shopping_cart
+</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
       </v-flex>
 
 
-<v-flex  xs4 >
-        <v-card dark color="primary" >
+<v-flex  xs11  lg4 >
+
+ <div class="card">
+     <v-img
+      :aspect-ratio="16/9"
+        :src="'http://localhost/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(','))" ></v-img>
+      <div class="card-body">
+        <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_viewed)">{{dataSiteObj[0].most_viewed.name_product}}</h4>
+        <div class="card-text">  {{dataSiteObj[0].most_viewed.prix}} DA</div>
+        <div class="font-weight-light grey--text caption mb-2 text-truncate"><v-chip color="green" text-color="white">
+      Le produit le plus vu
+      <v-icon right>remove_red_eye</v-icon>
+    </v-chip></div>
+    
+        <div class="row justify-content-end">
+          <div class="col-md-4 col-lg-4 col-xs-4">
+          <button class="btn btn-primary btn-block"  @click="addToCart(dataSiteObj[0].most_viewed)"><i class="material-icons">
+add_shopping_cart
+</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <!--  <v-card dark color="primary" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
     <v-card
@@ -244,9 +294,38 @@
     </v-card>
   </v-hover>
           </v-card-text>
-        </v-card>
+        </v-card> -->
       </v-flex>
-<v-flex  xs4 >
+<v-flex xs11  lg4 >
+
+
+
+    <div class="card">
+     <v-img
+      :aspect-ratio="16/9"
+        :src="'http://localhost/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(','))" ></v-img>
+      <div class="card-body">
+        <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_recent)">{{dataSiteObj[0].most_recent.name_product}}</h4>
+        <div class="card-text">  {{dataSiteObj[0].most_recent.prix}} DA</div>
+        <div class="font-weight-light grey--text caption mb-2  text-truncate"><v-chip color="red" text-color="white">
+      Le produit le plus recent
+      <v-icon right>access_time</v-icon>
+    </v-chip></div>
+    
+        <div class="row justify-content-end">
+          <div class="col-md-4 col-lg-4 col-xs-4">
+          <button class="btn btn-primary btn-block"  @click="addToCart(dataSiteObj[0].most_recent)"><i class="material-icons">
+add_shopping_cart
+</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  <!--
         <v-card dark color="primary" >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
@@ -306,6 +385,7 @@
   </v-hover>
           </v-card-text>
         </v-card>
+        -->
       </v-flex>
        </v-layout>
        <v-card class="pa-3 mt-2">
@@ -326,14 +406,39 @@
     <v-layout row wrap>
 
 
-<v-flex v-for="produit in n.produit" :key="produit" xs4 >
+<v-flex v-for="produit in n.produit" :key="produit" xs11  lg4 >
 
 
 
 <!-- Dialog detailles -->
 
 
-        <v-card dark color="primary"  >
+
+    <div class="card">
+     <v-img
+        :aspect-ratio="16/9"  :src="'http://localhost/' +produit.product.images.substring(0,produit.product.images.indexOf(','))" ></v-img>
+      <div class="card-body">
+        <h4 class="card-title text-truncate" @click="showMeThisOne(produit)">{{produit.product.name_product}}</h4>
+        <div class="card-text"> {{produit.product.prix}} DA</div>
+          <div class="font-weight-light grey--text caption mb-2 " v-if="produit.product.remise > 0"><v-chip color="green" text-color="white">
+      - {{produit.product.remise}} %
+     
+    </v-chip></div>
+    <v-divider v-if="produit.product.remise == 0"></v-divider>
+        <div class="row justify-content-end">
+          <div class="col-md-4 col-lg-4 col-xs-4">
+          <button class="btn btn-primary btn-block" @click="addToCart(produit.product)"><i class="material-icons">
+add_shopping_cart
+</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+       <!-- <v-card dark color="primary"  >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
     <v-card
@@ -405,6 +510,7 @@
   </v-hover>
           </v-card-text>
         </v-card>
+        -->
       </v-flex>
 
        </v-layout>
