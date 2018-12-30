@@ -178,3 +178,6 @@ Route::post('/addPub','PubsController@addPub');
 Route::post('/getPubs','PubsController@getPubs');
 Route::post('/getCatsConfirmed','CategoriesController@getConfirmedCats');
 Route::post('/getItemsForCat','ProductsController@getItemsForCat');
+Route::get('{slug}', [
+    'uses' => 'ProductsController@getProductCode'
+])->where('slug', '([A-Za-z0-9\-\/]+)');

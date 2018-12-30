@@ -156,5 +156,13 @@ $views += $view->views;
             return response()->json($arr);
         
     }
+    public function getProductCode(Request $request){
+        $value = $request['slug'];
+        if(!empty($value)){
+            $product = DB::table('products')->where('code',$value)->first();
+
+            return view('productdetails')->with(['product'=>$product]);
+        }
+    }
    
 }

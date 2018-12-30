@@ -28,7 +28,7 @@
           <v-toolbar-title>Votre pannier</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark flat @click="step = 2">Continuer</v-btn>
+          
           </v-toolbar-items>
         </v-toolbar>
           <v-flex xs12>
@@ -93,7 +93,7 @@
           <v-toolbar-title>{{name}}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark flat @click="dialog3 = false">Save</v-btn>
+         
           </v-toolbar-items>
         </v-toolbar>
       

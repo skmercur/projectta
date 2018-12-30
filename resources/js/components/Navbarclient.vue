@@ -6,11 +6,7 @@
 
    <v-spacer></v-spacer>
     <v-toolbar-items >
-      <v-btn flat>Accueil</v-btn>
-      
-      <v-btn flat @click="login()"> 
-        Continuer Votre Achat       
-       </v-btn>
+     
     </v-toolbar-items>
   </v-toolbar>   
   

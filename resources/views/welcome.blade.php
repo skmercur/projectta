@@ -6,7 +6,7 @@
         <main class="py-4">
 @if(!empty($data))
 
-<!--<?php var_dump($data[0]->produit[0]->product->images) ?>-->
+
 @endif
 
 
