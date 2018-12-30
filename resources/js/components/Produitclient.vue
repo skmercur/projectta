@@ -73,7 +73,7 @@
           
            <v-footer v-if="step == 1">
              <v-card-text>
-        <h4 class="text-xs-right">Total a payé : {{prixTotal}} DA</h4>
+        <h4 class="text-xs-right">Total a payé : {{prixTotal}} DA <small> Sans les frais de livraison</small></h4>
              </v-card-text>
       </v-footer>
       </v-card>
@@ -86,6 +86,40 @@
  <v-dialog v-model="dialog3" fullscreen hide-overlay transition="dialog-bottom-transition">
       
       <v-card>
+          <v-snackbar
+      v-model="snackbar"
+      :bottom="y === 'bottom'"
+      :left="x === 'left'"
+      :multi-line="mode === 'multi-line'"
+      :right="x === 'right'"
+      :timeout="timeout"
+      :top="y === 'top'"
+      :vertical="mode === 'vertical'"
+    >
+     Copied 
+      <v-btn
+        color="pink"
+        flat
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
+ 
+       
+      <v-btn
+   
+       
+       
+        dark
+     fab
+     bottom
+     right
+     fixed
+     @click="copyThis()"
+      >
+       <v-icon>share</v-icon>
+      </v-btn>
         <v-toolbar dark color="primary">
           <v-btn icon dark @click="dialog3 = false">
             <v-icon>close</v-icon>
@@ -592,9 +626,16 @@ datasite:String,
         prix:0,
         remise:0,
         images:'',
+        code:'',
         Cats:[],
         Items:[],
         selectedCat:'',
+         snackbar:false,
+    y: 'top',
+        x: null,
+        mode: '',
+        timeout: 6000,
+         value:'',
         
       }
     },
@@ -674,6 +715,7 @@ this.prixTotal = temp;
       this.summery =  v.summery;
       this.remise =  v.remise;
       this.dialog3 = true; 
+      this.code = v.code;
 
  axios.post('/addViews', {  
 
@@ -701,7 +743,11 @@ this.prixTotal = temp;
                   alert(error.response.data.message);
                  
                 });
-    }
+    }, copyThis(){
+            this.value = 'https://www.taherboutique.com/'+this.code;
+           this.$clipboard(this.value);
+           this.snackbar = true;
+        }
   }
         
   }

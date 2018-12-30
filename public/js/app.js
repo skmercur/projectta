@@ -4440,6 +4440,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4465,9 +4523,16 @@ __webpack_require__.r(__webpack_exports__);
       prix: 0,
       remise: 0,
       images: '',
+      code: '',
       Cats: [],
       Items: [],
-      selectedCat: ''
+      selectedCat: '',
+      snackbar: false,
+      y: 'top',
+      x: null,
+      mode: '',
+      timeout: 6000,
+      value: ''
     };
   },
   mounted: function mounted() {
@@ -4538,6 +4603,7 @@ __webpack_require__.r(__webpack_exports__);
       this.summery = v.summery;
       this.remise = v.remise;
       this.dialog3 = true;
+      this.code = v.code;
       axios.post('/addViews', {
         name: this.name
       }).then(function (response) {
@@ -4558,6 +4624,11 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         alert(error.response.data.message);
       });
+    },
+    copyThis: function copyThis() {
+      this.value = 'https://www.taherboutique.com/' + this.code;
+      this.$clipboard(this.value);
+      this.snackbar = true;
     }
   }
 });
@@ -5113,6 +5184,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -48163,7 +48235,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-toolbar",
-    { attrs: { fixed: "", clipped: "", color: "#263238", dark: "" } },
+    { attrs: { fixed: "", clipped: "", color: "#42A5F5", dark: "" } },
     [
       _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
       _vm._v(" "),
@@ -48556,8 +48628,11 @@ var render = function() {
                               _vm._v(
                                 "Total a payé : " +
                                   _vm._s(_vm.prixTotal) +
-                                  " DA"
-                              )
+                                  " DA "
+                              ),
+                              _c("small", [
+                                _vm._v(" Sans les frais de livraison")
+                              ])
                             ])
                           ])
                         ],
@@ -48591,6 +48666,64 @@ var render = function() {
               _c(
                 "v-card",
                 [
+                  _c(
+                    "v-snackbar",
+                    {
+                      attrs: {
+                        bottom: _vm.y === "bottom",
+                        left: _vm.x === "left",
+                        "multi-line": _vm.mode === "multi-line",
+                        right: _vm.x === "right",
+                        timeout: _vm.timeout,
+                        top: _vm.y === "top",
+                        vertical: _vm.mode === "vertical"
+                      },
+                      model: {
+                        value: _vm.snackbar,
+                        callback: function($$v) {
+                          _vm.snackbar = $$v
+                        },
+                        expression: "snackbar"
+                      }
+                    },
+                    [
+                      _vm._v("\r\n     Copied \r\n      "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "pink", flat: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.snackbar = false
+                            }
+                          }
+                        },
+                        [_vm._v("\r\n        Close\r\n      ")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        dark: "",
+                        fab: "",
+                        bottom: "",
+                        right: "",
+                        fixed: ""
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.copyThis()
+                        }
+                      }
+                    },
+                    [_c("v-icon", [_vm._v("share")])],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c(
                     "v-toolbar",
                     { attrs: { dark: "", color: "primary" } },
@@ -48660,45 +48793,6 @@ var render = function() {
                       )
                     ],
                     1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
-            [
-              _c(
-                "v-flex",
-                { attrs: { xs12: "", sm12: "", lg12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    _vm._l(_vm.Cats, function(item) {
-                      return _c(
-                        "div",
-                        { key: item, staticClass: "text-xs-center" },
-                        [
-                          _c(
-                            "v-chip",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.getMeThisOneItems(item)
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._s(item))]
-                          )
-                        ],
-                        1
-                      )
-                    }),
-                    0
                   )
                 ],
                 1
@@ -49048,6 +49142,46 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "", sm12: "", lg12: "" } },
+                [
+                  _c("v-card", [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "text-xs-center",
+                        attrs: { color: "#42A5F5", dark: "" }
+                      },
+                      _vm._l(_vm.Cats, function(item) {
+                        return _c(
+                          "v-chip",
+                          {
+                            key: item,
+                            attrs: { color: "#42A5F5", "text-color": "white" },
+                            on: {
+                              click: function($event) {
+                                _vm.getMeThisOneItems(item)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(item))]
+                        )
+                      }),
+                      1
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
             "v-card",
             { staticClass: "pa-3 mt-2" },
             [
@@ -49057,7 +49191,13 @@ var render = function() {
                   _vm.selectedCat != ""
                     ? _c(
                         "v-toolbar",
-                        { attrs: { dark: "", "elevation-10": "" } },
+                        {
+                          attrs: {
+                            dark: "",
+                            color: "#42A5F5",
+                            "elevation-10": ""
+                          }
+                        },
                         [
                           _c("v-toolbar-title", [
                             _vm._v(_vm._s(_vm.selectedCat))
@@ -50192,9 +50332,13 @@ var render = function() {
               _vm._v(_vm._s(props.item.remise) + " %")
             ]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.summery))
-            ]),
+            props.item.summery.length > 10
+              ? _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.summery.substr(0, 10)) + "...")
+                ])
+              : _c("td", { staticClass: "text-xs-right  " }, [
+                  _vm._v(_vm._s(props.item.summery))
+                ]),
             _vm._v(" "),
             _c("td", { staticClass: "text-xs-right" }, [
               _vm._v(_vm._s(props.item.active))

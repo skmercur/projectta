@@ -15,7 +15,8 @@
       <td class="text-xs-right">{{ props.item.prix }} DZD</td>
       <td class="text-xs-right">{{ props.item.quantity }}</td>
        <td class="text-xs-right">{{ props.item.remise }} %</td>
-        <td class="text-xs-right">{{ props.item.summery}}</td>
+        <td class="text-xs-right" v-if="props.item.summery.length >10">{{  props.item.summery.substr(0,10)}}...</td>
+        <td class="text-xs-right  " v-else>{{  props.item.summery}}</td>
          <td class="text-xs-right">{{ props.item.active }}</td>
       <td class="text-xs-right"><v-btn class="ma-1" @click="editProduct(props.item.id_product,props.item)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginDelete(props.item.id_product)"><v-icon>delete</v-icon></v-btn></td>
       
