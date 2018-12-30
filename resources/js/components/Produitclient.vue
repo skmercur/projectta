@@ -538,7 +538,7 @@ add_shopping_cart
   </v-container>
   
 </v-container>
-</v-container>
+
 </template>
 
 <script>
