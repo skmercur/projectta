@@ -21,7 +21,7 @@
 
         <v-card>
           
-          <v-toolbar dark color="primary">
+          <v-toolbar  color="#42A5F5"  dark>
           <v-btn icon dark @click="dialog = false">
             <v-icon>close</v-icon>
           </v-btn>
@@ -70,7 +70,6 @@
   </v-container>
          <checkout v-if="step == 2" :achat="itemsInCart" :prix="prixTotal"></checkout>
           </v-flex>
-          <!-- Your customer chat code -->
           <div id="fb-root"></div>
 <div class="fb-customerchat"
   attribution=setup_tool
@@ -125,7 +124,7 @@
       >
        <v-icon>share</v-icon>
       </v-btn>
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="#42A5F5">
           <v-btn icon dark @click="dialog3 = false">
             <v-icon>close</v-icon>
           </v-btn>
