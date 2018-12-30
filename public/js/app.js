@@ -4498,6 +4498,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48618,6 +48623,16 @@ var render = function() {
                     ],
                     1
                   ),
+                  _vm._v(" "),
+                  _c("div", { attrs: { id: "fb-root" } }),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass: "fb-customerchat",
+                    attrs: {
+                      attribution: "setup_tool",
+                      page_id: "784898105178463"
+                    }
+                  }),
                   _vm._v(" "),
                   _vm.step == 1
                     ? _c(

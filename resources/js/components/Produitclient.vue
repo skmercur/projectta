@@ -70,7 +70,12 @@
   </v-container>
          <checkout v-if="step == 2" :achat="itemsInCart" :prix="prixTotal"></checkout>
           </v-flex>
-          
+          <!-- Your customer chat code -->
+          <div id="fb-root"></div>
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="784898105178463">
+</div>
            <v-footer v-if="step == 1">
              <v-card-text>
         <h4 class="text-xs-right">Total a payé : {{prixTotal}} DA <small> Sans les frais de livraison</small></h4>

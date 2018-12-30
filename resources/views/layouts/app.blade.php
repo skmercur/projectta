@@ -11,7 +11,16 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/fr_FR/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/html2canvas.min.js') }}" defer></script>
     <!-- Fonts -->
@@ -37,7 +46,11 @@ $image = substr($product->images,0,$k);
 </head>
 <body>
     
-    
+    <!-- Load Facebook SDK for JavaScript -->
+
+
+
+
     
     
        
