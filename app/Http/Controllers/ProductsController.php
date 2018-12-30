@@ -140,5 +140,21 @@ $views += $view->views;
 
         }
     }
+
+    public function getItemsForCat(Request $request){
+        $cat = $request->cat;
+      
+
+            $items = DB::table('products')->where('name_categorie',$cat)->where('quantity','>',0)->where('active',1)->orderBy('created_at','desc')->get();
+            $arr = array();
+             
+            foreach ($items as $item ) {
+            
+             
+               $arr[] = $item;
+            }
+            return response()->json($arr);
+        
+    }
    
 }

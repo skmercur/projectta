@@ -176,3 +176,5 @@ Route::get('/blogin',function(){
 });
 Route::post('/addPub','PubsController@addPub');
 Route::post('/getPubs','PubsController@getPubs');
+Route::post('/getCatsConfirmed','CategoriesController@getConfirmedCats');
+Route::post('/getItemsForCat','ProductsController@getItemsForCat');

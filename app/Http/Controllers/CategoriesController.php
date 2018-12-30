@@ -50,7 +50,18 @@ public function getCat(Request $request){
                  return response()->json(['state'=>'sucess']);
              }
        
-    
+             public function getConfirmedCats(Request $request){
+
+                $arr = array();
+                
+                    $cats = DB::table('categories')->where('confirmed',1)->orderBy('created_at','asc')->get();
+                    foreach($cats as $ca){
+                        $arr[] = $ca->name_categorie;
+                    }
+                
+                
+               return response()->json($arr);
+                }
     /**
      * Show the form for creating a new resource.
      *

@@ -4322,6 +4322,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4346,22 +4362,33 @@ __webpack_require__.r(__webpack_exports__);
       summery: '',
       prix: 0,
       remise: 0,
-      images: ''
+      images: '',
+      Cats: [],
+      Items: [],
+      selectedCat: ''
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.post('/getCatsConfirmed', {}).then(function (response) {
+      return _this.Cats = response.data;
+    }).catch(function (error) {
+      alert(error.response.data.message);
+    });
+  },
   methods: {
     onSignInSuccess: function onSignInSuccess(response) {
-      var _this = this;
+      var _this2 = this;
 
       FB.api('/me?fields=id,name,email,hometown,location', function (dude) {
-        _this.fbUserData.id = dude.id;
-        _this.fbUserData.name = dude.name;
-        _this.fbUserData.email = dude.email;
-        _this.fbUserData.location = dude.location.name;
+        _this2.fbUserData.id = dude.id;
+        _this2.fbUserData.name = dude.name;
+        _this2.fbUserData.email = dude.email;
+        _this2.fbUserData.location = dude.location.name;
 
-        if (_this.fbUserData.id != 0) {
-          _this.e1++;
+        if (_this2.fbUserData.id != 0) {
+          _this2.e1++;
         } else {
           console.log("Empty");
         }
@@ -4413,6 +4440,19 @@ __webpack_require__.r(__webpack_exports__);
         name: this.name
       }).then(function (response) {
         console.log(response);
+      }).catch(function (error) {
+        alert(error.response.data.message);
+      });
+    },
+    getMeThisOneItems: function getMeThisOneItems(v) {
+      var _this3 = this;
+
+      console.log(v);
+      this.selectedCat = v;
+      axios.post('/getItemsForCat', {
+        cat: v
+      }).then(function (response) {
+        return _this3.Items = response.data;
       }).catch(function (error) {
         alert(error.response.data.message);
       });
@@ -48441,6 +48481,45 @@ var render = function() {
             [
               _c(
                 "v-flex",
+                { attrs: { xs12: "", sm12: "", lg12: "" } },
+                [
+                  _c(
+                    "v-card",
+                    _vm._l(_vm.Cats, function(item) {
+                      return _c(
+                        "div",
+                        { key: item, staticClass: "text-xs-center" },
+                        [
+                          _c(
+                            "v-chip",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.getMeThisOneItems(item)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(item))]
+                          )
+                        ],
+                        1
+                      )
+                    }),
+                    0
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
                 { attrs: { xs11: "", lg4: "" } },
                 [
                   _c(
@@ -48778,23 +48857,17 @@ var render = function() {
           _c(
             "v-card",
             { staticClass: "pa-3 mt-2" },
-            _vm._l(_vm.dataSiteObj, function(n) {
-              return _c(
+            [
+              _c(
                 "v-container",
-                { key: n },
                 [
-                  n.produit
+                  _vm.selectedCat != ""
                     ? _c(
                         "v-toolbar",
                         { attrs: { dark: "", "elevation-10": "" } },
                         [
                           _c("v-toolbar-title", [
-                            _vm._v(
-                              _vm._s(n.produit.length) +
-                                " " +
-                                _vm._s(n.name) +
-                                " "
-                            )
+                            _vm._v(_vm._s(_vm.selectedCat))
                           ]),
                           _vm._v(" "),
                           _c("v-spacer")
@@ -48810,7 +48883,7 @@ var render = function() {
                       _c(
                         "v-layout",
                         { attrs: { row: "", wrap: "" } },
-                        _vm._l(n.produit, function(produit) {
+                        _vm._l(_vm.Items, function(produit) {
                           return _c(
                             "v-flex",
                             { key: produit, attrs: { xs11: "", lg4: "" } },
@@ -48824,9 +48897,9 @@ var render = function() {
                                       "aspect-ratio": 16 / 9,
                                       src:
                                         "http://localhost/" +
-                                        produit.product.images.substring(
+                                        produit.images.substring(
                                           0,
-                                          produit.product.images.indexOf(",")
+                                          produit.images.indexOf(",")
                                         )
                                     }
                                   }),
@@ -48846,22 +48919,16 @@ var render = function() {
                                             }
                                           }
                                         },
-                                        [
-                                          _vm._v(
-                                            _vm._s(produit.product.name_product)
-                                          )
-                                        ]
+                                        [_vm._v(_vm._s(produit.name_product))]
                                       ),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "card-text" }, [
                                         _vm._v(
-                                          " " +
-                                            _vm._s(produit.product.prix) +
-                                            " DA"
+                                          " " + _vm._s(produit.prix) + " DA"
                                         )
                                       ]),
                                       _vm._v(" "),
-                                      produit.product.remise > 0
+                                      produit.remise > 0
                                         ? _c(
                                             "div",
                                             {
@@ -48880,9 +48947,7 @@ var render = function() {
                                                 [
                                                   _vm._v(
                                                     "\r\n      - " +
-                                                      _vm._s(
-                                                        produit.product.remise
-                                                      ) +
+                                                      _vm._s(produit.remise) +
                                                       " %\r\n     \r\n    "
                                                   )
                                                 ]
@@ -48892,7 +48957,7 @@ var render = function() {
                                           )
                                         : _vm._e(),
                                       _vm._v(" "),
-                                      produit.product.remise == 0
+                                      produit.remise == 0
                                         ? _c("v-divider")
                                         : _vm._e(),
                                       _vm._v(" "),
@@ -48916,9 +48981,7 @@ var render = function() {
                                                     "btn btn-primary btn-block",
                                                   on: {
                                                     click: function($event) {
-                                                      _vm.addToCart(
-                                                        produit.product
-                                                      )
+                                                      _vm.addToCart(produit)
                                                     }
                                                   }
                                                 },
@@ -48959,7 +49022,7 @@ var render = function() {
                 ],
                 1
               )
-            }),
+            ],
             1
           )
         ],

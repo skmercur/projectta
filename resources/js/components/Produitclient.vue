@@ -104,6 +104,7 @@
       :src="'http://localhost/'+item" v-if="item !== ''"
     ></v-carousel-item>
   </v-carousel>
+  
   <v-layout xs12>
 <v-flex >
 <h3>{{name}}</h3>
@@ -118,7 +119,19 @@
 
 <!-- end dialog -->
 
-
+<v-layout row wrap>
+<v-flex   xs12 sm12 lg12>
+<v-card >
+  
+ <div class="text-xs-center" v-for="item in Cats" :key="item">
+  
+          <v-chip @click="getMeThisOneItems(item)">{{item}}</v-chip>
+   
+        </div>
+        
+</v-card>
+</v-flex>
+  </v-layout>
     <v-layout row wrap>
 
 
@@ -387,12 +400,13 @@ add_shopping_cart
         -->
       </v-flex>
        </v-layout>
+       
        <v-card class="pa-3 mt-2">
-         <v-container v-for="n in dataSiteObj" :key="n">
+         <v-container >
            
-  <v-toolbar dark elevation-10 v-if="n.produit">
+  <v-toolbar dark elevation-10 v-if="selectedCat != ''">
   
-    <v-toolbar-title>{{n.produit.length}} {{n.name}} </v-toolbar-title>
+    <v-toolbar-title>{{selectedCat}}</v-toolbar-title>
     
 
     <v-spacer></v-spacer>
@@ -405,28 +419,28 @@ add_shopping_cart
     <v-layout row wrap>
 
 
-<v-flex v-for="produit in n.produit" :key="produit" xs11  lg4 >
+<v-flex v-for="produit in Items" :key="produit" xs11  lg4 >
 
 
+<!--
+ Dialog detailles 
 
-<!-- Dialog detailles -->
-
-
+-->
 
     <v-card elevation-20>
      <v-img
-        :aspect-ratio="16/9"  :src="'http://localhost/' +produit.product.images.substring(0,produit.product.images.indexOf(','))" ></v-img>
+        :aspect-ratio="16/9"  :src="'http://localhost/' +produit.images.substring(0,produit.images.indexOf(','))" ></v-img>
       <div class="card-body">
-        <h4 class="card-title text-truncate" @click="showMeThisOne(produit)">{{produit.product.name_product}}</h4>
-        <div class="card-text"> {{produit.product.prix}} DA</div>
-          <div class="font-weight-light grey--text caption mb-2 " v-if="produit.product.remise > 0"><v-chip color="green" text-color="white">
-      - {{produit.product.remise}} %
+        <h4 class="card-title text-truncate" @click="showMeThisOne(produit)">{{produit.name_product}}</h4>
+        <div class="card-text"> {{produit.prix}} DA</div>
+          <div class="font-weight-light grey--text caption mb-2 " v-if="produit.remise > 0"><v-chip color="green" text-color="white">
+      - {{produit.remise}} %
      
     </v-chip></div>
-    <v-divider v-if="produit.product.remise == 0"></v-divider>
+    <v-divider v-if="produit.remise == 0"></v-divider>
         <div class="row justify-content-end">
           <div class="col-md-4 col-lg-4 col-xs-4">
-          <button class="btn btn-primary btn-block" @click="addToCart(produit.product)"><i class="material-icons">
+          <button class="btn btn-primary btn-block" @click="addToCart(produit)"><i class="material-icons">
 add_shopping_cart
 </i></button>
           </div>
@@ -434,10 +448,10 @@ add_shopping_cart
       </div>
     </v-card>
 
+<!--
 
 
-
-       <!-- <v-card dark color="primary"  >
+      <v-card dark color="primary"  >
           <v-card-text class="px-0 elevation-9" >
               <v-hover>
     <v-card
@@ -509,20 +523,22 @@ add_shopping_cart
   </v-hover>
           </v-card-text>
         </v-card>
-        -->
+      -->
       </v-flex>
 
        </v-layout>
 </v-container>
 
 
-          
+      
 
   </v-container>
+ 
    </v-card>
   </v-container>
+  
 </v-container>
-
+</v-container>
 </template>
 
 <script>
@@ -552,11 +568,17 @@ datasite:String,
         prix:0,
         remise:0,
         images:'',
+        Cats:[],
+        Items:[],
+        selectedCat:'',
         
       }
     },
     mounted(){
-    
+    axios.post('/getCatsConfirmed',{}).then(response => this.Cats = response.data).catch(function (error) {
+                  alert(error.response.data.message);
+                 
+                });
       
     }
     , methods: {
@@ -646,6 +668,15 @@ this.prixTotal = temp;
 
 
 
+    },getMeThisOneItems(v){
+      console.log(v);
+      this.selectedCat = v;
+      axios.post('/getItemsForCat',{
+        cat:v
+      }).then(response => this.Items = response.data).catch(function (error) {
+                  alert(error.response.data.message);
+                 
+                });
     }
   }
         
