@@ -3816,17 +3816,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     product: String
   },
   data: function data() {
     return {
-      productObj: JSON.parse(this.product)
+      productObj: JSON.parse(this.product),
+      value: '',
+      snackbar: false,
+      y: 'top',
+      x: null,
+      mode: '',
+      timeout: 6000
     };
   },
   mounted: function mounted() {
     console.log(this.productObj);
+  },
+  methods: {
+    copyThis: function copyThis() {
+      this.value = 'https://www.taherboutique.com/' + this.productObj.code;
+      this.$clipboard(this.value);
+      this.snackbar = true;
+    }
   }
 });
 
@@ -44509,6 +44563,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/v-clipboard/dist/index.min.js":
+/*!****************************************************!*\
+  !*** ./node_modules/v-clipboard/dist/index.min.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){var t=document.createElement("textarea"),n=void 0;if("string"!=typeof e)try{n=JSON.stringify(e)}catch(e){throw"Failed to copy value to clipboard. Unknown type."}else n=e;if(t.value=n,t.setAttribute("readonly",""),t.style="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),navigator.userAgent.match(/ipad|ipod|iphone/i)){var r=t.contentEditable,o=t.readOnly;t.contentEditable=!0,t.readOnly=!0;var a=document.createRange();a.selectNodeContents(t);var i=window.getSelection();i.removeAllRanges(),i.addRange(a),t.setSelectionRange(0,999999),t.contentEditable=r,t.readOnly=o}else t.select();var c=!1;try{c=document.execCommand("copy")}catch(e){console.warn(e)}return document.body.removeChild(t),c};t.default={install:function(e){e.prototype.$clipboard=r;var t=function(e){return function(){return"$"+e++}}(1),n={},o=function(e){e&&(n[e]=null,delete n[e])},a=function(e){var r=t();return n[r]=e,r};e.directive("clipboard",{bind:function(e,t){var o=t.arg,i=t.value;switch(o){case"error":var c=a(i);return void(e.dataset.clipboardErrorHandler=c);case"success":var d=a(i);return void(e.dataset.clipboardSuccessHandler=d);default:var l=function(o){if(t.hasOwnProperty("value")){var a={value:"function"==typeof i?i():i,event:o},c=r(a.value)?e.dataset.clipboardSuccessHandler:e.dataset.clipboardErrorHandler,d=n[c];d&&d(a)}},u=a(l);return e.dataset.clipboardClickHandler=u,void e.addEventListener("click",n[u])}},unbind:function(e){var t=e.dataset,r=t.clipboardSuccessHandler,a=t.clipboardErrorHandler,i=t.clipboardClickHandler;o(r),o(a),i&&(e.removeEventListener("click",n[i]),o(i))}})}}}])});
+//# sourceMappingURL=index.min.js.map
+
+/***/ }),
+
 /***/ "./node_modules/vue-facebook-signin-button/dist/vue-facebook-signin-button.min.js":
 /*!****************************************************************************************!*\
   !*** ./node_modules/vue-facebook-signin-button/dist/vue-facebook-signin-button.min.js ***!
@@ -48135,8 +48201,60 @@ var render = function() {
     { attrs: { "grid-list-md": "", "text-xs-center": "" } },
     [
       _c(
+        "v-snackbar",
+        {
+          attrs: {
+            bottom: _vm.y === "bottom",
+            left: _vm.x === "left",
+            "multi-line": _vm.mode === "multi-line",
+            right: _vm.x === "right",
+            timeout: _vm.timeout,
+            top: _vm.y === "top",
+            vertical: _vm.mode === "vertical"
+          },
+          model: {
+            value: _vm.snackbar,
+            callback: function($$v) {
+              _vm.snackbar = $$v
+            },
+            expression: "snackbar"
+          }
+        },
+        [
+          _vm._v("\r\n     Copied \r\n      "),
+          _c(
+            "v-btn",
+            {
+              attrs: { color: "pink", flat: "" },
+              on: {
+                click: function($event) {
+                  _vm.snackbar = false
+                }
+              }
+            },
+            [_vm._v("\r\n        Close\r\n      ")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "v-card",
         [
+          _c(
+            "v-btn",
+            {
+              attrs: { dark: "", fab: "", bottom: "", right: "", fixed: "" },
+              on: {
+                click: function($event) {
+                  _vm.copyThis()
+                }
+              }
+            },
+            [_c("v-icon", [_vm._v("share")])],
+            1
+          ),
+          _vm._v(" "),
           _c(
             "v-carousel",
             _vm._l(_vm.productObj.images.split(","), function(item, i) {
@@ -85710,6 +85828,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vue_facebook_signin_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-facebook-signin-button */ "./node_modules/vue-facebook-signin-button/dist/vue-facebook-signin-button.min.js");
 /* harmony import */ var vue_facebook_signin_button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_facebook_signin_button__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var v_clipboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! v-clipboard */ "./node_modules/v-clipboard/dist/index.min.js");
+/* harmony import */ var v_clipboard__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(v_clipboard__WEBPACK_IMPORTED_MODULE_5__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -85725,6 +85845,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  // Ensure you are using css-loader
 
 
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_clipboard__WEBPACK_IMPORTED_MODULE_5___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_facebook_signin_button__WEBPACK_IMPORTED_MODULE_4___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('graphs', __webpack_require__(/*! ./components/Graphs.vue */ "./resources/js/components/Graphs.vue").default);

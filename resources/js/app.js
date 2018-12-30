@@ -18,7 +18,9 @@ import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loade
 
 import FBSignInButton from 'vue-facebook-signin-button'
 
-
+import Clipboard from 'v-clipboard'
+ 
+Vue.use(Clipboard)
 
 Vue.use(Vuetify)
 Vue.use(FBSignInButton)
