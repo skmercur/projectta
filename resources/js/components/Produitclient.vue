@@ -119,19 +119,24 @@
 
 <!-- end dialog -->
 
-<v-layout row wrap>
-<v-flex   xs12 sm12 lg12>
-<v-card >
-  
- <div class="text-xs-center" v-for="item in Cats" :key="item">
-  
-          <v-chip @click="getMeThisOneItems(item)">{{item}}</v-chip>
-   
-        </div>
-        
-</v-card>
-</v-flex>
-  </v-layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <v-layout row wrap>
 
 
@@ -400,11 +405,30 @@ add_shopping_cart
         -->
       </v-flex>
        </v-layout>
+
+
+
+       <v-layout row wrap>
+<v-flex   xs12 sm12 lg12>
+<v-card >
+  
+
+
+
+ <div class="text-xs-center" color="#42A5F5"  dark >
+  
+          <v-chip color="#42A5F5" text-color="white" v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)">{{item}}</v-chip>
+   
+        </div>
+        
+</v-card>
+</v-flex>
+  </v-layout>
        
        <v-card class="pa-3 mt-2">
          <v-container >
            
-  <v-toolbar dark elevation-10 v-if="selectedCat != ''">
+  <v-toolbar dark color="#42A5F5" elevation-10 v-if="selectedCat != ''">
   
     <v-toolbar-title>{{selectedCat}}</v-toolbar-title>
     
