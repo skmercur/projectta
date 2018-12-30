@@ -2191,6 +2191,7 @@ var dt = new Date();
             this.showSectionFour = false;
             this.showSectionFive = true;
             this.showSectionSix = false;
+            break;
           }
 
         case 6:
@@ -2201,6 +2202,7 @@ var dt = new Date();
             this.showSectionFour = false;
             this.showSectionFive = false;
             this.showSectionSix = true;
+            break;
           }
       }
     },
@@ -4430,11 +4432,11 @@ __webpack_require__.r(__webpack_exports__);
       this.prixTotal = temp;
     },
     showMeThisOne: function showMeThisOne(v) {
-      this.images = v.product.images;
-      this.name = v.product.name_product;
-      this.prix = v.product.prix;
-      this.summery = v.product.summery;
-      this.remise = v.product.remise;
+      this.images = v.images;
+      this.name = v.name_product;
+      this.prix = v.prix;
+      this.summery = v.summery;
+      this.remise = v.remise;
       this.dialog3 = true;
       axios.post('/addViews', {
         name: this.name

@@ -644,11 +644,11 @@ console.log(temp);
 this.prixTotal = temp;
 
     },showMeThisOne(v){
-      this.images = v.product.images;
-      this.name =  v.product.name_product;
-      this.prix =  v.product.prix;
-      this.summery =  v.product.summery;
-      this.remise =  v.product.remise;
+      this.images = v.images;
+      this.name =  v.name_product;
+      this.prix =  v.prix;
+      this.summery =  v.summery;
+      this.remise =  v.remise;
       this.dialog3 = true; 
 
  axios.post('/addViews', {  

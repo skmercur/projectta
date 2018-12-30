@@ -313,6 +313,7 @@ this.showSectionOne=false;
       this.showSectionFour=false;
       this.showSectionFive=true;
        this.showSectionSix=false;
+       break;
     }
     case 6:{
        this.showSectionOne=false;
@@ -321,6 +322,7 @@ this.showSectionOne=false;
       this.showSectionFour=false;
       this.showSectionFive=false;
        this.showSectionSix=true;
+       break;
     }
 }
 },Logout(){
