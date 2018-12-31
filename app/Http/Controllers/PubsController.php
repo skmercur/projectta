@@ -39,7 +39,7 @@ if($pubs->count() > 0){
     }
 
     public function getPubs(Request $request){
-        $pubs = DB::table('pubs')->first();
+        $pubs = DB::table('pubs')->select('photo1','photo2','photo3','photo4','photo5')->first();
         return response()->json($pubs);
     }
     /**

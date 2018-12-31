@@ -8,23 +8,31 @@
       tile
     >
       <v-card-title class="teal">
-        <strong class="subheading">Get connected with us on social networks!</strong>
+        <strong class="subheading">On est a votre service sur les réseaux sociaux n'hésitez pas à nous contacter</strong>
 
         <v-spacer></v-spacer>
 
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          
+          class="mx-3"
+          dark
+          icon
+          @click="goToFacebook()"
+        >
+          <v-icon size="24px">fab fa-facebook</v-icon>
+        </v-btn>
+        <v-btn
+          
           class="mx-3"
           dark
           icon
         >
-          <v-icon size="24px">{{ icon }}</v-icon>
+          <v-icon size="24px">fab fa-instagram</v-icon>
         </v-btn>
       </v-card-title>
 
       <v-card-actions class="grey darken-3 justify-center">
-        &copy;2018 — <strong>Pawerdz</strong>
+        &copy;2019 — <strong @click="goToPowerDz()">Powerdz</strong>
       </v-card-actions>
     </v-card>
   </v-footer>
@@ -37,6 +45,13 @@
         'fab fa-facebook',
         'fab fa-instagram'
       ]
-    })
+    }),
+    methods:{
+goToFacebook(){
+ window.location = "https://www.facebook.com/taherboutique/";
+},goToPowerDz(){
+  window.location = "https://www.facebook.com/Powerdz-784898105178463/";
+}
+    }
   }
 </script>

@@ -3173,11 +3173,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       icons: ['fab fa-facebook', 'fab fa-instagram']
     };
+  },
+  methods: {
+    goToFacebook: function goToFacebook() {
+      window.location = "https://www.facebook.com/taherboutique/";
+    },
+    goToPowerDz: function goToPowerDz() {
+      window.location = "https://www.facebook.com/Powerdz-784898105178463/";
+    }
   }
 });
 
@@ -46890,35 +46906,63 @@ var render = function() {
             { staticClass: "teal" },
             [
               _c("strong", { staticClass: "subheading" }, [
-                _vm._v("Get connected with us on social networks!")
+                _vm._v(
+                  "On est a votre service sur les réseaux sociaux n'hésitez pas à nous contacter"
+                )
               ]),
               _vm._v(" "),
               _c("v-spacer"),
               _vm._v(" "),
-              _vm._l(_vm.icons, function(icon) {
-                return _c(
-                  "v-btn",
-                  {
-                    key: icon,
-                    staticClass: "mx-3",
-                    attrs: { dark: "", icon: "" }
-                  },
-                  [
-                    _c("v-icon", { attrs: { size: "24px" } }, [
-                      _vm._v(_vm._s(icon))
-                    ])
-                  ],
-                  1
-                )
-              })
+              _c(
+                "v-btn",
+                {
+                  staticClass: "mx-3",
+                  attrs: { dark: "", icon: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.goToFacebook()
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { size: "24px" } }, [
+                    _vm._v("fab fa-facebook")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { staticClass: "mx-3", attrs: { dark: "", icon: "" } },
+                [
+                  _c("v-icon", { attrs: { size: "24px" } }, [
+                    _vm._v("fab fa-instagram")
+                  ])
+                ],
+                1
+              )
             ],
-            2
+            1
           ),
           _vm._v(" "),
           _c(
             "v-card-actions",
             { staticClass: "grey darken-3 justify-center" },
-            [_vm._v("\n      ©2018 — "), _c("strong", [_vm._v("Pawerdz")])]
+            [
+              _vm._v("\n      ©2019 — "),
+              _c(
+                "strong",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.goToPowerDz()
+                    }
+                  }
+                },
+                [_vm._v("Powerdz")]
+              )
+            ]
           )
         ],
         1
@@ -48241,7 +48285,11 @@ var render = function() {
     "v-toolbar",
     { attrs: { fixed: "", clipped: "", color: "#42A5F5", dark: "" } },
     [
-      _c("v-toolbar-title", [_vm._v("Taher Boutique")]),
+      _c("v-spacer"),
+      _vm._v(" "),
+      _c("v-toolbar-title", { staticClass: "title" }, [
+        _vm._v("Taher Boutique")
+      ]),
       _vm._v(" "),
       _c("v-spacer"),
       _vm._v(" "),
@@ -86049,6 +86097,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_clipboard__WEBPACK_IMPORTED_MODULE_5___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_facebook_signin_button__WEBPACK_IMPORTED_MODULE_4___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('graphs', __webpack_require__(/*! ./components/Graphs.vue */ "./resources/js/components/Graphs.vue").default);

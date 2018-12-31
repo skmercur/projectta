@@ -1,8 +1,8 @@
 <template>
 
   <v-toolbar  fixed clipped color="#42A5F5"  dark>
-    
-    <v-toolbar-title>Taher Boutique</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-toolbar-title class="title">Taher Boutique</v-toolbar-title>
 
    <v-spacer></v-spacer>
     <v-toolbar-items >
