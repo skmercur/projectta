@@ -4502,7 +4502,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4585,7 +4584,7 @@ __webpack_require__.r(__webpack_exports__);
       var key = v.indexOf(",");
       var halflink = v.substring(0, key);
       console.log(halflink);
-      this.imageProduct.push("http://localhost/" + halflink);
+      this.imageProduct.push("https://www.taherboutique.com/" + halflink);
     },
     addToCart: function addToCart(v) {
       this.itemsInCart.push(v);
@@ -4664,7 +4663,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      images: ['https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/ce2ece60-9b32-11e6-95ab-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg']
+      images: ['https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/26239766_1980207352305847_259052501415261259_n.jpg?_nc_cat=106&_nc_eui2=AeExNJhURL36XLHx1CDtn_SN6Aj8FvMzvpBmzX8ncWlRv-yXxepDdu4hSUhgBlTI7w84z0kocbFQShhSd4AQAZgWQ8Fdlfm8DJpzp6l8gknMjw&_nc_ht=scontent-cdt1-1.xx&oh=f22ec2e7ed4c0f47b88655ff40d31c53&oe=5CD6AB33']
     };
   },
   created: function created() {
@@ -47390,7 +47389,7 @@ var render = function() {
                                               staticClass: "grey lighten-2",
                                               attrs: {
                                                 src:
-                                                  "http://localhost/" +
+                                                  "https://www.taherboutique.com/" +
                                                   _vm.imagesFromDb[index],
                                                 "aspect-ratio": "1"
                                               }
@@ -48338,7 +48337,7 @@ var render = function() {
               return item !== ""
                 ? _c("v-carousel-item", {
                     key: i,
-                    attrs: { src: "http://localhost/" + item }
+                    attrs: { src: "https://www.taherboutique.com/" + item }
                   })
                 : _vm._e()
             }),
@@ -48456,7 +48455,7 @@ var render = function() {
                 [
                   _c(
                     "v-toolbar",
-                    { attrs: { dark: "", color: "primary" } },
+                    { attrs: { color: "#42A5F5", dark: "" } },
                     [
                       _c(
                         "v-btn",
@@ -48741,7 +48740,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-toolbar",
-                    { attrs: { dark: "", color: "primary" } },
+                    { attrs: { dark: "", color: "#42A5F5" } },
                     [
                       _c(
                         "v-btn",
@@ -48772,7 +48771,9 @@ var render = function() {
                       return item !== ""
                         ? _c("v-carousel-item", {
                             key: i,
-                            attrs: { src: "http://localhost/" + item }
+                            attrs: {
+                              src: "https://www.taherboutique.com/" + item
+                            }
                           })
                         : _vm._e()
                     }),
@@ -48826,13 +48827,13 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    { attrs: { "elevation-20": "" } },
+                    { staticClass: "elevation-20" },
                     [
                       _c("v-img", {
                         attrs: {
                           "aspect-ratio": 16 / 9,
                           src:
-                            "http://localhost/" +
+                            "https://www.taherboutique.com/" +
                             _vm.dataSiteObj[0].most_selled.images.substring(
                               0,
                               _vm.dataSiteObj[0].most_selled.images.indexOf(",")
@@ -48939,17 +48940,22 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    { attrs: { "elevation-20": "" } },
+                    { staticClass: "elevation-20" },
                     [
                       _c("v-img", {
                         attrs: {
                           "aspect-ratio": 16 / 9,
                           src:
-                            "http://localhost/" +
+                            "https://www.taherboutique.com/" +
                             _vm.dataSiteObj[0].most_viewed.images.substring(
                               0,
                               _vm.dataSiteObj[0].most_viewed.images.indexOf(",")
                             )
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.showMeThisOne(_vm.dataSiteObj[0].most_viewed)
+                          }
                         }
                       }),
                       _vm._v(" "),
@@ -49049,17 +49055,22 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    { attrs: { "elevation-20": "" } },
+                    { staticClass: "elevation-20" },
                     [
                       _c("v-img", {
                         attrs: {
                           "aspect-ratio": 16 / 9,
                           src:
-                            "http://localhost/" +
+                            "https://www.taherboutique.com/" +
                             _vm.dataSiteObj[0].most_recent.images.substring(
                               0,
                               _vm.dataSiteObj[0].most_recent.images.indexOf(",")
                             )
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.showMeThisOne(_vm.dataSiteObj[0].most_recent)
+                          }
                         }
                       }),
                       _vm._v(" "),
@@ -49164,31 +49175,42 @@ var render = function() {
                 "v-flex",
                 { attrs: { xs12: "", sm12: "", lg12: "" } },
                 [
-                  _c("v-card", [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "text-xs-center",
-                        attrs: { color: "#42A5F5", dark: "" }
-                      },
-                      _vm._l(_vm.Cats, function(item) {
-                        return _c(
-                          "v-chip",
-                          {
-                            key: item,
-                            attrs: { color: "#42A5F5", "text-color": "white" },
-                            on: {
-                              click: function($event) {
-                                _vm.getMeThisOneItems(item)
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-xs-center",
+                          attrs: { color: "#42A5F5", dark: "" }
+                        },
+                        _vm._l(_vm.Cats, function(item) {
+                          return _c(
+                            "v-chip",
+                            {
+                              key: item,
+                              staticClass: "title pa-1 ma-2 elevation-5",
+                              attrs: {
+                                transition: "scale-transition",
+                                color: "#42A5F5",
+                                "text-color": "white"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.getMeThisOneItems(item)
+                                }
                               }
-                            }
-                          },
-                          [_vm._v(_vm._s(item))]
-                        )
-                      }),
-                      1
-                    )
-                  ])
+                            },
+                            [_vm._v(_vm._s(item))]
+                          )
+                        }),
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -49196,15 +49218,15 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "v-card",
-            { staticClass: "pa-3 mt-2" },
-            [
-              _c(
-                "v-container",
+          _vm.selectedCat != ""
+            ? _c(
+                "v-card",
+                { staticClass: "pa-3 mt-2" },
                 [
-                  _vm.selectedCat != ""
-                    ? _c(
+                  _c(
+                    "v-container",
+                    [
+                      _c(
                         "v-toolbar",
                         {
                           attrs: {
@@ -49221,128 +49243,149 @@ var render = function() {
                           _c("v-spacer")
                         ],
                         1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "v-container",
-                    { attrs: { "grid-list-md": "", "text-xs-center": "" } },
-                    [
+                      ),
+                      _vm._v(" "),
                       _c(
-                        "v-layout",
-                        { attrs: { row: "", wrap: "" } },
-                        _vm._l(_vm.Items, function(produit) {
-                          return _c(
-                            "v-flex",
-                            { key: produit, attrs: { xs11: "", lg4: "" } },
-                            [
-                              _c(
-                                "v-card",
-                                { attrs: { "elevation-20": "" } },
+                        "v-container",
+                        { attrs: { "grid-list-md": "", "text-xs-center": "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { row: "", wrap: "" } },
+                            _vm._l(_vm.Items, function(produit) {
+                              return _c(
+                                "v-flex",
+                                { key: produit, attrs: { xs11: "", lg4: "" } },
                                 [
-                                  _c("v-img", {
-                                    attrs: {
-                                      "aspect-ratio": 16 / 9,
-                                      src:
-                                        "http://localhost/" +
-                                        produit.images.substring(
-                                          0,
-                                          produit.images.indexOf(",")
-                                        )
-                                    }
-                                  }),
-                                  _vm._v(" "),
                                   _c(
-                                    "div",
-                                    { staticClass: "card-body" },
+                                    "v-card",
+                                    { staticClass: "elevation-20" },
                                     [
-                                      _c(
-                                        "h4",
-                                        {
-                                          staticClass:
-                                            "card-title text-truncate",
-                                          on: {
-                                            click: function($event) {
-                                              _vm.showMeThisOne(produit)
-                                            }
-                                          }
+                                      _c("v-img", {
+                                        attrs: {
+                                          "aspect-ratio": 16 / 9,
+                                          src:
+                                            "https://www.taherboutique.com/" +
+                                            produit.images.substring(
+                                              0,
+                                              produit.images.indexOf(",")
+                                            )
                                         },
-                                        [_vm._v(_vm._s(produit.name_product))]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "card-text" }, [
-                                        _vm._v(
-                                          " " + _vm._s(produit.prix) + " DA"
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      produit.remise > 0
-                                        ? _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "font-weight-light grey--text caption mb-2 "
-                                            },
-                                            [
-                                              _c(
-                                                "v-chip",
-                                                {
-                                                  attrs: {
-                                                    color: "green",
-                                                    "text-color": "white"
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\r\n      - " +
-                                                      _vm._s(produit.remise) +
-                                                      " %\r\n     \r\n    "
-                                                  )
-                                                ]
-                                              )
-                                            ],
-                                            1
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      produit.remise == 0
-                                        ? _c("v-divider")
-                                        : _vm._e(),
+                                        on: {
+                                          click: function($event) {
+                                            _vm.showMeThisOne(produit)
+                                          }
+                                        }
+                                      }),
                                       _vm._v(" "),
                                       _c(
                                         "div",
-                                        {
-                                          staticClass: "row justify-content-end"
-                                        },
+                                        { staticClass: "card-body" },
                                         [
+                                          _c(
+                                            "h4",
+                                            {
+                                              staticClass:
+                                                "card-title text-truncate",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.showMeThisOne(produit)
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(produit.name_product)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "card-text" },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(produit.prix) +
+                                                  " DA"
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          produit.remise > 0
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "font-weight-light grey--text caption mb-2 "
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-chip",
+                                                    {
+                                                      attrs: {
+                                                        color: "green",
+                                                        "text-color": "white"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\r\n      - " +
+                                                          _vm._s(
+                                                            produit.remise
+                                                          ) +
+                                                          " %\r\n     \r\n    "
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          produit.remise == 0
+                                            ? _c("v-divider")
+                                            : _vm._e(),
+                                          _vm._v(" "),
                                           _c(
                                             "div",
                                             {
                                               staticClass:
-                                                "col-md-4 col-lg-4 col-xs-4"
+                                                "row justify-content-end"
                                             },
                                             [
                                               _c(
-                                                "button",
+                                                "div",
                                                 {
                                                   staticClass:
-                                                    "btn btn-primary btn-block",
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.addToCart(produit)
-                                                    }
-                                                  }
+                                                    "col-md-4 col-lg-4 col-xs-4"
                                                 },
                                                 [
                                                   _c(
-                                                    "i",
+                                                    "button",
                                                     {
                                                       staticClass:
-                                                        "material-icons"
+                                                        "btn btn-primary btn-block",
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.addToCart(produit)
+                                                        }
+                                                      }
                                                     },
                                                     [
-                                                      _vm._v(
-                                                        "\r\nadd_shopping_cart\r\n"
+                                                      _c(
+                                                        "i",
+                                                        {
+                                                          staticClass:
+                                                            "material-icons"
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\r\nadd_shopping_cart\r\n"
+                                                          )
+                                                        ]
                                                       )
                                                     ]
                                                   )
@@ -49350,7 +49393,8 @@ var render = function() {
                                               )
                                             ]
                                           )
-                                        ]
+                                        ],
+                                        1
                                       )
                                     ],
                                     1
@@ -49358,10 +49402,10 @@ var render = function() {
                                 ],
                                 1
                               )
-                            ],
+                            }),
                             1
                           )
-                        }),
+                        ],
                         1
                       )
                     ],
@@ -49370,9 +49414,7 @@ var render = function() {
                 ],
                 1
               )
-            ],
-            1
-          )
+            : _vm._e()
         ],
         1
       )
@@ -49861,7 +49903,8 @@ var render = function() {
                     on: {
                       click: function($event) {
                         _vm.showImage(
-                          "http://localhost/" + props.item.image_ccp
+                          "https://www.taherboutique.com/" +
+                            props.item.image_ccp
                         )
                       }
                     }

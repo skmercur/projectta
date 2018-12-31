@@ -41,7 +41,7 @@
     <v-carousel-item
       v-for="(item,i) in productObj.images.split(',')"
       :key="i"
-      :src="'http://localhost/'+item" v-if="item !== ''"
+      :src="'https://www.taherboutique.com/'+item" v-if="item !== ''"
     ></v-carousel-item>
   </v-carousel>
   

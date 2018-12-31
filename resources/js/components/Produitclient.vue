@@ -139,7 +139,7 @@
     <v-carousel-item
       v-for="(item,i) in images.split(',')"
       :key="i"
-      :src="'http://localhost/'+item" v-if="item !== ''"
+      :src="'https://www.taherboutique.com/'+item" v-if="item !== ''"
     ></v-carousel-item>
   </v-carousel>
   
@@ -240,10 +240,10 @@
         </v-card>
 
         -->
-<v-card elevation-20>
+<v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-        :src="'http://localhost/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(','))" ></v-img>
+        :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(','))" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_selled)">{{dataSiteObj[0].most_selled.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_selled.prix}} DA</div>
@@ -267,10 +267,10 @@ add_shopping_cart
 
 <v-flex  xs11  lg4 >
 
-<v-card elevation-20>
+<v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-        :src="'http://localhost/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(','))" ></v-img>
+     @click="showMeThisOne(dataSiteObj[0].most_viewed)"   :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(','))"  ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_viewed)">{{dataSiteObj[0].most_viewed.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_viewed.prix}} DA</div>
@@ -355,10 +355,10 @@ add_shopping_cart
 
 
 
-    <v-card elevation-20>
+    <v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-        :src="'http://localhost/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(','))" ></v-img>
+        @click="showMeThisOne(dataSiteObj[0].most_recent)" :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(','))" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_recent)">{{dataSiteObj[0].most_recent.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_recent.prix}} DA</div>
@@ -451,22 +451,22 @@ add_shopping_cart
 <v-card >
   
 
-
+<v-spacer></v-spacer>
 
  <div class="text-xs-center" color="#42A5F5"  dark >
   
-          <v-chip color="#42A5F5" text-color="white" v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)">{{item}}</v-chip>
+          <v-chip transition="scale-transition" color="#42A5F5" class="title pa-1 ma-2 elevation-5"  text-color="white" v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)">{{item}}</v-chip>
    
         </div>
         
 </v-card>
 </v-flex>
   </v-layout>
-       
-       <v-card class="pa-3 mt-2">
+      
+       <v-card class="pa-3 mt-2" v-if="selectedCat != ''">
          <v-container >
            
-  <v-toolbar dark color="#42A5F5" elevation-10 v-if="selectedCat != ''">
+  <v-toolbar dark color="#42A5F5" elevation-10 >
   
     <v-toolbar-title>{{selectedCat}}</v-toolbar-title>
     
@@ -489,9 +489,9 @@ add_shopping_cart
 
 -->
 
-    <v-card elevation-20>
+    <v-card class="elevation-20">
      <v-img
-        :aspect-ratio="16/9"  :src="'http://localhost/' +produit.images.substring(0,produit.images.indexOf(','))" ></v-img>
+       @click="showMeThisOne(produit)"  :aspect-ratio="16/9"  :src="'https://www.taherboutique.com/' +produit.images.substring(0,produit.images.indexOf(','))" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(produit)">{{produit.name_product}}</h4>
         <div class="card-text"> {{produit.prix}} DA</div>
@@ -692,7 +692,7 @@ datasite:String,
       var key = v.indexOf(",");
       var halflink = v.substring(0,key);
       console.log(halflink);
-      this.imageProduct.push("http://localhost/"+halflink);
+      this.imageProduct.push("https://www.taherboutique.com/"+halflink);
 
     },addToCart(v){
       this.itemsInCart.push(v);

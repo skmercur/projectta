@@ -56,7 +56,10 @@ public function getCat(Request $request){
                 
                     $cats = DB::table('categories')->where('confirmed',1)->orderBy('created_at','asc')->get();
                     foreach($cats as $ca){
+                        $products = DB::table('products')->where('name_categorie',$ca->name_categorie)->get();
+                        if($products->count() > 0){
                         $arr[] = $ca->name_categorie;
+                        }
                     }
                 
                 

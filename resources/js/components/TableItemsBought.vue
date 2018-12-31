@@ -12,7 +12,7 @@
       <td>{{ props.item.id}}</td>
        <td class="text-xs">{{ props.item.id_buyer }}</td>
       <td class="text-xs">{{ props.item.code_product }}</td>
-       <td class="text-xs"><v-btn @click="showImage('http://localhost/'+props.item.image_ccp)"> ccp</v-btn></td>
+       <td class="text-xs"><v-btn @click="showImage('https://www.taherboutique.com/'+props.item.image_ccp)"> ccp</v-btn></td>
         <td class="text-xs">{{ props.item.status }}</td>
       <td class="text-xs"><v-btn class="ma-1" @click="editCat(props.item.id)" ><v-icon>edit</v-icon></v-btn><v-btn class="ma-1" @click="beginToDelete(props.item.id)"><v-icon>delete</v-icon></v-btn></td>
       

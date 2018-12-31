@@ -170,7 +170,7 @@ color="green"
             >
               <v-card flat tile class="d-flex">
                 <v-img
-                  :src="'http://localhost/'+imagesFromDb[index]"
+                  :src="'https://www.taherboutique.com/'+imagesFromDb[index]"
                   
                   aspect-ratio="1"
                   class="grey lighten-2"
