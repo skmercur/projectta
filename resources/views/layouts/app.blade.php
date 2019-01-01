@@ -8,6 +8,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Taher Boutique</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131592088-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131592088-1');
+</script>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>

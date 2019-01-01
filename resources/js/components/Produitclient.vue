@@ -243,7 +243,7 @@
 <v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-        :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(',')).substring(0,dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(',')).length-4)+'_r.jpg'" ></v-img>
+        @click="showMeThisOne(dataSiteObj[0].most_selled)"  :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(',')).substring(0,dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(',')).length-4)+'_r.jpg'" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_selled)">{{dataSiteObj[0].most_selled.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_selled.prix}} DA</div>
