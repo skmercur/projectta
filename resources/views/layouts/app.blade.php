@@ -34,15 +34,17 @@
 
 @if(!empty($product))
 <meta property="og:title" content="{{$product->name_product}}" />
-<meta property="og:url" content="https://www.taherboutique/{{$product->code}}" />
+<meta property="og:url" content="https://www.taherboutique.com/{{$product->code}}" />
 <?php $k = strpos($product->images,",");
 $image = substr($product->images,0,$k);
 $small = strpos($image,'.');
 $smallIm = substr($image,0,$small);
 $image = $smallIm."_r.jpg";
-
+$url = "https://www.taherboutique.com/".$image;
 ?>
-<meta property="og:image" content="https://www.taherboutique/{{$image}}" />
+<meta property="og:image" content="<?php echo $url; ?>" />
+   
+  <meta property="og:description" content="{{$product->summery}}" />
 @else
 <meta property="og:title" content ="Taher Boutique"/>
     <meta property="og:image" content ="https://www.taherboutique.com/assets/img/taher_boutique.jpg"/>

@@ -1,7 +1,7 @@
 
 
 <template>
-<v-container>
+<v-container class="mb-3">
   
   <v-container grid-list-md text-xs-center>
     <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">

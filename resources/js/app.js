@@ -22,7 +22,6 @@ import FBSignInButton from 'vue-facebook-signin-button'
 import Clipboard from 'v-clipboard'
  
 Vue.use(Clipboard)
-Vue.config.productionTip = false
 Vue.use(Vuetify)
 Vue.use(FBSignInButton)
 Vue.component('graphs',  require("./components/Graphs.vue" ).default);

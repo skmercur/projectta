@@ -32,21 +32,21 @@
      
         <v-card dark class="elevation-15 ma-3 pa-2">
     <v-flex>
-<v-img width="100" height="100" src="https://thefreeedu.com/assets/img/Sofiane.jpg"></v-img>
+<v-img width="100" height="100" src="assets/img/Sofiane.jpg"></v-img>
     </v-flex>
     <p class="subheading">Sofiane Khoudour </p>
      <p class="caption">Web Developper</p>
         </v-card>
         <v-card dark class="elevation-15 ma-3 pa-2">
     <v-flex>
-<v-img width="100" height="100" src="https://thefreeedu.com/assets/img/Walid.jpg"></v-img>
+<v-img width="100" height="100" src="assets/img/Walid.jpg"></v-img>
     </v-flex>
     <p class="subheading">Oualid Mecili </p>
      <p class="caption">Web Developper</p>
         </v-card>
        <v-card dark class="elevation-15 ma-3 pa-2">
     <v-flex>
-<v-img width="100" height="100" src="https://thefreeedu.com/assets/img/Hichem.jpg"></v-img>
+<v-img width="100" height="100" src="assets/img/Hichem.jpg"></v-img>
     </v-flex>
     <p class="subheading">Hichem Merniz </p>
      <p class="caption">Web Developper</p>
