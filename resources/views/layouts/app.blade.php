@@ -37,6 +37,10 @@
 <meta property="og:url" content="https://www.taherboutique/{{$product->code}}" />
 <?php $k = strpos($product->images,",");
 $image = substr($product->images,0,$k);
+$small = strpos($image,'.');
+$smallIm = substr($image,0,$small);
+$image = $smallIm."_r.jpg";
+
 ?>
 <meta property="og:image" content="https://www.taherboutique/{{$image}}" />
 @else

@@ -42,7 +42,7 @@ Vue.component('tabrequest', require("./components/TableRequests.vue").default);
 Vue.component('tabboughts', require("./components/TableItemsBought.vue").default);
 Vue.component('tabpubs', require("./components/TablePubs.vue").default);
 Vue.component('productdetails', require("./components/ProductDetails.vue").default);
-
+Vue.component('about', require("./components/AboutUs.vue").default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

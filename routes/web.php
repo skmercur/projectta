@@ -66,8 +66,8 @@ Route::get('/test', function () {
     return view('test');
 });
 
-$this->get('admin/login', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('admin/login', 'Auth\LoginController@login');
+$this->get('admin/666/login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('admin/666/login', 'Auth\LoginController@login');
 $this->post('admin/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
@@ -137,7 +137,7 @@ $res1 = json_decode($result1);
 });
 Route::post('/book','RequestsToBuyController@book');
 Route::get('/login',function(){
-    return view('login');
+    return redirect('/');
 });
 Route::get('/client',function(){
     $req = DB::table('requests_to_buys')->get();
@@ -178,6 +178,9 @@ Route::post('/addPub','PubsController@addPub');
 Route::post('/getPubs','PubsController@getPubs');
 Route::post('/getCatsConfirmed','CategoriesController@getConfirmedCats');
 Route::post('/getItemsForCat','ProductsController@getItemsForCat');
+Route::get('/about',function(){
+return view('aboutus');
+});
 Route::get('{slug}', [
     'uses' => 'ProductsController@getProductCode'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');

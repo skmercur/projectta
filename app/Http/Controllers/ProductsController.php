@@ -45,6 +45,8 @@ $pro = 1;
       }
       $path = "uploads/".md5(mt_rand(0,99999).$name.$summery).".jpg";
         $this->base64ToImage($imageData,$path);
+        $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
+        shell_exec("python $loc $path");
        $products =  DB::table('products')->where('name_product',$name)->first();
       $code = strtoupper(substr(md5(time().mt_rand(0,9999).$name),0,6));
        if(!empty($products->name_product)){
@@ -160,8 +162,11 @@ $views += $view->views;
         $value = $request['slug'];
         if(!empty($value)){
             $product = DB::table('products')->where('code',$value)->first();
-
+if(!empty($product->code)){
             return view('productdetails')->with(['product'=>$product]);
+}else{
+    return redirect('/');
+}
         }
     }
    

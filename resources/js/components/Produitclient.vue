@@ -243,7 +243,7 @@
 <v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-        :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(','))" ></v-img>
+        :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(',')).substring(0,dataSiteObj[0].most_selled.images.substring(0,dataSiteObj[0].most_selled.images.indexOf(',')).length-4)+'_r.jpg'" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_selled)">{{dataSiteObj[0].most_selled.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_selled.prix}} DA</div>
@@ -270,7 +270,7 @@ add_shopping_cart
 <v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-     @click="showMeThisOne(dataSiteObj[0].most_viewed)"   :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(','))"  ></v-img>
+     @click="showMeThisOne(dataSiteObj[0].most_viewed)"   :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(',')).substring(0,dataSiteObj[0].most_viewed.images.substring(0,dataSiteObj[0].most_viewed.images.indexOf(',')).length-4)+'_r.jpg'"  ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_viewed)">{{dataSiteObj[0].most_viewed.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_viewed.prix}} DA</div>
@@ -358,7 +358,7 @@ add_shopping_cart
     <v-card class="elevation-20">
      <v-img
       :aspect-ratio="16/9"
-        @click="showMeThisOne(dataSiteObj[0].most_recent)" :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(','))" ></v-img>
+        @click="showMeThisOne(dataSiteObj[0].most_recent)" :src="'https://www.taherboutique.com/' +dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(',')).substring(0,dataSiteObj[0].most_recent.images.substring(0,dataSiteObj[0].most_recent.images.indexOf(',')).length-4)+'_r.jpg'" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(dataSiteObj[0].most_recent)">{{dataSiteObj[0].most_recent.name_product}}</h4>
         <div class="card-text">  {{dataSiteObj[0].most_recent.prix}} DA</div>
@@ -491,7 +491,7 @@ add_shopping_cart
 
     <v-card class="elevation-20">
      <v-img
-       @click="showMeThisOne(produit)"  :aspect-ratio="16/9"  :src="'https://www.taherboutique.com/' +produit.images.substring(0,produit.images.indexOf(','))" ></v-img>
+       @click="showMeThisOne(produit)"  :aspect-ratio="16/9"  :src="'https://www.taherboutique.com/' +produit.images.substring(0,produit.images.indexOf(',')).substring(0,produit.images.substring(0,produit.images.indexOf(',')).length-4)+'_r.jpg'" ></v-img>
       <div class="card-body">
         <h4 class="card-title text-truncate" @click="showMeThisOne(produit)">{{produit.name_product}}</h4>
         <div class="card-text"> {{produit.prix}} DA</div>

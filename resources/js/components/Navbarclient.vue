@@ -1,12 +1,12 @@
 <template>
 
   <v-toolbar  fixed clipped color="#42A5F5"  dark>
-    <v-spacer></v-spacer>
-    <v-toolbar-title class="title">Taher Boutique</v-toolbar-title>
+  
+    <v-toolbar-title class="title"  @click="goToHome()">Taher Boutique</v-toolbar-title>
 
    <v-spacer></v-spacer>
     <v-toolbar-items >
-     
+     <v-btn flat @click="goToAbout()">A propos</v-btn>
     </v-toolbar-items>
   </v-toolbar>   
   
@@ -35,6 +35,11 @@ export default {
   },methods:{
     login(){
       window.location = "/login";
+    },goToAbout(){
+       window.location = "/about"
+    },
+    goToHome(){
+       window.location = "/"
     },
    
        toggleMarker () {

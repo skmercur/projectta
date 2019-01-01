@@ -1850,6 +1850,87 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AboutUs.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AboutUs.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminDash.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdminDash.vue?vue&type=script&lang=js& ***!
@@ -3776,6 +3857,12 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     login: function login() {
       window.location = "/login";
+    },
+    goToAbout: function goToAbout() {
+      window.location = "/about";
+    },
+    goToHome: function goToHome() {
+      window.location = "/";
     },
     toggleMarker: function toggleMarker() {
       this.marker = !this.marker;
@@ -44681,6 +44768,282 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof='fun
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AboutUs.vue?vue&type=template&id=19b32af0&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AboutUs.vue?vue&type=template&id=19b32af0& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    {
+      staticClass: "mt-5",
+      attrs: { "grid-list-xl": "", "text-xs-center": "" }
+    },
+    [
+      _c(
+        "v-card",
+        {
+          staticClass: "ma-2 pa-1",
+          staticStyle: {
+            "background-image": "url('assets/img/pipes.png')",
+            "background-repeat": "repeat"
+          }
+        },
+        [
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c("h1", [_c("b", [_vm._v("Taher Boutique")])]),
+                  _vm._v(" "),
+                  _c("v-parallax", {
+                    attrs: { src: "assets/img/taher_boutique.jpg" }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c("v-card", { staticClass: "elevation-10 ma-3 pa-2" }, [
+                    _c("h4", [
+                      _vm._v(
+                        "C'est un site e-commerce algerien qui offre une varité de produits et accessoires a des prix imbattable avec une livraison a domicile dans toute l'algerie.\r\n        Taher boutique a une tres bonne reputation sur "
+                      ),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "https://www.facebook.com/taherboutique"
+                          }
+                        },
+                        [_vm._v("les résaux sociaux")]
+                      ),
+                      _vm._v(" plus d'une "),
+                      _c("b", [_vm._v("centaine de ventes")]),
+                      _vm._v(
+                        " de puis janvier 2018 \r\n        et si vous souhaitez visiter Taher Boutique elle est situé a "
+                      ),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href:
+                              "https://www.google.com/maps/place/Taher+Boutique/@36.065291,4.73981,17z"
+                          }
+                        },
+                        [_vm._v("bordj bou arreridj")]
+                      ),
+                      _vm._v(" , soyez les bienvenus .\r\n    ")
+                    ])
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "", lg12: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { staticClass: "elevation-10 ma-3 pa-2" },
+                    [
+                      _c("h1", [_c("b", [_vm._v("The team :")])]),
+                      _vm._v(" "),
+                      _c(
+                        "v-layout",
+                        { attrs: { "align-center": "", "justify-center": "" } },
+                        [
+                          _c(
+                            "v-card",
+                            {
+                              staticClass: "elevation-15 ma-3 pa-2",
+                              attrs: { dark: "" }
+                            },
+                            [
+                              _c(
+                                "v-flex",
+                                [
+                                  _c("v-img", {
+                                    attrs: {
+                                      width: "100",
+                                      height: "100",
+                                      src:
+                                        "https://thefreeedu.com/assets/img/Sofiane.jpg"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "subheading" }, [
+                                _vm._v("Sofiane Khoudour ")
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "caption" }, [
+                                _vm._v("Web Developper")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card",
+                            {
+                              staticClass: "elevation-15 ma-3 pa-2",
+                              attrs: { dark: "" }
+                            },
+                            [
+                              _c(
+                                "v-flex",
+                                [
+                                  _c("v-img", {
+                                    attrs: {
+                                      width: "100",
+                                      height: "100",
+                                      src:
+                                        "https://thefreeedu.com/assets/img/Walid.jpg"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "subheading" }, [
+                                _vm._v("Oualid Mecili ")
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "caption" }, [
+                                _vm._v("Web Developper")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card",
+                            {
+                              staticClass: "elevation-15 ma-3 pa-2",
+                              attrs: { dark: "" }
+                            },
+                            [
+                              _c(
+                                "v-flex",
+                                [
+                                  _c("v-img", {
+                                    attrs: {
+                                      width: "100",
+                                      height: "100",
+                                      src:
+                                        "https://thefreeedu.com/assets/img/Hichem.jpg"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "subheading" }, [
+                                _vm._v("Hichem Merniz ")
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "caption" }, [
+                                _vm._v("Web Developper")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card",
+                            {
+                              staticClass: "elevation-15 ma-3 pa-2",
+                              attrs: { dark: "" }
+                            },
+                            [
+                              _c(
+                                "v-flex",
+                                [
+                                  _c("v-img", {
+                                    attrs: {
+                                      width: "100",
+                                      height: "100",
+                                      src:
+                                        "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/45491564_1099796720199425_999895685320933376_n.jpg?_nc_cat=104&_nc_ht=scontent-mxp1-1.xx&oh=996d756601eba1e60f32d6d6c9e88484&oe=5CD1CECA"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "subheading" }, [
+                                _vm._v("Taher Benchadi")
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "caption" }, [
+                                _vm._v("Businessman")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminDash.vue?vue&type=template&id=48d72926&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdminDash.vue?vue&type=template&id=48d72926& ***!
@@ -48285,15 +48648,39 @@ var render = function() {
     "v-toolbar",
     { attrs: { fixed: "", clipped: "", color: "#42A5F5", dark: "" } },
     [
+      _c(
+        "v-toolbar-title",
+        {
+          staticClass: "title",
+          on: {
+            click: function($event) {
+              _vm.goToHome()
+            }
+          }
+        },
+        [_vm._v("Taher Boutique")]
+      ),
+      _vm._v(" "),
       _c("v-spacer"),
       _vm._v(" "),
-      _c("v-toolbar-title", { staticClass: "title" }, [
-        _vm._v("Taher Boutique")
-      ]),
-      _vm._v(" "),
-      _c("v-spacer"),
-      _vm._v(" "),
-      _c("v-toolbar-items")
+      _c(
+        "v-toolbar-items",
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { flat: "" },
+              on: {
+                click: function($event) {
+                  _vm.goToAbout()
+                }
+              }
+            },
+            [_vm._v("A propos")]
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -48882,10 +49269,23 @@ var render = function() {
                           "aspect-ratio": 16 / 9,
                           src:
                             "https://www.taherboutique.com/" +
-                            _vm.dataSiteObj[0].most_selled.images.substring(
-                              0,
-                              _vm.dataSiteObj[0].most_selled.images.indexOf(",")
-                            )
+                            _vm.dataSiteObj[0].most_selled.images
+                              .substring(
+                                0,
+                                _vm.dataSiteObj[0].most_selled.images.indexOf(
+                                  ","
+                                )
+                              )
+                              .substring(
+                                0,
+                                _vm.dataSiteObj[0].most_selled.images.substring(
+                                  0,
+                                  _vm.dataSiteObj[0].most_selled.images.indexOf(
+                                    ","
+                                  )
+                                ).length - 4
+                              ) +
+                            "_r.jpg"
                         }
                       }),
                       _vm._v(" "),
@@ -48995,10 +49395,23 @@ var render = function() {
                           "aspect-ratio": 16 / 9,
                           src:
                             "https://www.taherboutique.com/" +
-                            _vm.dataSiteObj[0].most_viewed.images.substring(
-                              0,
-                              _vm.dataSiteObj[0].most_viewed.images.indexOf(",")
-                            )
+                            _vm.dataSiteObj[0].most_viewed.images
+                              .substring(
+                                0,
+                                _vm.dataSiteObj[0].most_viewed.images.indexOf(
+                                  ","
+                                )
+                              )
+                              .substring(
+                                0,
+                                _vm.dataSiteObj[0].most_viewed.images.substring(
+                                  0,
+                                  _vm.dataSiteObj[0].most_viewed.images.indexOf(
+                                    ","
+                                  )
+                                ).length - 4
+                              ) +
+                            "_r.jpg"
                         },
                         on: {
                           click: function($event) {
@@ -49110,10 +49523,23 @@ var render = function() {
                           "aspect-ratio": 16 / 9,
                           src:
                             "https://www.taherboutique.com/" +
-                            _vm.dataSiteObj[0].most_recent.images.substring(
-                              0,
-                              _vm.dataSiteObj[0].most_recent.images.indexOf(",")
-                            )
+                            _vm.dataSiteObj[0].most_recent.images
+                              .substring(
+                                0,
+                                _vm.dataSiteObj[0].most_recent.images.indexOf(
+                                  ","
+                                )
+                              )
+                              .substring(
+                                0,
+                                _vm.dataSiteObj[0].most_recent.images.substring(
+                                  0,
+                                  _vm.dataSiteObj[0].most_recent.images.indexOf(
+                                    ","
+                                  )
+                                ).length - 4
+                              ) +
+                            "_r.jpg"
                         },
                         on: {
                           click: function($event) {
@@ -49314,10 +49740,19 @@ var render = function() {
                                           "aspect-ratio": 16 / 9,
                                           src:
                                             "https://www.taherboutique.com/" +
-                                            produit.images.substring(
-                                              0,
-                                              produit.images.indexOf(",")
-                                            )
+                                            produit.images
+                                              .substring(
+                                                0,
+                                                produit.images.indexOf(",")
+                                              )
+                                              .substring(
+                                                0,
+                                                produit.images.substring(
+                                                  0,
+                                                  produit.images.indexOf(",")
+                                                ).length - 4
+                                              ) +
+                                            "_r.jpg"
                                         },
                                         on: {
                                           click: function($event) {
@@ -86117,6 +86552,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('tabrequest', __webpack_req
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('tabboughts', __webpack_require__(/*! ./components/TableItemsBought.vue */ "./resources/js/components/TableItemsBought.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('tabpubs', __webpack_require__(/*! ./components/TablePubs.vue */ "./resources/js/components/TablePubs.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('productdetails', __webpack_require__(/*! ./components/ProductDetails.vue */ "./resources/js/components/ProductDetails.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('about', __webpack_require__(/*! ./components/AboutUs.vue */ "./resources/js/components/AboutUs.vue").default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -86219,6 +86655,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AboutUs.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/AboutUs.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AboutUs_vue_vue_type_template_id_19b32af0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AboutUs.vue?vue&type=template&id=19b32af0& */ "./resources/js/components/AboutUs.vue?vue&type=template&id=19b32af0&");
+/* harmony import */ var _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutUs.vue?vue&type=script&lang=js& */ "./resources/js/components/AboutUs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AboutUs_vue_vue_type_template_id_19b32af0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AboutUs_vue_vue_type_template_id_19b32af0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AboutUs.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AboutUs.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/AboutUs.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AboutUs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AboutUs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AboutUs.vue?vue&type=template&id=19b32af0&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/AboutUs.vue?vue&type=template&id=19b32af0& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_template_id_19b32af0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AboutUs.vue?vue&type=template&id=19b32af0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AboutUs.vue?vue&type=template&id=19b32af0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_template_id_19b32af0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_template_id_19b32af0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
