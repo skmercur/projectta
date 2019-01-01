@@ -276,7 +276,7 @@ switch(i){
         this.showSectionFour=false;
       this.showSectionFive=false;
        this.showSectionSix=false;
-      console.log('One clicked');
+     
       break;
     }
     case 2: {
@@ -286,7 +286,7 @@ switch(i){
         this.showSectionFour=false;
       this.showSectionFive=false;
        this.showSectionSix=false;
-      console.log('Two clicked');
+     
       break;
     }
     case 3: {
@@ -296,7 +296,7 @@ switch(i){
       this.showSectionFour=false;
       this.showSectionFive=false;
        this.showSectionSix=false;
-      console.log('three clicked');
+     
       break;
     }case 4:{
 this.showSectionOne=false;
@@ -335,7 +335,7 @@ this.showSectionOne=false;
                   window.location = "/login";
                 })
                 .catch(function (error) {
-                   console.dir(error);
+                   
                 });
 }
     },mounted(){
@@ -347,7 +347,8 @@ this.showSectionOne=false;
                 })
                 .then(response => this.sells= response.data)
                 .catch(function (error) {
-                   console.dir(error);
+                 
+                 
                 });
                  axios.post('/GetSellsDzd', {
                   
@@ -355,7 +356,7 @@ this.showSectionOne=false;
                 })
                 .then(response => this.sellsDzd= response.data)
                 .catch(function (error) {
-                   console.dir(error);
+                 
                 });
 
                  axios.post('/GetRequestsAdmin', {
@@ -364,7 +365,7 @@ this.showSectionOne=false;
                 })
                 .then(response => this.RequestsNP= response.data)
                 .catch(function (error) {
-                   console.dir(error);
+                 
                 });
 
 

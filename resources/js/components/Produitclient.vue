@@ -660,13 +660,14 @@ datasite:String,
         if(this.fbUserData.id != 0){
             this.e1++;
         }else{
-            console.log("Empty");
+         
+         
         }
     
       })
     },
     onSignInError (error) {
-      console.log('OH NOES', error)
+    
     },checkBeforeSubmit(){
         if((this.fbUserData.name !== '') &&(this.fbUserData.email !== '') &&(this.fbUserData.adresse!== '') && (this.fbUserData.phone !== '')) {
  axios.post('/nc', {  
@@ -675,7 +676,8 @@ datasite:String,
         
        })
                 .then(function (response) {
-              console.log(response);
+             
+             
                 
                   
                 })
@@ -691,14 +693,16 @@ datasite:String,
     },getImageLink(v){
       var key = v.indexOf(",");
       var halflink = v.substring(0,key);
-      console.log(halflink);
+    
+    
       this.imageProduct.push("https://www.taherboutique.com/"+halflink);
 
     },addToCart(v){
       this.itemsInCart.push(v);
       this.nbrItems++;
        
-      console.log(this.itemsInCart);
+    
+    
      this.TotalPrix();
     },
     TotalPrix(){
@@ -709,7 +713,8 @@ temp += element.prix;
   
 
 });
-console.log(temp);
+
+
 this.prixTotal = temp;
 
     },showMeThisOne(v){
@@ -727,7 +732,8 @@ this.prixTotal = temp;
         
        })
                 .then(function (response) {
-              console.log(response);
+            
+            
                 
                   
                 })
@@ -739,7 +745,8 @@ this.prixTotal = temp;
 
 
     },getMeThisOneItems(v){
-      console.log(v);
+    
+    
       this.selectedCat = v;
       axios.post('/getItemsForCat',{
         cat:v
