@@ -72,8 +72,10 @@
           </v-flex>
           <div id="fb-root"></div>
 <div class="fb-customerchat"
-  attribution=setup_tool
-  page_id="784898105178463">
+  attribution=install_email
+  page_id="1852067245119859"
+  logged_in_greeting="Pour continuer votre achat cliquer ici"
+  logged_out_greeting="Pour continuer votre achat cliquer ici">
 </div>
            <v-footer v-if="step == 1">
              <v-card-text>
@@ -139,7 +141,7 @@
     <v-carousel-item
       v-for="(item,i) in images.split(',')"
       :key="i"
-      :src="'https://www.taherboutique.com/'+item" v-if="item !== ''"
+      :src="'https://www.taherboutique.com/'+item" 
     ></v-carousel-item>
   </v-carousel>
   

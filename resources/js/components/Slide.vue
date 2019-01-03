@@ -3,7 +3,7 @@
     <v-carousel-item
       v-for="item in images"
       :key="item"
-      :src="item" v-if="item !== ''"
+      :src="item"
     ></v-carousel-item>
   </v-carousel>
 </template>

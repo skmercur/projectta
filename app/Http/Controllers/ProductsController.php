@@ -25,8 +25,7 @@ class ProductsController extends Controller
     
         fwrite($file, base64_decode($data[1]));
         fclose($file);
-        $loc1 = $_SERVER['DOCUMENT_ROOT'].'/py/watermark.py';
-        shell_exec("python $loc1 $output_file");
+       
         return $output_file;
     }
     public function addProduct(Request $request){
@@ -48,7 +47,9 @@ $pro = 1;
         $this->base64ToImage($imageData,$path);
         $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
         shell_exec("python $loc $path");
-       
+        $loc1 = $_SERVER['DOCUMENT_ROOT'].'/py/watermark.py';
+        $loc2 = $_SERVER['DOCUMENT_ROOT'].'/py/watermark.png';
+        shell_exec("python $loc1 $path $loc2");
       
        $products =  DB::table('products')->where('name_product',$name)->first();
     
