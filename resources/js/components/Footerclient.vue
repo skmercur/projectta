@@ -1,6 +1,7 @@
 <template>
   <v-footer
     dark
+    class="mt-2"
   >
     <v-card
       class="flex"

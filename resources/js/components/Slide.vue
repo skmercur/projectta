@@ -1,5 +1,5 @@
 <template>
-  <v-carousel hide-controls>
+  <v-carousel hide-controls class="mt-3">
     <v-carousel-item
       v-for="item in images"
       :key="item"

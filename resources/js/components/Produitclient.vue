@@ -448,14 +448,14 @@ add_shopping_cart
 
 
 
-       <v-layout row wrap>
+       <v-layout row wrap class="mb-2">
 <v-flex   xs12 sm12 lg12>
 <v-card >
   
 
 <v-spacer></v-spacer>
 
- <div class="text-xs-center" color="#42A5F5"  dark >
+ <div class="text-xs-center " color="#42A5F5"  dark >
   
           <v-chip transition="scale-transition" color="#42A5F5" class="title pa-1 ma-2 elevation-5"  text-color="white" v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)">{{item}}</v-chip>
    
