@@ -16,9 +16,9 @@
   <br>
   <hr>
 
-  <produit-c datasite="{{json_encode($data)}}" ></produit-c>
+  <produitc datasite="{{json_encode($data)}}" ></produitc>
  
-  <footer-c></footer-c>
+  <footerc></footerc>
 
 
 

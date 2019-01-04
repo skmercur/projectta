@@ -606,10 +606,13 @@ add_shopping_cart
 </template>
 
 <script>
-import checkout from './CheckOut';
-import navbarc from './Navbarclient';
+
+
 
   export default {
+    components:{
+      checkout:()=>import('./CheckOut')
+    },
     props:{
 datasite:String,
     },

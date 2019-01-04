@@ -1,7 +1,7 @@
 <template>
   <v-footer
     dark
-    class="mt-2"
+    class="mt-2 sticky-bottom"
   >
     <v-card
       class="flex"

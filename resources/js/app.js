@@ -34,9 +34,9 @@ Vue.component('dashboard', require("./components/Dashboard.vue").default);
 Vue.component('tabcat', require("./components/TableCategories.vue").default);
 Vue.component('admin', require("./components/AdminDash.vue").default);
 Vue.component('navbarc', require("./components/Navbarclient.vue").default);
-Vue.component('slide', require("./components/Slide.vue").default);
-Vue.component('footer-c', require("./components/Footerclient.vue").default);
-Vue.component('produit-c', require("./components/Produitclient.vue").default);
+Vue.component('slide', () => import("./components/Slide.vue"));
+Vue.component('footerc', () => import("./components/Footerclient.vue"));
+Vue.component('produitc',  () => import("./components/Produitclient.vue"));
 Vue.component('checkout', require("./components/CheckOut.vue").default);
 Vue.component('tabrequest', require("./components/TableRequests.vue").default);
 Vue.component('tabboughts', require("./components/TableItemsBought.vue").default);
@@ -62,11 +62,13 @@ Vue.component('about', require("./components/AboutUs.vue").default);
  */
 
 const app = new Vue({
+    
     el: '#app',
+   
   
     data(){
         return{
-            testFromRoot : 'wassup',
+          
             
         }
     },
