@@ -33,7 +33,7 @@ Vue.component('tabproduct', require("./components/TableProducts.vue").default);
 Vue.component('dashboard', require("./components/Dashboard.vue").default);
 Vue.component('tabcat', require("./components/TableCategories.vue").default);
 Vue.component('admin', require("./components/AdminDash.vue").default);
-Vue.component('navbarc', require("./components/Navbarclient.vue").default);
+Vue.component('navbarc', () => import("./components/Navbarclient.vue"));
 Vue.component('slide', () => import("./components/Slide.vue"));
 Vue.component('footerc', () => import("./components/Footerclient.vue"));
 Vue.component('produitc',  () => import("./components/Produitclient.vue"));
