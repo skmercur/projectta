@@ -12,7 +12,8 @@ window.Vue = require('vue');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-
+import 'bootstrap-css-only/css/bootstrap.min.css'; 
+import 'mdbvue/build/css/mdb.css';
 // app.js
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 

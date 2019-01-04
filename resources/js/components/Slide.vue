@@ -1,5 +1,6 @@
 <template>
-  <v-carousel hide-controls class="mt-3">
+  
+   <v-carousel hide-controls class="mt-3">
     <v-carousel-item
       v-for="item in images"
       :key="item"
@@ -11,7 +12,12 @@
 
 
 <script>
+import { mdbCarousel, mdbCarouselItem } from 'mdbvue';
   export default {
+    components: {
+    mdbCarousel,
+    mdbCarouselItem
+  },
     data () {
       return {
         images: ['https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/26239766_1980207352305847_259052501415261259_n.jpg?_nc_cat=106&_nc_eui2=AeExNJhURL36XLHx1CDtn_SN6Aj8FvMzvpBmzX8ncWlRv-yXxepDdu4hSUhgBlTI7w84z0kocbFQShhSd4AQAZgWQ8Fdlfm8DJpzp6l8gknMjw&_nc_ht=scontent-cdt1-1.xx&oh=f22ec2e7ed4c0f47b88655ff40d31c53&oe=5CD6AB33']
@@ -23,6 +29,7 @@ axios.post('/getPubs',{
                   alert(error.response.data.message);
                  
                 });
+                console.log(this.images);
     }
   }
 </script>
