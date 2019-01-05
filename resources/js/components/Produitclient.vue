@@ -141,8 +141,14 @@
     <v-carousel-item
       v-for="(item,i) in images.split(',')"
       :key="i"
-      :src="'https://www.taherboutique.com/'+item" 
-    ></v-carousel-item>
+      
+    >
+    <div class="blabla" :style="'background-image:url('+item+');'"></div>
+     <v-img 
+     class="image" 
+      :src="item" contain :aspect-ratio="2"></v-img>
+ 
+    </v-carousel-item>
   </v-carousel>
   
   <v-layout xs12>
@@ -454,12 +460,22 @@ add_shopping_cart
   
 
 <v-spacer></v-spacer>
+<v-tabs
+      v-model="active"
+      color="cyan"
+      dark
+      slider-color="yellow"
+    >
+      <v-tab
+        v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)"
+        ripple
 
- <div class="text-xs-center " color="#42A5F5"  dark >
-  
-          <v-chip transition="scale-transition" color="#42A5F5" class="title pa-1 ma-2 elevation-5"  text-color="white" v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)">{{item}}</v-chip>
-   
-        </div>
+      >
+     {{item}}
+
+      </v-tab>
+</v-tabs>
+
         
 </v-card>
 </v-flex>
@@ -653,6 +669,8 @@ datasite:String,
                   alert(error.response.data.message);
                  
                 });
+                
+            
       
     }
     , methods: {
@@ -810,5 +828,35 @@ console.log(response.id);
   opacity: .5;
   position: absolute;
   width: 100%;
+}
+</style>
+<style scoped>
+#back{
+background-repeat: repeat-x; 
+-webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  z-index: -1;
+}
+.blabla{
+ 
+  position: absolute;
+  top:0;left:0;right:0;bottom:0;
+  width: 100%;
+  height: 100%;
+   background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
+filter: blur(7px);z-index:-1;
+}
+.image{
+position: relative;
+ left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+width: 90%;
+height: 100%;
 }
 </style>

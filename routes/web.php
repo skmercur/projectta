@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     
     $k=0;
-    $cat = DB::table('categories')->where('confirmed',1)->orderBy('name_categorie','asc')->get();
+    $cat = DB::table('categories')->select('name_categorie')->where('confirmed',1)->orderBy('name_categorie','asc')->get();
     
     $arr = array();
     $arrPro = array();
@@ -42,9 +42,9 @@ Route::get('/', function () {
            
             
            $Categorie->produit = $arrPro;
-      
+   
         }
-       
+        break;
        }
    
         unset($arrPro);    
