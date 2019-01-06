@@ -28,7 +28,7 @@
         dark
      fab
      bottom
-     right
+     left
      fixed
      @click="copyThis()"
       >
@@ -67,7 +67,13 @@
   </v-layout>
  
       </v-card>
-    
+         <div id="fb-root"></div>
+<div class="fb-customerchat"
+  attribution=install_email
+  page_id="1852067245119859"
+  logged_in_greeting="Pour continuer votre achat cliquer ici"
+  logged_out_greeting="Pour continuer votre achat cliquer ici">
+</div>
 </v-container>
 </template>
 <script>
