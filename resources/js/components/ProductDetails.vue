@@ -39,7 +39,7 @@
       
            <v-carousel>
     <v-carousel-item
-      v-for="(item,i) in productObj.images.split(',')"
+      v-for="(item,i) in productObj.images.split(',').filter(function(e){ return e === 0 || e })"
       :key="i"
       
     >
