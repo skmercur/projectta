@@ -2,7 +2,33 @@
 
 <template>
 <v-container class="mb-3">
+
+       <v-layout row wrap class="mb-2">
+<v-flex   xs12 sm12 lg12>
+<v-card >
   
+
+<v-spacer></v-spacer>
+<v-tabs
+      v-model="active"
+     color="#42A5F5"
+      dark
+      slider-color="yellow"
+    >
+      <v-tab
+        v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)"
+        ripple
+ v-scroll-to="'.element'"
+      >
+     {{item}}
+
+      </v-tab>
+</v-tabs>
+
+        
+</v-card>
+</v-flex>
+  </v-layout>
   <v-container grid-list-md text-xs-center>
     <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
    <v-btn
@@ -454,32 +480,6 @@ add_shopping_cart
 
 
 
-       <v-layout row wrap class="mb-2">
-<v-flex   xs12 sm12 lg12>
-<v-card >
-  
-
-<v-spacer></v-spacer>
-<v-tabs
-      v-model="active"
-      color="cyan"
-      dark
-      slider-color="yellow"
-    >
-      <v-tab
-        v-for="item in Cats" :key="item" @click="getMeThisOneItems(item)"
-        ripple
-
-      >
-     {{item}}
-
-      </v-tab>
-</v-tabs>
-
-        
-</v-card>
-</v-flex>
-  </v-layout>
       
        <v-card class="pa-3 mt-2" v-if="selectedCat != ''">
          <v-container >
@@ -495,7 +495,7 @@ add_shopping_cart
   </v-toolbar>
 
 
-<v-container grid-list-md text-xs-center>
+<v-container grid-list-md text-xs-center  class="element">
     <v-layout row wrap>
 
 

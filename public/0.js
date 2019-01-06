@@ -878,6 +878,70 @@ var render = function() {
     { staticClass: "mb-3" },
     [
       _c(
+        "v-layout",
+        { staticClass: "mb-2", attrs: { row: "", wrap: "" } },
+        [
+          _c(
+            "v-flex",
+            { attrs: { xs12: "", sm12: "", lg12: "" } },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-tabs",
+                    {
+                      attrs: {
+                        color: "#42A5F5",
+                        dark: "",
+                        "slider-color": "yellow"
+                      },
+                      model: {
+                        value: _vm.active,
+                        callback: function($$v) {
+                          _vm.active = $$v
+                        },
+                        expression: "active"
+                      }
+                    },
+                    _vm._l(_vm.Cats, function(item) {
+                      return _c(
+                        "v-tab",
+                        {
+                          directives: [
+                            {
+                              name: "scroll-to",
+                              rawName: "v-scroll-to",
+                              value: ".element",
+                              expression: "'.element'"
+                            }
+                          ],
+                          key: item,
+                          attrs: { ripple: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.getMeThisOneItems(item)
+                            }
+                          }
+                        },
+                        [_vm._v("\r\n     " + _vm._s(item) + "\r\n\r\n      ")]
+                      )
+                    }),
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "v-container",
         { attrs: { "grid-list-md": "", "text-xs-center": "" } },
         [
@@ -1693,66 +1757,6 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "v-layout",
-            { staticClass: "mb-2", attrs: { row: "", wrap: "" } },
-            [
-              _c(
-                "v-flex",
-                { attrs: { xs12: "", sm12: "", lg12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-tabs",
-                        {
-                          attrs: {
-                            color: "cyan",
-                            dark: "",
-                            "slider-color": "yellow"
-                          },
-                          model: {
-                            value: _vm.active,
-                            callback: function($$v) {
-                              _vm.active = $$v
-                            },
-                            expression: "active"
-                          }
-                        },
-                        _vm._l(_vm.Cats, function(item) {
-                          return _c(
-                            "v-tab",
-                            {
-                              key: item,
-                              attrs: { ripple: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.getMeThisOneItems(item)
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\r\n     " + _vm._s(item) + "\r\n\r\n      "
-                              )
-                            ]
-                          )
-                        }),
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
           _vm.selectedCat != ""
             ? _c(
                 "v-card",
@@ -1782,7 +1786,10 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-container",
-                        { attrs: { "grid-list-md": "", "text-xs-center": "" } },
+                        {
+                          staticClass: "element",
+                          attrs: { "grid-list-md": "", "text-xs-center": "" }
+                        },
                         [
                           _c(
                             "v-layout",

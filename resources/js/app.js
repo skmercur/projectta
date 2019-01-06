@@ -17,6 +17,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbvue/build/css/mdb.css';
+import vueScrollTo from 'vue-scroll-to';
 
 // app.js
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
@@ -25,7 +26,7 @@ import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loade
 import FBSignInButton from 'vue-facebook-signin-button'
 
 import Clipboard from 'v-clipboard'
-
+Vue.use(vueScrollTo);
 Vue.use(Clipboard)
 Vue.use(Vuetify)
 Vue.use(FBSignInButton)
@@ -47,6 +48,7 @@ Vue.component('tabboughts', require("./components/TableItemsBought.vue").default
 Vue.component('tabpubs', require("./components/TablePubs.vue").default);
 Vue.component('productdetails', require("./components/ProductDetails.vue").default);
 Vue.component('about', require("./components/AboutUs.vue").default);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
